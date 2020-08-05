@@ -864,64 +864,70 @@ set smartindent
 
 <h2 id="2-navigation">2. Navigation</h2>
 <h3 id="basic-navigation">Basic Navigation</h3>
-<p>Use <code>k</code> and <code>j</code> keys to move up and down (just like Gmail and Facebook!).  <code>h</code> and <code>l</code> to move left and right.</p>
-<p>Other shortcuts (no need to memorize them now, just refer back when you feel like you are typing too many <code>hjkl</code> to see how you can navigate faster).</p>
+<p>Use <span class="keys"><kbd class="key-k">K</kbd></span> and <span class="keys"><kbd class="key-j">J</kbd></span> keys to move up and down (just like Gmail and Facebook!).  <span class="keys"><kbd class="key-h">H</kbd></span> and <span class="keys"><kbd class="key-l">L</kbd></span> to move left and right.</p>
+<p>Other shortcuts (no need to memorize them now, just refer back when you feel like you are typing too many <span class="keys"><kbd class="key-h">H</kbd></span><span class="keys"><kbd class="key-j">J</kbd></span><span class="keys"><kbd class="key-k">K</kbd></span><span class="keys"><kbd class="key-l">L</kbd></span> to see how you can navigate faster).</p>
 <ul>
-<li><code>w</code>   jump to the beginning of the next word</li>
-<li><code>b</code>   jump to the beginning of the previous word (reverse of <code>w</code>)</li>
-<li><code>e</code>   jump to the end of the word (or next word when pressed again)</li>
-<li><code>f</code> + char: search forward in the line and sit on the next matching char</li>
-<li><code>t</code> + char:  search forward in the line and sit on one space before the matching char</li>
-<li><code>$</code> jump to the end of line</li>
-<li><code>0</code> jump to the beginning of the line</li>
-<li><code>^</code> jump to the first non-blank character of the line</li>
-<li><code>%</code> jump between matching parentheses</li>
-<li>CTRL-<code>d</code> jump forward (Down) half page</li>
-<li>CTRL-<code>f</code> jump Forward one page</li>
-<li>CTRL-<code>u</code> jump backward (Up) half page</li>
-<li>CTRL-<code>b</code> jump Backward half page</li>
+<li><span class="keys"><kbd class="key-w">W</kbd></span> jump to the beginning of the next word</li>
+<li><span class="keys"><kbd class="key-b">B</kbd></span> ump to the beginning of the previous word (reverse of <code>w</code>)</li>
+<li><span class="keys"><kbd class="key-e">E</kbd></span> jump to the end of the word (or next word when pressed again)</li>
+<li><span class="keys"><kbd class="key-f">F</kbd></span> char: search forward in the line and sit on the next matching char</li>
+<li><span class="keys"><kbd class="key-t">T</kbd></span> char:  search forward in the line and sit on one space before the matching char</li>
+<li><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-4">4</kbd></span> ($) jump to the end of line</li>
+<li><span class="keys"><kbd class="key-0">0</kbd></span> jump to the beginning of the line</li>
+<li><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-6">6</kbd></span> (^) jump to the first non-blank character of the line</li>
+<li><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-5">5</kbd></span> (%) jump between matching parentheses</li>
+<li><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-d">D</kbd></span> jump forward (Down) half page</li>
+<li><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-f">F</kbd></span> jump Forward one page</li>
+<li><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-u">U</kbd></span> jump backward (Up) half page</li>
+<li><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-b">B</kbd></span> jump Backward half page</li>
 </ul>
 <h3 id="jumping-to-a-line">Jumping to a Line</h3>
 <p>If the compiler tells you there is an error on Line <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>, you can issue <code>:&lt;x&gt;</code> to jump to Line <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>.  For instance, <code>:40</code> will go to Line 40.</p>
 <h2 id="3-editing-operations">3. Editing Operations</h2>
 <h3 id="undo">Undo</h3>
-<p>Since we are on the topic of correcting mistakes, <code>u</code> in command mode undo your changes.  Prefix it with a number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> to undo <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> times.  If you want to undo your undo, <code>&lt;CTRL-R&gt;</code> will redo.</p>
+<p>Since we are on the topic of correcting mistakes, <span class="keys"><kbd class="key-u">U</kbd></span> in command mode undo your changes.  Prefix it with a number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> to undo <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> times.  If you want to undo your undo, <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-r">R</kbd></span> will redo.</p>
 <h3 id="navigation-editing">Navigation + Editing</h3>
-<p><code>vim</code> is powerful because you can combine <em>operations</em> with <em>navigation</em>.  For instance <code>c</code> to change, <code>d</code> to delete, <code>y</code> to yank (copy).  Since <code>w</code> is the navigation command to move over the current word, combining them we get:</p>
+<p><code>vim</code> is powerful because you can combine <em>operations</em> with <em>navigation</em>.  For instance <span class="keys"><kbd class="key-c">C</kbd></span> to change, <span class="keys"><kbd class="key-d">D</kbd></span> to delete, <span class="keys"><kbd class="key-y">Y</kbd></span> to yank (copy).  Since <span class="keys"><kbd class="key-w">W</kbd></span> is the navigation command to move over the current word, combining them we get:</p>
 <ul>
-<li><code>cw</code> change the current word (delete the current word and enter insert mode)</li>
-<li><code>dw</code> delete the current word</li>
-<li><code>yw</code> yank the current word (copy word into buffer)</li>
+<li><span class="keys"><kbd class="key-c">C</kbd></span><span class="keys"><kbd class="key-w">W</kbd></span> change the current word (delete the current word and enter insert mode)</li>
+<li><span class="keys"><kbd class="key-d">D</kbd></span><span class="keys"><kbd class="key-w">W</kbd></span> delete the current word</li>
+<li><span class="keys"><kbd class="key-y">Y</kbd></span><span class="keys"><kbd class="key-w">W</kbd></span> yank the current word (copy word into buffer)</li>
 </ul>
-<p>Can you guess what <code>df)</code>, <code>dt)</code>, <code>c$</code>, <code>y0</code> do?</p>
-<p>If you repeat the operation <code>c</code>, <code>d</code>, and <code>y</code>, it applies to the whole line, so:</p>
+<p>Can you guess what each of these do:</p>
 <ul>
-<li><code>cc</code> change the whole line</li>
-<li><code>dd</code> delete the whole line</li>
-<li><code>yy</code> yank the whole line</li>
+<li><span class="keys"><kbd class="key-d">D</kbd></span><span class="keys"><kbd class="key-f">F</kbd></span><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-0">0</kbd></span> </li>
+<li><span class="keys"><kbd class="key-d">D</kbd></span><span class="keys"><kbd class="key-f">F</kbd></span><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-0">0</kbd></span> </li>
+<li><span class="keys"><kbd class="key-c">C</kbd></span><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-4">4</kbd></span></li>
+<li><span class="keys"><kbd class="key-y">Y</kbd></span><span class="keys"><kbd class="key-0">0</kbd></span></li>
 </ul>
-<p>You can add a number before an operation to specify how many times you want to repeat an operation.  So <code>5dd</code> deletes 5 lines, <code>5dw</code> deletes 5 words, etc.</p>
+<p>If you repeat the operation <span class="keys"><kbd class="key-c">C</kbd></span>, <span class="keys"><kbd class="key-d">D</kbd></span>, and <span class="keys"><kbd class="key-y">Y</kbd></span>, it applies to the whole line, so:</p>
+<ul>
+<li><span class="keys"><kbd class="key-c">C</kbd></span><span class="keys"><kbd class="key-c">C</kbd></span> change the whole line</li>
+<li><span class="keys"><kbd class="key-d">D</kbd></span><span class="keys"><kbd class="key-d">D</kbd></span> delete the whole line</li>
+<li><span class="keys"><kbd class="key-y">Y</kbd></span><span class="keys"><kbd class="key-y">Y</kbd></span> yank the whole line</li>
+</ul>
+<p>You can add a number before an operation to specify how many times you want to repeat an operation.  So <span class="keys"><kbd class="key-5">5</kbd></span><span class="keys"><kbd class="key-d">D</kbd></span><span class="keys"><kbd class="key-d">D</kbd></span>  deletes 5 lines, <span class="keys"><kbd class="key-5">5</kbd></span><span class="keys"><kbd class="key-d">D</kbd></span><span class="keys"><kbd class="key-w">W</kbd></span> deletes 5 words, etc.</p>
 <p>See the article <a href="http://whileimautomaton.net/2008/11/vimm3/operator">Operator, the True Power of <code>Vim</code></a> for more details.</p>
 <h3 id="swapping-lines">Swapping Lines</h3>
-<p>Sometimes you want to swap the order of two lines of code, in command mode, <code>ddp</code> will do the trick.  <code>dd</code> deletes the current line, <code>p</code> paste it after the current line, in effect swapping the order of the two lines.</p>
+<p>Sometimes you want to swap the order of two lines of code, in command mode, <span class="keys"><kbd class="key-d">D</kbd></span><span class="keys"><kbd class="key-d">D</kbd></span><span class="keys"><kbd class="key-p">P</kbd></span> will do the trick.  <span class="keys"><kbd class="key-d">D</kbd></span><span class="keys"><kbd class="key-d">D</kbd></span> deletes the current line, <span class="keys"><kbd class="key-p">P</kbd></span> paste it after the current line, in effect swapping the order of the two lines.</p>
 <h3 id="commenting-blocks-of-code">Commenting blocks of code</h3>
 <p>Sometimes we need to comment out a whole block of code in C for testing purposes. There are several ways to do it in <code>vim</code>:</p>
 <ul>
 <li>Place the cursor on the first line of the block of code you want to comment on.</li>
-<li><code>0</code> to jump to the beginning of the line</li>
-<li><code>V</code> enter visual mode</li>
+<li><span class="keys"><kbd class="key-0">0</kbd></span> to jump to the beginning of the line</li>
+<li><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-v">V</kbd></span> enter visual mode</li>
 <li>Use the arrow key to select the block of code you want to comment on.</li>
-<li><code>I</code> to insert at the beginning of the line (here, since we already selected the block, we will insert at the beginning of every selected)</li>
-<li><code>//</code> to insert the Java comment character (you will see it inserted in the current line, but don't worry)</li>
-<li><ESC> to escape from the visual code.</li>
+<li><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-i">I</kbd></span> to insert at the beginning of the line (here, since we already selected the block, we will insert at the beginning of every selected)</li>
+<li><span class="keys"><kbd class="key-slash">/</kbd></span><span class="keys"><kbd class="key-slash">/</kbd></span> to insert the C comment character (you will see it inserted in the current line, but don't worry)</li>
+<li><span class="keys"><kbd class="key-escape">Esc</kbd></span> to escape from the visual code.</li>
 </ul>
 <p>To uncomment,</p>
 <ul>
 <li>Place the cursor on the first line of the block of code you want to comment.</li>
-<li><code>0</code> to jump to the beginning of the line</li>
-<li><code>&lt;CTRL-v&gt;</code> enter block visual mode</li>
+<li><span class="keys"><kbd class="key-0">0</kbd></span> to jump to the beginning of the line</li>
+<li><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-v">V</kbd></span> enter block visual mode</li>
 <li>Use the arrow key to select the columns of text containing <code>//</code></li>
-<li><code>x</code> to delete them</li>
+<li><span class="keys"><kbd class="key-x">X</kbd></span> to delete them</li>
 </ul>
 <h2 id="4-other-advanced-features">4. Other Advanced Features</h2>
 <h3 id="search-and-replace-in-vim">Search and Replace in <code>vim</code></h3>
@@ -953,14 +959,14 @@ set smartindent
 
 <p>Now, when you type <code>pl</code>, it will be expanded into <code>cs1010_print_long(</code></p>
 <h3 id="auto-completion">Auto-Completion</h3>
-<p>You can <code>&lt;CTRL-P&gt;</code> to auto-complete.  By default, the autocomplete dictionary is based on the text in your current editing buffers.  This is a very useful keystroke saver for long function and variable names.</p>
+<p>You can use <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-p">P</kbd></span> or <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-n">N</kbd></span> to auto-complete.  By default, the autocomplete dictionary is based on the text in your current editing buffers.  This is a very useful keystroke saver for long function and variable names.</p>
 <h3 id="auto-indent-the-whole-file">Auto-Indent the Whole File</h3>
-<p>You can <code>gg=G</code> in command mode to auto-indent the whole file.  <code>gg</code> is the command to go to the beginning of the file.  <code>=</code> is the command to indent.  <code>G</code> is the command to go to the end of the file.  </p>
+<p>You can <span class="keys"><kbd class="key-g">G</kbd></span><span class="keys"><kbd class="key-g">G</kbd></span><span class="keys"><kbd class="key-equal">=</kbd></span><span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-g">G</kbd></span> in command mode to auto-indent the whole file.  <span class="keys"><kbd class="key-g">G</kbd></span><span class="keys"><kbd class="key-g">G</kbd></span> is the command to go to the beginning of the file.  <span class="keys"><kbd class="key-equal">=</kbd></span> is the command to indent.  <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-g">G</kbd></span> is the command to go to the end of the file.  </p>
 <h3 id="splitting-vims-viewport">Splitting <code>vim</code>'s Viewport</h3>
 <ul>
 <li><code>:sp file.c</code> splits the <code>vim</code> window horizontally</li>
 <li><code>:vsp file.c</code> splits the <code>vim</code> window vertically</li>
-<li><code>Ctrl-w Ctrl-w</code> moves between the different <code>vim</code> viewports</li>
+<li><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-w">W</kbd></span><span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-w">W</kbd></span> moves between the different <code>vim</code> viewports</li>
 </ul>
 <h2 id="5-plugins">5. Plugins</h2>
 <h3 id="syntax-and-style-checker">Syntax and Style Checker</h3>
