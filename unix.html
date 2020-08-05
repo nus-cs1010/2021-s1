@@ -1,0 +1,959 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/unix.html">
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.3">
+    
+    
+      
+        <title>UNIX - CS1010 Programming Methodology</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.947af8d5.min.css">
+      
+        <link rel="stylesheet" href="assets/stylesheets/palette.7f672a1f.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basic-unix-commands" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://nus-cs1010.github.io/2021-s1" title="CS1010 Programming Methodology" class="md-header-nav__button md-logo" aria-label="CS1010 Programming Methodology">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            CS1010 Programming Methodology
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              UNIX
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://nus-cs1010.github.io/2021-s1" title="CS1010 Programming Methodology" class="md-nav__button md-logo" aria-label="CS1010 Programming Methodology">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    CS1010 Programming Methodology
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      General
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="General" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        General
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="about.html" title="About CS1010" class="md-nav__link">
+      About CS1010
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="outcomes.html" title="Learning Outcomes" class="md-nav__link">
+      Learning Outcomes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="schedule.html" title="Schedule" class="md-nav__link">
+      Schedule
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="accounts.html" title="Accounts" class="md-nav__link">
+      Accounts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="policies.html" title="Policies" class="md-nav__link">
+      Policies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="readings.html" title="Readings" class="md-nav__link">
+      Readings
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Software/Tools
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Software/Tools" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Software/Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="environments.html" title="Programming Environments" class="md-nav__link">
+      Programming Environments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        UNIX
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="unix.html" title="UNIX" class="md-nav__link md-nav__link--active">
+      UNIX
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-the-programming-environment-pe" class="md-nav__link">
+    Connect to the Programming Environment (PE)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pwd-print-current-working-directory" class="md-nav__link">
+    pwd: Print Current Working directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ls-list-files" class="md-nav__link">
+    ls: LiSt files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mkdir-make-a-subdirectory" class="md-nav__link">
+    mkdir: MaKe a subDIRectory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cd-change-directory" class="md-nav__link">
+    cd: Change Directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rmdir-remove-a-subdirectory" class="md-nav__link">
+    rmdir: ReMove a subDIRectory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cp-copy-files" class="md-nav__link">
+    cp: CoPy files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mv-move-or-rename-files" class="md-nav__link">
+    mv: MoVe or rename files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rm-remove-files" class="md-nav__link">
+    rm: ReMove files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cat-catenate-file-content-to-the-screen" class="md-nav__link">
+    cat: CATenate file content to the screen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#man-online-manual" class="md-nav__link">
+    man: Online MANual
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chmod-changing-unix-file-permission" class="md-nav__link">
+    chmod: Changing UNIX File Permission
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scp-secure-copy" class="md-nav__link">
+    scp: Secure Copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-a-path-in-unix" class="md-nav__link">
+    Specifying A Path in UNIX
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="clang.html" title="CLang" class="md-nav__link">
+      CLang
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="vim.html" title="Vim" class="md-nav__link">
+      Vim
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#connect-to-the-programming-environment-pe" class="md-nav__link">
+    Connect to the Programming Environment (PE)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pwd-print-current-working-directory" class="md-nav__link">
+    pwd: Print Current Working directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ls-list-files" class="md-nav__link">
+    ls: LiSt files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mkdir-make-a-subdirectory" class="md-nav__link">
+    mkdir: MaKe a subDIRectory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cd-change-directory" class="md-nav__link">
+    cd: Change Directory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rmdir-remove-a-subdirectory" class="md-nav__link">
+    rmdir: ReMove a subDIRectory
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cp-copy-files" class="md-nav__link">
+    cp: CoPy files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mv-move-or-rename-files" class="md-nav__link">
+    mv: MoVe or rename files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rm-remove-files" class="md-nav__link">
+    rm: ReMove files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cat-catenate-file-content-to-the-screen" class="md-nav__link">
+    cat: CATenate file content to the screen
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#man-online-manual" class="md-nav__link">
+    man: Online MANual
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chmod-changing-unix-file-permission" class="md-nav__link">
+    chmod: Changing UNIX File Permission
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scp-secure-copy" class="md-nav__link">
+    scp: Secure Copy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-a-path-in-unix" class="md-nav__link">
+    Specifying A Path in UNIX
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="basic-unix-commands">Basic UNIX Commands</h1>
+<p>UNIX-based operating systems provide a command line to interact with the system: to create directories, to manipulate files, to run certain applications.  While these tasks can be done through a GUI interface, a command line is still useful because (i) it provides a simple way to interact with a remote system (only text are exchanged between the local and remote hosts instead of graphics); (ii) it is extremely flexible and provides many customization options; (iii) you can easily automate the sequence of commands to issue for repetitive tasks; and (iv) it is faster.  </p>
+<h2 id="connect-to-the-programming-environment-pe">Connect to the Programming Environment (PE)</h2>
+<p>If you would like to follow the following examples, you should first <code>ssh</code> into one of the PE hosts provided.  We will use <code>pe111</code> in the following example.  But feel free to use <code>pe112</code> up to <code>pe120</code> for your practice.  You should read <a href="environments.html">this guide</a> to see how to access and connect to the environment.</p>
+<p>Once you are connected, you should see a prompt like this.</p>
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~$
+</code></pre></div>
+
+<p>This interface is provided by a UNIX bash -- this shell sits in a loop and waits for users to enter a command, then it interprets and executes the command.  There are many versions of shells, the default shell for our PE is <code>bash</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p><em>The following is adapted for CS1010 from <a href="http://www.comp.nus.edu.sg/~cs1020/4_misc/cs1010_lect/2014/intro_lab/gettingStarted.html">the instructions created by Aaron Tan</a>. Bugs are mine.</em>  </p>
+<p>The power of UNIX stems from the many commands it offers. The following are a few commonly used commands. This list is by no means exhaustive and you are urged to explore on your own. Note that UNIX commands are <em>case-sensitive</em>.</p>
+<p>All commands are to be entered after the UNIX prompt of the form</p>
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~$
+</code></pre></div>
+
+<p><code>~</code> indicates that you are currently in your home directory.  The following examples assume that user <code>ooiwt</code> is logged into <code>pe111</code>.</p>
+<p>It might be good to understand the directory structure in UNIX, a multi-user system. The directory tree is shown below:</p>
+<p><img alt="UNIX Directory Tree" src="figures/unix-dir-tree/unix-dir-tree.001.png" /></p>
+<p>Each user has his/her own home directory, which is where he/she will be automatically placed when he/she logs in to the system. The above figure shows where the home directory of the user <code>ooiwt</code> resides in the directory tree. The user <code>ooiwt</code> may create files or directories in his/her home directory, but not elsewhere unless permission is given.</p>
+<h2 id="pwd-print-current-working-directory"><code>pwd</code>: Print Current Working directory</h2>
+<p><code>pwd</code> shows you which directory you are currently in
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ pwd
+/home/o/ooiwt
+</code></pre></div></p>
+<p>UNIX uses forward slash <code>/</code> to deliminate different parts of the directory structure.  This is the same notation as URLs so you should already be familiar with it.</p>
+<h2 id="ls-list-files"><code>ls</code>: LiSt files</h2>
+<p>The <code>ls</code> list the files in the current working directory.</p>
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ ls
+ooiwt@pe111:~$
+</code></pre></div>
+
+<p>If you do not have any regular files in your home directory, as you should when you first log in, you should immediately return to the bash prompt.  </p>
+<div class="admonition note">
+<p class="admonition-title">Rule of Silence</p>
+<p>UNIX follows the <em>rule of silence</em>: programs should not print unnecessary output, to allow other programs and users to easily parse the output from one program.  So, if <code>ls</code> has nothing to list, it will list nothing (as opposed to, say, printing "This is an empty directory.")</p>
+</div>
+<h2 id="mkdir-make-a-subdirectory"><code>mkdir</code>: MaKe a subDIRectory</h2>
+<p>The <code>mkdir</code> command creates a subdirectory with the given name in the current directory.</p>
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ mkdir tut01
+ooiwt@pe111:~$ ls
+tut01
+ooiwt@pe111:~$ ls -F
+tut01/
+</code></pre></div>
+
+<p>Here, you create a directory called <code>tut01</code>.  Now, when you <code>ls</code>, you can see the directory listed.</p>
+<p>You may also use <code>ls -F</code> for more information (<code>-F</code> is one of the many <em>options</em>/<em>flags</em> available for the <code>ls</code> command. To see a complete list of the options, refer to the man pages, i.e., <code>man ls</code>.)</p>
+<p>The slash <code>/</code> beside the filename tells you that the file is a directory (aka folder in Windows lingo). A normal file does not have a slash beside its name when "ls -F" is used.</p>
+<p>You may also use the <code>ls -l</code> command (hyphen el, not hyphen one) to display almost all the file information, include the size of the file and the date of modification.</p>
+<div class="admonition tip">
+<p class="admonition-title">Use ++control+p+ for Command History</p>
+<p>Unix maintains a history of your previously executed UNIX commands, and you may use ++control+p+ and <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-n">N</kbd></span> to go through it. Press the <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-p">P</kbd></span> until you find a previously executed UNIX command. You may then press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to execute it or edit the command before executing it. This is handy when you need to repeatedly execute a long UNIX command.</p>
+</div>
+<h2 id="cd-change-directory"><code>cd</code>: Change Directory</h2>
+<p>To navigate in the directory tree, changing the current working directory from to another, we use the <code>cd</code> command.</p>
+<p><div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ cd tut01
+ooiwt@pe111:~/tut01$
+</code></pre></div>
+Note that the prompt changes to <code>~/tut01</code> to indicate that you are now in the <code>tut01</code> directory below your <code>HOME</code> directory.</p>
+<p>Entering <code>cd</code> alone brings you back to your <code>HOME</code> directory, i.e., the directory in which you started with when you first logged into the system.
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cd
+ooiwt@pe111:~$
+</code></pre></div></p>
+<p>Two dots <code>..</code> refers to the parent directory.  So, alternatively, for the case above, since we are only one level down from the <code>HOME</code>, to return home, we can alternatively use <code>cd ..</code>.</p>
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cd ..
+ooiwt@pe111:~$
+</code></pre></div>
+
+<h2 id="rmdir-remove-a-subdirectory"><code>rmdir</code>: ReMove a subDIRectory</h2>
+<p><code>rmdir</code> removes a subDIRectory in current directory -- note that a directory must be empty before it can be removed.</p>
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ rmdir tut01
+ooiwt@pe111:~$ ls -F
+ooiwt@pe111:~$ mkdir tut01
+ooiwt@pe111:~$ ls -F
+tut01/
+</code></pre></div>
+
+<h2 id="cp-copy-files"><code>cp</code>: CoPy files</h2>
+<p><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cp ~cs1010/tut01/hello.c .
+ooiwt@pe111:~/tut01$ ls
+hello.c
+</code></pre></div>
+The command above copies the file <code>hello.c</code> from the HOME of user <code>cs1010</code>, under directory <code>tut01</code>, to the current directory.</p>
+<p>If you want to copy the whole directory, use <code>-r</code> flag, where <code>r</code> stands for recursive copy.</p>
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cp -r ~cs1010/tut01 .
+</code></pre></div>
+
+<p>In the last command above, the single <code>.</code> refers to the current directory.  </p>
+<p>The directory <code>tut01</code> and everything under it will be copied to the current directory.</p>
+<h2 id="mv-move-or-rename-files"><code>mv</code>: MoVe or rename files</h2>
+<p><code>mv</code> can move files from one directory to another.</p>
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ ls
+hello.c
+ooiwt@pe111:~/tut01$ mv hello.c ..
+ooiwt@pe111:~/tut01$ ls
+ooiwt@pe111:~/tut01$ ls ..
+hello.c
+ooiwt@pe111:~/tut01$ mv ../hello.c .
+</code></pre></div>
+
+<p>Here, we tell <code>mv</code> to copy a file <code>hello.c</code> from the parent directory to the current directory.</p>
+<p><code>mv</code> can also be used to rename files.</p>
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ mv hello.c hello_world.c
+ooiwt@pe111:~/tut01$ ls
+hello_world.c
+</code></pre></div>
+
+<div class="admonition tip">
+<p class="admonition-title">Use TAB for Name Completion</p>
+<p>If you have a very long file name, you may use UNIX's filename completion feature to reduce typing. For instance, you may type:
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ mv h
+</code></pre></div>
+and press the <span class="keys"><kbd class="key-tab">Tab</kbd></span> key, and UNIX will complete the filename for you if there is only one filename with the prefix "h". Otherwise, it will fill up the filename to the point where you need to type in more characters for disambiguation.
+The <span class="keys"><kbd class="key-tab">Tab</kbd></span> key can also complete the name of a command.</p>
+</div>
+<h2 id="rm-remove-files"><code>rm</code>: ReMove files</h2>
+<p>Be careful with this command -- files deleted cannot be restored.  There is no trash or recycled bin like in Mac or Windows.</p>
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ rm hello.c
+ooiwt@pe111:~/tut01$ ls
+ooiwt@pe111:~/tut01$
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">rm -rf *</p>
+<p>While Unix command line provides lots of flexibility and power, with great power comes great responsibility.  Some of the commands are extremely dangerous.  <code>rm -rf *</code> is the most famous one.  The notation <code>*</code> refers to all files, and the flag <code>-f</code> means forceful deletion (no question asked!), and <code>-r</code> means remove recursively everything under the current directory tree.  Accidentally running this command has ruined many files.  <a href="https://www.quora.com/What-are-some-crazy-rm-rf-stories-you-have-heard-about">Read more here</a></p>
+</div>
+<p><code>rm</code> comes with a <code>-i</code> flag that interactively asks you if you are sure if you want to delete a file.  It is a good idea to always run <code>rm -i</code>.  On <code>pe111</code>, we have configured everyone's account so that <code>rm</code> is aliased to <code>rm -i</code> by default.  So when you run <code>rm hello.c</code>, it actually runs <code>rm -i hello.c</code>.  </p>
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ rm hello.c
+rm: remove regular file <span class="s1">&#39;hello.c&#39;</span>?
+</code></pre></div>
+
+<p>Type <code>y</code> or <code>n</code> to answer yes or no respectively.</p>
+<p>If you set up your own UNIX OS, you should add this alias</p>
+<div class="highlight"><pre><span></span><code><span class="nb">alias</span> <span class="nv">rm</span><span class="o">=</span><span class="s2">&quot;rm -i&quot;</span>
+</code></pre></div>
+
+<p>to your <code>.bashrc</code> (Google to find out how).  Other useful aliases to avoid accidentally overwriting existing files are:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">alias</span> <span class="nv">mv</span><span class="o">=</span><span class="s2">&quot;mv -i&quot;</span>
+<span class="nb">alias</span> <span class="nv">cp</span><span class="o">=</span><span class="s2">&quot;cp -i&quot;</span>
+</code></pre></div>
+
+<h2 id="cat-catenate-file-content-to-the-screen"><code>cat</code>: CATenate file content to the screen</h2>
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cat hello.c
+</code></pre></div>
+
+<p><code>less</code> is variant of <code>cat</code> that includes features to read each page leisurely)
+<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ less hello.c
+</code></pre></div></p>
+<p>In <code>less</code>, use <code>&lt;space&gt;</code> to move down one page, <code>b</code> to move Back up one page, and <code>q</code> to Quit.</p>
+<h2 id="man-online-manual"><code>man</code>: Online MANual</h2>
+<p>An online help facility is available in UNIX via the <code>man</code> command (<code>man</code> stands for MANual). To look for more information about any UNIX command, for example, <code>ls</code>, type <code>man ls</code>. Type <code>man man</code> and refer to Man Pages to find out more about the facility. To exit <code>man</code>, press <code>q</code>.</p>
+<p>Now that you are familiar with how the UNIX bash works, I won't show the command prompt any more in the rest of this article.</p>
+<h2 id="chmod-changing-unix-file-permission"><code>chmod</code>: Changing UNIX File Permission</h2>
+<p>It is important to guide our files properly on a multi-user system where users share the same file system.  UNIX has a simple mechanism to for ensuring that: every file and directory has nine bits of access permission, corresponds to three access operations, read (<code>r</code>), write (<code>w</code>), and execute (<code>x</code>), for four classes of users, the user who owns of the file (<code>u</code>), users in the same group as the owner (<code>g</code>), all other users (<code>o</code>), and all users (<code>a</code>) (union of all three classes before)</p>
+<p>When you run <code>ls -l</code>, you will see the permission encoded as strings that look like <code>-rw-------</code> or <code>drwx--x--x</code> besides other file information.   </p>
+<ul>
+<li>The first character indicates if the file is a directory (<code>d</code>) or not (<code>-</code>).  </li>
+<li>The next three characters are the permission for the owner.  <code>rwx</code> means that the owner can do all three: reading, writing, and executing, <code>rw-</code> means that the owner can read and write, but cannot execute.</li>
+<li>The next three characters are the permission for the users in the same group.</li>
+<li>The last three characters are the permission for the users in the other groups.</li>
+</ul>
+<p>To change permission, we use the <code>chmod</code> command.  Let's say that we want to remove the read and write permission from all other users in the group.  You can run:</p>
+<div class="highlight"><pre><span></span><code>chmod g-rw &lt;file&gt;
+</code></pre></div>
+
+<p>where <code>&lt;file&gt;</code> is the name of the file whose permission you want to change.  This would change the permission from <code>-rw-rw-rw-</code> to <code>-rw----rw-</code>, or from <code>-rwxr--r--</code> to <code>-rwx---r--</code>.</p>
+<p>To add executable permission to everyone, you can run:</p>
+<div class="highlight"><pre><span></span><code>chmod a+x &lt;file&gt;
+</code></pre></div>
+
+<p>This would change the permission from <code>-rw-rw-rw-</code> to <code>-rwxrwxrwx</code>, or from <code>-rwxr--r--</code> to <code>rwxr-xr-x</code>, and so on.  You get the idea.</p>
+<p>Another way to change the permission is to set the permission directly, instead of adding with <code>+</code> and removing with <code>-</code>.  To do this, one convenient way is to treat the permission for each class of user as a 3-bit binary number between 0 to 7.  So, <code>rwx</code> is 7, <code>rw-</code> is 6, <code>-w-</code> is 2, <code>---</code> is 0, etc.  </p>
+<p>To set the permission of a file to <code>-r--r--r--</code> (readable by everyone), run:</p>
+<div class="highlight"><pre><span></span><code>chmod <span class="m">444</span> &lt;file&gt;
+</code></pre></div>
+
+<p>To set the permission to <code>-rw-------</code>, run:</p>
+<div class="highlight"><pre><span></span><code>chmod <span class="m">600</span> &lt;file&gt;
+</code></pre></div>
+
+<p>and so on.</p>
+<p>It is important to ensure that your code is not readable and writable by other students, especially for graded lab exercises.</p>
+<h2 id="scp-secure-copy"><code>scp</code>: Secure Copy</h2>
+<p>Secure copy, or <code>scp</code>, is one way to transfer files from the programming environments to your local computer for archiving or storage.  Let's say you want to transfer a set of C files from the directory <code>a01</code> to your local computer, then, on your local computer, run:</p>
+<div class="highlight"><pre><span></span><code>ooiwt@macbook:~$ scp ooiwt@pe111:~/a01/*.c .
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you have files with the same name in the remote directory, the files will be overwritten without warning.  I have lost my code a few times due to <code>scp</code>.  </p>
+</div>
+<p>The expression <code>*.c</code> is a <em>regular expression</em> that means all files with filename ending with <code>.c</code>.  You can copy specific files as well.  For instance,</p>
+<div class="highlight"><pre><span></span><code>ooiwt@macbook:~$ scp ooiwt@pe111:~/a01/hello.c .
+</code></pre></div>
+
+<p><code>scp</code> supports <code>-r</code> (recursive copy) as well.</p>
+<h2 id="specifying-a-path-in-unix">Specifying A Path in UNIX</h2>
+<p>In any command above, when we need to refer to a directory or a file, we need to specify an <em>unambiguous location</em> of the directory or the file.  The most precise way to specify the location is to use the full path, or the <em>absolute path</em>.  For instance:</p>
+<div class="highlight"><pre><span></span><code>cp /home/o/ooiwt/tut01/hello.c /home/o/ooiwt/tut01/hello_world.c
+</code></pre></div>
+
+<p>That's a lot of characters to type.  We could shorten it in a few ways.  </p>
+<ul>
+<li>We could specify the location with respect to the home directory using <code>~</code>.  <code>~ooiwt</code> refers to the home directory of user <code>ooiwt</code>.  </li>
+</ul>
+<div class="highlight"><pre><span></span><code>cp ~ooiwt/tut01/hello.c ~ooiwt/tut01/hello_world.c
+</code></pre></div>
+
+<p>If you are <code>ooiwt</code>, then you can omit <code>ooiwt</code>, since <code>~</code> without any username refers to your home directory.</p>
+<div class="highlight"><pre><span></span><code>cp ~/tut01/hello.c ~/tut01/hello_world.c
+</code></pre></div>
+
+<ul>
+<li>Or we could specify the location with respect to the current directory.  Suppose the current working directory is <code>~/tut01</code> (i.e., we have <code>cd</code> into <code>~/tut01</code>), then we could say this:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cp ./hello.c ./hello_world.c
+</code></pre></div>
+
+<p>Recall that a single dot <code>.</code> refers to the current directory.</p>
+<p>The <code>./</code> however is redundant unless you are executing a command.  Since, by specifying a file name or a directory without a path (i.e., not using any <code>/</code>), the bash looks for the file or directory in the current directory.  So, we could just do:</p>
+<div class="highlight"><pre><span></span><code>cp hello.c hello_world.c
+</code></pre></div>
+
+<p>Another important short form for relative location is <code>..</code>.  Recall that this refers to the parent directory.  Suppose that the current directory is in <code>~/tut02</code>.  Then, to copy the files in <code>~/tut01</code>, you can run:</p>
+<div class="highlight"><pre><span></span><code>cp ../tut01/hello.c ../tut01/hello_world.c
+</code></pre></div>
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>I run <code>fish</code> on my macOS, as you might have noticed during the in-class demos.  You can use any shell you like if you know what you are doing.  Otherwise, <code>bash</code> is a popular one.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="environments.html" title="Programming Environments" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Programming Environments
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="clang.html" title="CLang" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                CLang
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright by Department of Computer Science, National University of Singapore 2020
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.c3dc8c49.min.js"></script>
+      <script src="assets/javascripts/bundle.f9edbbd5.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: ["instant"],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8e2cddea.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

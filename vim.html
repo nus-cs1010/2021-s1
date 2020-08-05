@@ -1,0 +1,1073 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/vim.html">
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.3">
+    
+    
+      
+        <title>Vim - CS1010 Programming Methodology</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.947af8d5.min.css">
+      
+        <link rel="stylesheet" href="assets/stylesheets/palette.7f672a1f.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gentium+Book+Basic">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vim-tips" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://nus-cs1010.github.io/2021-s1" title="CS1010 Programming Methodology" class="md-header-nav__button md-logo" aria-label="CS1010 Programming Methodology">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            CS1010 Programming Methodology
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Vim
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://nus-cs1010.github.io/2021-s1" title="CS1010 Programming Methodology" class="md-nav__button md-logo" aria-label="CS1010 Programming Methodology">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    CS1010 Programming Methodology
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      General
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="General" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        General
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="about.html" title="About CS1010" class="md-nav__link">
+      About CS1010
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="outcomes.html" title="Learning Outcomes" class="md-nav__link">
+      Learning Outcomes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="schedule.html" title="Schedule" class="md-nav__link">
+      Schedule
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="accounts.html" title="Accounts" class="md-nav__link">
+      Accounts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="policies.html" title="Policies" class="md-nav__link">
+      Policies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="readings.html" title="Readings" class="md-nav__link">
+      Readings
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Software/Tools
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Software/Tools" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Software/Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="environments.html" title="Programming Environments" class="md-nav__link">
+      Programming Environments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="unix.html" title="UNIX" class="md-nav__link">
+      UNIX
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="clang.html" title="CLang" class="md-nav__link">
+      CLang
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Vim
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="vim.html" title="Vim" class="md-nav__link md-nav__link--active">
+      Vim
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-useful-configuration" class="md-nav__link">
+    1. Useful Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Useful Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    Help
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-files" class="md-nav__link">
+    Backup Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntax-highlighting" class="md-nav__link">
+    Syntax Highlighting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruler-and-numbers" class="md-nav__link">
+    Ruler and Numbers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-indentation" class="md-nav__link">
+    Auto Indentation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-navigation" class="md-nav__link">
+    2. Navigation
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Navigation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-navigation" class="md-nav__link">
+    Basic Navigation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jumping-to-a-line" class="md-nav__link">
+    Jumping to a Line
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-editing-operations" class="md-nav__link">
+    3. Editing Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Editing Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#undo" class="md-nav__link">
+    Undo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation-editing" class="md-nav__link">
+    Navigation + Editing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swapping-lines" class="md-nav__link">
+    Swapping Lines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commenting-blocks-of-code" class="md-nav__link">
+    Commenting blocks of code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-other-advanced-features" class="md-nav__link">
+    4. Other Advanced Features
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Other Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-and-replace-in-vim" class="md-nav__link">
+    Search and Replace in vim
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell-command" class="md-nav__link">
+    Shell Command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abbreviation" class="md-nav__link">
+    Abbreviation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-completion" class="md-nav__link">
+    Auto-Completion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-indent-the-whole-file" class="md-nav__link">
+    Auto-Indent the Whole File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splitting-vims-viewport" class="md-nav__link">
+    Splitting vim's Viewport
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-plugins" class="md-nav__link">
+    5. Plugins
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntax-and-style-checker" class="md-nav__link">
+    Syntax and Style Checker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-useful-configuration" class="md-nav__link">
+    1. Useful Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Useful Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#help" class="md-nav__link">
+    Help
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-files" class="md-nav__link">
+    Backup Files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syntax-highlighting" class="md-nav__link">
+    Syntax Highlighting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruler-and-numbers" class="md-nav__link">
+    Ruler and Numbers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-indentation" class="md-nav__link">
+    Auto Indentation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-navigation" class="md-nav__link">
+    2. Navigation
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Navigation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-navigation" class="md-nav__link">
+    Basic Navigation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jumping-to-a-line" class="md-nav__link">
+    Jumping to a Line
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-editing-operations" class="md-nav__link">
+    3. Editing Operations
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Editing Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#undo" class="md-nav__link">
+    Undo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation-editing" class="md-nav__link">
+    Navigation + Editing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swapping-lines" class="md-nav__link">
+    Swapping Lines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commenting-blocks-of-code" class="md-nav__link">
+    Commenting blocks of code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-other-advanced-features" class="md-nav__link">
+    4. Other Advanced Features
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Other Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-and-replace-in-vim" class="md-nav__link">
+    Search and Replace in vim
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell-command" class="md-nav__link">
+    Shell Command
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abbreviation" class="md-nav__link">
+    Abbreviation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-completion" class="md-nav__link">
+    Auto-Completion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-indent-the-whole-file" class="md-nav__link">
+    Auto-Indent the Whole File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splitting-vims-viewport" class="md-nav__link">
+    Splitting vim's Viewport
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-plugins" class="md-nav__link">
+    5. Plugins
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntax-and-style-checker" class="md-nav__link">
+    Syntax and Style Checker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="vim-tips">Vim Tips</h1>
+<p>I collected some tips on <code>vim</code> that I find helpful.  If you are new to <code>vim</code>, please try out the command <code>vimtutor</code> on any machine where <code>vim</code> is installed, and check out the nice article <a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">Learn vim Progressively</a>.  </p>
+<h2 id="1-useful-configuration">1. Useful Configuration</h2>
+<p>You can configure your <code>vim</code> by putting your configuration options and scripts in the <code>~/.vimrc</code> file (a hidden file named <code>.vimrc</code> in your home directory).  This file will be loaded whenever you start <code>vim</code>.</p>
+<p>You can copy a sample <code>.vimrc</code> file from <code>~cs1010/.vimrc</code> to your home directory.
+You can edit this file <code>~/.vimrc</code> just like any other file, using <code>vim</code>.</p>
+<h3 id="help">Help</h3>
+<p>In <code>vim,</code> the command <code>:help &lt;topic&gt;</code> shows help about a particular topic in <code>vim</code>.  Example, <code>:help backup</code>.</p>
+<h3 id="backup-files">Backup Files</h3>
+<p>You can ask <code>vim</code> to automatically backup files that you edit.  This has been a lifesaver for me on multiple occasions.</p>
+<p>In your <code>~/.vimrc</code> file,</p>
+<div class="highlight"><pre><span></span><code>set backup
+</code></pre></div>
+
+<p>will cause a copy of your file to be saved with suffix <code>~</code> appended to its name every time you save.</p>
+<p>I prefer not to clutter my working directory, so I set</p>
+<div class="highlight"><pre><span></span><code>set backupdir=~/.backup
+</code></pre></div>
+
+<p>and create a directory named <code>~/.backup</code> to store my backup files.</p>
+<p>So if you made changes to a file that you regretted, or if you accidentally deleted a file, you can check under <code>~/.backup</code> to see if the backup can save you.</p>
+<h3 id="syntax-highlighting">Syntax Highlighting</h3>
+<p>If for some reasons, syntax highlighting is not on by default, add this to your <code>~/.vimrc</code>:</p>
+<div class="highlight"><pre><span></span><code>syntax on
+</code></pre></div>
+
+<h3 id="ruler-and-numbers">Ruler and Numbers</h3>
+<p>If you prefer to show the line number you are on and the column number you are on, adding the commands to <code>~/.vimrc</code></p>
+<div class="highlight"><pre><span></span><code>set ruler
+</code></pre></div>
+
+<p>will display the line number and the column number on the lower right corner.  </p>
+<p>You can also add
+<div class="highlight"><pre><span></span><code>set number
+</code></pre></div></p>
+<p>to label each line with a line number.</p>
+<h3 id="auto-indentation">Auto Indentation</h3>
+<p>Proper indentation is important to make your code readable (to yourself and others).  You should enable this in <code>vim</code> with:</p>
+<div class="highlight"><pre><span></span><code>set autoindent
+set smartindent
+</code></pre></div>
+
+<p>Autoindent will cause the next line to have the same indentation as the previous line; while smartindent has some understanding of C-like syntax (such as recognizing <code>{</code> and <code>}</code>) and indent your code accordingly.  The size of the indentation is based on the setting <code>shiftwidth</code>.  For CS1010, please set it to either <code>2</code> or <code>4</code>:</p>
+<div class="highlight"><pre><span></span><code>set shiftwidth=2
+</code></pre></div>
+
+<h2 id="2-navigation">2. Navigation</h2>
+<h3 id="basic-navigation">Basic Navigation</h3>
+<p>Use <code>k</code> and <code>j</code> keys to move up and down (just like Gmail and Facebook!).  <code>h</code> and <code>l</code> to move left and right.</p>
+<p>Other shortcuts (no need to memorize them now, just refer back when you feel like you are typing too many <code>hjkl</code> to see how you can navigate faster).</p>
+<ul>
+<li><code>w</code>   jump to the beginning of the next word</li>
+<li><code>b</code>   jump to the beginning of the previous word (reverse of <code>w</code>)</li>
+<li><code>e</code>   jump to the end of the word (or next word when pressed again)</li>
+<li><code>f</code> + char: search forward in the line and sit on the next matching char</li>
+<li><code>t</code> + char:  search forward in the line and sit on one space before the matching char</li>
+<li><code>$</code> jump to the end of line</li>
+<li><code>0</code> jump to the beginning of the line</li>
+<li><code>^</code> jump to the first non-blank character of the line</li>
+<li><code>%</code> jump between matching parentheses</li>
+<li>CTRL-<code>d</code> jump forward (Down) half page</li>
+<li>CTRL-<code>f</code> jump Forward one page</li>
+<li>CTRL-<code>u</code> jump backward (Up) half page</li>
+<li>CTRL-<code>b</code> jump Backward half page</li>
+</ul>
+<h3 id="jumping-to-a-line">Jumping to a Line</h3>
+<p>If the compiler tells you there is an error on Line <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>, you can issue <code>:&lt;x&gt;</code> to jump to Line <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>.  For instance, <code>:40</code> will go to Line 40.</p>
+<h2 id="3-editing-operations">3. Editing Operations</h2>
+<h3 id="undo">Undo</h3>
+<p>Since we are on the topic of correcting mistakes, <code>u</code> in command mode undo your changes.  Prefix it with a number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> to undo <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> times.  If you want to undo your undo, <code>&lt;CTRL-R&gt;</code> will redo.</p>
+<h3 id="navigation-editing">Navigation + Editing</h3>
+<p><code>vim</code> is powerful because you can combine <em>operations</em> with <em>navigation</em>.  For instance <code>c</code> to change, <code>d</code> to delete, <code>y</code> to yank (copy).  Since <code>w</code> is the navigation command to move over the current word, combining them we get:</p>
+<ul>
+<li><code>cw</code> change the current word (delete the current word and enter insert mode)</li>
+<li><code>dw</code> delete the current word</li>
+<li><code>yw</code> yank the current word (copy word into buffer)</li>
+</ul>
+<p>Can you guess what <code>df)</code>, <code>dt)</code>, <code>c$</code>, <code>y0</code> do?</p>
+<p>If you repeat the operation <code>c</code>, <code>d</code>, and <code>y</code>, it applies to the whole line, so:</p>
+<ul>
+<li><code>cc</code> change the whole line</li>
+<li><code>dd</code> delete the whole line</li>
+<li><code>yy</code> yank the whole line</li>
+</ul>
+<p>You can add a number before an operation to specify how many times you want to repeat an operation.  So <code>5dd</code> deletes 5 lines, <code>5dw</code> deletes 5 words, etc.</p>
+<p>See the article <a href="http://whileimautomaton.net/2008/11/vimm3/operator">Operator, the True Power of <code>Vim</code></a> for more details.</p>
+<h3 id="swapping-lines">Swapping Lines</h3>
+<p>Sometimes you want to swap the order of two lines of code, in command mode, <code>ddp</code> will do the trick.  <code>dd</code> deletes the current line, <code>p</code> paste it after the current line, in effect swapping the order of the two lines.</p>
+<h3 id="commenting-blocks-of-code">Commenting blocks of code</h3>
+<p>Sometimes we need to comment out a whole block of code in C for testing purposes. There are several ways to do it in <code>vim</code>:</p>
+<ul>
+<li>Place the cursor on the first line of the block of code you want to comment on.</li>
+<li><code>0</code> to jump to the beginning of the line</li>
+<li><code>V</code> enter visual mode</li>
+<li>Use the arrow key to select the block of code you want to comment on.</li>
+<li><code>I</code> to insert at the beginning of the line (here, since we already selected the block, we will insert at the beginning of every selected)</li>
+<li><code>//</code> to insert the Java comment character (you will see it inserted in the current line, but don't worry)</li>
+<li><ESC> to escape from the visual code.</li>
+</ul>
+<p>To uncomment,</p>
+<ul>
+<li>Place the cursor on the first line of the block of code you want to comment.</li>
+<li><code>0</code> to jump to the beginning of the line</li>
+<li><code>&lt;CTRL-v&gt;</code> enter block visual mode</li>
+<li>Use the arrow key to select the columns of text containing <code>//</code></li>
+<li><code>x</code> to delete them</li>
+</ul>
+<h2 id="4-other-advanced-features">4. Other Advanced Features</h2>
+<h3 id="search-and-replace-in-vim">Search and Replace in <code>vim</code></h3>
+<div class="highlight"><pre><span></span><code>:%s/oldWord/newWord/gc
+</code></pre></div>
+
+<p><code>:</code> enters the command mode.  <code>%</code> means apply to the whole document, <code>s</code> means substitute, <code>g</code> means global (otherwise, only the first occurrence of each line is replaced). <code>c</code> is optional -- adding it cause <code>vim</code> to confirm with you before each replacement  </p>
+<h3 id="shell-command">Shell Command</h3>
+<p>If you need to issue a shell command quickly, you don't have to exit <code>vim</code>, run the command, and launch <code>vim</code> again.  You can use <code>!</code>,</p>
+<div class="highlight"><pre><span></span><code>:!&lt;command&gt;
+</code></pre></div>
+
+<p>will issue the command to shell.  E.g.,</p>
+<div class="highlight"><pre><span></span><code>:!ls
+</code></pre></div>
+
+<p>You can use this to compile your current file, without exiting <code>vim</code>.</p>
+<div class="highlight"><pre><span></span><code>:!make
+</code></pre></div>
+
+<p><code>make</code> is actually a builtin command for <code>vim</code> so you can also simply run</p>
+<div class="highlight"><pre><span></span><code>:make
+</code></pre></div>
+
+<h3 id="abbreviation">Abbreviation</h3>
+<p>You can use the command <code>ab</code> to abbreviate frequently typed commands.  E.g., in your <code>~/.vimrc</code>,</p>
+<div class="highlight"><pre><span></span><code>ab pl cs1010_print_long(
+</code></pre></div>
+
+<p>Now, when you type <code>pl</code>, it will be expanded into <code>cs1010_print_long(</code></p>
+<h3 id="auto-completion">Auto-Completion</h3>
+<p>You can <code>&lt;CTRL-P&gt;</code> to auto-complete.  By default, the autocomplete dictionary is based on the text in your current editing buffers.  This is a very useful keystroke saver for long function and variable names.</p>
+<h3 id="auto-indent-the-whole-file">Auto-Indent the Whole File</h3>
+<p>You can <code>gg=G</code> in command mode to auto-indent the whole file.  <code>gg</code> is the command to go to the beginning of the file.  <code>=</code> is the command to indent.  <code>G</code> is the command to go to the end of the file.  </p>
+<h3 id="splitting-vims-viewport">Splitting <code>vim</code>'s Viewport</h3>
+<ul>
+<li><code>:sp file.c</code> splits the <code>vim</code> window horizontally</li>
+<li><code>:vsp file.c</code> splits the <code>vim</code> window vertically</li>
+<li><code>Ctrl-w Ctrl-w</code> moves between the different <code>vim</code> viewports</li>
+</ul>
+<h2 id="5-plugins">5. Plugins</h2>
+<h3 id="syntax-and-style-checker">Syntax and Style Checker</h3>
+<p>I use <code>syntastic</code> to check for style and syntax whenever I save a file.  <a href="https://github.com/vim-syntastic/syntastic"><code>syntastic</code></a> is a <code>vim</code> plugin.</p>
+<p>My <code>.vimrc</code> configuration file contains the following:</p>
+<div class="highlight"><pre><span></span><code>&quot;For syntastic
+set laststatus=2
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_error_symbol = &#39;✗&#39;
+let g:syntastic_warning_symbol = &#39;⚠&#39;
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_c_checkers = [ &#39;clang_tidy&#39;, &#39;clang&#39; ]
+let g:syntastic_c_compiler = &#39;clang&#39;
+let g:syntastic_c_clang_args = &#39;-Wall -Werror -Wextra -Iinclude&#39;
+let g:syntastic_c_clang_tidy_args = &#39;-checks=*&#39;
+let g:syntastic_c_compiler_options = &#39;-Wall -Iinclude&#39;
+let g:syntastic_c_include_dirs = [ &#39;../include&#39;, &#39;include&#39; ]
+let g:syntastic_c_clang_tidy_post_args = &quot;&quot;
+</code></pre></div>
+
+<p>By default, <code>clang-tidy</code> does not know where to find the header files.  So if you include non-standard C headers, it will complain that it cannot find headers.  To resolve this, we need to tell <code>clang-tidy</code> the compilation flags that we use when compiling our program.  </p>
+<p>We can do this by creating a file named <code>compile_flags.txt</code> in your working directory (where your C files are located), containing one compilation flag per line.  For instance, if the header files are located in <code>/home/course/cs1010/include</code>, your <code>compile_flags.txt</code> should contain the following two lines:</p>
+<div class="highlight"><pre><span></span><code>-Wall
+-I/home/course/cs1010/include
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="clang.html" title="CLang" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                CLang
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright by Department of Computer Science, National University of Singapore 2020
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.c3dc8c49.min.js"></script>
+      <script src="assets/javascripts/bundle.f9edbbd5.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: ["instant"],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8e2cddea.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
