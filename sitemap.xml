@@ -1,47 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://nus-cs1010.github.io/2021-s1/index.html</loc>
-     <lastmod>2020-08-05</lastmod>
+     <lastmod>2020-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/about.html</loc>
-     <lastmod>2020-08-05</lastmod>
+     <lastmod>2020-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/outcomes.html</loc>
-     <lastmod>2020-08-05</lastmod>
+     <lastmod>2020-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/schedule.html</loc>
-     <lastmod>2020-08-05</lastmod>
+     <lastmod>2020-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/accounts.html</loc>
-     <lastmod>2020-08-05</lastmod>
+     <lastmod>2020-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/policies.html</loc>
-     <lastmod>2020-08-05</lastmod>
+     <lastmod>2020-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/readings.html</loc>
-     <lastmod>2020-08-05</lastmod>
+     <lastmod>2020-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/environments.html</loc>
-     <lastmod>2020-08-05</lastmod>
+     <lastmod>2020-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/unix.html</loc>
-     <lastmod>2020-08-05</lastmod>
+     <lastmod>2020-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/clang.html</loc>
-     <lastmod>2020-08-05</lastmod>
+     <lastmod>2020-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/vim.html</loc>
-     <lastmod>2020-08-05</lastmod>
+     <lastmod>2020-08-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://nus-cs1010.github.io/2021-s1/zoom.html</loc>
+     <lastmod>2020-08-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
