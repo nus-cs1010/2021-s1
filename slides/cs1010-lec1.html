@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="stylesheets/cs1010.css">
+<title>CS1010 AY20/21 S1 Lecture 1</title>
+<meta charset="utf-8">
+</head>
+<body>
+<textarea id="source">
+class: middle, center
+
+# CS1010
+## Programming Methodology<br>
+### (At Home Edition)
+---
+class: middle, center
+
+# Lecture 1
+
+### 10 August 2020
+
+Admin Matters<br>
+Unit 1: **What is a Program?**<br>
+Unit 2: **Computational Problems and Algorithms**<br>
+
+---
+class: middle, center
+
+# Ooi Wei Tsang
+
+### ooiwt@comp.nus.edu.sg
+
+### Office Hour : Tuesday 4 - 5 PM
+
+---
+class: middle, center
+
+# Daren Ler
+
+### dler@comp.nus.edu.sg
+
+### Office Hour : Friday 4 - 5 PM
+
+---
+class: middle, center
+
+## What will you learn?
+
+---
+class: middle
+
+- Comfortable with reading and developing small programs to solve a given problem
+
+- Become proficient with C and associated programming tools (editors, debuggers)
+
+---
+class: middle
+
+## What do you need to know before CS1010?
+
+---
+class: middle
+
+- Nothing about programming
+
+- Comfortable with using a computer
+
+- Comfortable with secondary school mathematics and notations
+
+---
+class: middle,center
+
+## Weekly Activities
+
+---
+class: middle
+
+- **Monday**: Attend Lecture
+
+- **Monday-Thursday**: Review, Problem Set, and Self-Diagnostic Quiz
+
+- **Thursday**: Attend Lab; Assignment Released
+
+- **Thursday-Tuesday**: Solve the Assignment
+
+---
+class: middle, center
+
+## Most Learning Will Happen in the Lab
+
+---
+- problem set and programming assignment will be discussed
+
+- 10 students per group
+
+- lead by a student tutor
+
+- online
+
+- starting Week 3
+
+---
+class: middle
+
+### For lab registration issue, please contact
+
+- Ng Tzer Bin ([`dcsnt@nus.edu.sg`](mailto:dcsnt@nus.edu.sg))
+
+- Sunimal Rathnayake ([`dcssrrm@nus.edu.sg`](mailto:dcssrrm@nus.edu.sg))
+
+Daren and I have no access to the system and are powerless on this issue.
+
+---
+class: middle
+
+## "Catch-Up" Sessions
+
+- About every three weeks
+
+- Saturday 10 AM - 12 PM
+
+- Q&amp;A format
+
+---
+class: middle, center
+
+## Important Resources
+
+---
+class: middle, center
+
+## Module Homepage
+
+[`https://nus-cs1010.github.io/2021-s1/`](https://nus-cs1010.github.io/2021-s1/)
+
+lecture notes<br>
+assignments<br>
+guides and manuals<br>
+readings<br>
+etc.
+
+---
+class: middle, center
+
+## Piazza
+
+[`https://piazza.com/class/kdgunoizhic105`](https://piazza.com/class/kdgunoizhic105)
+
+online forum<br>
+announcements<br>
+
+---
+class: middle, center
+
+## Github
+
+assignment submissions<br>
+assignment grading<br>
+
+---
+class: middle, center
+
+## Luminus
+
+quizzes<br>
+grades<br>
+survey<br>
+etc.
+
+---
+class: middle, center
+
+# Assessments
+
+(or, how you will be graded)
+
+---
+class:middle,center
+
+<canvas id="assessment"></canvas>
+
+---
+class:middle,center
+
+.smaller[
+Assessment         | Date                       | Time
+:------------------|:-------------------------- |:-------------
+Midterm | Mon, 28 Sep| 12 - 2 PM
+Final | Tue, 24 Nov| 5 - 7 PM
+Practical Exam 1   | Sat, 3 Oct| 9 AM - 12 PM
+Practical Exam 2   | Sat, 7 Nov| 9 AM - 12 PM
+]
+
+---
+class:middle,center
+
+## Open Book Exam
+
+### Bring any materials you want
+
+### Nothing to memorize
+
+---
+class:middle
+
+## Not "bell-curved"
+
+- Your grade is based solely on your marks
+- Not relative to others in the class.
+
+---
+class: middle
+
+## Plagiarism and Cheating
+
+- No mercy policy in dealing with cases
+- Not worth it to cheat/copy
+
+---
+class: middle
+
+## Things To Do
+
+- Read about other policies
+- Get your accounts ready
+
+---
+class: center,middle
+
+# Words of Advice
+
+---
+class: center,middle
+
+## Work hard
+## Work very very hard
+
+---
+class: center,middle
+
+## Expected workload is 10 hours/week
+
+But your mileage may vary
+
+---
+class: center,middle
+
+## Learning in NUS SoC is different from your experience
+
+---
+class: center,middle
+
+### Less rote learning
+### More open-ended problems
+### A lot more self-learning
+
+---
+class: center,middle
+
+### You cannot just "study" programming or problem solving
+
+### You have to invest lots of time actually doing it
+
+---
+class: center,middle
+
+## Do not optimize for CAP and grades
+
+---
+class: center,middle
+
+## Optimize for skills, knowledge, and experience
+
+---
+class: center,middle
+
+## Invest time to master the tools
+
+(e.g., `bash`, `vim`, `git`, etc)
+
+---
+class: center,middle
+
+## Think long term gain, not just to get things done now
+
+---
+class: center,middle
+
+## Don't be shy interacting with your instructors and tutors
+
+---
+class: center,middle
+
+## This is a new start.  
+
+### Put down your baggage about where you are from and what you have done to get here.
+
+
+---
+class: middle, center
+
+# Lecture 1
+
+### 10 August 2020
+
+Admin Matters<br>
+Unit 1: **What is a Program?**<br>
+Unit 2: **Computational Problems and Algorithms**<br>
+
+---
+class: middle,center
+
+## What is a program?
+---
+class: middle,center
+
+### A sequence of step-by-step instructions given to computers to process data in order to perform a certain task.
+---
+class: middle,center
+
+### How CPU Executes a Program
+
+.fit[![simplified](../docs/figures/simplfied-cpu-mem/simplfied-cpu-mem.001.png)]
+
+.tiny[(A highly simplfied view)]
+
+---
+## Machine Code
+
+- Instructions that can be interpreted by a CPU
+
+- Different CPU architecture may use different instruction sets
+
+`1001010001011110100010101010101000101`
+
+---
+## Assembly Language
+
+- Use mnemonic to represent the instructions such as `incr`, `decr`, `store`, etc. in a more human-readable way.
+
+- Still difficult to write: operation that is conceptually simple still requires multiple instructions to be issued.
+
+---
+## Higher-Level Language
+
+- Allow programmers to express an operation closer to their intention
+
+- E.g., $x = x + y$ if $y < 0$
+
+
+---
+## Higher-Level Languages
+
+- FORTRAN (first popular programming language from 1950s)
+
+- C (1972, still influential today)
+
+- Many many others
+
+---
+## Compilation
+
+A compiler _compiles_ a program written in high-level language to machine code.
+
+.fit[![simplified](../docs/figures/c-compile-run/c-compile-run.001.png)]
+
+---
+class: middle,center
+
+# What you will learn?
+
+---
+class: middle,center
+
+# How a C program behaves
+
+---
+class: middle,center
+
+# How to write C programs
+---
+class: middle,center
+
+## Tools and techniques to write good and correct C programs
+---
+class: middle,center
+
+## How to use C to solve computational problems
+---
+class: middle
+
+### Learning to write a program that does what you want is the easy part.
+
+### _Knowing what you want your program to do is the real challenge_!
+
+---
+class: middle,center
+
+## What is a computational problem?
+
+---
+class: middle
+
+## Computational problems are
+
+- problems that can be solved _step-by-step_ by a computer
+
+- have _well-defined_ inputs, outputs, and constraints
+
+---
+class: middle,center
+
+# Is 1933091 prime?
+
+---
+class: middle,center
+
+# Is there a route from a Point A to Point B?
+
+---
+class: middle,center
+
+# Find a route from Point A to Point B.
+
+(search problem)
+
+---
+class: middle,center
+
+## How many different routes are there from Point A to Point B?
+
+(counting problem)
+---
+class: middle,center
+
+# Find the shortest route from Point A to Point B.
+
+(optimization problem)
+---
+class: middle,center
+
+# What is the meaning of life?
+
+---
+class: middle,center
+
+# Do I look good in this outfit?
+
+---
+class: middle
+
+## Computational problem are
+
+- problems that can be solved _step-by-step_ by a computer
+
+- have _well-defined_ inputs, outputs, and constraints
+
+---
+class: middle,center
+
+### Find the maximum among these numbers
+
+```
+5  9  8
+1  3  2
+```
+
+---
+class: middle,center
+
+### Find the maximum among these numbers
+
+.tiny[
+```
+12  20  11  20  14  2   24  36  43  16  27  6   11  7 
+10  15  38  10  22  7   16  26  32  30  11  9   30  6 
+20  6   27  19  26  10  27  6   19  34  5   9   3   22
+10  4   13  1   10  22  43  36  39  29  41  12  13  25
+17  8   30  31  29  38  2   42  7   45  24  33  9   40
+34  29  37  2   26  17  19  34  6   7   34  22  21  41
+38  5   15  13  9   1   42  39  5   29  38  4   22  29
+41  10  26  32  30  26  16  16  18  22  32  34  14  10
+5   17  25  16  19  6   31  16  3   13  8   42  41  0 
+13  30  44  1   41  14  5   39  40  38  6   37  38  9 
+.
+
+```
+]
+
+---
+class: middle
+
+## How to Solve It?
+
+- Scan the integers one-by-one
+
+- Keep track of the "max so far"
+
+- When we are done scanning, the "max so far" will be the answer.
+
+---
+class: middle
+
+## Problem Formulation
+
+- Input: $L$ = $\langle l\_0,...,l\_{k-1\} \rangle$
+
+- Output: $m$
+
+- Constraint $m \in L$ and $m \ge l_i$ for all $i$.
+
+---
+class: middle
+
+## Scan One-By-One
+
+- $l_i$ : The number being scanned
+
+- $i = 0, 1, \ldots k-1$
+
+---
+class: middle
+
+## "Maximum So Far"
+
+- $m$ : max so far
+
+- $m = l_0$ initially
+
+---
+class: middle
+
+## Keeping track 
+
+- Compare $m$ with $l\_i$
+
+- if $m < l\_i$, then update $m$ with the value of $l\_i$.
+
+---
+class: middle
+
+## Done scanning?
+
+- When we have scanned $l\_{k-1}$
+
+---
+class: middle
+
+## The steps to solve a computational problem form the _algorithm_
+
+---
+class: middle
+
+## Flowchart
+
+.fit[![flowchart](../docs/figures/max-flowchart/max-flowchart.001.png)]
+
+---
+class:center
+
+![:scale 75%](../docs/figures/max-flowchart/max-flowchart.001.png)
+
+.smaller.center[
+$k$ | $i$ | $l\_i$ | $m$ 
+:---|:----|--------|-----
+    |     |        |  
+    |     |        |  
+    |     |        |  
+    |     |        |    
+]
+
+---
+## Variables
+
+- $i$, $m$, $k$ are _variables_
+- They have corresponding location in the memory and hold a _value_
+- You can _read_ a value from a variable
+- You can _write_ a value to a variable
+
+---
+## Assignment
+
+- We can assign the value of a variable to a constant (e.g., set $i$ to 1)
+- or to the value of another variable (e.g., set $m$ to $l_i$).
+
+---
+## Comparison
+
+- We can compare the values of two variables
+- E.g., $i$ equals $k$?  $l\_i > m$? 
+
+---
+## Arithmetic Operations
+
+- We can perform arithmetic operations (`+`, `-`, etc)
+- E.g., we set $i$ to $i + 1$
+
+---
+class: middle
+
+### Does this algorithm always correctly find the maximum value? 
+
+.fit[![flowchart](../docs/figures/max-flowchart/max-flowchart.001.png)]
+
+---
+class: middle
+
+## Correctness 
+
+- If an algorithm produces the correct output for one instance of input, it is not necessary correct
+
+- To be correct, it has to produce the correct output _for all possible_ inputs!
+
+---
+class: middle
+
+## How to check for correctness?
+
+- Carefully choose a set of test cases to try
+- Argue formally about the properties of the algorithms
+---
+class: middle
+
+## Homework
+
+- Post-Lecture Diagnostic Quiz (1%)
+  - Due Thursday 10 AM of Week 3
+  - You can have three attempts
+- Problem Set 1.1 to 1.3 
+  - Not graded.  To be discussed Week 3.
+
+</textarea>
+
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+<script src="javascripts/counter.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js">
+</script>
+<script>
+remark.macros.scale = function (percentage) {
+	var url = this;
+	return '<img src="' + url + '" style="width: ' + percentage + '" />';
+};
+// ![:scale 50%](image.jpg)
+
+var slideshow = remark.create({
+	ratio: '16:9',
+	highlightStyle: 'github',
+    slideNumberFormat: 'AY2021 S1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%current%',
+});
+ // Setup MathJax
+  MathJax.Hub.Config({
+	  tex2jax: {
+		inlineMath: [['$', '$']],
+		// inlineMath: [['$', '$'], ['\\(', '\\)']],
+		displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		skipTags: ['script', 'noscript', 'style', 'pre']
+	  }
+  });
+
+  MathJax.Hub.Configured();
+</script>
+<script>
+var ctx = document.getElementById('assessment').getContext('2d');
+var data = {
+	datasets: [{ data: [10, 30, 10, 25, 10, 15],
+	borderColor: '#555',
+	backgroundColor: [
+			'rgba(255, 100, 0, 0.3)',
+			'rgba(100, 255, 0, 0.4)',
+			'rgba(100, 0, 255, 0.4)',
+			'rgba(100, 255, 255, 0.3)',
+			'rgba(255, 255, 100, 0.4)',
+			'rgba(255, 100, 255, 0.3)',
+		],
+	}],
+	// These labels appear in the legend and in the tooltips when hovering different arcs
+	labels: [ 'Quizzes', 'Assignments', 'Midterm', 'Final', 'PE1', 'PE2' ]
+};
+// For a pie chart
+var myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+	options: {
+			defaultFontStyle: 'Roboto',
+			responsive: true,
+			legend: {
+				labels: {
+					fontSize : 26,
+				}
+			}
+		}
+});
+</script>
+</body>
+</html>
