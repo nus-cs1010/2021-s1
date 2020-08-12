@@ -394,23 +394,23 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#using-soc-vpn" class="md-nav__link">
-    Using SoC VPN
+  <a href="#option-1-using-soc-vpn" class="md-nav__link">
+    Option 1: Using SoC VPN
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tunneling-through-sunfire" class="md-nav__link">
-    Tunneling through Sunfire
+  <a href="#option-2-tunneling-through-sunfire" class="md-nav__link">
+    Option 2: Tunneling through Sunfire
   </a>
   
-    <nav class="md-nav" aria-label="Tunneling through Sunfire">
+    <nav class="md-nav" aria-label="Option 2: Tunneling through Sunfire">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ssh-using-sunfires-terminal" class="md-nav__link">
-    SSH Using Sunfire's Terminal
+  <a href="#ssh-through-sunfire" class="md-nav__link">
+    SSH through sunfire
   </a>
   
 </li>
@@ -559,23 +559,23 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#using-soc-vpn" class="md-nav__link">
-    Using SoC VPN
+  <a href="#option-1-using-soc-vpn" class="md-nav__link">
+    Option 1: Using SoC VPN
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#tunneling-through-sunfire" class="md-nav__link">
-    Tunneling through Sunfire
+  <a href="#option-2-tunneling-through-sunfire" class="md-nav__link">
+    Option 2: Tunneling through Sunfire
   </a>
   
-    <nav class="md-nav" aria-label="Tunneling through Sunfire">
+    <nav class="md-nav" aria-label="Option 2: Tunneling through Sunfire">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ssh-using-sunfires-terminal" class="md-nav__link">
-    SSH Using Sunfire's Terminal
+  <a href="#ssh-through-sunfire" class="md-nav__link">
+    SSH through sunfire
   </a>
   
 </li>
@@ -622,18 +622,22 @@
                 
                 <h1 id="the-cs1010-programming-environment">The CS1010 Programming Environment</h1>
 <p>C is a common programming language and you can find different implementations of C compiler on many platforms.  Wikipedia <a href="https://en.wikipedia.org/wiki/List_of_compilers#C_compilers">lists more than 40 different C compilers</a>.  These different compilers support different processor architecture, operating systems, may behave slightly differently, and may support different features of C standards.  It is therefore important for CS1010 to stick to a single platform and single compiler.</p>
-<p>Our platform of choice is <strong>Ubuntu 16.04 (or later)</strong> using the <code>clang</code> compiler (<strong>version 3.4.2 or later</strong>).</p>
-<p>The school has provided a list of computing servers for you to use.  You can access them remotely via <code>ssh</code>, or secure shell.  The hosts are named <code>pe111</code>, <code>pe112</code>, ..., <code>pe120</code>.  (<code>pe</code> stands for "programming environment").</p>
-<p>You can choose which of the 10 hosts to use.  You share the same home directory across all 10 hosts (this home directory, however, is different from that of <code>sunfire</code>).</p>
+<p>Our platform of choice is <strong>Ubuntu 18.04 (or later)</strong> using the <code>clang</code> compiler (<strong>version 6.0 or later</strong>).</p>
+<p>The school has provided a list of computing servers for you to use.  You can access them remotely via <code>ssh</code>, or secure shell.  The hosts are named <code>pe111</code>, <code>pe112</code>, ... , <code>pe120</code>.  (<code>pe</code> stands for "programming environment").  We will refer to these servers generally as the <em>PE hosts.</em></p>
+<div class="admonition note">
+<p class="admonition-title">pe115 and pe116</p>
+<p>For this semester, the two servers <code>pe115</code> and <code>pe116</code> are not available.</p>
+</div>
+<p>You can choose which of the <del class="critic">10</del> 8 hosts to use.  You share the same home directory across all the hosts (this home directory, however, is different from that of <code>sunfire</code>).</p>
 <p>For simplicity, the following guide uses <code>pe111</code> in all examples.  Do keep in mind that you can use other hosts for CS1010 to spread out the load.</p>
-<p>While it is possible for you to complete the programming assignments on your own computers, the practical exams are done in a controlled environment using the desktop PCs in the programming labs.  It is therefore advisable for you to familiarize with accessing remote computing servers via <code>ssh</code> and edit your program with either <code>vim</code> or <code>macro</code>.</p>
+<p>While it is possible for you to complete the programming assignments on your own computers, the practical exams are done in a controlled environment using servers similar to the PE hosts.  It is therefore advisable for you to familiarize yourself with accessing the PE servers via <code>ssh</code> and edit your program with either <code>vim</code>.</p>
 <h2 id="basic-requirements">Basic Requirements</h2>
 <ol>
 <li>
 <p>You need to have an SoC UNIX account.  If you do not have one, you can <a href="https://mysoc.nus.edu.sg/~newacct/">apply for one online</a>.</p>
 </li>
 <li>
-<p>Once you have an account, you need to [activate your access to the PE hosts] (<a href="https://mysoc.nus.edu.sg/~myacct/services.cgi">https://mysoc.nus.edu.sg/~myacct/services.cgi</a>), which is part of the SoC computer clusters.</p>
+<p>Once you have an account, you need to <a href="https://mysoc.nus.edu.sg/~myacct/services.cgi">activate your access to the PE hosts</a>, which is part of the SoC computer clusters.</p>
 </li>
 <li>
 <p>You need an <code>ssh</code> client.  macOS and Linux users should already have it installed by default.  Windows 10 users should install <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">the Windows Subsystem for Linux</a> and use Linux.</p>
@@ -649,26 +653,35 @@
 </code></pre></div></p>
 <p>After the command above, following the instructions on the screen.  The first time you ever connect to <code>pe111.comp.nus.edu.sg</code>, you will be warned that you are connecting to a previously unknown host.  Say <code>yes</code>, and you will be prompted with your SoC UNIX password.</p>
 <h2 id="accessing-the-pe-hosts-from-outside-soc">Accessing The PE Hosts from Outside SoC</h2>
-<p>The PE hosts can only be accessed from within the School of Computing networks.  If you want to access it from outside, there are two ways.</p>
-<h3 id="using-soc-vpn">Using SoC VPN</h3>
+<p>The PE hosts can only be accessed from within the School of Computing networks.  If you want to access it from outside, there are several ways.</p>
+<h3 id="option-1-using-soc-vpn">Option 1: Using SoC VPN</h3>
 <p>One way is to set up a Virtual Private Network (VPN) (See <a href="https://dochub.comp.nus.edu.sg/cf/guides/network/vpn">instruction here</a>).  The staff at <code>helpdesk@comp.nus.edu.sg</code> or the IT helpdesk in COM1, Level 1, will be able to help with you setting up if needed.</p>
 <div class="admonition note">
 <p class="admonition-title">SoC VPN vs NUS VPN</p>
 <p>Note that SoC VPN is different from NUS VPN.  Connecting to NUS VPN only allows you access to the NUS internal network, but not the SoC internal network.</p>
 </div>
-<h3 id="tunneling-through-sunfire">Tunneling through Sunfire</h3>
+<div class="admonition warning">
+<p class="admonition-title">Windows 10 Users: FortiClient from Windows Store</p>
+<p>Students have reported that running FortiClient downloaded from the Windows Store does not allow one to <code>ssh</code> from WSL to <code>sunfire</code> as expected.  Therefore, you should download and install For Windows 10 users, please download and install FortiClient VPN directly from <a href="https://forticlient.com/downloads">FortiClient's website</a>.</p>
+</div>
+<h3 id="option-2-tunneling-through-sunfire">Option 2: Tunneling through Sunfire</h3>
 <p>The alternative is to use ssh tunnels.</p>
-<p>SoC's Sunfire (<code>sunfire.comp.nus.edu.sg</code>) is configured to allow your connection if it's originating from a local telco. (See <a href="https://docs.comp.nus.edu.sg/node/1824">more details here</a>.)  Since <code>sunfire</code> is situated within the School of Computing network, <code>sunfire</code> is able to access the VM.  This opens the possibility of connecting from your device (using an Internet connection from a local telco) to <code>sunfire</code>, and then from <code>sunfire</code> to the VM.</p>
+<p>SoC's Sunfire (<code>sunfire.comp.nus.edu.sg</code>) is configured to allow your connection if it's originating from a local telco. (See <a href="https://docs.comp.nus.edu.sg/node/1824">more details here</a>.)  Since <code>sunfire</code> is situated within the School of Computing network, <code>sunfire</code> is able to access the PE hosts.  This opens the possibility of connecting from your device (using an Internet connection from a local telco) to <code>sunfire</code>, and then from <code>sunfire</code> to the PE servers.</p>
 <p>There are two ways to achieve this, and in both ways, it appears to the PE hosts that Sunfire is the client.</p>
-<h4 id="ssh-using-sunfires-terminal">SSH Using Sunfire's Terminal</h4>
-<p>Connect to Sunfire at <code>sunfire.comp.nus.edu.sg</code> via your favorite SSH client.  After logging in, run the command <code>ssh pe111</code> to connect to the programming environment.  This effectively starts an SSH session to the programming environment from within your existing SSH session to Sunfire.  Refer to instructions below on how to connect via SSH.</p>
+<h4 id="ssh-through-sunfire">SSH through sunfire</h4>
+<p>Connect to sunfire at <code>sunfire.comp.nus.edu.sg</code> via command line <code>ssh</code> with the option <code>-t</code>.
+<div class="highlight"><pre><span></span><code>ssh -t sunfire.comp.nus.edu.sg ssh pe111.comp.nus.edu.sg
+</code></pre></div></p>
+<p>Alternatively:
+<div class="highlight"><pre><span></span><code>ssh pe111.comp.nus.edu.sg -J sunfire.comp.nus.edu.sg
+</code></pre></div></p>
 <h4 id="ssh-port-forwarding">SSH Port Forwarding</h4>
-<p>SSH has built-in support for local and remote port forwarding, and local port forwarding can be used to connect to the programming environments.  Local port forwarding means that a port of the SSH client (your machine) is forwarded to the SSH server (<code>sunfire</code>), which opens a connection to a preset destination server (e.g., <code>pe111</code>).  This method causes the host to seem as if it is hosted on a local port, e.g. <code>localhost:1010</code>, allowing you to use your favorite SCP program (e.g. <a href="https://filezilla-project.org/">FileZilla</a>) to access the PE host.</p>
-<p>To use local port forwarding (from local port <code>1010</code>), connect to <code>sunfire</code> using
-<div class="highlight"><pre><span></span><code>ssh -L 1010:pe111.comp.nus.edu.sg:22 &lt;username&gt;@sunfire.comp.nus.edu.sg
+<p>SSH has built-in support for local and remote port forwarding, and local port forwarding can be used to connect to the programming environments.  Local port forwarding means that a port of the SSH client (your machine) is forwarded to the SSH server (<code>sunfire</code>), which opens a connection to a preset destination server (e.g., <code>pe111</code>).  This method causes the host to seem as if it is hosted on a local port, e.g. <code>localhost:7000</code>, allowing you to use your favorite SCP program (e.g. <a href="https://filezilla-project.org/">FileZilla</a>) to access the PE host.</p>
+<p>To use local port forwarding (from local port <code>7000</code>), connect to <code>sunfire</code> using
+<div class="highlight"><pre><span></span><code>ssh -L 7000:pe111.comp.nus.edu.sg:22 &lt;username&gt;@sunfire.comp.nus.edu.sg
 </code></pre></div>
-This command opens an SSH tunnel from port <code>1010</code> of your machine to port <code>22</code> (the default SSH port) of <code>pe111.comp.nus.edu.sg</code> via <code>sunfire</code>.  After successful login, open a separate SSH (or SCP) connection from your machine to <code>localhost</code> at port <code>1010</code> to access the PE host:</p>
-<div class="highlight"><pre><span></span><code>ssh &lt;username&gt;@localhost -p 1000
+This command opens an SSH tunnel from port <code>7000</code> of your machine to port <code>22</code> (the default SSH port) of <code>pe111.comp.nus.edu.sg</code> via <code>sunfire</code>.  After successful login, open a separate SSH (or SCP) connection from your machine to <code>localhost</code> at port <code>7000</code> to access the PE host:</p>
+<div class="highlight"><pre><span></span><code>ssh &lt;username&gt;@localhost -p 7000
 </code></pre></div>
 
 <p><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html"><code>PuTTY</code></a> supports SSH port forwarding, so this setup can also be used on Windows.</p>
