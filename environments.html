@@ -439,6 +439,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -604,6 +611,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    Troubleshooting
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -666,7 +680,7 @@
 </div>
 <h3 id="option-2-tunneling-through-sunfire">Option 2: Tunneling through Sunfire</h3>
 <p>The alternative is to use ssh tunnels.</p>
-<p>SoC's Sunfire (<code>sunfire.comp.nus.edu.sg</code>) is configured to allow your connection if it's originating from a local telco. (See <a href="https://docs.comp.nus.edu.sg/node/1824">more details here</a>.)  Since <code>sunfire</code> is situated within the School of Computing network, <code>sunfire</code> is able to access the PE hosts.  This opens the possibility of connecting from your device (using an Internet connection from a local telco) to <code>sunfire</code>, and then from <code>sunfire</code> to the PE servers.</p>
+<p>SoC's Sunfire (<code>sunfire.comp.nus.edu.sg</code>) is configured to allow your connection if it's originating from a local telco (See <a href="https://dochub.comp.nus.edu.sg/cf/guides/unix/soc_unix_pass_your_direct_access_to_soc_unix_servers">more details here</a>.</p>
 <p>There are two ways to achieve this, and in both ways, it appears to the PE hosts that Sunfire is the client.</p>
 <h4 id="ssh-through-sunfire">SSH through sunfire</h4>
 <p>Connect to sunfire at <code>sunfire.comp.nus.edu.sg</code> via command line <code>ssh</code> with the option <code>-t</code>.
@@ -694,6 +708,31 @@ This command opens an SSH tunnel from port <code>7000</code> of your machine to 
 <div class="highlight"><pre><span></span><code>cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
 </code></pre></div></p>
 <p>Make sure that the permission for <code>.ssh</code> both on the local machine and on PE are set to <code>700</code> and the files <code>id_rsa</code> on the local machine and <code>authorized_keys</code> on the remote machine are set to <code>600</code>.  Once set up, you need not enter your password every time you run <code>ssh</code> or <code>scp</code>.  </p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Suppose you try to connect to <code>pe111</code> using either:
+<div class="highlight"><pre><span></span><code>ssh pe111.comp.nus.edu.sg
+ssh -t sunfire.comp.nus.edu.sg ssh pe111.comp.nus.edu.sg
+ssh pe111.comp.nus.edu.sg -J sunfire.comp.nus.edu.sg
+</code></pre></div>
+and you get the following error:</p>
+<ol>
+<li>
+<p><code>ssh: Could not resolve hostname pe111.comp.nus.edu.sg</code></p>
+<p><code>ssh</code> cannot recognize the name <code>pe111</code>, it is likely that you are not connected to the SoC VPN.</p>
+</li>
+<li>
+<p><code>Connection closed by 192.168.48.xxx port 22</code></p>
+<p>You have connected to the PE host, but you are kicked out because you have no permission to use the host.</p>
+<p>Make sure you have activated your access to "SoC computer clusters" here: <a href="https://mysoc.nus.edu.sg/~myacct/services.cgi">https://mysoc.nus.edu.sg/~myacct/services.cgi</a></p>
+</li>
+<li>
+<p><code>Permission denied, please try again</code></p>
+<p>You did not enter the correct password or username.  Please use the username and password 
+of your SoC UNIX account which you have created here: <a href="https://mysoc.nus.edu.sg/~newacct/">https://mysoc.nus.edu.sg/~newacct/</a>.   </p>
+<p>Check that you have entered your username correctly.  It is <em>case sensitive</em>.</p>
+<p>If you have lost your password, go here: <a href="https://mysoc.nus.edu.sg/~myacct/iforgot.cgi">https://mysoc.nus.edu.sg/~myacct/iforgot.cgi</a></p>
+</li>
+</ol>
                 
               
               
