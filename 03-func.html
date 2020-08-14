@@ -734,28 +734,28 @@
 <li>Given a list <span class="arithmatex">\(L\)</span> and a constant value <span class="arithmatex">\(x\)</span>, subtract <span class="arithmatex">\(x\)</span> from every number in <span class="arithmatex">\(L\)</span>, giving us a new list.</li>
 <li>Given a list, square every number in the list, giving us a new list.</li>
 </ul>
-<p>For now, let's apply wishful thinking and assume that we know how to compute the above two steps with functions <span class="arithmatex">\(substract(L, k, x)\)</span> and <span class="arithmatex">\(square(L, k)\)</span>, then, the formula <span class="arithmatex">\(\sum_{i=0}^{k-1} (l_i - \mu)^2\)</span> can be computed by the following steps:</p>
+<p>For now, let's apply wishful thinking and assume that we know how to compute the above two steps with functions <span class="arithmatex">\(subtract(L, k, x)\)</span> and <span class="arithmatex">\(square(L, k)\)</span>, then, the formula <span class="arithmatex">\(\sum_{i=0}^{k-1} (l_i - \mu)^2\)</span> can be computed by the following steps:</p>
 <ul>
 <li>set <span class="arithmatex">\(\mu\)</span> to <span class="arithmatex">\(mean(L, k)\)</span></li>
-<li>set <span class="arithmatex">\(L'\)</span> to <span class="arithmatex">\(substract(L, k, \mu)\)</span></li>
+<li>set <span class="arithmatex">\(L'\)</span> to <span class="arithmatex">\(subtract(L, k, \mu)\)</span></li>
 <li>set <span class="arithmatex">\(L''\)</span> to <span class="arithmatex">\(square(L', k)\)</span></li>
 <li>set <span class="arithmatex">\(total\)</span> to <span class="arithmatex">\(sum(L'', k)\)</span>.</li>
 </ul>
 <p>We can also write it in one line:</p>
 <ul>
-<li>set <span class="arithmatex">\(total\)</span> to <span class="arithmatex">\(sum(square(substract(L, k, mean(L, k)), k), k)\)</span></li>
+<li>set <span class="arithmatex">\(total\)</span> to <span class="arithmatex">\(sum(square(subtract(L, k, mean(L, k)), k), k)\)</span></li>
 </ul>
 <p>Now, to compute the standard deviation, we need to divide <span class="arithmatex">\(total\)</span> by <span class="arithmatex">\(k\)</span> and find the square root.  But, finding <span class="arithmatex">\(total\)</span> and dividing the result by <span class="arithmatex">\(k\)</span> is just <span class="arithmatex">\(mean\)</span>.  To compute square root, we again apply wishful thinking and assume that there is a function <span class="arithmatex">\(sqrt\)</span> to do so.</p>
 <p>We can now compute the standard deviation with one line:</p>
-<div class="arithmatex">\[sqrt(mean(square(substract(L, k, mean(L, k)), k), k))\]</div>
+<div class="arithmatex">\[sqrt(mean(square(subtract(L, k, mean(L, k)), k), k))\]</div>
 <p>Using functions, we can easily pass the output from one function as input to another, essentially chain the functions together, like Lego blocks, to solve problems.  We also see an example of <em>reuse</em> here -- <span class="arithmatex">\(mean\)</span> is used twice with different inputs.</p>
 <div class="admonition warning">
 <p class="admonition-title">Returning a list</p>
 <p>While the above one-liner is an elegant solution, when we actually implement this in C later, it will not so simple and elegant.  Let's worry about that later.</p>
 </div>
-<p>Now that we have seen how to compute standard deviation by breaking it down the four subproblems, <span class="arithmatex">\(sqrt\)</span>, <span class="arithmatex">\(mean\)</span>, <span class="arithmatex">\(square\)</span>, and <span class="arithmatex">\(substract\)</span>, we have to make sure that things we wish can be done can actually be done.  The C library, and many programming languages, provide a pre-defined method to compute <span class="arithmatex">\(sqrt\)</span>.  We already know how to compute <span class="arithmatex">\(mean\)</span>.  Computing <span class="arithmatex">\(square\)</span> can be done as follows:</p>
+<p>Now that we have seen how to compute standard deviation by breaking it down the four subproblems, <span class="arithmatex">\(sqrt\)</span>, <span class="arithmatex">\(mean\)</span>, <span class="arithmatex">\(square\)</span>, and <span class="arithmatex">\(subtract\)</span>, we have to make sure that things we wish can be done can actually be done.  The C library, and many programming languages, provide a pre-defined method to compute <span class="arithmatex">\(sqrt\)</span>.  We already know how to compute <span class="arithmatex">\(mean\)</span>.  Computing <span class="arithmatex">\(square\)</span> can be done as follows:</p>
 <p><img alt="Flowchart" src="figures/max-flowchart/max-flowchart.011.png" /></p>
-<p>The implementation of <span class="arithmatex">\(substract\)</span> is similar.</p>
+<p>The implementation of <span class="arithmatex">\(subtract\)</span> is similar.</p>
 <h2 id="another-solution-for-finding-maximum">Another Solution for Finding Maximum</h2>
 <p>In the previous lecture, you have seen an algorithm to find the maximum value from a list of integers, which involves checking the elements one-by-one and keeping track of the maximum value so far.</p>
 <p>Now that we have seen what a function is, we can use the concept of wishful thinking to help us solve this problem in a different way and more elegant way.</p>
@@ -862,7 +862,7 @@
       <script>
         app = initialize({
           base: ".",
-          features: ["instant"],
+          features: [],
           search: Object.assign({
             worker: "assets/javascripts/worker/search.8e2cddea.min.js"
           }, typeof search !== "undefined" && search)
@@ -873,7 +873,7 @@
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
       
         <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
       
