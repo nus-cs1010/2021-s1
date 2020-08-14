@@ -284,18 +284,12 @@
     Learning Outcomes:
   </a>
   
-    <nav class="md-nav" aria-label="Learning Outcomes:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#problem-finding-the-range" class="md-nav__link">
     Problem: Finding the Range
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -304,18 +298,12 @@
     Functions
   </a>
   
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#problem-finding-standard-deviation" class="md-nav__link">
     Problem: Finding Standard Deviation
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -324,25 +312,19 @@
     Another Solution for Finding Maximum
   </a>
   
-    <nav class="md-nav" aria-label="Another Solution for Finding Maximum">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#example-finding-a-factorial" class="md-nav__link">
     Example: Finding a Factorial
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#recursion-function-calling-itself" class="md-nav__link">
     Recursion: Function Calling Itself
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -589,18 +571,12 @@
     Learning Outcomes:
   </a>
   
-    <nav class="md-nav" aria-label="Learning Outcomes:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#problem-finding-the-range" class="md-nav__link">
     Problem: Finding the Range
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -609,18 +585,12 @@
     Functions
   </a>
   
-    <nav class="md-nav" aria-label="Functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#problem-finding-standard-deviation" class="md-nav__link">
     Problem: Finding Standard Deviation
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -629,25 +599,19 @@
     Another Solution for Finding Maximum
   </a>
   
-    <nav class="md-nav" aria-label="Another Solution for Finding Maximum">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#example-finding-a-factorial" class="md-nav__link">
     Example: Finding a Factorial
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#recursion-function-calling-itself" class="md-nav__link">
     Recursion: Function Calling Itself
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -704,7 +668,7 @@
 <li>be able to apply "wishful thinking" in decomposing a problem into sub-problems;</li>
 <li>apply wishful thinking in solving a problem recursively -- by making a function invokes itself to solve a simpler version of the same problem.</li>
 </ul>
-<h3 id="problem-finding-the-range">Problem: Finding the Range</h3>
+<h2 id="problem-finding-the-range">Problem: Finding the Range</h2>
 <p>Let's start with another problem.</p>
 <p>The <em>range</em> of a finite list of at least one integers <span class="arithmatex">\(L\)</span> is defined as the difference between the maximum and the minimum integers in <span class="arithmatex">\(L\)</span>.  For example, the range for <code>4 1 -4 0 9 9 3 5 8</code> is <code>13</code>.  How do we find the range of a given list?</p>
 <p>To find the range of a list, we can break the solution down into three subtasks: first, find the maximum, then, find the minimum, and finally, find the difference between the two.  </p>
@@ -724,7 +688,7 @@
 <p>Thinking in terms of functions also has another advantage: given a function, we only need to worry about <em>what</em> it does, but not <em>how</em> it is done.   In the <span class="arithmatex">\(max(L,k)\)</span> example above, we do not care if it scans the list <span class="arithmatex">\(L\)</span> from <span class="arithmatex">\(l_0\)</span> to <span class="arithmatex">\(l_{k-1}\)</span>, or from <span class="arithmatex">\(l_{k-1}\)</span> to <span class="arithmatex">\(l_0\)</span>.  We can treat a function as a black box with well-defined behavior -- given one or more inputs, it will produce a value satisfying certain conditions, i.e., it solves a computational problem.  </p>
 <p>Many programming languages, including C which we will be using in CS1010, come with a rich set of predefined functions that we can use to help us solve computational problems.  In CS1010, we will also provide you with some functions to help you with your lab assignments.  You will also define your own functions when solving problems with C.  In fact, a C program is just a collection of functions calling each other.</p>
 <p>Note, however, that in C, a function is more general than the description above: a C function may not take in any input, and it may not return any value.  </p>
-<h3 id="problem-finding-standard-deviation">Problem: Finding Standard Deviation</h3>
+<h2 id="problem-finding-standard-deviation">Problem: Finding Standard Deviation</h2>
 <p>Let's look at another problem: Given <span class="arithmatex">\(L\)</span>, a finite list of at least one integers, find the standard deviation of the integers in <span class="arithmatex">\(L\)</span>.  </p>
 <p>First, recall that the (population) standard deviation is given by</p>
 <div class="arithmatex">\[\sqrt{\frac{\sum_{i=0}^{k-1} (l_i - \mu)^2}{k}}\]</div>
@@ -763,19 +727,19 @@
 <p>Do we know how to solve <span class="arithmatex">\(max'(L, i, j)\)</span> without checking the integers in <span class="arithmatex">\(L\)</span> one-by-one?  Well, if <span class="arithmatex">\(i\)</span> equals to <span class="arithmatex">\(j\)</span>, i.e., there is only one element in the range of <span class="arithmatex">\(l_i, ..., l_j\)</span>, then yes, the function should return the value of <span class="arithmatex">\(l_i\)</span>.  But, what if there are multiple elements in the range? (i.e., <span class="arithmatex">\(i &lt; j\)</span>)?  By wishful thinking, we assume that we already know how to solve smaller (as in a shorter list) problem -- <span class="arithmatex">\(max'(L, i+1, j)\)</span>, so the maximum value for the range of <span class="arithmatex">\(l_i, ..., l_j\)</span> is the larger of the two: either <span class="arithmatex">\(l_i\)</span> or <span class="arithmatex">\(max'(L, i+1, j)\)</span>.  We can express this algorithm as follows:</p>
 <p><img alt="Flowchart" src="figures/max-flowchart/max-flowchart.009.png" /></p>
 <p>Let's trace through the algorithm above, using our previous example: <code>4 1 -4 0 9 9 3 5 8</code>.  Given this list, we compare the first element, <code>4</code>, with the maximum of the rest of the list <code>1 -4 0 9 9 3 5 8</code>.  Since with wishful thinking, we know how to solve this already, we get <code>9</code> as the maximum value of <code>1 -4 0 9 9 3 5 8</code>.  Comparing <code>4</code> and <code>9</code>, <code>9</code> is larger. Thus, the maximum value for the whole list is <code>9</code>.</p>
-<h3 id="example-finding-a-factorial">Example: Finding a Factorial</h3>
+<h2 id="example-finding-a-factorial">Example: Finding a Factorial</h2>
 <p>Let us look at another example of a function before we move on to another topic.  Suppose we want to write a function <span class="arithmatex">\(factorial(n)\)</span> for an integer <span class="arithmatex">\(n\)</span> (<span class="arithmatex">\(n \ge 0\)</span>) that computes <span class="arithmatex">\(n!\)</span>. Recall that <span class="arithmatex">\(n! = n \times n - 1 \times n - 2 \times ... 2 \times 1 = n \times (n-1)!\)</span>.  As a special case, <span class="arithmatex">\(0!\)</span> is defined to be <span class="arithmatex">\(1\)</span>.</p>
 <p>The algorithm to do this can be expressed by the following diagram:</p>
 <p><img alt="Flowchart" src="figures/max-flowchart/max-flowchart.010.png" /></p>
 <p>Let's look at an example.  Let's say we want to compute <span class="arithmatex">\(factorial(4)\)</span>.  We assume we know how to solve this for a smaller problem --  <span class="arithmatex">\(factorial(3)\)</span>, which is 6.  <span class="arithmatex">\(factorial(4)\)</span> is thus 4 <span class="arithmatex">\(\times\)</span> 6, i.e., 24.</p>
-<h3 id="recursion-function-calling-itself">Recursion: Function Calling Itself</h3>
+<h2 id="recursion-function-calling-itself">Recursion: Function Calling Itself</h2>
 <p><span class="arithmatex">\(max'\)</span> and <span class="arithmatex">\(factorial\)</span> are examples of functions that calls itself to solve a simpler version of the problem.  This is known as <em>recursion</em>.  We will revisit this concept in much greater detail in the later part of CS1010.</p>
 <h2 id="problem-set">Problem Set</h2>
-<h4 id="problem-31-getting-mad">Problem 3.1 : Getting MAD</h4>
+<h3 id="problem-31-getting-mad">Problem 3.1 : Getting MAD</h3>
 <p>The mean absolute deviation, or MAD, of a set of integers measures how spread out a set of data is.  The <em>absolute deviation</em> is the absolute difference between an element in the list with the mean of values of the list.  The mean absolute deviation is the mean of all the absolute difference.  In other words, given <span class="arithmatex">\(L = \{l_0, ... l_{k-1}\}\)</span>, the MAD of <span class="arithmatex">\(L\)</span> is:</p>
 <div class="arithmatex">\[\frac{\sum_{i=0}^{k-1} |l_i - \mu|}{k}\]</div>
 <p>How do you find MAD by composing various functions we have seen?  Do you need a new function?</p>
-<h4 id="problem-32-ownself-calls-ownself">Problem 3.2 : Ownself calls ownself</h4>
+<h3 id="problem-32-ownself-calls-ownself">Problem 3.2 : Ownself calls ownself</h3>
 <p>(a) Give an algorithm for finding the sum of all the integers in the list <span class="arithmatex">\(L\)</span> with <span class="arithmatex">\(k\)</span> (<span class="arithmatex">\(k &gt; 0\)</span>) integers that is recursive.</p>
 <p>(b) The function <span class="arithmatex">\(pow(i, j)\)</span> computes <span class="arithmatex">\(i^j\)</span>.  Give an algorithm to compute <span class="arithmatex">\(pow(i, j)\)</span> recursively.</p>
 <div class="footnote">
