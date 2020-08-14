@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/policies.html">
+        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/messages.html">
       
       
       <link rel="shortcut icon" href="assets/images/favicon.png">
@@ -17,7 +17,7 @@
     
     
       
-        <title>Policies - CS1010 Programming Methodology</title>
+        <title>Common `clang` Errors and Warnings - CS1010 Programming Methodology</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#policies" class="md-skip">
+        <a href="#common-clang-errors-and-warnings" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Policies
+              Common `clang` Errors and Warnings
             
           </span>
         </div>
@@ -306,102 +306,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Policies
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
-        </span>
-      </label>
-    
-    <a href="policies.html" title="Policies" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="policies.html" title="Policies" class="md-nav__link">
       Policies
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#email-communication" class="md-nav__link">
-    Email Communication
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lab-sessions" class="md-nav__link">
-    Lab Sessions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#late-submissions" class="md-nav__link">
-    Late Submissions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#discussions-and-plagiarism" class="md-nav__link">
-    Discussions and Plagiarism
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#screencast" class="md-nav__link">
-    Screencast
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#model-solutions-and-slides" class="md-nav__link">
-    Model Solutions and Slides
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grading" class="md-nav__link">
-    Grading
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#open-book-assessment" class="md-nav__link">
-    Open Book Assessment
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -545,58 +454,104 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#email-communication" class="md-nav__link">
-    Email Communication
+  <a href="#how-to-read-the-messages" class="md-nav__link">
+    How to Read the Messages
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#lab-sessions" class="md-nav__link">
-    Lab Sessions
+  <a href="#list-of-errors-and-warnings" class="md-nav__link">
+    List of Errors and Warnings
+  </a>
+  
+    <nav class="md-nav" aria-label="List of Errors and Warnings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#e1-use-of-undeclared-identifier" class="md-nav__link">
+    E1. Use of undeclared identifier
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#late-submissions" class="md-nav__link">
-    Late Submissions
+        
+          <li class="md-nav__item">
+  <a href="#e2-redefinition-of-a-variable" class="md-nav__link">
+    E2. Redefinition of a variable
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#discussions-and-plagiarism" class="md-nav__link">
-    Discussions and Plagiarism
+        
+          <li class="md-nav__item">
+  <a href="#w-unused-variable" class="md-nav__link">
+    W. Unused Variable
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#screencast" class="md-nav__link">
-    Screencast
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#w-type-specifier-missing" class="md-nav__link">
+    W. Type specifier missing
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#model-solutions-and-slides" class="md-nav__link">
-    Model Solutions and Slides
+        
+          <li class="md-nav__item">
+  <a href="#w-implicit-declaration-of-function" class="md-nav__link">
+    W. Implicit declaration of function
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#grading" class="md-nav__link">
-    Grading
+        
+          <li class="md-nav__item">
+  <a href="#e-undefined-reference-to-a-function" class="md-nav__link">
+    E. Undefined reference to a function
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#open-book-assessment" class="md-nav__link">
-    Open Book Assessment
+        
+          <li class="md-nav__item">
+  <a href="#e-too-manyfew-arguments-to-function-call" class="md-nav__link">
+    E. Too many/few arguments to function call
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#w-control-reaches-end-of-non-void-function" class="md-nav__link">
+    W. Control reaches end of non-void function
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -616,86 +571,199 @@
                   
                 
                 
-                <h1 id="policies">Policies</h1>
-<h2 id="email-communication">Email Communication</h2>
-<ul>
-<li>
-<p>Please use only your official NUS email for communication with the teaching staff -- either the one with <code>@u.nus.edu</code> or <code>@comp.nus.edu.sg</code>.  </p>
-</li>
-<li>
-<p>Please use email only for private matters.  Prefix your email subject with <code>[CS1010]</code>.</p>
-</li>
-<li>
-<p>Please use <a href="https://piazza.com/class/jkqlna92ju045j">Piazza</a> for other matters related to the module.  If you email us privately and we feel that your questions/answers are useful to the rest of the class, we will publish it on Piazza, with anonymization when appropriate.</p>
-</li>
-</ul>
-<h2 id="lab-sessions">Lab Sessions</h2>
-<ul>
-<li>
-<p>Attendance is not compulsory at NUS, but we do take attendance during the tutorial sessions.</p>
-</li>
-<li>
-<p>You should stick to your allocated time slot for tutorials.  If there is a strong reason for you to attend another tutorial session, please inform your tutor.</p>
-</li>
-</ul>
-<h2 id="late-submissions">Late Submissions</h2>
-<ul>
-<li>
-<p>All programming assignments must be submitted on time.  If you need an extension, please ask for one and provide a justification for approval.  Only academic reasons and compassionate reasons can be considered (e.g., representing NUS for a sports event is OK; Attending a wedding is not).</p>
-</li>
-<li>
-<p>For late submission, there is a 1% penalty (of the total assessment grade) for every 5-minutes after the deadline, capped at 80%.  For example, if an assessment that was given 40 marks was submitted 100 minutes after the deadline, the student will get 32 marks instead (20% penalty).  If it is submitted 10 hours after the deadline, the student will get 8 marks (as the cap of 80% penalty has been reached).</p>
-</li>
-</ul>
-<h2 id="discussions-and-plagiarism">Discussions and Plagiarism</h2>
-<ul>
-<li>
-<p>We encourage discussions among students for programming assignments, but each student should be responsible for writing his/her own code and should give credits to others when appropriate.  </p>
-</li>
-<li>
-<p>NUS and School of Computing have a high standard of academic honesty and take any violation seriously.  In the context of computing modules, source code plagiarism -- copying code from another source and attributing it as one's own code -- is a serious violation.   Please read the page <a href="http://www.comp.nus.edu.sg/cug/plagiarism">Preventing Plagiarism</a> from the school's website to familiarize yourself with the policy.</p>
-</li>
-<li>
-<p>I adopt a "no mercy" policy when it comes to disciplinary action on plagiarism.  Both parties, the student who copied, and the student who allowed others to copy, will be penalized equally.</p>
-</li>
-</ul>
-<h2 id="screencast">Screencast</h2>
-<ul>
-<li>
-<p>Screencast will be recorded and posted online 3-4 days after the lecture.
-This will be done on a 'best effort' basis and screencast will not be guaranteed to be available on time or at all.  </p>
-</li>
-<li>
-<p>Posting of screencast is meant to help students who attended the lecture to recap the content or to help those who are not able to attend the lecture due to unexpected circumstances.  It does not mean that you should skip the lecture.  <a href="https://link.springer.com/article/10.1007/s10734-018-0275-9">Research</a> has shown that the effect of over-reliance on screencast is negative.</p>
-</li>
-</ul>
-<h2 id="model-solutions-and-slides">Model Solutions and Slides</h2>
-<ul>
-<li>
-<p>Slides will be posted <em>after</em> the class.  Note that slides are used as a <em>visual aid</em> to assist me during the lectures. It is not meant as a summary of lectures nor a replacement of lecture notes.</p>
-</li>
-<li>
-<p>In a module like CS1010, there is often not a single correct answer.  Hence, there is no model solution for this module.  Sample solutions may be posted (both good and bad ones) for discussion.  I strongly encourage students to discuss your solution with the teaching team, instead of just comparing your solution with the sample solution.</p>
-</li>
-</ul>
-<h2 id="grading">Grading</h2>
-<ul>
-<li>
-<p>Students will receive the grades they deserve irrespective of how the other students in the class perform (i.e., no bell curve).</p>
-</li>
-<li>
-<p>In other words, the number of As and Fs will not be artificially capped.  </p>
-</li>
-</ul>
-<h2 id="open-book-assessment">Open Book Assessment</h2>
-<ul>
-<li>
-<p>All assessment, including practical exams, midterm test, and final assessment, are open book assessment -- you can bring in your notes or other <em>analog</em> reference materials.</p>
-</li>
-<li>
-<p>There is <em>nothing to memorize</em> for this class.</p>
-</li>
-</ul>
+                <h1 id="common-clang-errors-and-warnings">Common <code>clang</code> Errors and Warnings</h1>
+<p>Here is the list of common <code>clang</code> errors and warnings that you may enconuter.  We will expand this list over the semester.</p>
+<h2 id="how-to-read-the-messages">How to Read the Messages</h2>
+<p><code>clang</code> messages always start with the name of the file, the line number, and the character position. For instance,</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>error.c:3:5: error: use of undeclared identifier &#39;x&#39;
+</code></pre></div>
+</td></tr></table>
+
+<p>shows the error in the file <code>error.c</code>, line 3, position 5.  </p>
+<div class="admonition tips">
+<p>In <code>vim</code>, you can use <code>:&lt;line number&gt;</code> to jump directly to the line containing this error.</p>
+</div>
+<h2 id="list-of-errors-and-warnings">List of Errors and Warnings</h2>
+<h3 id="variables">Variables</h3>
+<h4 id="e1-use-of-undeclared-identifier">E1. Use of undeclared identifier</h4>
+<p>C is a statically type language, and thus every variable used must be declared with its type.  </p>
+<p>E.g.,
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>would lead to the error
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>x.c:3:5: error: use of undeclared identifier &#39;x&#39;
+    x = 0;
+    ^
+</code></pre></div>
+</td></tr></table></p>
+<p>In the example above, <code>x</code> is used by not declared.  To fix, declare <code>x</code> with its type.
+E.g.,
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">long</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<h4 id="e2-redefinition-of-a-variable">E2. Redefinition of a variable</h4>
+<p>Each variable should be declared exactly once within its scope (scoped by <code>{</code> and <code>}</code>).</p>
+<p>E.g.,
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">long</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>Would give the error
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>x.c:4:10: error: redefinition of &#39;x&#39;
+    long x = 1;
+         ^
+x.c:3:10: note: previous definition is here
+    long x = 0;
+         ^
+</code></pre></div>
+</td></tr></table></p>
+<p>To fix, check whether you intend the second declaration to be the same variable (in which case, remove the declaration) or a new one (in which case, give it a different name).</p>
+<h4 id="w-unused-variable">W. Unused Variable</h4>
+<p>Declaring variables that are not used clutter the code.  It is a good programming practice to only declare the variables that you need.  CS1010 insists on this.  If you declare variables that you end up not using, you will be penalized.</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">long</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+Would result in
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>x.c:4:10: warning: unused variable &#39;x&#39; [-Wunused-variable]
+    long x = 1;
+         ^
+</code></pre></div>
+</td></tr></table></p>
+<p>To fix, go through all such warnings and remove any variables that you declared/initialized but never used.</p>
+<h3 id="functions">Functions</h3>
+<h4 id="w-type-specifier-missing">W. Type specifier missing</h4>
+<p>Functions must have a return type declared.  C, by default, treats all functions as returning <code>int</code> if the return type is not declared.  It is, however, a good programming practice to always declare the return type explicitly, even if it is returning <code>int</code>.  CS1010 insists on this and you will be penalized if you do not declare the return type.</p>
+<p>E.g.,
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">main</span><span class="p">()</span> 
+<span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+would give the warning
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>x.c:1:1: warning: type specifier missing, defaults to &#39;int&#39; [-Wimplicit-int]
+main()
+^
+</code></pre></div>
+</td></tr></table></p>
+<h4 id="w-implicit-declaration-of-function">W. Implicit declaration of function</h4>
+<p>All functions in C must be declared before they are used.  If the function is defined elsewhere, the header file containing the function declaration should be included.  Without the function declaration, the compile will guess the type of the arguments and its return type.  An incorrect guess would lead to buggy code and thus should be avoided.</p>
+<p>E.g.,
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">main</span><span class="p">()</span> 
+<span class="p">{</span>
+    <span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+would give the warning
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>x.c:3:4: warning: implicitly declaring library function &#39;sqrt&#39; with type &#39;double (double)&#39;
+      [-Wimplicit-function-declaration]
+   sqrt(4);
+   ^
+</code></pre></div>
+</td></tr></table></p>
+<p>To fix, include the appropriate header file.</p>
+<h4 id="e-undefined-reference-to-a-function">E. Undefined reference to a function</h4>
+<p>This error is usually accompanied by an "implicit declaration of function" warning.  During linking, <code>clang</code> tries to locate the definition of a function.  Calling a function that is not defined would lead to the error above.</p>
+<p>E.g.,
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">foo</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+would give the error:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>/tmp/x-edd854.o: In function `main&#39;:
+x.c:(.text+0xb): undefined reference to `foo&#39;
+clang: error: linker command failed with exit code 1 (use -v to see invocation)u
+</code></pre></div>
+</td></tr></table></p>
+<h4 id="e-too-manyfew-arguments-to-function-call">E. Too many/few arguments to function call</h4>
+<p>Each function should be called with exactly the number of arguments defined.</p>
+<p>E.g.,
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> 
+<span class="p">{</span>
+    <span class="n">sqrt</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+would lead to:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>x.c:4:10: error: too few arguments to function call, single argument &#39;__x&#39; was not specified
+    sqrt();
+    ~~~~ ^
+</code></pre></div>
+</td></tr></table></p>
+<p>To fix, check the documentation or the <code>man</code> page of the function you are calling to understand the number of arguments needed.</p>
+<h4 id="w-control-reaches-end-of-non-void-function">W. Control reaches end of non-void function</h4>
+<p>Every non-void function, with the exception of <code>main</code>, must return a value.  If you define a non-void function but did not include a <code>return</code> statement, the compiler would warn you.  Failing the return the intended value means the caller would not receive the correct value back, leading to buggy code.</p>
+<p>E.g.,
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">foo</span><span class="p">()</span> 
+<span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+would lead to the warning:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>x.c:3:1: warning: control reaches end of non-void function [-Wreturn-type]
+}
+</code></pre></div>
+</td></tr></table></p>
                 
               
               
@@ -710,41 +778,6 @@ This will be done on a 'best effort' basis and screencast will not be guaranteed
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
-        
-          <a href="accounts.html" title="Accounts" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-            </div>
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                Accounts
-              </div>
-            </div>
-          </a>
-        
-        
-          <a href="readings.html" title="Readings" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Readings
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

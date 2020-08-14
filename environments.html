@@ -49,8 +49,6 @@
     
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
     
-      <link rel="stylesheet" href="https://tikzjax.com/v1/fonts.css">
-    
     
       
     
@@ -235,6 +233,30 @@
   <li class="md-nav__item">
     <a href="02-algo.html" title="2. Computational Problem & Algorithms" class="md-nav__link">
       2. Computational Problem & Algorithms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="03-func.html" title="3. Functions" class="md-nav__link">
+      3. Functions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="04-type.html" title="4. Types" class="md-nav__link">
+      4. Types
     </a>
   </li>
 
@@ -660,11 +682,13 @@
 <p>For older versions of Windows, such as those used in the SoC's programming labs, you can check out <a href="https://www.netsarang.com/products/xsh_overview.html">XShell 6</a> (free for home/school use), or <a href="https://www.putty.org">PuTTY</a>.  These are GUI-based programs so the command lines instructions below do not apply.</p>
 <h2 id="the-command-to-ssh">The Command to SSH</h2>
 <p>Run:
-<div class="highlight"><pre><span></span><code>ssh &lt;username&gt;@pe111.comp.nus.edu.sg
-</code></pre></div></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh &lt;username&gt;@pe111.comp.nus.edu.sg
+</code></pre></div>
+</td></tr></table></p>
 <p>Replace <code>&lt;username&gt;</code> with your SoC UNIX username, for instance, I would do:
-<div class="highlight"><pre><span></span><code>ssh ooiwt@pe111.comp.nus.edu.sg
-</code></pre></div></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh ooiwt@pe111.comp.nus.edu.sg
+</code></pre></div>
+</td></tr></table></p>
 <p>After the command above, following the instructions on the screen.  The first time you ever connect to <code>pe111.comp.nus.edu.sg</code>, you will be warned that you are connecting to a previously unknown host.  Say <code>yes</code>, and you will be prompted with your SoC UNIX password.</p>
 <h2 id="accessing-the-pe-hosts-from-outside-soc">Accessing The PE Hosts from Outside SoC</h2>
 <p>The PE hosts can only be accessed from within the School of Computing networks.  If you want to access it from outside, there are several ways.</p>
@@ -680,40 +704,49 @@
 </div>
 <h3 id="option-2-tunneling-through-sunfire">Option 2: Tunneling through Sunfire</h3>
 <p>The alternative is to use ssh tunnels.</p>
-<p>SoC's Sunfire (<code>sunfire.comp.nus.edu.sg</code>) is configured to allow your connection if it's originating from a local telco (See <a href="https://dochub.comp.nus.edu.sg/cf/guides/unix/soc_unix_pass_your_direct_access_to_soc_unix_servers">more details here</a>.</p>
+<p>SoC's Sunfire (<code>sunfire.comp.nus.edu.sg</code>) is configured to allow your connection if it's originating from a local telco (See <a href="https://dochub.comp.nus.edu.sg/cf/guides/unix/soc_unix_pass_your_direct_access_to_soc_unix_servers">more details here</a>).</p>
 <p>There are two ways to achieve this, and in both ways, it appears to the PE hosts that Sunfire is the client.</p>
 <h4 id="ssh-through-sunfire">SSH through sunfire</h4>
 <p>Connect to sunfire at <code>sunfire.comp.nus.edu.sg</code> via command line <code>ssh</code> with the option <code>-t</code>.
-<div class="highlight"><pre><span></span><code>ssh -t sunfire.comp.nus.edu.sg ssh pe111.comp.nus.edu.sg
-</code></pre></div></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh -t sunfire.comp.nus.edu.sg ssh pe111.comp.nus.edu.sg
+</code></pre></div>
+</td></tr></table></p>
 <p>Alternatively:
-<div class="highlight"><pre><span></span><code>ssh pe111.comp.nus.edu.sg -J sunfire.comp.nus.edu.sg
-</code></pre></div></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh pe111.comp.nus.edu.sg -J sunfire.comp.nus.edu.sg
+</code></pre></div>
+</td></tr></table></p>
 <h4 id="ssh-port-forwarding">SSH Port Forwarding</h4>
 <p>SSH has built-in support for local and remote port forwarding, and local port forwarding can be used to connect to the programming environments.  Local port forwarding means that a port of the SSH client (your machine) is forwarded to the SSH server (<code>sunfire</code>), which opens a connection to a preset destination server (e.g., <code>pe111</code>).  This method causes the host to seem as if it is hosted on a local port, e.g. <code>localhost:7000</code>, allowing you to use your favorite SCP program (e.g. <a href="https://filezilla-project.org/">FileZilla</a>) to access the PE host.</p>
 <p>To use local port forwarding (from local port <code>7000</code>), connect to <code>sunfire</code> using
-<div class="highlight"><pre><span></span><code>ssh -L 7000:pe111.comp.nus.edu.sg:22 &lt;username&gt;@sunfire.comp.nus.edu.sg
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh -L 7000:pe111.comp.nus.edu.sg:22 &lt;username&gt;@sunfire.comp.nus.edu.sg
 </code></pre></div>
+</td></tr></table>
 This command opens an SSH tunnel from port <code>7000</code> of your machine to port <code>22</code> (the default SSH port) of <code>pe111.comp.nus.edu.sg</code> via <code>sunfire</code>.  After successful login, open a separate SSH (or SCP) connection from your machine to <code>localhost</code> at port <code>7000</code> to access the PE host:</p>
-<div class="highlight"><pre><span></span><code>ssh &lt;username&gt;@localhost -p 7000
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh &lt;username&gt;@localhost -p 7000
 </code></pre></div>
+</td></tr></table>
 
 <p><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html"><code>PuTTY</code></a> supports SSH port forwarding, so this setup can also be used on Windows.</p>
 <h2 id="setting-up-ssh-keys">Setting up SSH Keys</h2>
 <p>Once you are comfortable with UNIX, you can set up a pair of public/private keys for authentication.  </p>
 <p>You can use
-<div class="highlight"><pre><span></span><code>ssh-keygen -t rsa
-</code></pre></div></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh-keygen -t rsa
+</code></pre></div>
+</td></tr></table></p>
 <p>to generate a pair of keys on your local computer.  Keep the private key <code>id_rsa</code> on your local machine in the hidden <code>~/.ssh</code> directory, and copy the public key <code>id_rsa.pub</code> to your home directory on PE <code>pe111</code>.  On <code>pe111</code>, run
-<div class="highlight"><pre><span></span><code>cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
-</code></pre></div></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+</code></pre></div>
+</td></tr></table></p>
 <p>Make sure that the permission for <code>.ssh</code> both on the local machine and on PE are set to <code>700</code> and the files <code>id_rsa</code> on the local machine and <code>authorized_keys</code> on the remote machine are set to <code>600</code>.  Once set up, you need not enter your password every time you run <code>ssh</code> or <code>scp</code>.  </p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <p>Suppose you try to connect to <code>pe111</code> using either:
-<div class="highlight"><pre><span></span><code>ssh pe111.comp.nus.edu.sg
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh pe111.comp.nus.edu.sg
 ssh -t sunfire.comp.nus.edu.sg ssh pe111.comp.nus.edu.sg
 ssh pe111.comp.nus.edu.sg -J sunfire.comp.nus.edu.sg
 </code></pre></div>
+</td></tr></table>
 and you get the following error:</p>
 <ol>
 <li>
@@ -820,11 +853,9 @@ of your SoC UNIX account which you have created here: <a href="https://mysoc.nus
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
         <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-      
-        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
       
     
   </body>

@@ -49,8 +49,6 @@
     
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
     
-      <link rel="stylesheet" href="https://tikzjax.com/v1/fonts.css">
-    
     
       
     
@@ -235,6 +233,30 @@
   <li class="md-nav__item">
     <a href="02-algo.html" title="2. Computational Problem & Algorithms" class="md-nav__link">
       2. Computational Problem & Algorithms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="03-func.html" title="3. Functions" class="md-nav__link">
+      3. Functions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="04-type.html" title="4. Types" class="md-nav__link">
+      4. Types
     </a>
   </li>
 
@@ -877,40 +899,48 @@ You can edit this file <code>~/.vimrc</code> just like any other file, using <co
 <h3 id="backup-files">Backup Files</h3>
 <p>You can ask <code>vim</code> to automatically backup files that you edit.  This has been a lifesaver for me on multiple occasions.</p>
 <p>In your <code>~/.vimrc</code> file,</p>
-<div class="highlight"><pre><span></span><code>set backup
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>set backup
 </code></pre></div>
+</td></tr></table>
 
 <p>will cause a copy of your file to be saved with suffix <code>~</code> appended to its name every time you save.</p>
 <p>I prefer not to clutter my working directory, so I set</p>
-<div class="highlight"><pre><span></span><code>set backupdir=~/.backup
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>set backupdir=~/.backup
 </code></pre></div>
+</td></tr></table>
 
 <p>and create a directory named <code>~/.backup</code> to store my backup files.</p>
 <p>So if you made changes to a file that you regretted, or if you accidentally deleted a file, you can check under <code>~/.backup</code> to see if the backup can save you.</p>
 <h3 id="syntax-highlighting">Syntax Highlighting</h3>
 <p>If for some reasons, syntax highlighting is not on by default, add this to your <code>~/.vimrc</code>:</p>
-<div class="highlight"><pre><span></span><code>syntax on
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>syntax on
 </code></pre></div>
+</td></tr></table>
 
 <h3 id="ruler-and-numbers">Ruler and Numbers</h3>
 <p>If you prefer to show the line number you are on and the column number you are on, adding the commands to <code>~/.vimrc</code></p>
-<div class="highlight"><pre><span></span><code>set ruler
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>set ruler
 </code></pre></div>
+</td></tr></table>
 
 <p>will display the line number and the column number on the lower right corner.  </p>
 <p>You can also add
-<div class="highlight"><pre><span></span><code>set number
-</code></pre></div></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>set number
+</code></pre></div>
+</td></tr></table></p>
 <p>to label each line with a line number.</p>
 <h3 id="auto-indentation">Auto Indentation</h3>
 <p>Proper indentation is important to make your code readable (to yourself and others).  You should enable this in <code>vim</code> with:</p>
-<div class="highlight"><pre><span></span><code>set autoindent
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>set autoindent
 set smartindent
 </code></pre></div>
+</td></tr></table>
 
 <p>Autoindent will cause the next line to have the same indentation as the previous line; while smartindent has some understanding of C-like syntax (such as recognizing <code>{</code> and <code>}</code>) and indent your code accordingly.  The size of the indentation is based on the setting <code>shiftwidth</code>.  For CS1010, please set it to either <code>2</code> or <code>4</code>:</p>
-<div class="highlight"><pre><span></span><code>set shiftwidth=2
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>set shiftwidth=2
 </code></pre></div>
+</td></tr></table>
 
 <h2 id="2-navigation">2. Navigation</h2>
 <h3 id="basic-navigation">Basic Navigation</h3>
@@ -981,31 +1011,37 @@ set smartindent
 </ul>
 <h2 id="4-other-advanced-features">4. Other Advanced Features</h2>
 <h3 id="search-and-replace-in-vim">Search and Replace in <code>vim</code></h3>
-<div class="highlight"><pre><span></span><code>:%s/oldWord/newWord/gc
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>:%s/oldWord/newWord/gc
 </code></pre></div>
+</td></tr></table>
 
 <p><code>:</code> enters the command mode.  <code>%</code> means apply to the whole document, <code>s</code> means substitute, <code>g</code> means global (otherwise, only the first occurrence of each line is replaced). <code>c</code> is optional -- adding it cause <code>vim</code> to confirm with you before each replacement  </p>
 <h3 id="shell-command">Shell Command</h3>
 <p>If you need to issue a shell command quickly, you don't have to exit <code>vim</code>, run the command, and launch <code>vim</code> again.  You can use <code>!</code>,</p>
-<div class="highlight"><pre><span></span><code>:!&lt;command&gt;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>:!&lt;command&gt;
 </code></pre></div>
+</td></tr></table>
 
 <p>will issue the command to shell.  E.g.,</p>
-<div class="highlight"><pre><span></span><code>:!ls
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>:!ls
 </code></pre></div>
+</td></tr></table>
 
 <p>You can use this to compile your current file, without exiting <code>vim</code>.</p>
-<div class="highlight"><pre><span></span><code>:!make
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>:!make
 </code></pre></div>
+</td></tr></table>
 
 <p><code>make</code> is actually a builtin command for <code>vim</code> so you can also simply run</p>
-<div class="highlight"><pre><span></span><code>:make
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>:make
 </code></pre></div>
+</td></tr></table>
 
 <h3 id="abbreviation">Abbreviation</h3>
 <p>You can use the command <code>ab</code> to abbreviate frequently typed commands.  E.g., in your <code>~/.vimrc</code>,</p>
-<div class="highlight"><pre><span></span><code>ab pl cs1010_print_long(
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ab pl cs1010_print_long(
 </code></pre></div>
+</td></tr></table>
 
 <p>Now, when you type <code>pl</code>, it will be expanded into <code>cs1010_print_long(</code></p>
 <h3 id="auto-completion">Auto-Completion</h3>
@@ -1022,7 +1058,26 @@ set smartindent
 <h3 id="syntax-and-style-checker">Syntax and Style Checker</h3>
 <p>I use <code>syntastic</code> to check for style and syntax whenever I save a file.  <a href="https://github.com/vim-syntastic/syntastic"><code>syntastic</code></a> is a <code>vim</code> plugin.</p>
 <p>My <code>.vimrc</code> configuration file contains the following:</p>
-<div class="highlight"><pre><span></span><code>&quot;For syntastic
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>&quot;For syntastic
 set laststatus=2
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -1043,12 +1098,15 @@ let g:syntastic_c_compiler_options = &#39;-Wall -Iinclude&#39;
 let g:syntastic_c_include_dirs = [ &#39;../include&#39;, &#39;include&#39; ]
 let g:syntastic_c_clang_tidy_post_args = &quot;&quot;
 </code></pre></div>
+</td></tr></table>
 
 <p>By default, <code>clang-tidy</code> does not know where to find the header files.  So if you include non-standard C headers, it will complain that it cannot find headers.  To resolve this, we need to tell <code>clang-tidy</code> the compilation flags that we use when compiling our program.  </p>
 <p>We can do this by creating a file named <code>compile_flags.txt</code> in your working directory (where your C files are located), containing one compilation flag per line.  For instance, if the header files are located in <code>/home/course/cs1010/include</code>, your <code>compile_flags.txt</code> should contain the following two lines:</p>
-<div class="highlight"><pre><span></span><code>-Wall
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>-Wall
 -I/home/course/cs1010/include
 </code></pre></div>
+</td></tr></table>
                 
               
               
@@ -1136,11 +1194,9 @@ let g:syntastic_c_clang_tidy_post_args = &quot;&quot;
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
         <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-      
-        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
       
     
   </body>

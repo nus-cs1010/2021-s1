@@ -1,0 +1,897 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/03-func.html">
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.3">
+    
+    
+      
+        <title>3. Functions - CS1010 Programming Methodology</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.947af8d5.min.css">
+      
+        <link rel="stylesheet" href="assets/stylesheets/palette.7f672a1f.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap">
+    
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unit-3-functions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://nus-cs1010.github.io/2021-s1" title="CS1010 Programming Methodology" class="md-header-nav__button md-logo" aria-label="CS1010 Programming Methodology">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            CS1010 Programming Methodology
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              3. Functions
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://nus-cs1010.github.io/2021-s1" title="CS1010 Programming Methodology" class="md-nav__button md-logo" aria-label="CS1010 Programming Methodology">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    CS1010 Programming Methodology
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="about.html" title="About CS1010" class="md-nav__link">
+      About CS1010
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Notes
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Notes" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Notes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="01-program.html" title="1. What is a Program?" class="md-nav__link">
+      1. What is a Program?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="02-algo.html" title="2. Computational Problem & Algorithms" class="md-nav__link">
+      2. Computational Problem & Algorithms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        3. Functions
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="03-func.html" title="3. Functions" class="md-nav__link md-nav__link--active">
+      3. Functions
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    Learning Outcomes:
+  </a>
+  
+    <nav class="md-nav" aria-label="Learning Outcomes:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-finding-the-range" class="md-nav__link">
+    Problem: Finding the Range
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-finding-standard-deviation" class="md-nav__link">
+    Problem: Finding Standard Deviation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#another-solution-for-finding-maximum" class="md-nav__link">
+    Another Solution for Finding Maximum
+  </a>
+  
+    <nav class="md-nav" aria-label="Another Solution for Finding Maximum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-finding-a-factorial" class="md-nav__link">
+    Example: Finding a Factorial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursion-function-calling-itself" class="md-nav__link">
+    Recursion: Function Calling Itself
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-set" class="md-nav__link">
+    Problem Set
+  </a>
+  
+    <nav class="md-nav" aria-label="Problem Set">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-31-getting-mad" class="md-nav__link">
+    Problem 3.1 : Getting MAD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-32-ownself-calls-ownself" class="md-nav__link">
+    Problem 3.2 : Ownself calls ownself
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="04-type.html" title="4. Types" class="md-nav__link">
+      4. Types
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="outcomes.html" title="Learning Outcomes" class="md-nav__link">
+      Learning Outcomes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="schedule.html" title="Schedule" class="md-nav__link">
+      Schedule
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="accounts.html" title="Accounts" class="md-nav__link">
+      Accounts
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="policies.html" title="Policies" class="md-nav__link">
+      Policies
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="readings.html" title="Readings" class="md-nav__link">
+      Readings
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Software/Tools
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Software/Tools" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Software/Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="environments.html" title="Programming Environments" class="md-nav__link">
+      Programming Environments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="unix.html" title="UNIX" class="md-nav__link">
+      UNIX
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="clang.html" title="CLang" class="md-nav__link">
+      CLang
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="vim.html" title="Vim" class="md-nav__link">
+      Vim
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="zoom.html" title="Zoom" class="md-nav__link">
+      Zoom
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="1819s1.html" title="18/19 Sem 1" class="md-nav__link">
+      18/19 Sem 1
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-outcomes" class="md-nav__link">
+    Learning Outcomes:
+  </a>
+  
+    <nav class="md-nav" aria-label="Learning Outcomes:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-finding-the-range" class="md-nav__link">
+    Problem: Finding the Range
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-finding-standard-deviation" class="md-nav__link">
+    Problem: Finding Standard Deviation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#another-solution-for-finding-maximum" class="md-nav__link">
+    Another Solution for Finding Maximum
+  </a>
+  
+    <nav class="md-nav" aria-label="Another Solution for Finding Maximum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-finding-a-factorial" class="md-nav__link">
+    Example: Finding a Factorial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursion-function-calling-itself" class="md-nav__link">
+    Recursion: Function Calling Itself
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-set" class="md-nav__link">
+    Problem Set
+  </a>
+  
+    <nav class="md-nav" aria-label="Problem Set">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-31-getting-mad" class="md-nav__link">
+    Problem 3.1 : Getting MAD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-32-ownself-calls-ownself" class="md-nav__link">
+    Problem 3.2 : Ownself calls ownself
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="unit-3-functions">Unit 3: Functions</h1>
+<h2 id="learning-outcomes">Learning Outcomes:</h2>
+<p>After this unit, students should:</p>
+<ul>
+<li>understand the concept of a function: (i) function as a high-level abstraction of lower-level operations; (ii) function as a well-defined solution to a sub-problem with zero or more inputs and (possibly) a returned value.</li>
+<li>be able to see how a problem can be decomposed into sub-problems, each solvable by a function; the functions can then be composed together to solve the original problem;</li>
+<li>understand the concept of local variables that are internal within a function;</li>
+<li>be able to apply "wishful thinking" in decomposing a problem into sub-problems;</li>
+<li>apply wishful thinking in solving a problem recursively -- by making a function invokes itself to solve a simpler version of the same problem.</li>
+</ul>
+<h3 id="problem-finding-the-range">Problem: Finding the Range</h3>
+<p>Let's start with another problem.</p>
+<p>The <em>range</em> of a finite list of at least one integers <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> is defined as the difference between the maximum and the minimum integers in <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>.  For example, the range for <code>4 1 -4 0 9 9 3 5 8</code> is <code>13</code>.  How do we find the range of a given list?</p>
+<p>To find the range of a list, we can break the solution down into three subtasks: first, find the maximum, then, find the minimum, and finally, find the difference between the two.  </p>
+<p>From the previous lecture, you already know how to find the maximum and the minimum (from Problem 1.2)!  So, in expressing the algorithm to find the range, <em>we can refer to a previous solution to a sub-problem, which we assume we already know how to solve</em>.  </p>
+<p>Let's call our solution to find the maximum value from a given list <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> as <span><span class="MathJax_Preview">max</span><script type="math/tex">max</script></span>.  <span><span class="MathJax_Preview">max</span><script type="math/tex">max</script></span> takes as input (i) a list <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> and (ii) <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>, the number of integers in <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>.  It produces, or <em>returns</em>, the maximum value among the integers in <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>.  Borrowing from mathematical notation, we use the notation <span><span class="MathJax_Preview">max(L, k)</span><script type="math/tex">max(L, k)</script></span> to represent the maximum value of <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>.  Note that, now, we no longer worry about <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> -- these two variables are now internal, or <em>local</em>, to <span><span class="MathJax_Preview">max(L,k)</span><script type="math/tex">max(L,k)</script></span>.</p>
+<p>Suppose that <span><span class="MathJax_Preview">min(L,k)</span><script type="math/tex">min(L,k)</script></span> returns the minimum value among the integers in <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>, then, the algorithm to find the range of <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> can be written in a single line:</p>
+<div>
+<div class="MathJax_Preview">max(L, k) - min(L, k)</div>
+<script type="math/tex; mode=display">max(L, k) - min(L, k)</script>
+</div>
+<h2 id="functions">Functions</h2>
+<p><span><span class="MathJax_Preview">max</span><script type="math/tex">max</script></span> and <span><span class="MathJax_Preview">min</span><script type="math/tex">min</script></span> are examples of a powerful and important concept with many names: <em>function</em>, <em>procedure</em>, <em>subroutine</em>, <em>method</em>, <em>subprogram</em><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.  In the context of CS1010, we will use the term <em>function</em>.  Functions allow us to solve a problem by thinking about the solution at a higher level.  We no longer concern with the implementation details. </p>
+<p>For instance, in the example above, we no longer have to think about checking through the items in the list one-by-one and maintaining the maximum so far, or the minimum so far.  We just have to think about how to compute the range, assuming that we already know how to compute the maximum and the minimum value.</p>
+<p>Such an assumption, that we already know how to solve a subproblem, is known as <em>wishful thinking</em>.  Sometimes, it is useful to solve a problem assuming that you know how to solve the subproblem first, then worry about solving the subproblem later.  </p>
+<p>For instance, consider the following problem: Given a finite list of <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> integers (<span><span class="MathJax_Preview">k &gt; 0</span><script type="math/tex">k > 0</script></span>), find the mean.  </p>
+<p>The algorithm again can be written in one line:</p>
+<div>
+<div class="MathJax_Preview">sum(L, k) / k</div>
+<script type="math/tex; mode=display">sum(L, k) / k</script>
+</div>
+<p>if we assume that we have a function <span><span class="MathJax_Preview">sum</span><script type="math/tex">sum</script></span> that can help us find the total of all <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> integers.  It turns out, in this case, that you should also know how to solve the subproblem <span><span class="MathJax_Preview">sum</span><script type="math/tex">sum</script></span> since it is Problem 1.3 from last week.</p>
+<p>We can then make this into a function itself, <span><span class="MathJax_Preview">mean(L, k)</span><script type="math/tex">mean(L, k)</script></span>, which we can now use to solve other more complex problems.</p>
+<p>Thinking in terms of functions also has another advantage: given a function, we only need to worry about <em>what</em> it does, but not <em>how</em> it is done.   In the <span><span class="MathJax_Preview">max(L,k)</span><script type="math/tex">max(L,k)</script></span> example above, we do not care if it scans the list <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> from <span><span class="MathJax_Preview">l_0</span><script type="math/tex">l_0</script></span> to <span><span class="MathJax_Preview">l_{k-1}</span><script type="math/tex">l_{k-1}</script></span>, or from <span><span class="MathJax_Preview">l_{k-1}</span><script type="math/tex">l_{k-1}</script></span> to <span><span class="MathJax_Preview">l_0</span><script type="math/tex">l_0</script></span>.  We can treat a function as a black box with well-defined behavior -- given one or more inputs, it will produce a value satisfying certain conditions, i.e., it solves a computational problem.  </p>
+<p>Many programming languages, including C which we will be using in CS1010, come with a rich set of predefined functions that we can use to help us solve computational problems.  In CS1010, we will also provide you with some functions to help you with your lab assignments.  You will also define your own functions when solving problems with C.  In fact, a C program is just a collection of functions calling each other.</p>
+<p>Note, however, that in C, a function is more general than the description above: a C function may not take in any input, and it may not return any value.  </p>
+<h3 id="problem-finding-standard-deviation">Problem: Finding Standard Deviation</h3>
+<p>Let's look at another problem: Given <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>, a finite list of at least one integers, find the standard deviation of the integers in <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>.  </p>
+<p>First, recall that the (population) standard deviation is given by</p>
+<div>
+<div class="MathJax_Preview">\sqrt{\frac{\sum_{i=0}^{k-1} (l_i - \mu)^2}{k}}</div>
+<script type="math/tex; mode=display">\sqrt{\frac{\sum_{i=0}^{k-1} (l_i - \mu)^2}{k}}</script>
+</div>
+<p>where <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> is the mean of the integers in <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>.</p>
+<p>To compute the standard deviation, we first need to compute <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span>, the mean.   We already know how to do that: <span><span class="MathJax_Preview">mean(L, k)</span><script type="math/tex">mean(L, k)</script></span>.  Then, we need to compute <span><span class="MathJax_Preview">\sum_{i=0}^{k-1} (l_i - \mu)^2</span><script type="math/tex">\sum_{i=0}^{k-1} (l_i - \mu)^2</script></span>.  We can break it down into two subproblems:</p>
+<ul>
+<li>Given a list <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> and a constant value <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>, subtract <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> from every number in <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>, giving us a new list.</li>
+<li>Given a list, square every number in the list, giving us a new list.</li>
+</ul>
+<p>For now, let's apply wishful thinking and assume that we know how to compute the above two steps with functions <span><span class="MathJax_Preview">substract(L, k, x)</span><script type="math/tex">substract(L, k, x)</script></span> and <span><span class="MathJax_Preview">square(L, k)</span><script type="math/tex">square(L, k)</script></span>, then, the formula <span><span class="MathJax_Preview">\sum_{i=0}^{k-1} (l_i - \mu)^2</span><script type="math/tex">\sum_{i=0}^{k-1} (l_i - \mu)^2</script></span> can be computed by the following steps:</p>
+<ul>
+<li>set <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> to <span><span class="MathJax_Preview">mean(L, k)</span><script type="math/tex">mean(L, k)</script></span></li>
+<li>set <span><span class="MathJax_Preview">L'</span><script type="math/tex">L'</script></span> to <span><span class="MathJax_Preview">substract(L, k, \mu)</span><script type="math/tex">substract(L, k, \mu)</script></span></li>
+<li>set <span><span class="MathJax_Preview">L''</span><script type="math/tex">L''</script></span> to <span><span class="MathJax_Preview">square(L', k)</span><script type="math/tex">square(L', k)</script></span></li>
+<li>set <span><span class="MathJax_Preview">total</span><script type="math/tex">total</script></span> to <span><span class="MathJax_Preview">sum(L'', k)</span><script type="math/tex">sum(L'', k)</script></span>.</li>
+</ul>
+<p>We can also write it in one line:</p>
+<ul>
+<li>set <span><span class="MathJax_Preview">total</span><script type="math/tex">total</script></span> to <span><span class="MathJax_Preview">sum(square(substract(L, k, mean(L, k)), k), k)</span><script type="math/tex">sum(square(substract(L, k, mean(L, k)), k), k)</script></span></li>
+</ul>
+<p>Now, to compute the standard deviation, we need to divide <span><span class="MathJax_Preview">total</span><script type="math/tex">total</script></span> by <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> and find the square root.  But, finding <span><span class="MathJax_Preview">total</span><script type="math/tex">total</script></span> and dividing the result by <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> is just <span><span class="MathJax_Preview">mean</span><script type="math/tex">mean</script></span>.  To compute square root, we again apply wishful thinking and assume that there is a function <span><span class="MathJax_Preview">sqrt</span><script type="math/tex">sqrt</script></span> to do so.</p>
+<p>We can now compute the standard deviation with one line:</p>
+<div>
+<div class="MathJax_Preview">sqrt(mean(square(substract(L, k, mean(L, k)), k), k))</div>
+<script type="math/tex; mode=display">sqrt(mean(square(substract(L, k, mean(L, k)), k), k))</script>
+</div>
+<p>Using functions, we can easily pass the output from one function as input to another, essentially chain the functions together, like Lego blocks, to solve problems.  We also see an example of <em>reuse</em> here -- <span><span class="MathJax_Preview">mean</span><script type="math/tex">mean</script></span> is used twice with different inputs.</p>
+<div class="admonition warning">
+<p class="admonition-title">Returning a list</p>
+<p>While the above one-liner is an elegant solution, when we actually implement this in C later, it will not so simple and elegant.  Let's worry about that later.</p>
+</div>
+<p>Now that we have seen how to compute standard deviation by breaking it down the four subproblems, <span><span class="MathJax_Preview">sqrt</span><script type="math/tex">sqrt</script></span>, <span><span class="MathJax_Preview">mean</span><script type="math/tex">mean</script></span>, <span><span class="MathJax_Preview">square</span><script type="math/tex">square</script></span>, and <span><span class="MathJax_Preview">substract</span><script type="math/tex">substract</script></span>, we have to make sure that things we wish can be done can actually be done.  The C library, and many programming languages, provide a pre-defined method to compute <span><span class="MathJax_Preview">sqrt</span><script type="math/tex">sqrt</script></span>.  We already know how to compute <span><span class="MathJax_Preview">mean</span><script type="math/tex">mean</script></span>.  Computing <span><span class="MathJax_Preview">square</span><script type="math/tex">square</script></span> can be done as follows:</p>
+<p><img alt="Flowchart" src="figures/max-flowchart/max-flowchart.011.png" /></p>
+<p>The implementation of <span><span class="MathJax_Preview">substract</span><script type="math/tex">substract</script></span> is similar.</p>
+<h2 id="another-solution-for-finding-maximum">Another Solution for Finding Maximum</h2>
+<p>In the previous lecture, you have seen an algorithm to find the maximum value from a list of integers, which involves checking the elements one-by-one and keeping track of the maximum value so far.</p>
+<p>Now that we have seen what a function is, we can use the concept of wishful thinking to help us solve this problem in a different way and more elegant way.</p>
+<p>Let's suppose that we have a function <span><span class="MathJax_Preview">max'(L, i, j)</span><script type="math/tex">max'(L, i, j)</script></span>, that finds the maximum integer among the elements <span><span class="MathJax_Preview">l_i, l_{i+1}, ... l_j</span><script type="math/tex">l_i, l_{i+1}, ... l_j</script></span>.  The function <span><span class="MathJax_Preview">max(L, k)</span><script type="math/tex">max(L, k)</script></span>, which finds the maximum among all elements of <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span>, is therefore the same as <span><span class="MathJax_Preview">max'(L, 0, k-1)</span><script type="math/tex">max'(L, 0, k-1)</script></span>.</p>
+<p>Do we know how to solve <span><span class="MathJax_Preview">max'(L, i, j)</span><script type="math/tex">max'(L, i, j)</script></span> without checking the integers in <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> one-by-one?  Well, if <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> equals to <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>, i.e., there is only one element in the range of <span><span class="MathJax_Preview">l_i, ..., l_j</span><script type="math/tex">l_i, ..., l_j</script></span>, then yes, the function should return the value of <span><span class="MathJax_Preview">l_i</span><script type="math/tex">l_i</script></span>.  But, what if there are multiple elements in the range? (i.e., <span><span class="MathJax_Preview">i &lt; j</span><script type="math/tex">i < j</script></span>)?  By wishful thinking, we assume that we already know how to solve smaller (as in a shorter list) problem -- <span><span class="MathJax_Preview">max'(L, i+1, j)</span><script type="math/tex">max'(L, i+1, j)</script></span>, so the maximum value for the range of <span><span class="MathJax_Preview">l_i, ..., l_j</span><script type="math/tex">l_i, ..., l_j</script></span> is the larger of the two: either <span><span class="MathJax_Preview">l_i</span><script type="math/tex">l_i</script></span> or <span><span class="MathJax_Preview">max'(L, i+1, j)</span><script type="math/tex">max'(L, i+1, j)</script></span>.  We can express this algorithm as follows:</p>
+<p><img alt="Flowchart" src="figures/max-flowchart/max-flowchart.009.png" /></p>
+<p>Let's trace through the algorithm above, using our previous example: <code>4 1 -4 0 9 9 3 5 8</code>.  Given this list, we compare the first element, <code>4</code>, with the maximum of the rest of the list <code>1 -4 0 9 9 3 5 8</code>.  Since with wishful thinking, we know how to solve this already, we get <code>9</code> as the maximum value of <code>1 -4 0 9 9 3 5 8</code>.  Comparing <code>4</code> and <code>9</code>, <code>9</code> is larger. Thus, the maximum value for the whole list is <code>9</code>.</p>
+<h3 id="example-finding-a-factorial">Example: Finding a Factorial</h3>
+<p>Let us look at another example of a function before we move on to another topic.  Suppose we want to write a function <span><span class="MathJax_Preview">factorial(n)</span><script type="math/tex">factorial(n)</script></span> for an integer <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> (<span><span class="MathJax_Preview">n \ge 0</span><script type="math/tex">n \ge 0</script></span>) that computes <span><span class="MathJax_Preview">n!</span><script type="math/tex">n!</script></span>. Recall that <span><span class="MathJax_Preview">n! = n \times n - 1 \times n - 2 \times ... 2 \times 1 = n \times (n-1)!</span><script type="math/tex">n! = n \times n - 1 \times n - 2 \times ... 2 \times 1 = n \times (n-1)!</script></span>.  As a special case, <span><span class="MathJax_Preview">0!</span><script type="math/tex">0!</script></span> is defined to be <span><span class="MathJax_Preview">1</span><script type="math/tex">1</script></span>.</p>
+<p>The algorithm to do this can be expressed by the following diagram:</p>
+<p><img alt="Flowchart" src="figures/max-flowchart/max-flowchart.010.png" /></p>
+<p>Let's look at an example.  Let's say we want to compute <span><span class="MathJax_Preview">factorial(4)</span><script type="math/tex">factorial(4)</script></span>.  We assume we know how to solve this for a smaller problem --  <span><span class="MathJax_Preview">factorial(3)</span><script type="math/tex">factorial(3)</script></span>, which is 6.  <span><span class="MathJax_Preview">factorial(4)</span><script type="math/tex">factorial(4)</script></span> is thus 4 <span><span class="MathJax_Preview">\times</span><script type="math/tex">\times</script></span> 6, i.e., 24.</p>
+<h3 id="recursion-function-calling-itself">Recursion: Function Calling Itself</h3>
+<p><span><span class="MathJax_Preview">max'</span><script type="math/tex">max'</script></span> and <span><span class="MathJax_Preview">factorial</span><script type="math/tex">factorial</script></span> are examples of functions that calls itself to solve a simpler version of the problem.  This is known as <em>recursion</em>.  We will revisit this concept in much greater detail in the later part of CS1010.</p>
+<h2 id="problem-set">Problem Set</h2>
+<h4 id="problem-31-getting-mad">Problem 3.1 : Getting MAD</h4>
+<p>The mean absolute deviation, or MAD, of a set of integers measures how spread out a set of data is.  The <em>absolute deviation</em> is the absolute difference between an element in the list with the mean of values of the list.  The mean absolute deviation is the mean of all the absolute difference.  In other words, given <span><span class="MathJax_Preview">L = \{l_0, ... l_{k-1}\}</span><script type="math/tex">L = \{l_0, ... l_{k-1}\}</script></span>, the MAD of <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> is:</p>
+<div>
+<div class="MathJax_Preview">\frac{\sum_{i=0}^{k-1} |l_i - \mu|}{k}</div>
+<script type="math/tex; mode=display">\frac{\sum_{i=0}^{k-1} |l_i - \mu|}{k}</script>
+</div>
+<p>How do you find MAD by composing various functions we have seen?  Do you need a new function?</p>
+<h4 id="problem-32-ownself-calls-ownself">Problem 3.2 : Ownself calls ownself</h4>
+<p>(a) Give an algorithm for finding the sum of all the integers in the list <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> with <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> (<span><span class="MathJax_Preview">k &gt; 0</span><script type="math/tex">k > 0</script></span>) integers that is recursive.</p>
+<p>(b) The function <span><span class="MathJax_Preview">pow(i, j)</span><script type="math/tex">pow(i, j)</script></span> computes <span><span class="MathJax_Preview">i^j</span><script type="math/tex">i^j</script></span>.  Give an algorithm to compute <span><span class="MathJax_Preview">pow(i, j)</span><script type="math/tex">pow(i, j)</script></span> recursively.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>There are subtle differences between these terms -- but they are all a form of <em>functional abstraction</em>, where we abstract out the detailed operations and represent it with a single higher-level "action".&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="02-algo.html" title="2. Computational Problem & Algorithms" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                2. Computational Problem & Algorithms
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="04-type.html" title="4. Types" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                4. Types
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright by Department of Computer Science, National University of Singapore 2020
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.c3dc8c49.min.js"></script>
+      <script src="assets/javascripts/bundle.f9edbbd5.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: ["instant"],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8e2cddea.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+      
+    
+  </body>
+</html>

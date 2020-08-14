@@ -49,8 +49,6 @@
     
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
     
-      <link rel="stylesheet" href="https://tikzjax.com/v1/fonts.css">
-    
     
       
     
@@ -235,6 +233,30 @@
   <li class="md-nav__item">
     <a href="02-algo.html" title="2. Computational Problem & Algorithms" class="md-nav__link">
       2. Computational Problem & Algorithms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="03-func.html" title="3. Functions" class="md-nav__link">
+      3. Functions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="04-type.html" title="4. Types" class="md-nav__link">
+      4. Types
     </a>
   </li>
 
@@ -685,15 +707,17 @@
 <h2 id="connect-to-the-programming-environment-pe">Connect to the Programming Environment (PE)</h2>
 <p>If you would like to follow the following examples, you should first <code>ssh</code> into one of the PE hosts provided.  We will use <code>pe111</code> in the following example.  But feel free to use <code>pe112</code> up to <code>pe120</code> for your practice.  You should read <a href="environments.html">this guide</a> to see how to access and connect to the environment.</p>
 <p>Once you are connected, you should see a prompt like this.</p>
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~$
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~$
 </code></pre></div>
+</td></tr></table>
 
 <p>This interface is provided by a UNIX bash -- this shell sits in a loop and waits for users to enter a command, then it interprets and executes the command.  There are many versions of shells, the default shell for our PE is <code>bash</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <p><em>The following is adapted for CS1010 from <a href="http://www.comp.nus.edu.sg/~cs1020/4_misc/cs1010_lect/2014/intro_lab/gettingStarted.html">the instructions created by Aaron Tan</a>. Bugs are mine.</em>  </p>
 <p>The power of UNIX stems from the many commands it offers. The following are a few commonly used commands. This list is by no means exhaustive and you are urged to explore on your own. Note that UNIX commands are <em>case-sensitive</em>.</p>
 <p>All commands are to be entered after the UNIX prompt of the form</p>
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~$
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~$
 </code></pre></div>
+</td></tr></table>
 
 <p><code>~</code> indicates that you are currently in your home directory.  The following examples assume that user <code>ooiwt</code> is logged into <code>pe111</code>.</p>
 <p>It might be good to understand the directory structure in UNIX, a multi-user system. The directory tree is shown below:</p>
@@ -701,15 +725,19 @@
 <p>Each user has his/her own home directory, which is where he/she will be automatically placed when he/she logs in to the system. The above figure shows where the home directory of the user <code>ooiwt</code> resides in the directory tree. The user <code>ooiwt</code> may create files or directories in his/her home directory, but not elsewhere unless permission is given.</p>
 <h2 id="pwd-print-current-working-directory"><code>pwd</code>: Print Current Working directory</h2>
 <p><code>pwd</code> shows you which directory you are currently in
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ pwd
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ pwd
 /home/o/ooiwt
-</code></pre></div></p>
+</code></pre></div>
+</td></tr></table></p>
 <p>UNIX uses forward slash <code>/</code> to deliminate different parts of the directory structure.  This is the same notation as URLs so you should already be familiar with it.</p>
 <h2 id="ls-list-files"><code>ls</code>: LiSt files</h2>
 <p>The <code>ls</code> list the files in the current working directory.</p>
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ ls
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ ls
 ooiwt@pe111:~$
 </code></pre></div>
+</td></tr></table>
 
 <p>If you do not have any regular files in your home directory, as you should when you first log in, you should immediately return to the bash prompt.  </p>
 <div class="admonition note">
@@ -718,12 +746,17 @@ ooiwt@pe111:~$
 </div>
 <h2 id="mkdir-make-a-subdirectory"><code>mkdir</code>: MaKe a subDIRectory</h2>
 <p>The <code>mkdir</code> command creates a subdirectory with the given name in the current directory.</p>
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ mkdir tut01
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ mkdir tut01
 ooiwt@pe111:~$ ls
 tut01
 ooiwt@pe111:~$ ls -F
 tut01/
 </code></pre></div>
+</td></tr></table>
 
 <p>Here, you create a directory called <code>tut01</code>.  Now, when you <code>ls</code>, you can see the directory listed.</p>
 <p>You may also use <code>ls -F</code> for more information (<code>-F</code> is one of the many <em>options</em>/<em>flags</em> available for the <code>ls</code> command. To see a complete list of the options, refer to the man pages, i.e., <code>man ls</code>.)</p>
@@ -735,43 +768,64 @@ tut01/
 </div>
 <h2 id="cd-change-directory"><code>cd</code>: Change Directory</h2>
 <p>To navigate in the directory tree, changing the current working directory from to another, we use the <code>cd</code> command.</p>
-<p><div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ cd tut01
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ cd tut01
 ooiwt@pe111:~/tut01$
 </code></pre></div>
+</td></tr></table>
 Note that the prompt changes to <code>~/tut01</code> to indicate that you are now in the <code>tut01</code> directory below your <code>HOME</code> directory.</p>
 <p>Entering <code>cd</code> alone brings you back to your <code>HOME</code> directory, i.e., the directory in which you started with when you first logged into the system.
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cd
-ooiwt@pe111:~$
-</code></pre></div></p>
-<p>Two dots <code>..</code> refers to the parent directory.  So, alternatively, for the case above, since we are only one level down from the <code>HOME</code>, to return home, we can alternatively use <code>cd ..</code>.</p>
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cd ..
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cd
 ooiwt@pe111:~$
 </code></pre></div>
+</td></tr></table></p>
+<p>Two dots <code>..</code> refers to the parent directory.  So, alternatively, for the case above, since we are only one level down from the <code>HOME</code>, to return home, we can alternatively use <code>cd ..</code>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cd ..
+ooiwt@pe111:~$
+</code></pre></div>
+</td></tr></table>
 
 <h2 id="rmdir-remove-a-subdirectory"><code>rmdir</code>: ReMove a subDIRectory</h2>
 <p><code>rmdir</code> removes a subDIRectory in current directory -- note that a directory must be empty before it can be removed.</p>
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ rmdir tut01
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~$ rmdir tut01
 ooiwt@pe111:~$ ls -F
 ooiwt@pe111:~$ mkdir tut01
 ooiwt@pe111:~$ ls -F
 tut01/
 </code></pre></div>
+</td></tr></table>
 
 <h2 id="cp-copy-files"><code>cp</code>: CoPy files</h2>
-<p><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cp ~cs1010/tut01/hello.c .
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cp ~cs1010/tut01/hello.c .
 ooiwt@pe111:~/tut01$ ls
 hello.c
 </code></pre></div>
+</td></tr></table>
 The command above copies the file <code>hello.c</code> from the HOME of user <code>cs1010</code>, under directory <code>tut01</code>, to the current directory.</p>
 <p>If you want to copy the whole directory, use <code>-r</code> flag, where <code>r</code> stands for recursive copy.</p>
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cp -r ~cs1010/tut01 .
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cp -r ~cs1010/tut01 .
 </code></pre></div>
+</td></tr></table>
 
 <p>In the last command above, the single <code>.</code> refers to the current directory.  </p>
 <p>The directory <code>tut01</code> and everything under it will be copied to the current directory.</p>
 <h2 id="mv-move-or-rename-files"><code>mv</code>: MoVe or rename files</h2>
 <p><code>mv</code> can move files from one directory to another.</p>
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ ls
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ ls
 hello.c
 ooiwt@pe111:~/tut01$ mv hello.c ..
 ooiwt@pe111:~/tut01$ ls
@@ -779,55 +833,70 @@ ooiwt@pe111:~/tut01$ ls ..
 hello.c
 ooiwt@pe111:~/tut01$ mv ../hello.c .
 </code></pre></div>
+</td></tr></table>
 
 <p>Here, we tell <code>mv</code> to copy a file <code>hello.c</code> from the parent directory to the current directory.</p>
 <p><code>mv</code> can also be used to rename files.</p>
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ mv hello.c hello_world.c
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ mv hello.c hello_world.c
 ooiwt@pe111:~/tut01$ ls
 hello_world.c
 </code></pre></div>
+</td></tr></table>
 
 <div class="admonition tip">
 <p class="admonition-title">Use TAB for Name Completion</p>
 <p>If you have a very long file name, you may use UNIX's filename completion feature to reduce typing. For instance, you may type:
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ mv h
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ mv h
 </code></pre></div>
+</td></tr></table>
 and press the <span class="keys"><kbd class="key-tab">Tab</kbd></span> key, and UNIX will complete the filename for you if there is only one filename with the prefix "h". Otherwise, it will fill up the filename to the point where you need to type in more characters for disambiguation.
 The <span class="keys"><kbd class="key-tab">Tab</kbd></span> key can also complete the name of a command.</p>
 </div>
 <h2 id="rm-remove-files"><code>rm</code>: ReMove files</h2>
 <p>Be careful with this command -- files deleted cannot be restored.  There is no trash or recycled bin like in Mac or Windows.</p>
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ rm hello.c
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ rm hello.c
 ooiwt@pe111:~/tut01$ ls
 ooiwt@pe111:~/tut01$
 </code></pre></div>
+</td></tr></table>
 
 <div class="admonition warning">
 <p class="admonition-title">rm -rf *</p>
 <p>While Unix command line provides lots of flexibility and power, with great power comes great responsibility.  Some of the commands are extremely dangerous.  <code>rm -rf *</code> is the most famous one.  The notation <code>*</code> refers to all files, and the flag <code>-f</code> means forceful deletion (no question asked!), and <code>-r</code> means remove recursively everything under the current directory tree.  Accidentally running this command has ruined many files.  <a href="https://www.quora.com/What-are-some-crazy-rm-rf-stories-you-have-heard-about">Read more here</a></p>
 </div>
 <p><code>rm</code> comes with a <code>-i</code> flag that interactively asks you if you are sure if you want to delete a file.  It is a good idea to always run <code>rm -i</code>.  On <code>pe111</code>, we have configured everyone's account so that <code>rm</code> is aliased to <code>rm -i</code> by default.  So when you run <code>rm hello.c</code>, it actually runs <code>rm -i hello.c</code>.  </p>
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ rm hello.c
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ rm hello.c
 rm: remove regular file <span class="s1">&#39;hello.c&#39;</span>?
 </code></pre></div>
+</td></tr></table>
 
 <p>Type <code>y</code> or <code>n</code> to answer yes or no respectively.</p>
 <p>If you set up your own UNIX OS, you should add this alias</p>
-<div class="highlight"><pre><span></span><code><span class="nb">alias</span> <span class="nv">rm</span><span class="o">=</span><span class="s2">&quot;rm -i&quot;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">alias</span> <span class="nv">rm</span><span class="o">=</span><span class="s2">&quot;rm -i&quot;</span>
 </code></pre></div>
+</td></tr></table>
 
 <p>to your <code>.bashrc</code> (Google to find out how).  Other useful aliases to avoid accidentally overwriting existing files are:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">alias</span> <span class="nv">mv</span><span class="o">=</span><span class="s2">&quot;mv -i&quot;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">alias</span> <span class="nv">mv</span><span class="o">=</span><span class="s2">&quot;mv -i&quot;</span>
 <span class="nb">alias</span> <span class="nv">cp</span><span class="o">=</span><span class="s2">&quot;cp -i&quot;</span>
 </code></pre></div>
+</td></tr></table>
 
 <h2 id="cat-catenate-file-content-to-the-screen"><code>cat</code>: CATenate file content to the screen</h2>
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cat hello.c
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ cat hello.c
 </code></pre></div>
+</td></tr></table>
 
 <p><code>less</code> is variant of <code>cat</code> that includes features to read each page leisurely)
-<div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ less hello.c
-</code></pre></div></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/tut01$ less hello.c
+</code></pre></div>
+</td></tr></table></p>
 <p>In <code>less</code>, use <code>&lt;space&gt;</code> to move down one page, <code>b</code> to move Back up one page, and <code>q</code> to Quit.</p>
 <h2 id="man-online-manual"><code>man</code>: Online MANual</h2>
 <p>An online help facility is available in UNIX via the <code>man</code> command (<code>man</code> stands for MANual). To look for more information about any UNIX command, for example, <code>ls</code>, type <code>man ls</code>. Type <code>man man</code> and refer to Man Pages to find out more about the facility. To exit <code>man</code>, press <code>q</code>.</p>
@@ -842,70 +911,82 @@ rm: remove regular file <span class="s1">&#39;hello.c&#39;</span>?
 <li>The last three characters are the permission for the users in the other groups.</li>
 </ul>
 <p>To change permission, we use the <code>chmod</code> command.  Let's say that we want to remove the read and write permission from all other users in the group.  You can run:</p>
-<div class="highlight"><pre><span></span><code>chmod g-rw &lt;file&gt;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>chmod g-rw &lt;file&gt;
 </code></pre></div>
+</td></tr></table>
 
 <p>where <code>&lt;file&gt;</code> is the name of the file whose permission you want to change.  This would change the permission from <code>-rw-rw-rw-</code> to <code>-rw----rw-</code>, or from <code>-rwxr--r--</code> to <code>-rwx---r--</code>.</p>
 <p>To add executable permission to everyone, you can run:</p>
-<div class="highlight"><pre><span></span><code>chmod a+x &lt;file&gt;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>chmod a+x &lt;file&gt;
 </code></pre></div>
+</td></tr></table>
 
 <p>This would change the permission from <code>-rw-rw-rw-</code> to <code>-rwxrwxrwx</code>, or from <code>-rwxr--r--</code> to <code>rwxr-xr-x</code>, and so on.  You get the idea.</p>
 <p>Another way to change the permission is to set the permission directly, instead of adding with <code>+</code> and removing with <code>-</code>.  To do this, one convenient way is to treat the permission for each class of user as a 3-bit binary number between 0 to 7.  So, <code>rwx</code> is 7, <code>rw-</code> is 6, <code>-w-</code> is 2, <code>---</code> is 0, etc.  </p>
 <p>To set the permission of a file to <code>-r--r--r--</code> (readable by everyone), run:</p>
-<div class="highlight"><pre><span></span><code>chmod <span class="m">444</span> &lt;file&gt;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>chmod <span class="m">444</span> &lt;file&gt;
 </code></pre></div>
+</td></tr></table>
 
 <p>To set the permission to <code>-rw-------</code>, run:</p>
-<div class="highlight"><pre><span></span><code>chmod <span class="m">600</span> &lt;file&gt;
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>chmod <span class="m">600</span> &lt;file&gt;
 </code></pre></div>
+</td></tr></table>
 
 <p>and so on.</p>
 <p>It is important to ensure that your code is not readable and writable by other students, especially for graded lab exercises.</p>
 <h2 id="scp-secure-copy"><code>scp</code>: Secure Copy</h2>
 <p>Secure copy, or <code>scp</code>, is one way to transfer files from the programming environments to your local computer for archiving or storage.  Let's say you want to transfer a set of C files from the directory <code>a01</code> to your local computer, then, on your local computer, run:</p>
-<div class="highlight"><pre><span></span><code>ooiwt@macbook:~$ scp ooiwt@pe111:~/a01/*.c .
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@macbook:~$ scp ooiwt@pe111:~/a01/*.c .
 </code></pre></div>
+</td></tr></table>
 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If you have files with the same name in the remote directory, the files will be overwritten without warning.  I have lost my code a few times due to <code>scp</code>.  </p>
 </div>
 <p>The expression <code>*.c</code> is a <em>regular expression</em> that means all files with filename ending with <code>.c</code>.  You can copy specific files as well.  For instance,</p>
-<div class="highlight"><pre><span></span><code>ooiwt@macbook:~$ scp ooiwt@pe111:~/a01/hello.c .
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@macbook:~$ scp ooiwt@pe111:~/a01/hello.c .
 </code></pre></div>
+</td></tr></table>
 
 <p><code>scp</code> supports <code>-r</code> (recursive copy) as well.</p>
 <h2 id="specifying-a-path-in-unix">Specifying A Path in UNIX</h2>
 <p>In any command above, when we need to refer to a directory or a file, we need to specify an <em>unambiguous location</em> of the directory or the file.  The most precise way to specify the location is to use the full path, or the <em>absolute path</em>.  For instance:</p>
-<div class="highlight"><pre><span></span><code>cp /home/o/ooiwt/tut01/hello.c /home/o/ooiwt/tut01/hello_world.c
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cp /home/o/ooiwt/tut01/hello.c /home/o/ooiwt/tut01/hello_world.c
 </code></pre></div>
+</td></tr></table>
 
 <p>That's a lot of characters to type.  We could shorten it in a few ways.  </p>
 <ul>
 <li>We could specify the location with respect to the home directory using <code>~</code>.  <code>~ooiwt</code> refers to the home directory of user <code>ooiwt</code>.  </li>
 </ul>
-<div class="highlight"><pre><span></span><code>cp ~ooiwt/tut01/hello.c ~ooiwt/tut01/hello_world.c
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cp ~ooiwt/tut01/hello.c ~ooiwt/tut01/hello_world.c
 </code></pre></div>
+</td></tr></table>
 
 <p>If you are <code>ooiwt</code>, then you can omit <code>ooiwt</code>, since <code>~</code> without any username refers to your home directory.</p>
-<div class="highlight"><pre><span></span><code>cp ~/tut01/hello.c ~/tut01/hello_world.c
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cp ~/tut01/hello.c ~/tut01/hello_world.c
 </code></pre></div>
+</td></tr></table>
 
 <ul>
 <li>Or we could specify the location with respect to the current directory.  Suppose the current working directory is <code>~/tut01</code> (i.e., we have <code>cd</code> into <code>~/tut01</code>), then we could say this:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>cp ./hello.c ./hello_world.c
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cp ./hello.c ./hello_world.c
 </code></pre></div>
+</td></tr></table>
 
 <p>Recall that a single dot <code>.</code> refers to the current directory.</p>
 <p>The <code>./</code> however is redundant unless you are executing a command.  Since, by specifying a file name or a directory without a path (i.e., not using any <code>/</code>), the bash looks for the file or directory in the current directory.  So, we could just do:</p>
-<div class="highlight"><pre><span></span><code>cp hello.c hello_world.c
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cp hello.c hello_world.c
 </code></pre></div>
+</td></tr></table>
 
 <p>Another important short form for relative location is <code>..</code>.  Recall that this refers to the parent directory.  Suppose that the current directory is in <code>~/tut02</code>.  Then, to copy the files in <code>~/tut01</code>, you can run:</p>
-<div class="highlight"><pre><span></span><code>cp ../tut01/hello.c ../tut01/hello_world.c
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cp ../tut01/hello.c ../tut01/hello_world.c
 </code></pre></div>
+</td></tr></table>
 
 <div class="footnote">
 <hr />
@@ -1002,11 +1083,9 @@ rm: remove regular file <span class="s1">&#39;hello.c&#39;</span>?
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
         <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-      
-        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
       
     
   </body>
