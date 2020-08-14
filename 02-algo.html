@@ -700,7 +700,7 @@
 <p>A computational problem is a problem that can be solved step-by-step with a computer.  These problems usually have a well-defined input, constraints, and conditions that the output must satisfied.  Here are some types of computational problems:</p>
 <ul>
 <li>
-<p>A <em>decision problem</em> is one where the answer is yes or no.  For instance, "given a number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, is <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> even?" is a decision problem.  Some decision problems take more steps to solve than others.  For instance, "given a number <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>, is <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> prime?" takes more steps than just checking the parity of a number.</p>
+<p>A <em>decision problem</em> is one where the answer is yes or no.  For instance, "given a number <span class="arithmatex">\(n\)</span>, is <span class="arithmatex">\(n\)</span> even?" is a decision problem.  Some decision problems take more steps to solve than others.  For instance, "given a number <span class="arithmatex">\(n\)</span>, is <span class="arithmatex">\(n\)</span> prime?" takes more steps than just checking the parity of a number.</p>
 </li>
 <li>
 <p>A <em>search problem</em> is one where the solution consists of one or more values that satisfies a given condition.  For instance, we may want to compute a path from one geographical location to another on a map.</p>
@@ -715,7 +715,7 @@
 <p>Questions such as "what is the meaning of life?" "do I look good in this outfit?"<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> are not computational problems, because they do not have well-defined input, constraints, and conditions that the output must satisfy.</p>
 <p>In CS1010 (followed by CS2040C and CS3230), you will learn how to solve computational problems <em>computationally</em> -- this means that you learn to come up with step-by-step instructions meant for computers that you can translate into computer programs, to solve a given problem. </p>
 <h2 id="example-finding-the-maximum">Example: Finding the maximum</h2>
-<p>Let's start with a simple problem.  Given a finite list <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> of <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> integers (<span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> &gt; 0), find the maximum integer from the list.</p>
+<p>Let's start with a simple problem.  Given a finite list <span class="arithmatex">\(L\)</span> of <span class="arithmatex">\(k\)</span> integers (<span class="arithmatex">\(k\)</span> &gt; 0), find the maximum integer from the list.</p>
 <p>First, let's consider if this is a computational problem.  The input is very well defined.  We know what an integer is.  We are told we have at least one, and we have a finite number of them<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
 <p>Second, let's consider the output.  What conditions must the output satisfy?  First, it has to be equal or larger than every other integer on the list.  Second, it must be an integer <em>in</em> the list.  This is well defined by the problem statement, so we can say that it is a computational problem.</p>
 <p>Here is an example.  Suppose the input consists of:</p>
@@ -773,14 +773,14 @@
 </table>
 <p>The English description above, however, is not detailed enough for computers to understand.  What is the meaning of "check one-by-one"? "keep track of maximum so far"?  how to tell if we have reached "the end of the list"?</p>
 <p>Let's work out all the details.</p>
-<p>First, we need a concise way of representing the integers in the list.  Borrowing from mathematical notation, let's say that the list <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> contains the integers 
-<span><span class="MathJax_Preview">l_0, l_1, ..., l_{k-1}</span><script type="math/tex">l_0, l_1, ..., l_{k-1}</script></span>. To "check one-by-one," we introduce another notation <span><span class="MathJax_Preview">l_i</span><script type="math/tex">l_i</script></span>, which is the integer currently being "checked".  We begin with <span><span class="MathJax_Preview">i = 0</span><script type="math/tex">i = 0</script></span>, then <span><span class="MathJax_Preview">i = 1</span><script type="math/tex">i = 1</script></span>, then <span><span class="MathJax_Preview">i = 2</span><script type="math/tex">i = 2</script></span>, etc, until <span><span class="MathJax_Preview">i = k-1</span><script type="math/tex">i = k-1</script></span>.  At every step, we increase <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> by 1.</p>
-<p>Second, we need a concise way of keeping track of the maximum so far.  We introduce another notation, <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>, to represent the maximum value so far.  When <span><span class="MathJax_Preview">i = 0</span><script type="math/tex">i = 0</script></span>, <span><span class="MathJax_Preview">m = l_0</span><script type="math/tex">m = l_0</script></span>.  Since we only scan a single integer, it has to be the maximum.  When we check another integer <span><span class="MathJax_Preview">l_i (i &gt; 0)</span><script type="math/tex">l_i (i > 0)</script></span>, only two things can happen:</p>
+<p>First, we need a concise way of representing the integers in the list.  Borrowing from mathematical notation, let's say that the list <span class="arithmatex">\(L\)</span> contains the integers 
+<span class="arithmatex">\(l_0, l_1, ..., l_{k-1}\)</span>. To "check one-by-one," we introduce another notation <span class="arithmatex">\(l_i\)</span>, which is the integer currently being "checked".  We begin with <span class="arithmatex">\(i = 0\)</span>, then <span class="arithmatex">\(i = 1\)</span>, then <span class="arithmatex">\(i = 2\)</span>, etc, until <span class="arithmatex">\(i = k-1\)</span>.  At every step, we increase <span class="arithmatex">\(i\)</span> by 1.</p>
+<p>Second, we need a concise way of keeping track of the maximum so far.  We introduce another notation, <span class="arithmatex">\(m\)</span>, to represent the maximum value so far.  When <span class="arithmatex">\(i = 0\)</span>, <span class="arithmatex">\(m = l_0\)</span>.  Since we only scan a single integer, it has to be the maximum.  When we check another integer <span class="arithmatex">\(l_i (i &gt; 0)\)</span>, only two things can happen:</p>
 <ul>
-<li>if this <span><span class="MathJax_Preview">l_i</span><script type="math/tex">l_i</script></span> is larger than <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>, then <span><span class="MathJax_Preview">l_i</span><script type="math/tex">l_i</script></span> has to be the maximum so far, so we update <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> to be <span><span class="MathJax_Preview">l_i</span><script type="math/tex">l_i</script></span>.</li>
-<li>if <span><span class="MathJax_Preview">l_i</span><script type="math/tex">l_i</script></span> is equal to or smaller than <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>, then <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> is still the maximum value so far.</li>
+<li>if this <span class="arithmatex">\(l_i\)</span> is larger than <span class="arithmatex">\(m\)</span>, then <span class="arithmatex">\(l_i\)</span> has to be the maximum so far, so we update <span class="arithmatex">\(m\)</span> to be <span class="arithmatex">\(l_i\)</span>.</li>
+<li>if <span class="arithmatex">\(l_i\)</span> is equal to or smaller than <span class="arithmatex">\(m\)</span>, then <span class="arithmatex">\(m\)</span> is still the maximum value so far.</li>
 </ul>
-<p>We keep doing the above and increase <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, until we reach the end of the list when (after increasing <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>) we find that <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> is <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.</p>
+<p>We keep doing the above and increase <span class="arithmatex">\(i\)</span>, until we reach the end of the list when (after increasing <span class="arithmatex">\(i\)</span>) we find that <span class="arithmatex">\(i\)</span> is <span class="arithmatex">\(k\)</span>.</p>
 <p>Now, we have enough details to describe step-by-step, how to find the maximum value from a list of integers.  Such steps, which the computer can take to solve a problem, is called an <em>algorithm</em>.  </p>
 <h3 id="flowchart">Flowchart</h3>
 <p>There are different ways one can describe an algorithm.  The easiest way I find is to use a diagram called a <em>flowchart</em>.  The flowchart for the algorithm above looks like this.  </p>
@@ -793,15 +793,15 @@
 <li>A rectangle represents one or more "operations" (such as initialization or manipulation of data) </li>
 </ul>
 <p>To understand the flowchart above, let's trace through it with the sample input.  We will maintain the following table as we trace through the flowchart.</p>
-<p>At the beginning, just before entering "<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> equals <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>?", we have the following:</p>
+<p>At the beginning, just before entering "<span class="arithmatex">\(i\)</span> equals <span class="arithmatex">\(k\)</span>?", we have the following:</p>
 <table>
 <thead>
 <tr>
 <th>Integers Scanned</th>
-<th><span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span></th>
-<th><span><span class="MathJax_Preview">l_i</span><script type="math/tex">l_i</script></span></th>
-<th><span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span></th>
-<th>Maximum So Far (<span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>)</th>
+<th><span class="arithmatex">\(i\)</span></th>
+<th><span class="arithmatex">\(l_i\)</span></th>
+<th><span class="arithmatex">\(k\)</span></th>
+<th>Maximum So Far (<span class="arithmatex">\(m\)</span>)</th>
 </tr>
 </thead>
 <tbody>
@@ -814,15 +814,15 @@
 </tr>
 </tbody>
 </table>
-<p>Subsequently, we enter a "loop", and the values assigned to the symbols at the point after "<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> equals <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>?" can be traced as follows:</p>
+<p>Subsequently, we enter a "loop", and the values assigned to the symbols at the point after "<span class="arithmatex">\(i\)</span> equals <span class="arithmatex">\(k\)</span>?" can be traced as follows:</p>
 <table>
 <thead>
 <tr>
 <th>Integers Scanned</th>
-<th><span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span></th>
-<th><span><span class="MathJax_Preview">l_i</span><script type="math/tex">l_i</script></span></th>
-<th><span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span></th>
-<th>Maximum So Far (<span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>)</th>
+<th><span class="arithmatex">\(i\)</span></th>
+<th><span class="arithmatex">\(l_i\)</span></th>
+<th><span class="arithmatex">\(k\)</span></th>
+<th>Maximum So Far (<span class="arithmatex">\(m\)</span>)</th>
 </tr>
 </thead>
 <tbody>
@@ -893,14 +893,14 @@
 </table>
 <p>Please spend some time to trace through the flowchart above.</p>
 <h3 id="variables">Variables</h3>
-<p>There are a few important things to take note here.  <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>, <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>, and the list <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> are what we called <em>states</em> or <em>variables</em>.  While in the above, we can think of them as mathematical variables which we can assign <em>values</em> to, in a computer program, a variable is a location in the memory which holds a value.  </p>
+<p>There are a few important things to take note here.  <span class="arithmatex">\(m\)</span>, <span class="arithmatex">\(i\)</span>, <span class="arithmatex">\(k\)</span>, and the list <span class="arithmatex">\(L\)</span> are what we called <em>states</em> or <em>variables</em>.  While in the above, we can think of them as mathematical variables which we can assign <em>values</em> to, in a computer program, a variable is a location in the memory which holds a value.  </p>
 <p>We can perform two very basic operations on the variables: reading and writing.  In other words, we can set their values and we can retrieve their values. </p>
-<p>We can <em>assign</em> the value of one variable to a constant (e.g., set <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> to 1) or to the value of another variable (e.g., set <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> to <span><span class="MathJax_Preview">l_i</span><script type="math/tex">l_i</script></span>).  In the latter example, we first read the value of <span><span class="MathJax_Preview">l_i</span><script type="math/tex">l_i</script></span>, from <span><span class="MathJax_Preview">l_i</span><script type="math/tex">l_i</script></span>'s memory location and then we write that value to the memory location of <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>.  Once written, the value of <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> will not change until the next time we update the value of <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>.</p>
-<p>It is important to note that, when <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> changes, <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> <em>does not change automatically</em> to the new <span><span class="MathJax_Preview">l_i</span><script type="math/tex">l_i</script></span>  This behavior is different from that which you may be familiar with in spreadsheet software -- if you set the value of a cell, say <code>A1</code> to be <code>=B1</code>, when the value in cell <code>B1</code> changes, the value <code>A1</code> also changes automatically.</p>
-<p>We can also compare the values of two variables.  We see two examples above: "<span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> equals <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>?"  "<span><span class="MathJax_Preview">l_i &gt; m</span><script type="math/tex">l_i > m</script></span>?"  When we compare, we read the values of the variables from their memory location and checks their relations.</p>
-<p>We can perform arithmetic operations on the variables: addition, subtraction, etc.  We see one example above: "increment <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>".  This operation is actually an assignment operation in disguise.  We can write it as "set <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> to <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> + 1".  Here, you see that <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> is referred to twice.  This operation reads the value from the memory location of <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>, adds 1 to it, and then writes the resulting value back to the location of <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>.</p>
+<p>We can <em>assign</em> the value of one variable to a constant (e.g., set <span class="arithmatex">\(i\)</span> to 1) or to the value of another variable (e.g., set <span class="arithmatex">\(m\)</span> to <span class="arithmatex">\(l_i\)</span>).  In the latter example, we first read the value of <span class="arithmatex">\(l_i\)</span>, from <span class="arithmatex">\(l_i\)</span>'s memory location and then we write that value to the memory location of <span class="arithmatex">\(m\)</span>.  Once written, the value of <span class="arithmatex">\(m\)</span> will not change until the next time we update the value of <span class="arithmatex">\(m\)</span>.</p>
+<p>It is important to note that, when <span class="arithmatex">\(i\)</span> changes, <span class="arithmatex">\(m\)</span> <em>does not change automatically</em> to the new <span class="arithmatex">\(l_i\)</span>  This behavior is different from that which you may be familiar with in spreadsheet software -- if you set the value of a cell, say <code>A1</code> to be <code>=B1</code>, when the value in cell <code>B1</code> changes, the value <code>A1</code> also changes automatically.</p>
+<p>We can also compare the values of two variables.  We see two examples above: "<span class="arithmatex">\(i\)</span> equals <span class="arithmatex">\(k\)</span>?"  "<span class="arithmatex">\(l_i &gt; m\)</span>?"  When we compare, we read the values of the variables from their memory location and checks their relations.</p>
+<p>We can perform arithmetic operations on the variables: addition, subtraction, etc.  We see one example above: "increment <span class="arithmatex">\(i\)</span>".  This operation is actually an assignment operation in disguise.  We can write it as "set <span class="arithmatex">\(i\)</span> to <span class="arithmatex">\(i\)</span> + 1".  Here, you see that <span class="arithmatex">\(i\)</span> is referred to twice.  This operation reads the value from the memory location of <span class="arithmatex">\(i\)</span>, adds 1 to it, and then writes the resulting value back to the location of <span class="arithmatex">\(i\)</span>.</p>
 <h3 id="bugs">Bugs</h3>
-<p>If you follow the execution of the algorithm above, step-by-step, using the example input <code>4 1 -4 0 9 9 3 5</code> above, you will obtain the correct maximum value <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> of <code>9</code>.  But does that mean that the algorithm is correct?  The answer is NO.  </p>
+<p>If you follow the execution of the algorithm above, step-by-step, using the example input <code>4 1 -4 0 9 9 3 5</code> above, you will obtain the correct maximum value <span class="arithmatex">\(m\)</span> of <code>9</code>.  But does that mean that the algorithm is correct?  The answer is NO.  </p>
 <p>For an algorithm to correctly solve the given problem, it has to produce the correct result for all valid inputs to the problem.  If we can find one counterexample, one input where the algorithm does not produce the correct output, then the algorithm is incorrect.  Note that I say <em>does not produce the correct output</em>, which means that either the algorithm  <em>produces the wrong output</em> or <em>does not produce any output at all</em>.  </p>
 <p>In this case, we say that the algorithm or the program has a <em>bug</em>.  A bug is a defect that causes the algorithm to behave incorrectly.  As a software developer, you will spend some time finding bugs in your code, a process known as <em>debugging</em>.  A <em>debugger</em> is a tool that helps programmers find bugs in their code.</p>
 <p>Before we even start the process of debugging, we first have to know if our algorithm is correct.  Remember that an algorithm is correct only if it produces the correct output only all possible valid inputs.  So, one way to check if an algorithm is correct is to try it with all possible valid inputs.  For the problem we are solving above, however, even though the list is finite, there are infinitely many possible inputs, and so, it is impossible to try all possible valid inputs.  In practice, we <em>craft</em> a smaller set of test inputs to check if the algorithm behaves correctly for these test inputs, and <em>hope</em> that it is correct for all possible inputs.  With experience, you will choose the right set of test inputs to maximize that chances that you will find a bug in your code.  There are also systematic ways of deriving test cases so that the test cases <em>cover</em> different paths of execution of the algorithm, but we won't be covering it in CS1010<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>.</p>
@@ -909,7 +909,7 @@
 <p>In the problem set at the end of this lecture, you will see slight variations of the algorithm above.  You should check through them to see whether they are correct or not.</p>
 <h2 id="problem-set">Problem Set</h2>
 <h4 id="problem-11">Problem 1.1</h4>
-<p>The following algorithms are slight variations of the one in the notes above.  The differences are highlighted in red.  Do they correctly find the maximum integer from a finite list of <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> integers (<span><span class="MathJax_Preview">k &gt; 0</span><script type="math/tex">k > 0</script></span>)?  </p>
+<p>The following algorithms are slight variations of the one in the notes above.  The differences are highlighted in red.  Do they correctly find the maximum integer from a finite list of <span class="arithmatex">\(k\)</span> integers (<span class="arithmatex">\(k &gt; 0\)</span>)?  </p>
 <p>If an algorithm is buggy, give a counter-example where the output is incorrect.  In addition, give an example input where the algorithm still produces the correct output, where possible.  </p>
 <p>(a) 
 <img alt="Flowchart" src="figures/max-flowchart/max-flowchart.002.png" /></p>
@@ -922,9 +922,9 @@
 <p>(e) 
 <img alt="Flowchart" src="figures/max-flowchart/max-flowchart.006.png" /></p>
 <h4 id="problem-12">Problem 1.2</h4>
-<p>Change the algorithm above to find the minimum value instead of the maximum value from the given list <span><span class="MathJax_Preview">L = \langle l_0, ..., l_{k-1}\rangle</span><script type="math/tex">L = \langle l_0, ..., l_{k-1}\rangle</script></span>. You can also assume that the list <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> is finite and <span><span class="MathJax_Preview">k &gt; 0</span><script type="math/tex">k > 0</script></span> for this question.</p>
+<p>Change the algorithm above to find the minimum value instead of the maximum value from the given list <span class="arithmatex">\(L = \langle l_0, ..., l_{k-1}\rangle\)</span>. You can also assume that the list <span class="arithmatex">\(L\)</span> is finite and <span class="arithmatex">\(k &gt; 0\)</span> for this question.</p>
 <h4 id="problem-13">Problem 1.3</h4>
-<p>Draw the flowchart for an algorithm, that takes in a list of integers <span><span class="MathJax_Preview">L = \langle l_0, ..., l_{k-1}\rangle, k &gt; 0</span><script type="math/tex">L = \langle l_0, ..., l_{k-1}\rangle, k > 0</script></span>, and compute the <em>sum</em> of all the integers.  Think about what variable(s) do you need.</p>
+<p>Draw the flowchart for an algorithm, that takes in a list of integers <span class="arithmatex">\(L = \langle l_0, ..., l_{k-1}\rangle, k &gt; 0\)</span>, and compute the <em>sum</em> of all the integers.  Think about what variable(s) do you need.</p>
 <div class="footnote">
 <hr />
 <ol>
