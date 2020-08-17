@@ -127,7 +127,7 @@ class: middle
 ---
 class: middle,center
 
-## $\frac{sum(L)}{k}$
+## $\frac{sum(L,k)}{k}$
 
 ---
 class:middle
@@ -164,21 +164,21 @@ class: middle,center
 
 $$\sum\_{i=0}^{k-1}(l\_i - \mu)^2$$
 
-$sum(square(subtract(L,k,mean(L,k))),k)$
+$sum(square(subtract(L,k,mean(L,k)),k),k)$
 
 ---
 class: middle,center
 
 $$\frac{\sum\_{i=0}^{k-1}(l\_i - \mu)^2}{k}$$
 
-$mean(square(subtract(L,k,mean(L,k))),k)$
+$mean(square(subtract(L,k,mean(L,k)),k),k)$
 
 ---
 class: middle,center
 
 $$\sqrt\frac{\sum\_{i=0}^{k-1}(l\_i - \mu)^2}{k}$$
 
-$sqrt(mean(square(subtract(L,k,mean(L,k))),k))$
+$sqrt(mean(square(subtract(L,k,mean(L,k)),k),k))$
 
 ---
 class:middle
@@ -306,7 +306,7 @@ class: middle,center
 
 ### $max(L,k)$ is the larger number between
 
-### $max'(L, 0, \frac{k}{2})$ and $max'(L, \frac{k}{2}, k)$
+### $max'(L, 0, \frac{k}{2}-1)$ and $max'(L, \frac{k}{2}, k)$
 
 ---
 class: middle,center
@@ -394,13 +394,6 @@ class:middle
 ### Different types can be represented by a different number of bits.
 
 ---
-class:middle
-
-### A type is represented by a fixed, finite, number of bits.
-
-### Different types can be represented by a different number of bits.
-
----
 class:middle, center
 
 ### 1 bit: `1` or `0`
@@ -413,7 +406,7 @@ S or U
 ---
 class:middle, center
 
-### 2 bits: `11` `10`, `01` or `00`
+### 2 bits: `11`, `10`, `01`, or `00`
 
 north, south, easy, west<br>
 spring, summer, fall, winter
@@ -435,7 +428,7 @@ class:middle, center
 
 ### When writing programs for embedded systems, IoT devices, sensors, etc, you need to be frugal with memory usage.
 
-### In CS1010, however, we will go with more bits for better precisions.
+### In CS1010, however, we will go with more bits for better precision.
 
 ---
 class:middle, center
@@ -453,7 +446,7 @@ class:middle, center
 ---
 class:middle, center
 
-### 64 bits unsigned
+### 64 bits signed
 
 
 -9,223,372,036,854,775,808 <br>
