@@ -767,8 +767,14 @@ of your SoC UNIX account which you have created here: <a href="https://mysoc.nus
 </li>
 <li>
 <p><code>ssh: connect to host sunfire.comp.nus.edu.sg port 22: Operation timed out</code></p>
-<p>It means that you failed to connect to <code>sunfire</code> via <code>ssh</code>.  There could be several rasons for this: (i) <code>sunfire</code> or its ssh service is down; (ii) you are connecting via a network where <code>sunfire</code> is not accessible (such as outside Singapore).  </p>
+<p>It means that you failed to connect to <code>sunfire</code> via <code>ssh</code>.  There could be two reasons for this: (i) <code>sunfire</code> or its ssh service is down; (ii) you are connecting via a network where <code>sunfire</code> is not accessible (such as outside Singapore).  </p>
 <p>The likelihood of (i) is small.  The more likely scenario is (ii), in which case, you should be able to solve it by connecting to NUS or SoC VPN.</p>
+</li>
+<li>
+<p><code>Could not chdir to home directory /home/o/ooiwt: Permission denied</code></p>
+<p>This error means that you have successfully connect to the PE hosts, but you have no access to your own home directory. </p>
+<p>This should not happen.  Please send an email with the above error message to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#101;&#108;&#112;&#100;&#101;&#115;&#107;&#64;&#99;&#111;&#109;&#112;&#46;&#110;&#117;&#115;&#46;&#101;&#100;&#117;&#46;&#115;&#103;">&#104;&#101;&#108;&#112;&#100;&#101;&#115;&#107;&#64;&#99;&#111;&#109;&#112;&#46;&#110;&#117;&#115;&#46;&#101;&#100;&#117;&#46;&#115;&#103;</a>, include the PE hosts that you
+connected to with this error and your username.  The system administrator can reset the permission of your home directory for you.</p>
 </li>
 </ol>
                 
