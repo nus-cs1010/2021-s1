@@ -765,6 +765,15 @@ of your SoC UNIX account which you have created here: <a href="https://mysoc.nus
 <p>Check that you have entered your username correctly.  It is <em>case sensitive</em>.</p>
 <p>If you have lost your password, go here: <a href="https://mysoc.nus.edu.sg/~myacct/iforgot.cgi">https://mysoc.nus.edu.sg/~myacct/iforgot.cgi</a></p>
 </li>
+<li>
+<p>Operation timed out</p>
+<p>If you receive this error: 
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh: connect to host sunfire.comp.nus.edu.sg port 22: Operation timed out
+</code></pre></div>
+</td></tr></table></p>
+<p>It means that you failed to connect to <code>sunfire</code> via <code>ssh</code>.  There could be several rasons for this: (i) <code>sunfire</code> or its ssh service is down; (ii) you are connecting via a network where <code>sunfire</code> is not accessible (such as outside Singapore).  </p>
+<p>The likelihood of (i) is small.  The more likely scenario is (ii), in which case, you should be able to solve it by connecting to NUS or SoC VPN.</p>
+</li>
 </ol>
                 
               

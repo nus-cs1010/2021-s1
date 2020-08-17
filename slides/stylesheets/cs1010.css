@@ -68,3 +68,10 @@ table thead {
 	font-size: 200%;
 }
 
+.cols {
+  display: flex;
+}
+
+.fifty {
+  flex: 50%;
+}

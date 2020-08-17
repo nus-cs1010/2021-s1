@@ -366,6 +366,163 @@ class:middle,center
 
 ### A function calling itself 
 
+---
+class:middle,center
+
+# Types
+
+---
+class:middle
+
+### `1010010101010101001111010..` can mean
+
+- 1933091
+- 34.95108
+- `hello`
+- an image
+
+---
+class:middle
+
+### A variable needs a type to be interpreted correctly.
+
+---
+class:middle
+
+### A type is represented by a fixed, finite, number of bits.
+
+### Different types can be represented by a different number of bits.
+
+---
+class:middle
+
+### A type is represented by a fixed, finite, number of bits.
+
+### Different types can be represented by a different number of bits.
+
+---
+class:middle, center
+
+### 1 bit: `1` or `0`
+
+black or white<br>
+true or false<br>
+yes or no<br>
+S or U
+
+---
+class:middle, center
+
+### 2 bits: `11` `10`, `01` or `00`
+
+north, south, easy, west<br>
+spring, summer, fall, winter
+
+---
+class:middle, center
+
+### In general, $k$ bits can represent $2^k$ values
+
+---
+class:middle, center
+
+### more bits $\rightarrow$ more memory, but can represent bigger range
+
+### fewer bits $\rightarrow$ less memory, but represent smaller range
+
+---
+class:middle, center
+
+### When writing programs for embedded systems, IoT devices, sensors, etc, you need to be frugal with memory usage.
+
+### In CS1010, however, we will go with more bits for better precisions.
+
+---
+class:middle, center
+
+## Integers
+
+---
+class:middle, center
+
+### 8 bits: 256 different integers
+
+0 to 255 (for unsigned)<br>
+-128 to 127 (for signed)
+
+---
+class:middle, center
+
+### 64 bits unsigned
+
+
+-9,223,372,036,854,775,808 <br>
+to <br>
+9,223,372,036,854,775,807
+
+---
+class:middle, center
+
+## Characters
+---
+class:middle, center
+
+### 8 bits: 127 different symbols using ASCII standards
+
+```
+0-9, A-Z, a-z
+<>?:”{}!@#$%^&*
+()_+-=[]\';/.,
+```
+return, tab, escape, etc
+
+---
+class:middle, center
+
+### up to 32 bits: Unicode (UTF-8)
+
+11111011000000000 😀
+
+---
+class:middle, center
+
+## Real numbers
+
+(also called floating point numbers)
+
+---
+class:middle, center
+
+### There are infinitely many real numbers but only a finite sequence of bits can only represent a finite set of real numbers.
+
+---
+class:middle, center
+
+### Not every real number can be presented precisely
+
+E.g., `0.1 + 0.2` is `0.30000000000000004`
+
+---
+class:middle, center
+
+### We normally use 32, 64, or 128 bits to represent real numbers.
+
+---
+class:middle, center
+
+### A variable needs a type to be interpreted correctly.
+
+---
+class:middle, center
+
+		  set $total$ to $sum(L, k)$<br>
+set $avg$ to $mean(L, k)$
+
+$k$ is an integer<br>
+$total$ is an integer<br>
+$avg$ must be a real number
+
+
 </textarea>
 
 <script src="https://remarkjs.com/downloads/remark-latest.min.js">
