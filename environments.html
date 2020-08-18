@@ -708,11 +708,11 @@
 <p>There are two ways to achieve this, and in both ways, it appears to the PE hosts that Sunfire is the client.</p>
 <h4 id="ssh-through-sunfire">SSH through sunfire</h4>
 <p>Connect to sunfire at <code>sunfire.comp.nus.edu.sg</code> via command line <code>ssh</code> with the option <code>-t</code>.
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh -t sunfire.comp.nus.edu.sg ssh pe111.comp.nus.edu.sg
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh -t &lt;username&gt;@sunfire.comp.nus.edu.sg ssh pe111.comp.nus.edu.sg
 </code></pre></div>
 </td></tr></table></p>
 <p>Alternatively:
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh pe111.comp.nus.edu.sg -J sunfire.comp.nus.edu.sg
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ssh pe111.comp.nus.edu.sg -J &lt;username&gt;@sunfire.comp.nus.edu.sg
 </code></pre></div>
 </td></tr></table></p>
 <h4 id="ssh-port-forwarding">SSH Port Forwarding</h4>

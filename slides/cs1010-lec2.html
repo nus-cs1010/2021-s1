@@ -306,19 +306,22 @@ class: middle,center
 
 ### $max(L,k)$ is the larger number between
 
-### $max'(L, 0, \frac{k}{2}-1)$ and $max'(L, \frac{k}{2}, k)$
+### $max'(L, 0, \frac{k}{2}-1)$ and $max'(L, \frac{k}{2}, k-1)$
 
+(for $k \ge 2$).
 ---
 class: middle,center
 
 ### $max'(L,0,k)$ is the larger between
 
-### $max'(L, 0, \frac{k}{2})$ and $max'(L, \frac{k}{2}, k)$
+### $max'(L, 0, \frac{k}{2}-1)$ and $max'(L, \frac{k}{2}, k-1)$
 
+($max'$ is calling itself!)
 ---
 class: middle,center
 
-### alternatively..
+### Wishful thinking: Assuming we know how to solve $max'$ on a shorter list,
+we can solve $max'$ on a longer list!
 
 ---
 class: middle,center
@@ -508,7 +511,7 @@ class:middle, center
 ---
 class:middle, center
 
-		  set $total$ to $sum(L, k)$<br>
+set $total$ to $sum(L, k)$<br>
 set $avg$ to $mean(L, k)$
 
 $k$ is an integer<br>
