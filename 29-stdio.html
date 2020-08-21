@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/ex00.html">
+        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/29-stdio.html">
       
       
       <link rel="shortcut icon" href="assets/images/favicon.png">
@@ -17,7 +17,7 @@
     
     
       
-        <title>Exercise 0: Echo, Divide, Quadratic - CS1010 Programming Methodology</title>
+        <title>Unit 29: Standard I/O Functions - CS1010 Programming Methodology</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#exercise-0-echo-divide-quadratic" class="md-skip">
+        <a href="#unit-29-standard-io-functions" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Exercise 0: Echo, Divide, Quadratic
+              Unit 29: Standard I/O Functions
             
           </span>
         </div>
@@ -568,72 +568,37 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisite" class="md-nav__link">
-    Prerequisite
+  <a href="#printf" class="md-nav__link">
+    printf
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#learning-outcomes" class="md-nav__link">
-    Learning Outcomes
+  <a href="#pitfalls-when-using-printf" class="md-nav__link">
+    Pitfalls when using printf
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#one-time-setup" class="md-nav__link">
-    One-Time Setup
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#identifying-yourself" class="md-nav__link">
-    Identifying Yourself
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#solving-the-assignments" class="md-nav__link">
-    Solving The Assignments
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#submission" class="md-nav__link">
-    Submission
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grading" class="md-nav__link">
-    Grading
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#question-1-echo" class="md-nav__link">
-    Question 1: Echo
-  </a>
-  
-    <nav class="md-nav" aria-label="Question 1: Echo">
+    <nav class="md-nav" aria-label="Pitfalls when using printf">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sample-run" class="md-nav__link">
-    Sample run:
+  <a href="#mismatch-types" class="md-nav__link">
+    Mismatch Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mismatch-number-of-arguments" class="md-nav__link">
+    Mismatch Number of Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-user-input" class="md-nav__link">
+    Printing User Input
   </a>
   
 </li>
@@ -644,16 +609,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#question-2-divide" class="md-nav__link">
-    Question 2: Divide
+  <a href="#scanf" class="md-nav__link">
+    scanf
   </a>
   
-    <nav class="md-nav" aria-label="Question 2: Divide">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pitfalls-when-using-scanf" class="md-nav__link">
+    Pitfalls When Using scanf
+  </a>
+  
+    <nav class="md-nav" aria-label="Pitfalls When Using scanf">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sample-run_1" class="md-nav__link">
-    Sample run:
+  <a href="#checking-for-error" class="md-nav__link">
+    Checking for Error
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalid-pointers" class="md-nav__link">
+    Invalid Pointers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffer-overflow" class="md-nav__link">
+    Buffer Overflow
   </a>
   
 </li>
@@ -664,16 +650,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#question-3-quadratic" class="md-nav__link">
-    Question 3: Quadratic
+  <a href="#fgets" class="md-nav__link">
+    fgets
   </a>
   
-    <nav class="md-nav" aria-label="Question 3: Quadratic">
+    <nav class="md-nav" aria-label="fgets">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sample-run_2" class="md-nav__link">
-    Sample run:
+  <a href="#avoid-atol-or-atof" class="md-nav__link">
+    Avoid atol or atof
   </a>
   
 </li>
@@ -699,181 +685,155 @@
                   
                 
                 
-                <h1 id="exercise-0-echo-divide-quadratic">Exercise 0: Echo, Divide, Quadratic</h1>
-<div class="admonition note">
-<p class="admonition-title">For Tutors</p>
-<p>Please use libcs1010 instead of <code>printf</code> and <code>scanf</code>.  </p>
-<ul>
-<li><code>long x = cs1010_read_long()</code> returns a <code>long</code> value. </li>
-<li><code>cs1010_println_double(d)</code> prints a <code>double</code> value; </li>
-<li><code>cs1010_println_long(x)</code> prints a <code>long</code> value.`</li>
-</ul>
-<p>The <code>Makefile</code> is already setup so that it is linked (on the PE hosts) when <code>make</code>.</p>
-<p>See:
-- <a href="https://nus-cs1010.github.io/1819-s1/06-cs1010-io.html">https://nus-cs1010.github.io/1819-s1/06-cs1010-io.html</a>
-- <a href="https://nus-cs1010.github.io/1819-s1/c-in-cs1010.html">https://nus-cs1010.github.io/1819-s1/c-in-cs1010.html</a></p>
-</div>
-<p>This is your first programming exercise.  An exercise is something that you do on your own.  You can submit them but it will not be graded.   Test cases are provided for the exercises so that you can test and check on your own if your code is correct.  This is in contrast to an assignment, where you need to submit for grading and credits.</p>
-<h3 id="prerequisite">Prerequisite</h3>
-<ul>
-<li>You are able to access the <a href="environments.html">CS1010 programming environment</a>.</li>
-<li>You are familiar with <a href="unix.html">basic UNIX CLI</a> and using terminal-based editor <a href="vim.html"><code>vim</code></a>.</li>
-</ul>
-<h3 id="learning-outcomes">Learning Outcomes</h3>
-<ul>
-<li>Be comfortable writing simple C programs that involve arithmetic operations, <code>long</code> and <code>double</code> types, and standard I/O.</li>
-</ul>
-<h3 id="one-time-setup">One-Time Setup</h3>
-<p>Before going into their first programming exercise, you need to do a one-time setup of your account on PE. You need to create a file called <code>.gitconfig</code> in your home directory and with the following content:</p>
+                <h1 id="unit-29-standard-io-functions">Unit 29: Standard I/O Functions</h1>
+<p>We have been shielding you from the pain and pitfalls of using C I/O functions.  Since you are close to "graduate" from CS1010, this is a good time to show you what the real world is like.</p>
+<h2 id="printf">printf</h2>
+<p>The function <code>printf</code> is used to print a formatted string to the standard output.  Unlike functions that we have seen so far, <code>printf</code> can take in a variable number of arguments, but it must have at least one argument -- a string written in a certain format.  The rest of the arguments can be of different types.  Let's look at an example:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="o">*</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;Siri&quot;</span><span class="p">;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello! My name is %s.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>The code above prints <code>Hello! My name is Siri.</code>.</p>
+<p>There are two arguments to <code>printf</code>, both are strings.  The first is the string to print.  There is a placeholder <code>%s</code> in the string, which will be replaced by the second argument <code>name</code>.  The string to print ends with <code>\n</code>, which is the new line character.</p>
+<p>The placeholder <code>%s</code> is called a <em>format modifier</em>.  It controls how to interpret the arguments (i.e., what type) and how to format the output.   The general format is:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>%[flags][field_width][.precision][length_modifier]specifier
+</code></pre></div>
+</td></tr></table>
+
+<p>The letter after <code>%</code> controls the interpretation of the argument.  <code>s</code> for string, <code>c</code> for character, <code>d</code> for integer (base 10), <code>f</code> for floating-point number, <code>p</code> for pointer (base 16).  We can additionally prepend this with <em>length modifier</em>.  <code>ld</code> for <code>long</code> integer, <code>lld</code> for <code>long long</code>, and <code>lf</code> for <code>double</code>.</p>
+<p>To format the output, we can prepend it with a number to indicate its <em>field width</em>, or minimum space used when printing.  E.g., <code>%3d</code> will pad the number printed with space if the number printed is less than 3 digits.  Adding a <em>flag</em> 0 in front, <code>%03d</code>, will pad the number with 0s if the number printed is less than 3 digits.  Other flags include <code>+</code>, which tells <code>printf</code> to print a sign (<code>+</code> or <code>-</code>) for the number.  For floating-point numbers, we can additionally control the <em>precision</em>, or the number of digits printed after the decimal point.  <code>%3.4lf</code> will print a double to four decimal points.</p>
+<p>Note: <code>cs1010_println_double</code> uses <code>%.4lf</code> as the format modifier.</p>
+<h2 id="pitfalls-when-using-printf">Pitfalls when using <code>printf</code></h2>
+<h3 id="mismatch-types">Mismatch Types</h3>
+<p><code>printf</code> does not check for the type of arguments we pass to it.  The compiler does, but it only politely warns us instead of throwing an error like other type mismatches.</p>
+<p>If you ignore such warnings, you might print strange things like:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">100000000000</span><span class="p">,</span> <span class="mi">100000000000</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>or worse, crash your program:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">100000000000</span><span class="p">,</span> <span class="mi">100000000000</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+
+<h3 id="mismatch-number-of-arguments">Mismatch Number of Arguments</h3>
+<p>Since <code>printf</code> expects a variable number of arguments, you can pass it fewer arguments than expected and the code would still compile (with warnings).  If you push ahead and run it anyway, <code>printf</code> will start to fetch arguments from the stack, pretending that it is there, causing weird things to happen.</p>
+<p>Consider:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %s %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>It would cause <code>printf</code> to access the memory content of the stack as strings. </p>
+<h3 id="printing-user-input">Printing User Input</h3>
+<p>We should also never do this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="o">*</span><span class="n">str</span> <span class="o">=</span> <span class="n">cs1010_read_word</span><span class="p">();</span>
+<span class="n">printf</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>The reason is that we have no control over what the user would type as input: the user may type "%s" into the standard input, so the variable <code>str</code> now points to <code>%s</code>, which <code>printf</code> treats as a format modifier, and output the content of the stack!  This is a huge security risk.</p>
+<p>We should always print a string using:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">str</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+
+<h2 id="scanf">scanf</h2>
+<p>The function <code>scanf</code> is used to read inputs from the standard input.  It requires us to pass in pointers to variables where we want to store the input value is.  Like <code>printf</code>, it takes in one or more arguments, with the first argument being a format string containing one or more format specifiers.  The format specifier for <code>scanf</code> is simpler and has the following pattern:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>%[*][field_width][length_modifier]specifier
+</code></pre></div>
+</td></tr></table>
+
+<p>For instance, to read an integer, a floating-point number, and a string of at most 10 characters, </p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">l</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">d</span><span class="p">;</span>
+<span class="kt">char</span> <span class="n">s</span><span class="p">[</span><span class="mi">11</span><span class="p">];</span> 
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%ld %lf %10s&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">l</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+
+<p><code>scanf</code> scans the standard input, try to match it to the format specified.
+The space in between the format specifier matches zero or more white spaces (space, tab, newline).  Scanning stops when an input character does not match such a format character or when an input conversion fails.</p>
+<p>Adding a <code>*</code> to the format modifier means that scanf should consume the inputs but not store it in any variables.  This, combined with <code>%[``]</code> is useful to clear any remaining data from the standard input.</p>
+<h2 id="pitfalls-when-using-scanf">Pitfalls When Using <code>scanf</code></h2>
+<h3 id="checking-for-error">Checking for Error</h3>
+<p>The function <code>scanf</code> fails silently when the input character does not match a format or when the input conversion fails.  It might return an unexpected input.  We should always check the return value of <code>scanf</code> to make sure that it is reading properly.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">a</span><span class="p">;</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>The code above might print uninitialized value if the input is not an integer.</p>
+<p>We should check</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[user]
-  name = Your Name
-  email = Your Email
-[github]  
-  user = Your GitHub ID
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">a</span><span class="p">;</span>
+<span class="kt">long</span> <span class="n">result</span> <span class="o">=</span> <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
 
-<p>Your email should be whatever you used to sign up Github.</p>
-<p>For example, a sample <code>.gitconfig</code> looks like this:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>[user]
-  name = Elsa
-  email = queen@arendelle.gov
-[github]  
-  user = elsasnow16
-</code></pre></div>
-</td></tr></table>
-
-<p>After saving this file, run:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>git config --get github.user
-</code></pre></div>
-</td></tr></table>
-
-<p>It should return your GitHub user id.</p>
-<p>It should print your GitHub user id as already set.  If there is a typo, you need to edit <code>.gitconfig</code> again and reload it by repeating the command above.</p>
-<h3 id="setup">Setup</h3>
-<ul>
-<li>Click on <a href="https://classroom.github.com/a/3GvIvE5X">this link</a> to accept the exercise.</li>
-<li>Log in to one of the hosts of <a href="environments.html">CS1010 programming environment (PE)</a></li>
-<li>Run the following on the command line on one of the PE hosts:</li>
-</ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>~cs1010/get-ex00
-</code></pre></div>
-</td></tr></table>
-
-<ul>
-<li>You should see a new subdirectory <code>ex00-&lt;githubid&gt;</code> in your current working directory, where <code>githubid</code> is your GitHub ID.</li>
-<li>
-<p>We will call this directory your <em>exercise directory</em> or <em>assignment directory</em>.</p>
-</li>
-<li>
-<p>Inside that directory, you should see a bunch of files:</p>
-<ul>
-<li><code>echo.c</code>, <code>divide.c</code>, and <code>quadratic.c</code> are the most important files.  They are the skeleton C code that you should edit to solve the exercise.</li>
-<li><code>inputs</code> and <code>outputs</code> are subdirectories that contain test inputs and test outputs.  We use the convention <code>problem-name</code>.<code>test-id</code>.in for input test data, and <code>problem-name</code>.<code>test-id</code>.out for output test data.  So, you will see <code>echo.1.in</code>, <code>divide.1.out</code>, etc.  The expected output for <code>echo.1.in</code> is in <code>echo.1.out</code>.  You can look at the content of these files if you wish (which <a href="unix.html">UNIX</a> command should you use to do this?).  You can edit these files to change the test input and output.</li>
-<li><code>Makefile</code>: The configuration for the tool <code>make</code> that we use to automate the compilation and testing of the programs.  You do not have to understand how to write a <code>Makefile</code> for CS1010.  If you are interested to learn how to write a <code>Makefile</code>, talk to either Wei Tsang or Google.</li>
-<li><code>test.sh</code>: A <code>bash</code> script for testing your code.  You do not have to edit this file nor call it directly.  It is invoked by <code>make</code>.  If you are interested to learn how to write <code>bash</code> script, talk to either Wei Tsang or Google.</li>
-</ul>
-</li>
-</ul>
-<h3 id="identifying-yourself">Identifying Yourself</h3>
-<p>In every C file that you submit to CS1010, you need to identify yourself by writing your name and tutorial group.  Marks will be deducted if you fail to do so.  You need to edit the line:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>@author XXXX (Group YYYY)
-</code></pre></div>
-</td></tr></table>
-
-<p>and change it to something like:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>@author Elsa of Arendelle (Group B10)
-</code></pre></div>
-</td></tr></table>
-
-<h3 id="solving-the-assignments">Solving The Assignments</h3>
-<ul>
-<li>Edit the files <code>echo.c</code>, <code>divide.c</code>, and <code>quadratic.c</code> to solve the corresponding question as described below.</li>
-<li>To compile and run the given tests with the sample inputs and outputs, run on the command line,</li>
-</ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make
-</code></pre></div>
-</td></tr></table>
-
-<p>This command will compile both C files. If there is no compilation error, it will run the test scripts.</p>
-<h3 id="submission">Submission</h3>
-<p>When you are ready, run the following command while you are in the exercise directory:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>~cs1010/submit-ex00
-</code></pre></div>
-</td></tr></table>
-
-<p>The files <code>add.c</code>, <code>divide.c</code>, and <code>quadratic.c</code> will be uploaded to GitHub.  You can submit multiple times.</p>
-<h3 id="grading">Grading</h3>
-<p>This assignment is not graded.</p>
-<hr />
-<h2 id="question-1-echo">Question 1: Echo</h2>
-<p>Write a program <code>echo</code> (source file <code>echo.c</code>) that reads in an integer and print that integer to the standard output.</p>
-<h3 id="sample-run">Sample run:</h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/ex00-ooiwt$ ./echo
-123
-123
-ooiwt@pe111:~/ex00-ooiwt$ ./echo
--1
--1
-</code></pre></div>
-</td></tr></table>
-
-<p>The text <code>ooiwt@pe111:~/ex00-ooiwt$</code> is the command prompt.  Yours will look different, of course.  <code>echo</code> is the executable you created.  The next line, <code>123</code>, is the input you provide.  Press enter after the input.  <code>123</code> is the output printed by <code>echo</code>.</p>
-<h2 id="question-2-divide">Question 2: Divide</h2>
-<p>Write a program <code>divide</code> (source file <code>divide.c</code>) that reads in two integers, <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(y\)</span>, and print the value of <span class="arithmatex">\(x\)</span> divided by <span class="arithmatex">\(y\)</span>.  You can assume that <span class="arithmatex">\(y\)</span> is never 0.</p>
-<h3 id="sample-run_1">Sample run:</h3>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/ex00-ooiwt$ ./divide
-10 2
-5.0000
-ooiwt@pe111:~/ex00-ooiwt$ ./divide
-1 2
-0.5000
-</code></pre></div>
-</td></tr></table>
-
-<h2 id="question-3-quadratic">Question 3: Quadratic</h2>
-<p>Write a program <code>quadratic</code> (source file <code>quadratic.c</code>) that reads in three integers, <span class="arithmatex">\(a\)</span>, <span class="arithmatex">\(b\)</span>, and <span class="arithmatex">\(c\)</span>, that represent the quadratic equation <span class="arithmatex">\(ax^2 + bx + c = 0\)</span>, and prints its two roots.  Assume that <span class="arithmatex">\(a \not = 0\)</span> and <span class="arithmatex">\(b^2 &gt; 4ac\)</span>.  Recall that the roots are:
-$$
-\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
-$$</p>
-<p>Print the root <span class="arithmatex">\(\frac{-b + \sqrt{b^2 - 4ac}}{2a}\)</span> first on one line,
-followed by the other root <span class="arithmatex">\(\frac{-b - \sqrt{b^2 - 4ac}}{2a}\)</span> on the next line.</p>
-<h3 id="sample-run_2">Sample run:</h3>
+<p>The above, however, does not properly "clear" the standard input of the incorrect input.  So the next <code>scanf</code> calls would still try to read it again!</p>
+<p>To clear the input, we can use the <code>%*[^\n]</code> modifier, which read in any characters expect (<code>^</code>) the newline (<code>\n</code>).  </p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
 5
 6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe111:~/ex00-ooiwt$ ./quadratic
-1 -2 1
-1.0000
-1.0000
-ooiwt@pe111:~/ex00-ooiwt$ ./quadratic
-2 -7 3
-3.0000
-0.5000
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">a</span><span class="p">;</span>
+<span class="kt">long</span> <span class="n">result</span> <span class="o">=</span> <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;*[^</span><span class="se">\n</span><span class="s">]&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+
+<p>As a side note, the <code>%[]</code> modifier is useful to read in strings containing a certain range of characters only.  E.g., you can read <code>%[a-zA-Z0-9]</code> to match any sequence of alphanumeric characters.</p>
+<h3 id="invalid-pointers">Invalid Pointers</h3>
+<p>Since <code>scanf</code> expects the caller to pass in pointers to variables for it to store the results, we need to be careful about what we pass in.  It is easy to pass in something like this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="o">*</span><span class="n">a</span><span class="p">;</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>The compiler would not warn us since the type matches perfectly.  The program may crash since the pointer is not pointing to a valid memory location accessible by the program.</p>
+<h3 id="buffer-overflow">Buffer Overflow</h3>
+<p>When we use <code>scanf</code> to read a string, it keeps reading until it reaches a space, and stores everything that it reads into an array.  The problem here is that we do not know when it will stop reading, and therefore how big is the array that we need to allocate for the input!</p>
+<p>Let's say we do:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;What&#39;s your name?&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+<span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>The program would crash if we enter a very long string in the standard input.</p>
+<p>You can read <a href="http://sekrit.de/webdocs/c/beginners-guide-away-from-scanf.html">a beginners' guide away from scanf()</a> for more information.</p>
+<h2 id="fgets">fgets</h2>
+<p><code>fgets</code> is a better alternative to <code>scanf</code> for reading inputs (Note: this is what CS1010 library use internally).  <code>fgets</code> takes three parameters, a pointer to a string (or buffer), the size of the buffer, and the input to read from (which can be a file, a network socket, or in our case, most of the time <code>stdin</code>).</p>
+<p>The advantage of <code>fgets</code> is that it never overflows the buffer (it knows the size).  Once we read the input, we can use functions such as <code>strtol</code> or <code>strtod</code> to convert the strings to <code>long</code> or <code>double</code>.</p>
+<h3 id="avoid-atol-or-atof">Avoid atol or atof</h3>
+<p>Instead of <code>strtol</code> or <code>strtof</code>, some old school textbooks might show you that you can convert a string to a <code>long</code> or a <code>double</code> using <code>atol</code> or <code>atof</code>.  You should avoid these two functions (even the man pages of <code>atof</code> says so!).  They do not provide any mechanism for error checking if the string is not a valid integer or if the input is out of range of the type.</p>
+<p>You can read <a href="https://github.com/nus-cs1010-1819-s1/libcs1010">the source code for the CS1010 library</a> to see how it uses <code>fgets</code>, <code>strtol</code> and related functions to parse numbers and strings from the standard inputs.</p>
                 
               
               

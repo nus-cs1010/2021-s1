@@ -1,0 +1,1217 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/style.html">
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.3">
+    
+    
+      
+        <title>C Style Convention - CS1010 Programming Methodology</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.947af8d5.min.css">
+      
+        <link rel="stylesheet" href="assets/stylesheets/palette.7f672a1f.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap">
+    
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cs1010-c-style" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://nus-cs1010.github.io/2021-s1" title="CS1010 Programming Methodology" class="md-header-nav__button md-logo" aria-label="CS1010 Programming Methodology">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            CS1010 Programming Methodology
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              C Style Convention
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://nus-cs1010.github.io/2021-s1" title="CS1010 Programming Methodology" class="md-nav__button md-logo" aria-label="CS1010 Programming Methodology">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    CS1010 Programming Methodology
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      General
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="General" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        General
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="about.html" title="About CS1010" class="md-nav__link">
+      About CS1010
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="outcomes.html" title="Learning Outcomes" class="md-nav__link">
+      Learning Outcomes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="schedule.html" title="Schedule" class="md-nav__link">
+      Schedule
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="accounts.html" title="Accounts" class="md-nav__link">
+      Accounts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="policies.html" title="Policies" class="md-nav__link">
+      Policies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Notes
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Notes" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Notes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="01-program.html" title="1. What is a Program?" class="md-nav__link">
+      1. What is a Program?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="02-algo.html" title="2. Computational Problem & Algorithms" class="md-nav__link">
+      2. Computational Problem & Algorithms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="03-func.html" title="3. Functions" class="md-nav__link">
+      3. Functions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="04-type.html" title="4. Types" class="md-nav__link">
+      4. Types
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="05-first-c.html" title="5. First C Program" class="md-nav__link">
+      5. First C Program
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="06-cs1010-io.html" title="6. CS1010 I/O Library" class="md-nav__link">
+      6. CS1010 I/O Library
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="07-arithmetic-ops.html" title="7. Arithmetic Operations" class="md-nav__link">
+      7. Arithmetic Operations
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="readings.html" title="Readings" class="md-nav__link">
+      Readings
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="c-in-cs1010.html" title="C in CS1010" class="md-nav__link">
+      C in CS1010
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="library.html" title="CS1010 I/O Library" class="md-nav__link">
+      CS1010 I/O Library
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        C Style Convention
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="style.html" title="C Style Convention" class="md-nav__link md-nav__link--active">
+      C Style Convention
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-coding-style-is-important" class="md-nav__link">
+    Why Coding Style is Important
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-variable-declaration" class="md-nav__link">
+    1. Variable Declaration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-give-variables-descriptive-names" class="md-nav__link">
+    2. Give Variables Descriptive Names
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-shorten-variable-names-with-naming-conventions" class="md-nav__link">
+    3. Shorten Variable Names with Naming Conventions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-avoid-negated-variable-or-function-names" class="md-nav__link">
+    4. Avoid Negated Variable or Function Names
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-use-define-to-define-constants-for-magic-numbers" class="md-nav__link">
+    5. Use #define to Define Constants for Magic Numbers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-naming-conventions" class="md-nav__link">
+    6. Naming Conventions
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Naming Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    Constants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-and-functions" class="md-nav__link">
+    Variables and Functions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-use-consistent-indentation-to-emphasize-block-structure" class="md-nav__link">
+    7. Use Consistent Indentation to Emphasize Block Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-dont-mix-tabs-and-spaces" class="md-nav__link">
+    8. Don't Mix Tabs and Spaces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-spaces-in-if-else-for-while-do-while-statements" class="md-nav__link">
+    9. Spaces in if, else, for, while, do-while Statements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-spaces-in-assignments" class="md-nav__link">
+    10. Spaces in Assignments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-positions-of-open-and-close-braces" class="md-nav__link">
+    11. Positions of Open and Close Braces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-comment-major-code-segments-adequately" class="md-nav__link">
+    12. Comment Major Code Segments Adequately
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-avoid-superfluous-comments" class="md-nav__link">
+    13. Avoid Superfluous Comments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-blank-lines" class="md-nav__link">
+    14. Blank Lines
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-long-lines" class="md-nav__link">
+    15. Long Lines
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="messages.html" title="Compiler Messages" class="md-nav__link">
+      Compiler Messages
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Software/Tools
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Software/Tools" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Software/Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="environments.html" title="Programming Environments" class="md-nav__link">
+      Programming Environments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="unix.html" title="UNIX" class="md-nav__link">
+      UNIX
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="clang.html" title="CLang" class="md-nav__link">
+      CLang
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="vim.html" title="Vim" class="md-nav__link">
+      Vim
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="zoom.html" title="Zoom" class="md-nav__link">
+      Zoom
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="1819s1.html" title="18/19 Sem 1" class="md-nav__link">
+      18/19 Sem 1
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-coding-style-is-important" class="md-nav__link">
+    Why Coding Style is Important
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-variable-declaration" class="md-nav__link">
+    1. Variable Declaration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-give-variables-descriptive-names" class="md-nav__link">
+    2. Give Variables Descriptive Names
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-shorten-variable-names-with-naming-conventions" class="md-nav__link">
+    3. Shorten Variable Names with Naming Conventions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-avoid-negated-variable-or-function-names" class="md-nav__link">
+    4. Avoid Negated Variable or Function Names
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-use-define-to-define-constants-for-magic-numbers" class="md-nav__link">
+    5. Use #define to Define Constants for Magic Numbers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-naming-conventions" class="md-nav__link">
+    6. Naming Conventions
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Naming Conventions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    Constants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables-and-functions" class="md-nav__link">
+    Variables and Functions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-use-consistent-indentation-to-emphasize-block-structure" class="md-nav__link">
+    7. Use Consistent Indentation to Emphasize Block Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-dont-mix-tabs-and-spaces" class="md-nav__link">
+    8. Don't Mix Tabs and Spaces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-spaces-in-if-else-for-while-do-while-statements" class="md-nav__link">
+    9. Spaces in if, else, for, while, do-while Statements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-spaces-in-assignments" class="md-nav__link">
+    10. Spaces in Assignments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-positions-of-open-and-close-braces" class="md-nav__link">
+    11. Positions of Open and Close Braces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-comment-major-code-segments-adequately" class="md-nav__link">
+    12. Comment Major Code Segments Adequately
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-avoid-superfluous-comments" class="md-nav__link">
+    13. Avoid Superfluous Comments
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-blank-lines" class="md-nav__link">
+    14. Blank Lines
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-long-lines" class="md-nav__link">
+    15. Long Lines
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="cs1010-c-style">CS1010 C Style</h1>
+<p>In CS1010, you should following the following style guide when you write your code for your graded homework and practical exams.  We typically allocate a few marks for coding style (each assignment/exam may have different allocation).  You will lose marks for violation of style.</p>
+<p>This guide is modified from past CS1010 style guide by Aaron Tan.</p>
+<h2 id="why-coding-style-is-important">Why Coding Style is Important</h2>
+<p>Quote</p>
+<p>"It is not merely a matter of aesthetics that programs should be written in a particular style. Rather there is a psychological basis for writing programs in a conventional manner: programmers have strong expectations that other programmers will follow these discourse rules. If the rules are violated, then the utility afforded by the expectations that programmers have built up over time is effectively nullified. The results from the experiments with novice and advanced student programmers and with professional programmers described in this paper provide clear support for these claims."</p>
+<p>Elliot Soloway and Kate Ehrlich. "Empirical studies of programming knowledge." IEEE Transactions on Software Engineering 5 (1984): 595-609.</p>
+<h2 id="1-variable-declaration">1. Variable Declaration</h2>
+<p>Each variable should be declared in its own line.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">weight</span><span class="p">;</span>  <span class="c1">// The weight of the baby</span>
+<span class="kt">double</span> <span class="n">height</span><span class="p">;</span>  <span class="c1">// The height of the baby</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Avoid</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">weight</span><span class="p">,</span> <span class="n">height</span><span class="p">;</span>   <span class="c1">// Weight and height of the baby</span>
+</code></pre></div>
+</td></tr></table>
+
+<h2 id="2-give-variables-descriptive-names">2. Give Variables Descriptive Names</h2>
+<p>This is the most important rule to follow.  The name of a type, variable, function, constant should inform us of its purpose clearly without the readers having to guess or look up its meaning.</p>
+<p>For example, <code>int number_of_coins;</code> is an appropriate variable but not <code>int c;</code>. Avoid using a single character for variable names.</p>
+<p>There are some exceptions, however, as shown below:</p>
+<ul>
+<li>If the variable is the problem size and it is given in the task statement. For example, a problem dealing with n values, hence the variable may be called n (preferably with a comment to explain).</li>
+<li>If the variable is a transient/temporary variable whose purpose is clear.
+-If the variable is a loop variable whose purpose is clear.</li>
+</ul>
+<h2 id="3-shorten-variable-names-with-naming-conventions">3. Shorten Variable Names with Naming Conventions</h2>
+<p>Despite the recommendation for descriptive names, identifiers can be short yet descriptive by using abbreviations and/or common naming conventions. For example, <code>MAX_LEN</code>, <code>num_of_elems</code>, <code>pcurr</code>, <code>table_num</code>.</p>
+<p>However, do not invent your own abbreviation. For instance, names like <code>nm_elemnts</code> should be avoided.</p>
+<h2 id="4-avoid-negated-variable-or-function-names">4. Avoid Negated Variable or Function Names</h2>
+<p>Negated variables often result in hard-to-read double-negatives in an expression like <code>!is_not_err</code>.</p>
+<p>So, avoid <code>is_not_error</code>, <code>is_not_found</code>, <code>is_not_valid</code>, <code>cannot_open_file</code>.  Instead, we prefer <code>is_error</code>, <code>is_found</code>, <code>is_valid</code>, <code>can_open_file</code> etc.</p>
+<h2 id="5-use-define-to-define-constants-for-magic-numbers">5. Use <code>#define</code> to Define Constants for Magic Numbers</h2>
+<p>Avoid direct use of magic numbers. Constant literals which have special meanings should be named and its named identifier should be used in its place. For example:</p>
+<p>Avoid:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">:</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>Prefer:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>#define MAX_LEN 100
+ :
+for (i = 0; i &lt; MAX_LEN; i += 1) {
+    :
+}
+</code></pre></div>
+</td></tr></table></p>
+<h2 id="6-naming-conventions">6. Naming Conventions</h2>
+<h3 id="constants">Constants</h3>
+<p>All constant identifiers must be written in all caps and separated by an underscore <code>_</code>.  For instance <code>MAX_ITERATIONS</code>, <code>MAX_LEN</code>, <code>GOLDEN_RATIO</code>, <code>COLOR_DEFAULT</code>, <code>PI</code>.</p>
+<h3 id="variables-and-functions">Variables and Functions</h3>
+<p>Use lower case letters for variable names and function names, with multiple words separated by underscore <code>_</code>.  Example, <code>cs1010_read_long</code>, <code>is_prime</code>. </p>
+<h2 id="7-use-consistent-indentation-to-emphasize-block-structure">7. Use Consistent Indentation to Emphasize Block Structure</h2>
+<p>The code should be properly and neatly indented to emphasize the nested logical structure of the program. An indentation of 2 or 4 spaces is recommended (8 is too wide).</p>
+<p>Every block that follows a <code>for</code>, <code>while</code>, <code>if-else</code>, <code>do-while</code> statement must be indented from its enclosing block.</p>
+<p>Comments within a block should follow the indentation level of its enclosing block. For example,</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>   
+    <span class="c1">// Comments should be indented too</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// More indented comments</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>The following are the wrong ways to indent the comments.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// This comment should be indented and aligned with the while statement.</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// This comment should be aligned with the printf statement.</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<h2 id="8-dont-mix-tabs-and-spaces">8. Don't Mix Tabs and Spaces</h2>
+<p>You must use only spaces in your code.  Do not use tabs.</p>
+<p>You can add the configuration <code>set expandtab</code> to automatically expand any tab that you enter into spaces.</p>
+<h2 id="9-spaces-in-if-else-for-while-do-while-statements">9. Spaces in <code>if</code>, <code>else</code>, <code>for</code>, <code>while</code>, <code>do</code>-<code>while</code> Statements</h2>
+<p>Add a single space between the keywords <code>if</code>,<code>else</code>, <code>for</code>, <code>while</code> and the following parentheses and between the parentheses and next curly bracket.  For instance:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>for( ... ) { // not good
+for( ... ){ // not good
+for ( ... ) { // good
+</code></pre></div>
+</td></tr></table>
+
+<h2 id="10-spaces-in-assignments">10. Spaces in Assignments</h2>
+<p>Add a single space before and after <code>=</code>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>a=b; // no
+a= b; // no
+a =b; // no
+a = b; // OK!
+</code></pre></div>
+</td></tr></table>
+
+<h2 id="11-positions-of-open-and-close-braces">11. Positions of Open and Close Braces</h2>
+<p>There are two camps on the position of open braces. The following shows the "trailing open braces":</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>The following shows the "leading open braces". The leading open brace must be aligned with the block of the construct it is in:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">j</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> 
+    <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Both styles are acceptable, but you should be consistent and should not mix both styles in a single program.</p>
+<p>For close braces, they should be leading close braces aligned with the block of the construct. Close braces should NOT be trailing as that would make it hard to spot them.</p>
+<h2 id="12-comment-major-code-segments-adequately">12. Comment Major Code Segments Adequately</h2>
+<p>Major segments of code should have explanatory comments. A major segment may be a loop block or a function block.</p>
+<p>You should comment on complicated logic, expressions, or algorithms, explaining what you are doing in the code, including why and how.</p>
+<p>An "if" block with a complex condition or an expression that is hard to understand should have explanatory comments.  For example,</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// Check and reject out-of-bounds indices</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="n">MAX_LEN</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<h2 id="13-avoid-superfluous-comments">13. Avoid Superfluous Comments</h2>
+<p>A comment such as:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1">// add one to i</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>serves no purpose, adds clutter to a program and does more harm than good.</p>
+<h2 id="14-blank-lines">14. Blank Lines</h2>
+<p>It is good to add a blank line between two functions, or two long segments of code for readability.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// This function ...</span>
+<span class="kt">int</span> <span class="nf">f</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// body</span>
+<span class="p">}</span>
+
+<span class="c1">// This function ...</span>
+<span class="kt">int</span> <span class="nf">g</span><span class="p">(</span><span class="kt">double</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// body</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// Statements 1 to 10 belong to a sub-task</span>
+<span class="n">statement1</span><span class="p">;</span>
+<span class="n">statement2</span><span class="p">;</span>
+   <span class="o">:</span>
+<span class="n">statement10</span><span class="p">;</span>
+
+<span class="c1">// Leave a blank line for readability</span>
+<span class="n">statement11</span><span class="p">;</span>
+<span class="n">statement12</span><span class="p">;</span>
+   <span class="o">:</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>However, guard against the use of excessive blank lines. Double blank lines and triply blank lines, or more, should not be present.</p>
+<h2 id="15-long-lines">15. Long Lines</h2>
+<p>If a line (be it a statement or a comment) is too long (more than 80 characters), do not let it run through the screen and wrap around. Instead, split it into a few lines.</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">((</span><span class="n">has_cs2010</span> <span class="o">||</span> <span class="n">has_cs2020</span> <span class="o">||</span> <span class="n">has_cs2040</span> <span class="o">||</span> <span class="n">has_cs2040C</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">has_st1232</span> <span class="o">||</span> <span class="n">has_st2131</span> <span class="o">||</span> <span class="n">has_st2132</span> <span class="o">||</span> <span class="n">has_st2334</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">has_ma1102R</span> <span class="o">||</span> <span class="n">has_ma1505</span> <span class="o">||</span> <span class="p">(</span><span class="n">has_ma1511</span> <span class="o">&amp;&amp;</span> <span class="n">has_ma1512</span><span class="p">)</span> <span class="o">||</span> <span class="n">has_ma1521</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">has_ma1101R</span> <span class="o">||</span> <span class="n">has_ma1311</span> <span class="o">||</span> <span class="n">has_ma1506</span> <span class="o">||</span> <span class="n">has_ma1508E</span><span class="p">))</span> 
+</code></pre></div>
+</td></tr></table>
+is bad</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">((</span><span class="n">has_cs2010</span> <span class="o">||</span> <span class="n">has_cs2020</span> <span class="o">||</span> <span class="n">has_cs2040</span> <span class="o">||</span> <span class="n">has_cs2040c</span><span class="p">)</span> <span class="o">&amp;&amp;</span> 
+   <span class="p">(</span><span class="n">has_st1232</span> <span class="o">||</span> <span class="n">has_st2131</span> <span class="o">||</span>  <span class="n">has_st2132</span> <span class="o">||</span> <span class="n">has_st2334</span><span class="p">)</span> <span class="o">&amp;&amp;</span> 
+   <span class="p">(</span><span class="n">has_ma1102r</span> <span class="o">||</span> <span class="n">has_ma1505</span> <span class="o">||</span> <span class="p">(</span><span class="n">has_ma1511</span> <span class="o">&amp;&amp;</span> <span class="n">has_ma1512</span><span class="p">)</span> <span class="o">||</span> <span class="n">has_ma1521</span><span class="p">)</span> <span class="o">&amp;&amp;</span>    
+   <span class="p">(</span><span class="n">has_ma1101r</span> <span class="o">||</span> <span class="n">has_ma1311</span> <span class="o">||</span> <span class="n">has_ma1506</span> <span class="o">||</span> <span class="n">has_ma1508e</span><span class="p">))</span> 
+</code></pre></div>
+</td></tr></table>
+is better.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="library.html" title="CS1010 I/O Library" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                CS1010 I/O Library
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="messages.html" title="Compiler Messages" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Compiler Messages
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright by Department of Computer Science, National University of Singapore 2020
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.c3dc8c49.min.js"></script>
+      <script src="assets/javascripts/bundle.f9edbbd5.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8e2cddea.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+        <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+      
+    
+  </body>
+</html>
