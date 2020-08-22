@@ -47,8 +47,6 @@
     
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap">
     
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
-    
     
       
     
@@ -1002,6 +1000,7 @@
 <p>Here, on the right-hand side, we call the function <code>square</code>, which we defined earlier.  We call <code>square</code> with <em>arguments</em> <code>3</code> and <code>4</code> respectively.  When we call <code>square</code> with argument <code>3</code>, we are <em>assigning</em> the parameter <code>x</code> to a value <code>3</code> before we execute the body of <code>square</code>.</p>
 <p>We use the operator <code>+</code> to add the two results together.  The right-hand side should give the value 25, which we then assign to the variable <code>hypotenuse_square</code>.</p>
 <p>Note that we use <code>=</code> equal sign for assignment, NOT for checking equality.  The C notation for checking for equality is <code>==</code> (we will come back to this later).</p>
+<p><ins class="critic">All variables must have an assigned value before it is evaluated.  Otherwise, the variable holds an <em>indeterminate</em> value.</ins></p>
 <h3 id="recap">Recap</h3>
 <p>Before we move on, let's recap some concepts:</p>
 <ul>
@@ -1009,7 +1008,7 @@
 <li>Each function is defined by its returned type, followed by its name, its parameter(s) (within a pair of parenthesis), and its body (within a pair of curly brackets).  </li>
 <li>Each function must be defined or declared before it is used.  </li>
 <li>The function body consists of one or more statements.  We have seen assignment statements (using the <code>=</code> operator) and return statements, using <code>return</code> as the keyword.</li>
-<li>Each variable must be declared before it is used.  A declaration starts with its type followed by its name.  A variable is only visible within its scope.</li>
+<li>Each variable must be declared before it is used.  A declaration starts with its type followed by its name.  A variable is only visible within its scope.  <ins class="critic">A variable must be assigned a value before it is evaluated.</ins></li>
 <li>Global variables are banned in CS1010.</li>
 </ul>
 <h3 id="example-2">Example 2</h3>
@@ -1462,8 +1461,6 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-      
-        <script src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
       
     
   </body>

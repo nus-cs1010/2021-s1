@@ -30,11 +30,11 @@ class: middle,center
 ---
 class: middle, center
 
-### Invest time to master the tools
+### Wei Tsang said: "Invest time to master the tools"
 
 (e.g., `bash`, `vim`, `git`, etc)
 
-### Think long term gain, not just to get things done now
+### "Think long term gain, not just to get things done now"
 
 ---
 class: middle, center
@@ -86,32 +86,129 @@ background-image: url(figures/dota-hotkeys.jpg)
 If you can learn the hotkeys for games, you can learn the hotkeys for `vim`.
 
 ---
-class: bottom,center
+class: middle
 
 ### Tips: 
 - Run `vimtutor`
-- Not convinced you need to learZZ
+- Read the `vim`-related readings on CS1010 website
 
 ---
 class: middle,center
 
----
-class: middle,center
-
----
-class: middle,center
+# Let's C
 
 ---
 class: middle
 
+```C
+int square(int x) 
+{
+  return x * x;
+}
+```
+
+---
+class: middle
+
+.tiny[
+```C
+int square(int x)
+{
+  return x * x;
+}
+
+int main()
+{
+  int hypotenuse_square;
+
+  hypotenuse_square = square(3) + square(4);
+  return 0;
+}
+```
+]
+
+---
+class: middle
+
+.tiny[
+```C
+#include <math.h>
+
+long square(long x)
+{
+  return x * x;
+}
+
+double hypotenuse_of(long base, long height)
+{
+  return sqrt(square(base) + square(height));
+}
+
+int main()
+{
+  hypotenuse_of(3, 4);
+}
+```
+]
+
 ---
 class: middle,center
 
+.tiny.center[
+type  | min bits
+-----:|:--------
+`char` | 8
+`short` | 16
+`int` | 16
+`long` | 32
+`long long` | 64
+]
 ---
 class: middle
 
+- `int` is not sufficient for most CS1010 purposes.
+- We will only use `long` in CS1010.
+
 ---
 class: middle
+
+.tiny.center[
+type  | num of bits
+-----:|:--------
+`float` | 32
+`double` | 64
+]
+
+- We will only use `double` in CS1010.
+
+---
+class: middle
+
+.moretiny[
+```C
+#include <math.h>
+#include "cs1010.h"
+
+long square(long x)
+{
+  return x*x;
+}
+
+double hypotenuse_of(long base, long height)
+{
+  return sqrt(square(base) + square(height));
+}
+
+int main()
+{
+  double hypotenuse;
+  long base = cs1010_read_long();
+  long height = cs1010_read_long();
+  hypotenuse = hypotenuse_of(base, height);
+  cs1010_println_double(hypotenuse);
+}
+```
+]
 
 ---
 class: middle,center
@@ -242,7 +339,7 @@ var slideshow = remark.create({
 	    scroll: false
 	},
 	ratio: '16:9',
-	highlightStyle: 'github',
+	highlightStyle: 'monokai',
     slideNumberFormat: 'AY2021 S1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%current%',
 });
  // Setup MathJax
@@ -259,4 +356,3 @@ var slideshow = remark.create({
 </script>
 </body>
 </html>
-

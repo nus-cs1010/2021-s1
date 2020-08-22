@@ -50,6 +50,9 @@ h1, h2 {
 .tiny{
 	font-size: 20pt;
 }
+.moretiny{
+	font-size: 16pt;
+}
 .remark-slide-number {
 	font-size: 12pt;
 }
