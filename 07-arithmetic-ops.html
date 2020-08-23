@@ -917,13 +917,17 @@ and the following code:</p>
 <p>So, why aren't <code>++</code> and <code>--</code> welcomed in CS1010?  The <code>++</code> and <code>--</code> operators not only modify the value of the operand, but it also returns a value.  We can write <code>j = i++;</code> to both increment <code>i</code> and assign the pre-incremented value of <code>i</code> to <code>j</code>.  In C, we can also write <code>j = ++i;</code>, which again, increment <code>i</code>, and assign the post-incremented value of <code>i</code> to <code>j</code>.  Things get tricky, when we write <code>i = i++;</code>, it is not clear how to interpret this.  The C standard leaves this behavior undefined and leaves it to the compiler to define its behavior.  Introducing all these complexities just to save two characters is not warranted.</p>
 <h2 id="list-of-c-features-banned-in-cs1010">List of C features banned in CS1010</h2>
 <p>You should realize by now that we are only using a subset of C and enforce a certain style of programming in CS1010.  We wish to move all of you away from common pitfalls in learning and writing C so that we can focus on using C as a tool to solve problems.   </p>
-<p>So far, you have seen that we are banning:
-- <code>++</code> and <code>--</code> operators
-- the types <code>int</code>, <code>short</code>, <code>float</code> etc. (with the returning type of <code>main()</code> as the exception)
-- global variables</p>
-<p>In addition, we discourage
-- the use of <code>printf</code> and <code>scanf</code>
-- skipping parenthesis in writing arithmetic expression</p>
+<p>So far, you have seen that we are banning:</p>
+<ul>
+<li><code>++</code> and <code>--</code> operators</li>
+<li>the types <code>int</code>, <code>short</code>, <code>float</code> etc. (with the returning type of <code>main()</code> as the exception)</li>
+<li>global variables</li>
+</ul>
+<p>In addition, we discourage:</p>
+<ul>
+<li>the use of <code>printf</code> and <code>scanf</code></li>
+<li>skipping parenthesis in writing arithmetic expression</li>
+</ul>
 <p>The <a href="c-in-cs1010.html">complete list of C features that we ban or discourage in CS1010 can be found here</a>.</p>
 <div class="footnote">
 <hr />
