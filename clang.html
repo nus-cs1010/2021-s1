@@ -751,12 +751,20 @@ at <code>~cs1010/teh.c</code>, which you can copy over.</p>
 <code>clang</code> would overwrite your code <code>teh.c</code> -- all your hard work will be gone!!</p>
 </div>
 <h2 id="3-warning-for-possible-bugs">3. Warning for possible bugs.</h2>
-<p>The <code>clang</code> checks for syntax errors in your C files -- i.e., things that violate the C syntax rules.  The compiler, however, is smart enough to identify possible bugs -- errors that will cause your program to behave incorrectly, even if the syntax follows C's rules.  You can ask <code>clang</code> to warn you about this, using the <code>-W</code> flag (<code>W</code> is the mnemonic for warning -- note the capital W).  The manual for <code>clang</code> lists different types of warnings that <code>clang</code> can warn you about.  For simplicity, we will ask <code>clang</code> to warn us about everything, by enabling <code>all</code> warnings.  The command to do so is:</p>
+<p>The <code>clang</code> checks for syntax errors in your C files -- i.e., things that violate the C syntax rules.  The compiler, however, is smart enough to identify possible bugs -- errors that will cause your program to behave incorrectly, even if the syntax follows C's rules.  You can ask <code>clang</code> to warn you about this, using the <code>-W</code> flag (<code>W</code> is the mnemonic for warning -- note the capital W).  The manual for <code>clang</code> lists different types of warnings that <code>clang</code> can warn you about.  For instance, we can ask <code>clang</code> to warn us by enabling <code>-Wall</code> warnings.  The command to do so is:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe118:~$ clang -Wall teh.c -o teh
 </code></pre></div>
 </td></tr></table>
 
-<p>For beginners, it is <em>highly recommended</em> that you <em>always</em> compile with <code>-Wall</code> flag.</p>
+<p>For beginners, it is <em>highly recommended</em> that you <em>always</em> compile with at least <code>-Wall</code>, <code>-Wextra</code>, and the <code>-Wpedantic</code> flag.</p>
+<div class="admonition tips">
+<p class="admonition-title">clang warning flags</p>
+<p><code>-Wall</code> in <code>clang</code> does not catually enable all warnings.
+<code>-Weverything</code> enables every warning but it could be overwhelming
+for beginners.   In CS1010 assignments, we will provide a <code>Makefile</code>
+so that you can use <code>make</code> to automate the compilation process. 
+Appropriate warning flags will be enabled for you.</p>
+</div>
 <h2 id="4-generating-additional-information-for-debugging">4. Generating additional information for debugging.</h2>
 <p>In order to use the debugger <code>lldb</code> to trace through and debug your program, <code>clang</code> needs to generate additional information and store them in the executable file.  We can instruct <code>clang</code> to generate them with the flag <code>-g</code> (<code>g</code> for generate).  </p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe118:~$ clang -Wall -g teh.c -o teh
@@ -776,6 +784,11 @@ at <code>~cs1010/teh.c</code>, which you can copy over.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe118:~$ clang -Wall -g -I ~/citadel/include -L ~/citadel/lib teh.c -o teh -lm -lcitadel
 </code></pre></div>
 </td></tr></table>
+
+<p>For instance, to link with the <a href="library.html">CS1010 I/O library</a> on the PE nodes, you can run
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ooiwt@pe118:~$ clang -Wall -g -I ~cs1010/include -L ~cs1010/lib teh.c -lcs1010
+</code></pre></div>
+</td></tr></table></p>
                 
               
               
