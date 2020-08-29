@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/index.html">
+        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/10-assert.html">
       
       
       <link rel="shortcut icon" href="assets/images/favicon.png">
@@ -17,7 +17,7 @@
     
     
       
-        <title>Home - CS1010 Programming Methodology</title>
+        <title>10. Assertion - CS1010 Programming Methodology</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#announcements" class="md-skip">
+        <a href="#unit-10-assertion" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Home
+              10. Assertion
             
           </span>
         </div>
@@ -166,20 +166,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="index.html" title="Home" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="index.html" title="Home" class="md-nav__link">
       Home
     </a>
-    
   </li>
 
     
@@ -277,10 +268,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Notes
@@ -410,11 +403,94 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="10-assert.html" title="10. Assertion" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        10. Assertion
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="10-assert.html" title="10. Assertion" class="md-nav__link md-nav__link--active">
       10. Assertion
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    Learning Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-assertion" class="md-nav__link">
+    What is Assertion?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-morgans-law" class="md-nav__link">
+    De Morgan's Law
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-set-10" class="md-nav__link">
+    Problem Set 10
+  </a>
+  
+    <nav class="md-nav" aria-label="Problem Set 10">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-101" class="md-nav__link">
+    Problem 10.1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-102" class="md-nav__link">
+    Problem 10.2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -656,6 +732,64 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    Learning Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-assertion" class="md-nav__link">
+    What is Assertion?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-morgans-law" class="md-nav__link">
+    De Morgan's Law
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-set-10" class="md-nav__link">
+    Problem Set 10
+  </a>
+  
+    <nav class="md-nav" aria-label="Problem Set 10">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-101" class="md-nav__link">
+    Problem 10.1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-102" class="md-nav__link">
+    Problem 10.2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -670,98 +804,212 @@
                   
                 
                 
-                <h1 id="announcements">Announcements</h1>
-<div class="admonition announcement">
-<p class="admonition-title">Notes for Lecture 4 Available</p>
-<p>Sat Aug 29 10:15:34 +08 2020</p>
-<p>We will cover <a href="08-if-else.html">Unit 8</a>, <a href="09-logical-exp.html">Unit 9</a>, and <a href="10-assert.html">Unit 10</a> in Lecture 4.  The notes have been posted.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Catch Up Session</p>
-<p>Fri Aug 28 11:57:46 +08 2020</p>
-<p>The <a href="https://piazza.com/class/kdgunoizhic105?cid=90#">Piazza Q&amp;A Page for tomorrow's catch-up session</a> is now open and will remain open for the next 24 hours.  </p>
-<p>Please post your questions and vote for questions that you would like us to answer live tomorrow.</p>
-<p>The link to Zoom can be found at <a href="https://piazza.com/class/kdgunoizhic105?cid=7">the usual place</a>.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Bonus Quiz: Using the CS1010 PE</p>
-<p>We added a <a href="https://luminus.nus.edu.sg/modules/c7b362a0-6aee-4b22-b4da-f9e8074249fd/quiz/be9a394a-0887-45e6-b5a2-019d8c843dd5/attempt-secure">bonus diagnostic quiz</a> on using the CS1010 PE for you to self-diagnose your basic understanding of the usage of the CS1010 PE nodes.  This quiz is due next Thursday 10am as usual.</p>
-<p>This quiz carries the same weight as the rest of the quizzes.  Recall
-that we will take the best 10 out of all the quizzes in CS1010 to compute your marks.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Exercise 0 Posted</p>
-<p>Fri Aug 28 05:12:47 +08 2020</p>
-<p>In case you missed the lab yesterday, here is <a href="ex00.html">Exercise 0</a>, a warm-up to get your ready to write some C code and prepare for the coming assignments.</p>
-<p>Exercise 0 is not graded but it is important that you complete it before Assignment 1, which is going to be released next week.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Slides, Video, and Quiz for Lecture 3</p>
-<p>Mon Aug 24 17:24:46 +08 2020</p>
-<p>Here you go: </p>
+                <h1 id="unit-10-assertion">Unit 10: Assertion</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>After this unit, students should:</p>
 <ul>
-<li><a href="slides/cs1010-lec3.html#1" target="_blank">Slides</a>, </li>
-<li><a href="https://mediaweb.ap.panopto.com/Panopto/Pages/Viewer.aspx?id=67ba3d34-94a6-4469-9a14-ac2100749280" target="blank">Video</a></li>
-<li><a href="https://luminus.nus.edu.sg/modules/c7b362a0-6aee-4b22-b4da-f9e8074249fd/quiz/9eb19ff0-601f-4fd3-aaa8-4ed1db83e1ef/attempt-secure">Quiz</a></li>
+<li>know what is an assertion</li>
+<li>be able to derive assertion statements in an algorithm that involves assignment and branches</li>
+<li>be able to note down assertions using Hoare's notation</li>
+<li>be able to apply De Morgan's laws</li>
 </ul>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Notes for Lecture 3 and for Using C in CS1010</p>
-<p>Fri Aug 21 16:18:17 +08 2020</p>
-<p>We will cover <a href="05-first-c.html">Unit 5</a>, <a href="06-cs1010-io.html">Unit 6</a>, and <a href="07-arithmetic-ops.html">Unit 7</a> in Lecture 3.  The notes have been posted.</p>
-<p>We have also posted notes on using C in CS1010:</p>
+<h2 id="what-is-assertion">What is Assertion?</h2>
+<p>An assertion is a logical expression that must always be true for the program to be correct.  We can write assertions either as part of the comment for the code or use the <code>assert()</code> macro in C.  Let's look at what is assertion first.  We will introduce the use of <code>assert()</code> later.</p>
+<p>To get started, let's first look at the most trivial assertion:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="c1">// { x == 1 }</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>The line above initialize the variable <code>x</code> to be <code>1</code>.  The next line, a comment, uses the curly braces <code>{</code> and <code>}</code> with a logical expression in between, to indicate that <code>x</code> must be equals to <code>1</code> after the assignment.  We use the curly braces as a notation in CS1010, following <a href="https://en.wikipedia.org/wiki/Tony_Hoare">C. A. R. Hoare</a>'s notation, but this is not part of any C standard.</p>
+<p>The assertion above is kind of trivial and not very meaningful.</p>
+<p>Let's revisit this snippet:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Let's consider the true block and the false block.  Inside the true block, since <code>x &gt; y</code>, we can assert that, well, <code>x &gt; y</code>, and inside the false block, we have the negation, so <code>x &lt;= y</code>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// { x &gt; y }</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// { x &lt;= y }</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Let's now consider what happens after initializing <code>max</code> to either <code>x</code> or <code>y</code>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// { x &gt; y }</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+  <span class="c1">// { max == x &amp;&amp; max &gt; y }</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// { x &lt;= y }</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+  <span class="c1">// { max &gt;= x &amp;&amp; max == y }</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>The assertion on Line 4 consists of two parts: <code>max == x</code> which is the result of the assignment (the trivial assertion), but since inside this block, <code>x &gt; y</code>, we must have <code>max &gt; y</code> to be true as well.</p>
+<p>Similarly, we can argue the assertion in Line 8 to be true.  </p>
+<p>What can we assert after we exit from the <code>if</code>-<code>else</code> block?  We have either <code>max == x &amp;&amp; max &gt; y</code> or <code>max &gt;= x &amp;&amp; max == y</code>.  This is exactly the property we are looking for in <code>max</code> when we set it to the maximum of <code>x</code> and <code>y</code>!  </p>
+<p>Let's look at another example:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="k">if</span> <span class="p">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cs1010_println_string</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">cs1010_println_string</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cs1010_println_string</span><span class="p">(</span><span class="s">&quot;C&quot;</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">cs1010_println_string</span><span class="p">(</span><span class="s">&quot;D&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Let's focus on the case of printing <code>C</code>.  We should print <code>C</code> if <code>score</code> is less than 5 but is 3 or higher.  Let's check if this is correct by finding out what we can assert wrt <code>score</code> just before printing <code>C</code>.  We first add the assert condition to all the true blocks and the false block by negating the <code>if</code> condition.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="k">if</span> <span class="p">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cs1010_println_string</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// { score &gt;= 5 }</span>
+      <span class="n">cs1010_println_string</span><span class="p">(</span><span class="s">&quot;B&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// { score &lt; 5 }</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// { score &lt; 5 &amp;&amp; score &gt;= 3 }</span>
+        <span class="n">cs1010_println_string</span><span class="p">(</span><span class="s">&quot;C&quot;</span><span class="p">);</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// { score &lt; 5 &amp;&amp; score &lt; 3 }</span>
+        <span class="n">cs1010_println_string</span><span class="p">(</span><span class="s">&quot;D&quot;</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>We can see that, we are printing <code>C</code> when <code>score &lt; 5 &amp;&amp; score &gt;= 3</code>, which is what we want.  </p>
+<p>Note that the last assert <code>score &lt; 5 &amp;&amp; score &lt; 3</code> can be simplified to <code>score &lt; 3</code>.</p>
+<h2 id="de-morgans-law">De Morgan's Law</h2>
+<p>To write an assertion for the false block, it is useful to know the De Morgan's law, which tells us how to negate some logical expression.  Suppose we have two logical expressions <code>e1</code> and <code>e2</code>.</p>
 <ul>
-<li><a href="c-in-cs1010.html">C in CS1010</a> lists and explains the features of C that are banned or discouraged in this module;</li>
-<li><a href="library.html">CS1010 I/O library</a> documents the APIs provided by the <code>libcs1010</code> library, something that we provide to shield the pain and danger of using <code>printf</code> and <code>scanf</code> from you;</li>
-<li><a href="style.html">C Style</a> documents the programming style that we should all follow in CS1010.</li>
-<li><a href="messages.html">Compiler Messages</a> lists the common warnings and errors that students encounter in CS1010.  This list will be 
-updated throughout the semester.</li>
+<li><code>!(e1 &amp;&amp; e2)</code> is the same as <code>(!e1) || (!e2)</code></li>
+<li><code>!(e1 || e2)</code> is the same as <code>(!e1) &amp;&amp; (!e2)</code></li>
 </ul>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Slides, Video, Quiz for Lecture 2</p>
-<p>Mon Aug 17 14:59:16 +08 2020</p>
-<p>The <a href="slides/cs1010-lec2.html#1" target="_blank">slides</a>, <a href="https://mediaweb.ap.panopto.com/Panopto/Pages/Viewer.aspx?id=aba5dda1-82ce-4fea-9867-ac1a0071d36c">video</a>, and <a href="https://luminus.nus.edu.sg/modules/c7b362a0-6aee-4b22-b4da-f9e8074249fd/quiz/3b0b7775-68e2-4412-94fe-33ab4abc9ff6/attempt-secure">post-lecture quiz</a> for Lecture 2 are now available.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Notes for Lecture 2 Posted</p>
-<p>Fri Aug 14 21:54:24 +08 2020</p>
-<p>We will cover <a href="03-func.html">Unit 3</a> and <a href="04-type.html">Unit 4</a> in Lecture 2.  The notes have been posted.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Lecture 1 </p>
-<p>Mon Aug 10 14:17:40 +08 2020</p>
-<p>Lecture 1 has been recorded and posted.  <a href="https://mediaweb.ap.panopto.com/Panopto/Pages/Viewer.aspx?id=2be0d84b-76d7-4bb0-a865-ac1300714e1d" target="_blank">You can watch it here</a>.</p>
-<p>Please read through the notes and watch the lecture.  After that, you can try the 
-<a href="https://luminus.nus.edu.sg/modules/c7b362a0-6aee-4b22-b4da-f9e8074249fd/quiz/fd0b97de-cfa4-4881-8860-19785b9510df/attempt" target="_blank">post-lecture diagnostic quiz</a> to test your own understanding.</p>
-<p>The <a href="slides/cs1010-lec1.html#1" target="_blank">slides</a> are posted as well.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Notes for Lecture 1 Posted</p>
-<p>Sun Aug  9 07:20:35 +08 2020</p>
-<p>We will cover <a href="01-program.html">Unit 1</a> and <a href="02-algo.html">Unit 2</a> in our very first lecture.  You can always check out the notes under the menu items notes.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Getting Ready for CS1010</p>
-<p>Welcome to CS1010!  Here are some things that you can do while waiting for the semester to start.</p>
-<p><strong>Take a Look at General CS1010 Information</strong></p>
-<p>Take a look at the <a href="about.html">crucial information about CS1010</a> here.  Scan through the <a href="outcomes.html">learning outcomes</a> to know what you are expected to learn in this module.</p>
-<p>Note down the <a href="about.html">important dates</a> on your calendar.</p>
-<p><strong>Read about CS1010 Policies</strong></p>
-<p>The <a href="policies.html">general policies</a> for CS1010 is posted.  Go through it to see what is expected.</p>
-<p><strong>Read Feedback on CS1010 from Two Years Ago</strong></p>
-<p>This semester's CS1010 will be conducted in a similar style with the version in 2018. Read <a href="docs/feedback-1819-s1.pdf">the comments from that batch of students</a> to know what to expect.</p>
-<p><strong>Explore Some Additional Readings</strong></p>
-<p>Some extra reading materials curated by Wei Tsang are <a href="readings.html">available</a>.  In particular, check out the articles under <em>Must Read</em> section.  If you have some programming background and are wondering why we are teaching C, read the articles under <em>Why C</em> section.</p>
-<p><strong>Enable Your Piazza Account</strong></p>
-<p>You should have received an email inviting you to create a Piazza account and enroll in the module Q&amp;A forum.  Please join CS1010 on Piazza.</p>
-<p><strong>Enable Your SoC Account</strong></p>
-<p>Go to <a href="https://mysoc.nus.edu.sg/~newacct">https://mysoc.nus.edu.sg/~newacct</a> and create your SoC Unix Account if you have not done so.  Activate "General Unix Servers" and "The SoC Compute Cluster" in MySoC here: <a href="https://mysoc.nus.edu.sg/~myacct/services.cgi">https://mysoc.nus.edu.sg/~myacct/services.cgi</a></p>
-<p><strong>Create a GitHub Account</strong></p>
-<p>Create a <a href="https://www.github.com">GitHub</a> account if you do not have one.  This account should stay with you for your professional career.  So choose the username wisely.</p>
-<p><strong>Get a Head-Start with Unix and Vim</strong></p>
-<p>If you did not register for the <a href="https://nus-unix-workshop.github.io/2021-s1">SoC Unix@Home Workshop</a>, you can still head to the website and take a look at the notes and follow through with the examples.  If you have questions or face any issues, ask on <a href="https://piazza.com/class/kdgunoizhic105">Piazza</a>.</p>
-</div>
+<p>We have actually seen it in action.  Recall the expression for Generation Z:</p>
+<p><code>(birth_year &gt;= 1995) &amp;&amp; (birth_year &lt;= 2005)</code>.  </p>
+<p>To check for NOT Generation Z, we can write it as</p>
+<p><code>!((birth_year &gt;= 1995) &amp;&amp; (birth_year &lt;= 2005))</code>,</p>
+<p>which according to De Morgan's law, is the same as</p>
+<p><code>!(birth_year &gt;= 1995) || !(birth_year &lt;= 2005)</code>,</p>
+<p>which is just</p>
+<p><code>(birth_year &lt; 1995) || (birth_year &gt; 2005)</code>,</p>
+<p>exactly as we have written before!</p>
+<h2 id="problem-set-10">Problem Set 10</h2>
+<h3 id="problem-101">Problem 10.1</h3>
+<p>Negate the following logical expression, then apply De Morgan's Law to simplify the resulting expression.  Assume all variable names mentioned are boolean variables.</p>
+<p>(a) <code>(x &gt; 1) &amp;&amp; (y != 10)</code></p>
+<p>(b) <code>!eating &amp;&amp; drinking</code></p>
+<p>(C) <code>(has_cs2030 || has_cs2113) &amp;&amp; has_cs2040c</code></p>
+<h3 id="problem-102">Problem 10.2</h3>
+<p>In the code below, replace <code>???</code> with the appropriate assertion.  What will be printed?</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">something</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">score</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// { ??? }</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">score</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">score</span> <span class="o">+=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// { ??? }</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cs1010_println_string</span><span class="p">(</span><span class="s">&quot;ok&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">cs1010_println_string</span><span class="p">(</span><span class="s">&quot;failed&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
                 
               
               
@@ -780,14 +1028,28 @@ updated throughout the semester.</li>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
+          <a href="09-logical-exp.html" title="9. Logical Expressions" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                9. Logical Expressions
+              </div>
+            </div>
+          </a>
         
-          <a href="about.html" title="About CS1010" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+        
+          <a href="ex00.html" title="0. Echo, Divide, Quadratic" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                About CS1010
+                0. Echo, Divide, Quadratic
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

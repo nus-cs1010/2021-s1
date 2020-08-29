@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/index.html">
+        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/08-cut.html">
       
       
       <link rel="shortcut icon" href="assets/images/favicon.png">
@@ -17,7 +17,7 @@
     
     
       
-        <title>Home - CS1010 Programming Methodology</title>
+        <title>08 cut - CS1010 Programming Methodology</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#announcements" class="md-skip">
+        <a href="#example-max-of-two-numbers" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Home
+              08 cut
             
           </span>
         </div>
@@ -166,20 +166,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="index.html" title="Home" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="index.html" title="Home" class="md-nav__link">
       Home
     </a>
-    
   </li>
 
     
@@ -653,8 +644,30 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-max-of-two-numbers" class="md-nav__link">
+    Example: Max of two numbers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#else" class="md-nav__link">
+    Else
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -670,98 +683,97 @@
                   
                 
                 
-                <h1 id="announcements">Announcements</h1>
-<div class="admonition announcement">
-<p class="admonition-title">Notes for Lecture 4 Available</p>
-<p>Sat Aug 29 10:15:34 +08 2020</p>
-<p>We will cover <a href="08-if-else.html">Unit 8</a>, <a href="09-logical-exp.html">Unit 9</a>, and <a href="10-assert.html">Unit 10</a> in Lecture 4.  The notes have been posted.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Catch Up Session</p>
-<p>Fri Aug 28 11:57:46 +08 2020</p>
-<p>The <a href="https://piazza.com/class/kdgunoizhic105?cid=90#">Piazza Q&amp;A Page for tomorrow's catch-up session</a> is now open and will remain open for the next 24 hours.  </p>
-<p>Please post your questions and vote for questions that you would like us to answer live tomorrow.</p>
-<p>The link to Zoom can be found at <a href="https://piazza.com/class/kdgunoizhic105?cid=7">the usual place</a>.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Bonus Quiz: Using the CS1010 PE</p>
-<p>We added a <a href="https://luminus.nus.edu.sg/modules/c7b362a0-6aee-4b22-b4da-f9e8074249fd/quiz/be9a394a-0887-45e6-b5a2-019d8c843dd5/attempt-secure">bonus diagnostic quiz</a> on using the CS1010 PE for you to self-diagnose your basic understanding of the usage of the CS1010 PE nodes.  This quiz is due next Thursday 10am as usual.</p>
-<p>This quiz carries the same weight as the rest of the quizzes.  Recall
-that we will take the best 10 out of all the quizzes in CS1010 to compute your marks.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Exercise 0 Posted</p>
-<p>Fri Aug 28 05:12:47 +08 2020</p>
-<p>In case you missed the lab yesterday, here is <a href="ex00.html">Exercise 0</a>, a warm-up to get your ready to write some C code and prepare for the coming assignments.</p>
-<p>Exercise 0 is not graded but it is important that you complete it before Assignment 1, which is going to be released next week.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Slides, Video, and Quiz for Lecture 3</p>
-<p>Mon Aug 24 17:24:46 +08 2020</p>
-<p>Here you go: </p>
+                  <h1>08 cut</h1>
+                
+                <h2 id="example-max-of-two-numbers">Example: Max of two numbers</h2>
+<p>Let's switch to another example: suppose we have three variables, <code>x</code>, <code>y</code>, and <code>max</code>, and we want to set <code>max</code> to the maximum of <code>x</code> and <code>y</code>.</p>
+<p>Consider the following code snippet:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span> 
+<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Take a moment to understand the code above, and see if you can figure out what is wrong.</p>
+<p>When we think about writing conditionals, we have to exhaustively reason about what are all the possible scenarios that could occur.  In this example, we need to think about what are the possible relationships between <code>x</code> and <code>y</code> when we compare <code>x</code> an <code>y</code>.  There are actually three possibilities!</p>
 <ul>
-<li><a href="slides/cs1010-lec3.html#1" target="_blank">Slides</a>, </li>
-<li><a href="https://mediaweb.ap.panopto.com/Panopto/Pages/Viewer.aspx?id=67ba3d34-94a6-4469-9a14-ac2100749280" target="blank">Video</a></li>
-<li><a href="https://luminus.nus.edu.sg/modules/c7b362a0-6aee-4b22-b4da-f9e8074249fd/quiz/9eb19ff0-601f-4fd3-aaa8-4ed1db83e1ef/attempt-secure">Quiz</a></li>
+<li><code>x &gt; y</code>: in this case, <code>x</code> is larger and we set <code>max</code> to <code>x</code></li>
+<li><code>y &gt; x</code>: in this case, <code>y</code> is larger and we set <code>max</code> to <code>y</code></li>
+<li><code>x == y</code>: in this case, both are equally large, so the maximum of the two can be either <code>x</code> or <code>y</code>.</li>
 </ul>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Notes for Lecture 3 and for Using C in CS1010</p>
-<p>Fri Aug 21 16:18:17 +08 2020</p>
-<p>We will cover <a href="05-first-c.html">Unit 5</a>, <a href="06-cs1010-io.html">Unit 6</a>, and <a href="07-arithmetic-ops.html">Unit 7</a> in Lecture 3.  The notes have been posted.</p>
-<p>We have also posted notes on using C in CS1010:</p>
-<ul>
-<li><a href="c-in-cs1010.html">C in CS1010</a> lists and explains the features of C that are banned or discouraged in this module;</li>
-<li><a href="library.html">CS1010 I/O library</a> documents the APIs provided by the <code>libcs1010</code> library, something that we provide to shield the pain and danger of using <code>printf</code> and <code>scanf</code> from you;</li>
-<li><a href="style.html">C Style</a> documents the programming style that we should all follow in CS1010.</li>
-<li><a href="messages.html">Compiler Messages</a> lists the common warnings and errors that students encounter in CS1010.  This list will be 
-updated throughout the semester.</li>
-</ul>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Slides, Video, Quiz for Lecture 2</p>
-<p>Mon Aug 17 14:59:16 +08 2020</p>
-<p>The <a href="slides/cs1010-lec2.html#1" target="_blank">slides</a>, <a href="https://mediaweb.ap.panopto.com/Panopto/Pages/Viewer.aspx?id=aba5dda1-82ce-4fea-9867-ac1a0071d36c">video</a>, and <a href="https://luminus.nus.edu.sg/modules/c7b362a0-6aee-4b22-b4da-f9e8074249fd/quiz/3b0b7775-68e2-4412-94fe-33ab4abc9ff6/attempt-secure">post-lecture quiz</a> for Lecture 2 are now available.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Notes for Lecture 2 Posted</p>
-<p>Fri Aug 14 21:54:24 +08 2020</p>
-<p>We will cover <a href="03-func.html">Unit 3</a> and <a href="04-type.html">Unit 4</a> in Lecture 2.  The notes have been posted.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Lecture 1 </p>
-<p>Mon Aug 10 14:17:40 +08 2020</p>
-<p>Lecture 1 has been recorded and posted.  <a href="https://mediaweb.ap.panopto.com/Panopto/Pages/Viewer.aspx?id=2be0d84b-76d7-4bb0-a865-ac1300714e1d" target="_blank">You can watch it here</a>.</p>
-<p>Please read through the notes and watch the lecture.  After that, you can try the 
-<a href="https://luminus.nus.edu.sg/modules/c7b362a0-6aee-4b22-b4da-f9e8074249fd/quiz/fd0b97de-cfa4-4881-8860-19785b9510df/attempt" target="_blank">post-lecture diagnostic quiz</a> to test your own understanding.</p>
-<p>The <a href="slides/cs1010-lec1.html#1" target="_blank">slides</a> are posted as well.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Notes for Lecture 1 Posted</p>
-<p>Sun Aug  9 07:20:35 +08 2020</p>
-<p>We will cover <a href="01-program.html">Unit 1</a> and <a href="02-algo.html">Unit 2</a> in our very first lecture.  You can always check out the notes under the menu items notes.</p>
-</div>
-<div class="admonition announcement">
-<p class="admonition-title">Getting Ready for CS1010</p>
-<p>Welcome to CS1010!  Here are some things that you can do while waiting for the semester to start.</p>
-<p><strong>Take a Look at General CS1010 Information</strong></p>
-<p>Take a look at the <a href="about.html">crucial information about CS1010</a> here.  Scan through the <a href="outcomes.html">learning outcomes</a> to know what you are expected to learn in this module.</p>
-<p>Note down the <a href="about.html">important dates</a> on your calendar.</p>
-<p><strong>Read about CS1010 Policies</strong></p>
-<p>The <a href="policies.html">general policies</a> for CS1010 is posted.  Go through it to see what is expected.</p>
-<p><strong>Read Feedback on CS1010 from Two Years Ago</strong></p>
-<p>This semester's CS1010 will be conducted in a similar style with the version in 2018. Read <a href="docs/feedback-1819-s1.pdf">the comments from that batch of students</a> to know what to expect.</p>
-<p><strong>Explore Some Additional Readings</strong></p>
-<p>Some extra reading materials curated by Wei Tsang are <a href="readings.html">available</a>.  In particular, check out the articles under <em>Must Read</em> section.  If you have some programming background and are wondering why we are teaching C, read the articles under <em>Why C</em> section.</p>
-<p><strong>Enable Your Piazza Account</strong></p>
-<p>You should have received an email inviting you to create a Piazza account and enroll in the module Q&amp;A forum.  Please join CS1010 on Piazza.</p>
-<p><strong>Enable Your SoC Account</strong></p>
-<p>Go to <a href="https://mysoc.nus.edu.sg/~newacct">https://mysoc.nus.edu.sg/~newacct</a> and create your SoC Unix Account if you have not done so.  Activate "General Unix Servers" and "The SoC Compute Cluster" in MySoC here: <a href="https://mysoc.nus.edu.sg/~myacct/services.cgi">https://mysoc.nus.edu.sg/~myacct/services.cgi</a></p>
-<p><strong>Create a GitHub Account</strong></p>
-<p>Create a <a href="https://www.github.com">GitHub</a> account if you do not have one.  This account should stay with you for your professional career.  So choose the username wisely.</p>
-<p><strong>Get a Head-Start with Unix and Vim</strong></p>
-<p>If you did not register for the <a href="https://nus-unix-workshop.github.io/2021-s1">SoC Unix@Home Workshop</a>, you can still head to the website and take a look at the notes and follow through with the examples.  If you have questions or face any issues, ask on <a href="https://piazza.com/class/kdgunoizhic105">Piazza</a>.</p>
-</div>
+<p>In the code above, <code>max</code> is not set properly if <code>x == y</code>!</p>
+<p>The following code adds the third case and arbitrarily chooses to set <code>max</code> to <code>y</code> if both <code>x</code> and <code>y</code> have the same value.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span> 
+<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<h2 id="else">Else</h2>
+<p>The code snippet above now correctly sets <code>max</code> to the maximum of <code>x</code> and <code>y</code>.
+The code, however, is not very satisfying, since we compare between <code>x</code> and <code>y</code> three times.   Let's see how we can reduce the number of comparisons to one.  We are going to do some <em>refactoring</em> of the code above.</p>
+<p>First, observe that the "true block" for <code>x &lt; y</code> and <code>x == y</code> are the same, and we can combine it into a single comparison <code>x &lt;= y</code>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span> 
+<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Second, observe that if <code>x &gt; y</code> is false, then <code>x &lt;= y</code> must be true.  We say that <code>x &gt; y</code> and <code>x &lt;= y</code> are <em>negation</em> (or opposite) of each other.  So, the check for <code>x &lt;= y</code> is redundant -- checking <code>x &gt; y</code> is enough to tell us if <code>x &lt;= y</code>.  We can re-write the code above as:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">max</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>The word <code>else</code> as seen above is another C keyword -- it must be used in conjunction with <code>if</code> to indicate an alternate path of execution if the logical expression is false.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">logical</span> <span class="n">expression</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span> 
+  <span class="s">&quot;true block&quot;</span><span class="o">:</span> <span class="n">statements</span> <span class="n">to</span> <span class="n">be</span> <span class="n">executed</span> <span class="k">if</span> <span class="n">expression</span> <span class="n">evaluates</span> <span class="n">to</span> <span class="nb">true</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="s">&quot;false block&quot;</span><span class="o">:</span> <span class="n">statements</span> <span class="n">to</span> <span class="n">be</span> <span class="n">executed</span> <span class="k">if</span> <span class="n">expression</span> <span class="n">evaluates</span> <span class="n">to</span> <span class="nb">false</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
                 
               
               
@@ -776,27 +788,6 @@ updated throughout the semester.</li>
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
-        
-        
-          <a href="about.html" title="About CS1010" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                About CS1010
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
