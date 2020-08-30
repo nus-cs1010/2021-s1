@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="stylesheets/cs1010.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/dark.css">
+<title>CS1010 AY20/21 S1 Lecture 2</title>
+<meta charset="utf-8">
+</head>
+<body>
+<textarea id="source">
+class: middle, center
+
+# Lecture 4
+
+### 31 August 2020
+
+Unit 8: **Conditionals**<br>
+Unit 9: **Logical Expression**<br>
+Unit 10: **Assertion**<br>
+
+
+---
+class: middle
+
+## Tutorial/Lab 2
+
+- Problem Sets from Unit 3, 5, and 8. 
+- Assignment 1
+
+---
+class: middle
+
+## Assignment 1
+
+- Release this Thursday
+- Due next Tuesday
+
+---
+class: middle
+
+## Please read
+
+- [How Not to Go About a Programming Assignment](http://people.irisa.fr/Martin.Quinson/Teaching/how-not-to-code.pdf)
+- [About Assignments in CS1010](assignments.md)
+- [General CS1010 Policies](policy.md)
+
+---
+class: middle
+<table width=100% height=100%>
+	<tr style="height: 50%">
+	<td style="border-right:solid 1px; border-bottom:solid 1px;">
+		<h5 style="margin:0px";>
+			Problem Solving
+		</h5>
+		<ul style="margin:1px;font-size:80%;">
+		<li>decomposition
+		<li>recursion
+		<li>flowchart
+		<li>
+		<li>
+		</ul>
+	</td>
+	<td style="border-bottom:solid 1px;">
+		<h5 style="margin:0px";>
+			C Language/Syntax
+		</h5>
+		<ul style="margin:1px;font-size:80%;">
+		<li>types 
+		<li>functions 
+		<li>arithmetic ops 
+		<li>
+		<li>
+		</ul>
+	</td>
+	</tr>
+	<tr style="height: 50%">
+	<td style="border-right:solid 1px; border-bottom:none;">
+		<h5 style="margin:0px";>
+			Behavioural/Mental Model
+		</h5>
+		<ul style="margin:1px;font-size:80%;">
+		<li>machine code
+		<li>data in memory
+		<li>types
+		</ul>
+	</td>
+	<td style="border-bottom:none;">
+		<h5 style="margin:0px";>
+			Tools/Good Practices
+		</h5>
+		<ul style="margin:1px;font-size:80%;">
+		<li>clang
+		<li>vim
+		<li>bash
+		</ul>
+	</td>
+	</tr>
+</table>
+---
+class: middle
+
+<table width=100% height=100%>
+	<tr style="height: 50%">
+	<td style="border-right:solid 1px; border-bottom:solid 1px;">
+		<h5 style="margin:0px";>
+			Problem Solving
+		</h5>
+		<ul style="margin:1px;font-size:80%;">
+		<li>decomposition
+		<li>recursion
+		<li>flowchart
+		<li>conditionals
+		<li>assertion
+		</ul>
+	</td>
+	<td style="border-bottom:solid 1px;">
+		<h5 style="margin:0px";>
+			C Language/Syntax
+		</h5>
+		<ul style="margin:1px;font-size:80%;">
+		<li>types 
+		<li>functions 
+		<li>arithmetic ops 
+		<li>if-else
+		<li>logical expression
+		</ul>
+	</td>
+	</tr>
+	<tr style="height: 50%">
+	<td style="border-right:solid 1px; border-bottom:none;">
+		<h5 style="margin:0px";>
+			Behavioural/Mental Model
+		</h5>
+		<ul style="margin:1px;font-size:80%;">
+		<li>machine code
+		<li>data in memory
+		<li>types
+		</ul>
+	</td>
+	<td style="border-bottom:none;">
+		<h5 style="margin:0px";>
+			Tools/Good Practices
+		</h5>
+		<ul style="margin:1px;font-size:80%;">
+		<li>clang
+		<li>vim
+		<li>bash
+		</ul>
+	</td>
+	</tr>
+</table>
+---
+class: middle,wide
+
+.fit[![max](../figures/max-flowchart/max-flowchart.001.png)]
+
+---
+class: middle,wide
+
+.fit[![max](../figures/max-flowchart/max-flowchart.010.png)]
+
+---
+class: middle,wide
+
+.small[
+```C
+long factorial(long n)
+{
+  long answer;
+  if (n == 0) {
+    answer = 1;
+  } else {
+    answer = n * factorial(n - 1);
+  }
+  return answer;
+}
+```
+]
+
+---
+class: middle
+
+| Score                       | Letter Grade |
+| --------------------------- | ------------ |
+| 8 or higher                 | A            |
+| Less than 8 but 5 or higher | B            |
+| Less than 5 but 3 or higher | C            |
+| Less than 3                 | D            |
+
+---
+class: middle
+
+
+| Score       | Letter Grade |
+| ----------- | ------------ |
+| 8 or higher | A            |
+| Less than 8 | See Table 1  |
+
+---
+class: middle
+
+Table 1 (less than 8)
+
+| Score       | Letter Grade |
+| ----------- | ------------ |
+| 5 or higher | B            |
+| Less than 5 | See Table 2  |
+
+---
+class: middle
+
+Table 2 (less than 5)
+
+| Score       | Letter Grade |
+| ----------- | ------------ |
+| 3 or higher | C            |
+| Less than 3 | D            |
+
+---
+class: middle
+
+.tiny[
+```C
+void print_score(double score)
+{
+  if (score >= 8) {
+    cs1010_println_string("A");
+  } else { // Table 1
+    if (score >= 5) {
+      cs1010_println_string("B");
+    } else { // Table 2
+      if (score >= 3) {
+        cs1010_println_string("C");
+      } else {
+        cs1010_println_string("D");
+      }
+    }
+  }
+}
+```
+]
+
+---
+class: middle
+
+Rewritten with `else if` 
+.tiny[
+```C
+void print_score(double score)
+{
+  if (score >= 8) {
+    cs1010_println_string("A");
+  } else if (score >= 5) {
+    cs1010_println_string("B");
+  } else if (score >= 3) {
+    cs1010_println_string("C");
+  } else {
+    cs1010_println_string("D");
+  }
+}
+```
+]
+---
+class: middle
+
+This is accepted in C (but not CS1010)
+.tiny[
+```C
+void print_score(double score)
+{
+  if (score >= 8)
+    cs1010_println_string("A");
+  else if (score >= 5)
+    cs1010_println_string("B");
+  else if (score >= 3)
+    cs1010_println_string("C");
+  else
+    cs1010_println_string("D");
+}
+```
+]
+---
+class: middle
+
+When will cause `good effort` to be printed?
+
+.tiny[
+```C
+void print_score(double score)
+{
+  if (score >= 8)
+    cs1010_println_string("A");
+  else if (score >= 5)
+    cs1010_println_string("B");
+  else if (score >= 3)
+    cs1010_println_string("C");
+  else
+    cs1010_println_string("D");
+    cs1010_println_string("good effort");
+}
+```
+]
+
+---
+class: middle
+
+What will get printed in `score` is 5?
+
+.tiny[
+```C
+if (score >= 8)
+  if (late_penalty != 0)
+      cs1010_println_string("late submission");
+else
+  cs1010_println_string("you can do better!");
+```
+]
+
+---
+class: middle,center
+
+.fit[![meme](figures/meme/bad-good-curly.png)]
+
+---
+class: middle
+
+.smaller[
+```C
+if (max_so_far < x) {
+  max_so_far = x;
+} else {
+}
+```
+can be simplified to
+```C
+if (max_so_far < x) {
+  max_so_far = x;
+}
+```
+]
+
+---
+class: middle
+
+Set `max` to the larger of `x` and `y`
+
+.smaller[
+```C
+if (x > y) {
+  max = x;
+}
+if (x < y) {
+  max = y;
+}
+```
+]
+
+What is wrong?
+
+---
+class: middle
+
+.smaller[
+```C
+if (x > y) {
+  max = x;
+}
+if (x < y) {
+  max = y;
+}
+if (x == y) {
+  max = y;
+}
+```
+]
+
+---
+class: middle
+
+.smaller[
+```C
+if (x > y) {
+  max = x;
+}
+if (x <= y) {
+  max = y;
+}
+```
+]
+
+---
+class: middle
+
+.smaller[
+```C
+if (x > y) {
+  max = x;
+} else {
+  max = y;
+}
+```
+]
+
+---
+class: middle
+
+.smaller[
+```C
+if (x > y) {
+  max = x;
+} else {
+  max = y;
+}
+```
+]
+
+---
+class: middle
+```C
+long factorial(long n)
+{
+  long answer;
+  if (n == 0) {
+    answer = 1;
+  } else {
+    answer = n * factorial(n - 1);
+  }
+  return answer;
+}
+```
+]
+
+---
+class: middle
+```C
+long factorial(long n)
+{
+  if (n == 0) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+```
+
+---
+class: middle
+
+`else` can be skipped
+
+```C
+long factorial(long n)
+{
+  if (n == 0) {
+    return 1;
+  } 
+  return n * factorial(n - 1);
+}
+```
+---
+class: middle
+
+The `?:` operator.
+
+
+.tiny[
+```C
+long factorial(long n)
+{
+  return n == 0 ? 1 : n * factorial(n - 1);
+}
+```
+]
+
+---
+class: middle,center
+
+.fit[![meme](figures/meme/bad-good-tertiary.png)]
+
+---
+class: middle
+
+What could go wrong?
+
+.tiny[
+```C
+double z;
+
+if (z == 0.03) {
+  :
+}
+```
+]
+
+---
+class: middle
+
+Comparing floating-point numbers:
+
+.tiny[
+```C
+double z;
+double e = 0.0000001; // epsilon
+if (fabs(z - 0.03) < e) {
+  :
+}
+```
+]
+
+---
+class: middle,center
+
+.fit[![meme](figures/meme/bad-good-fp-equal.png)]
+
+
+---
+class: middle
+
+The `bool` type in C can take either the value `true` or `false`.
+
+To use:
+```C
+#include <stdbool.h> 
+```
+
+---
+class: middle
+
+Old fashion C uses `int` as boolean.  `0` for false, non-zero for true.
+
+```C
+if (x - y) {
+
+}
+```
+
+---
+class: middle,center
+
+.fit[![meme](figures/meme/bad-good-bool.png)]
+
+
+---
+class: middle
+
+- Comparison operations : `>`, `<`, `>=`, `<=`, `==`, `!=`
+- Logical operators : `&&`, `||`, `!`
+
+---
+class: middle,center
+
+## De Morgan's Law
+
+`!(e1 && e2)`
+
+is the same as
+
+`(!e1) || (!e2)`
+
+---
+class: middle,center
+
+## De Morgan's Law
+
+`!(e1 || e2)`
+
+is the same as
+
+`(!e1) && (!e2)`
+
+---
+class: middle,center
+
+## Short Circuiting
+
+### `a && b`
+### `a || b`
+
+---
+class: middle
+
+Which one is better?
+
+.tiny[
+```C
+if (number < 100000 && is_prime(number)) {
+ :
+}
+```
+]
+
+.tiny[
+```C
+if (is_prime(number) && number < 100000) {
+ :
+}
+```
+]
+
+---
+class: middle,center
+
+## Assertion
+
+```
+// { ... }
+```
+
+A logical expression that must be true at a given point in a program.
+
+---
+class: middle
+
+```C
+x = 1;
+// { x == 1 }
+```
+
+---
+class: middle
+
+```C
+if (x > y) {
+  max = x;
+} else {
+  max = y;
+}
+```
+
+how can we be sure that `max` is now the larger of the two?
+
+---
+class: middle
+
+```C
+if (x > y) {
+
+  max = x;
+
+} else {
+
+  max = y;
+
+}
+```
+---
+class: middle
+
+.tiny[
+```C
+  if (score >= 8) {
+    cs1010_println_string("A");
+  } else {
+    if (score >= 5) {
+      cs1010_println_string("B");
+    } else {
+      if (score >= 3) {
+        cs1010_println_string("C");
+      } else {
+        cs1010_println_string("D");
+      }
+    }
+  }
+```
+]
+
+When will `C` gets printed?
+
+---
+class: middle
+
+.tiny[
+```C
+  if (score >= 8) {
+    cs1010_println_string("A");
+  } else {
+
+    if (score >= 5) {
+      cs1010_println_string("B");
+    } else {
+
+      if (score >= 3) {
+
+        cs1010_println_string("C");
+      } else {
+        cs1010_println_string("D");
+      }
+    }
+  }
+```
+]
+
+When will `C` gets printed?
+
+
+---
+class: bottom
+
+.tiny[
+Version: 1.0
+
+Last Updated: Mon Aug 24 11:34:14 +08 2020
+]
+</textarea>
+
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+<script src="javascripts/counter.js">
+</script>
+<script>
+remark.macros.scale = function (percentage) {
+	var url = this;
+	return '<img src="' + url + '" style="width: ' + percentage + '" />';
+};
+// ![:scale 50%](image.jpg)
+
+var slideshow = remark.create({
+    navigation: {
+	    scroll: false
+	},
+	ratio: '16:9',
+	highlightStyle: 'monokai',
+    slideNumberFormat: 'AY2021 S1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%current%',
+});
+ // Setup MathJax
+  MathJax.Hub.Config({
+	  tex2jax: {
+		inlineMath: [['$', '$']],
+		// inlineMath: [['$', '$'], ['\\(', '\\)']],
+		displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		skipTags: ['script', 'noscript', 'style', 'pre']
+	  }
+  });
+
+  MathJax.Hub.Configured();
+</script>
+</body>
+</html>

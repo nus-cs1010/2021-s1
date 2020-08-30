@@ -41,6 +41,9 @@ h1, h2 {
 	font-size: 30pt;
 	background-size: contain;
 }
+.wide {
+    padding: 1em 2em 1em 2em;
+}
 .large {
 	font-size: 200%;
 }
