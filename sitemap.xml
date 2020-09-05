@@ -1,135 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://nus-cs1010.github.io/2021-s1/index.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://nus-cs1010.github.io/2021-s1/midterm.html</loc>
+     <lastmod>2020-09-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://nus-cs1010.github.io/2021-s1/pe1.html</loc>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/about.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/outcomes.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/schedule.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/accounts.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/policies.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/01-program.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/02-algo.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/03-func.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/04-type.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/05-first-c.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/06-cs1010-io.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/07-arithmetic-ops.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/08-if-else.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/09-logical-exp.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/10-assert.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://nus-cs1010.github.io/2021-s1/11-loop.html</loc>
+     <lastmod>2020-09-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://nus-cs1010.github.io/2021-s1/12-invariant.html</loc>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/ex00.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/ex01.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/assignment.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/as01.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/readings.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/c-in-cs1010.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/library.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/style.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/messages.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/environments.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/unix.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/clang.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/vim.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/tmate.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/zoom.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/archive.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://nus-cs1010.github.io/2021-s1/1819s1.html</loc>
-     <lastmod>2020-09-04</lastmod>
+     <lastmod>2020-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

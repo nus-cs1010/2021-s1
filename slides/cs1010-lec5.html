@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="stylesheets/cs1010.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/dark.css">
+<title>CS1010 AY20/21 S1 Lecture 5</title>
+<meta charset="utf-8">
+</head>
+<body>
+<textarea id="source">
+class: middle, center
+
+# Lecture 5
+
+### 7 September 2020
+
+Admin Matters<br>
+Unit 11: **Loops**<br>
+Unit 12: **Loop Invariants**<br>
+
+---
+class: middle
+
+### Reminders
+
+- Assignment 1 due tomorrow night (23:59)
+- Please read:
+    - [How Not to Go About a Programming Assignment](http://people.irisa.fr/Martin.Quinson/Teaching/how-not-to-code.pdf)
+    - [About Assignments in CS1010](assignments.md)
+    - [General CS1010 Policies](policy.md)
+
+---
+class: middle
+
+### Reminders
+
+- Assignment 1 will be graded solely on correctness (including syntax, practices, approach, and logic) and whether the instructions given are followed.
+
+---
+class: middle
+
+### Reminders
+
+- Make sure that your submission compiles cleanly without errors or warnings.  (0 if cannot compile; -1 per warning)
+- Marks will be deducted if you do not demonstrate a full understanding of what we taught so far.
+
+---
+
+### Upcoming releases:
+
+- Exercise 2 on Tuesday.
+- Assignment 2 on Thursday
+    - Additional grading criteria: [style](style.md).
+- Anonymous feedback exercise on tutors and instructors
+
+---
+class: middle
+
+### Midterm
+
+- **Date**: 28 September, 2020 (Monday)
+- **Time**: 12noon to 2pm
+- **Duration**: 60 minutes
+- **Online** via Luminus Quiz
+- **10%** of your grade
+
+---
+class: middle
+
+### Midterm
+- **Scope:**
+    - Units 1-12
+	- Tutorials 1-4
+	- Assignments 1-2
+- **Format:** MCQs and Short Structured Questions
+- Open book (printed/written notes only)
+
+---
+class: middle
+
+### Read for more details:
+
+- [SoC E-Exam procedure](https://mysoc.nus.edu.sg/academic/e-exam-sop-for-students/)
+- [CS1010 midterm instructions](midterm.md)
+
+---
+class: middle
+
+### Practical Exam I
+
+- Date: 3 October 2020 (Saturday)
+- Time: 9 am to 12noon
+- Duration: 2 hours 30 minutes
+- Online via `ssh` into restricted PE hosts
+
+---
+class: middle
+
+### Practical Exam I
+
+- **Scope:** same as midterm
+- **Format:** Five programming problems
+- Open Book (printed/written notes only)
+- Calculator allowed (but not needed)
+- Criteria: correctness and style
+
+---
+class: middle
+
+# Warning
+
+### Pay attention to exam regulations.  Disciplinary actions will be taken against violators.
+
+---
+class: bottom,center,wide
+background-image: url(figures/lec5/lec5.001.png)
+
+max(L,k)
+
+---
+class: bottom,center,wide
+background-image: url(figures/lec5/lec5.002.png)
+
+Loop body: what we do repeatedly
+
+---
+class: bottom,center,wide
+background-image: url(figures/lec5/lec5.003.png)
+
+Loop initialization: what we do to set up the loop
+
+---
+class: bottom,center,wide
+background-image: url(figures/lec5/lec5.004.png)
+
+Loop update: what changes from one iteration to the next?
+
+---
+class: bottom,center,wide
+background-image: url(figures/lec5/lec5.005.png)
+
+Terminating condition: when to stop repeating?
+
+---
+class: bottom,center,wide
+background-image: url(figures/lec5/lec5.012.png)
+
+Finding factorial recursively
+
+---
+class: bottom,center,wide
+background-image: url(figures/lec5/lec5.006.png)
+
+Finding factorial with a loop
+
+---
+class: middle,wide
+background-image: url(figures/lec5/lec5.007.png)
+
+---
+class: bottom,wide
+background-image: url(figures/lec5/lec5.008.png)
+
+.tiny[
+```C
+for (initialize; condition; update) {
+   body;
+}
+```
+]
+
+---
+class: bottom,wide
+background-image: url(figures/lec5/lec5.008.png)
+
+.tiny[
+```C
+initialize;
+while (condition) {
+   body and update;
+}
+```
+]
+
+---
+class: bottom,wide
+background-image: url(figures/lec5/lec5.009.png)
+
+.tiny[
+```C
+initialize;
+do {
+   body and update;
+} while (condition);
+```
+]
+
+---
+class: middle,wide
+
+---
+class: middle,wide
+background-image: url(figures/lec5/lec5.010.png)
+
+---
+class: middle,center
+
+## Assertion
+
+```
+// { ... }
+```
+
+A logical expression that must be true at a given point in a program.
+
+---
+class: middle
+
+```C
+x = 1;
+// { x == 1 }
+```
+---
+class: middle
+
+.tiny[
+```C
+if (x > y) {
+  max = x;
+  // { (x > y) && (max == x) && (max > y) }
+} else {
+  max = y;
+  // { (x <= y) && (max == y) && (max >= x) }
+}
+// { ((max == x) || (max == y)) &&
+//   (max >= x) && (max >= y) }
+```
+]
+
+---
+class: middle
+
+What does `y` count?
+.tiny[
+```C
+long count(long n) {
+  long y = 0;
+  long x = n;
+  while (x > 0) {
+    x -= 1;
+    if (x % 5 == 0) {
+      y += 1;
+    }
+  }
+  return y;
+}
+```
+]
+---
+class: middle,center
+
+## Loop Invariant
+
+An assertion that holds (i) before the loop; (ii) after the loop; and (iii) after each iteration of the loop.
+
+(but may be temporarily false during the loop)
+---
+class: middle
+
+.tiny[
+```C
+long factorial(long n)
+{
+  if (n == 0) {
+      return 1;
+  }
+  long product = 1;
+  long i = 1;
+  while (i < n) {
+
+    i += 1;
+
+    product *= i;
+
+  }
+  return product;
+}
+
+```
+]
+---
+class: bottom
+
+.tiny[
+Version: 1.0
+
+Last Updated: Sat Sep  5 18:35:10 +08 2020
+]
+</textarea>
+
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+<script src="javascripts/counter.js">
+</script>
+<script>
+remark.macros.scale = function (percentage) {
+	var url = this;
+	return '<img src="' + url + '" style="width: ' + percentage + '" />';
+};
+// ![:scale 50%](image.jpg)
+
+var slideshow = remark.create({
+    navigation: {
+	    scroll: false
+	},
+	ratio: '16:9',
+	highlightStyle: 'monokai',
+    slideNumberFormat: 'AY2021 S1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%current%',
+});
+ // Setup MathJax
+  MathJax.Hub.Config({
+	  tex2jax: {
+		inlineMath: [['$', '$']],
+		// inlineMath: [['$', '$'], ['\\(', '\\)']],
+		displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		skipTags: ['script', 'noscript', 'style', 'pre']
+	  }
+  });
+
+  MathJax.Hub.Configured();
+</script>
+</body>
+</html>
