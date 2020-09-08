@@ -925,6 +925,28 @@ This command will compile all your C files with the appropriate settings and if 
 <li>
 <p>The test cases are given in the <code>inputs</code> and <code>outputs</code> subdirectory.  You can use <code>cat</code> or <code>less</code> to look at the content of these test cases.  You can add more test cases or edit the given ones if needed.</p>
 </li>
+<li>
+<p><strong>NEW</strong> To compile individial program, type
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make &lt;program&gt;
+</code></pre></div>
+</td></tr></table>
+    For instance, the command
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make echo
+</code></pre></div>
+</td></tr></table>
+    compiles <code>echo.c</code> into <code>echo</code> without testing or running <code>clang-tidy</code> on it.</p>
+</li>
+<li>
+<p><strong>NEW</strong> To test individial program, run
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>./test.sh &lt;program&gt;
+</code></pre></div>
+</td></tr></table></p>
+<p>For instance, the command
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>./test.sh echo
+</code></pre></div>
+</td></tr></table>
+tests <code>echo</code> without compiling or running <code>clang-tidy</code> on <code>echo.c</code>.</p>
+</li>
 </ul>
 <h3 id="submission">Submission</h3>
 <p>When you are ready, run the following command to submit:</p>
@@ -962,7 +984,7 @@ This command will compile all your C files with the appropriate settings and if 
 </li>
 </ul>
 <h3 id="questions">Questions</h3>
-<p>To acclimatize you to the PE1 condition, the questions for this assignment is included in the skeleton instead, in a file named `questions.md"</p>
+<p>To acclimatize you to the PE1 condition, the questions for this assignment is included in the skeleton instead, in a file named <code>questions.md</code>.</p>
 <p>You should learn how to use <code>vim</code> to open both the <code>.c</code> file and the <code>questions.md</code> side-by-side (see <a href="https://nus-cs1010.github.io/2021-s1/vim.html#splitting-vims-viewport">https://nus-cs1010.github.io/2021-s1/vim.html#splitting-vims-viewport</a>)</p>
                 
               

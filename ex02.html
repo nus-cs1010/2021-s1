@@ -1008,6 +1008,28 @@ This command will compile all your C files with the appropriate settings and if 
 <li>
 <p>The test cases are given in the <code>inputs</code> and <code>outputs</code> subdirectory.  You can use <code>cat</code> or <code>less</code> to look at the content of these test cases.  You can add more test cases or edit the given ones if needed.</p>
 </li>
+<li>
+<p><strong>NEW</strong> To compile individial program, type
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make &lt;program&gt;
+</code></pre></div>
+</td></tr></table>
+    For instance, the command
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make echo
+</code></pre></div>
+</td></tr></table>
+    compiles <code>echo.c</code> into <code>echo</code> without testing or running <code>clang-tidy</code> on it.</p>
+</li>
+<li>
+<p><strong>NEW</strong> To test individial program, run
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>./test.sh &lt;program&gt;
+</code></pre></div>
+</td></tr></table></p>
+<p>For instance, the command
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>./test.sh echo
+</code></pre></div>
+</td></tr></table>
+tests <code>echo</code> without compiling or running <code>clang-tidy</code> on <code>echo.c</code>.</p>
+</li>
 </ul>
 <h3 id="submission">Submission</h3>
 <p>When you are ready, run the following command to submit:</p>
