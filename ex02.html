@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/as02.html">
+        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/ex02.html">
       
       
       <link rel="shortcut icon" href="assets/images/favicon.png">
@@ -17,7 +17,7 @@
     
     
       
-        <title>Assignment 2: Collatz, Triangle, Prime, Pattern - CS1010 Programming Methodology</title>
+        <title>Exercise 2: Binary, Rectangle, Fibonacci - CS1010 Programming Methodology</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#assignment-2-collatz-triangle-prime-pattern" class="md-skip">
+        <a href="#exercise-2-binary-rectangle-fibonacci" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Assignment 2: Collatz, Triangle, Prime, Pattern
+              Exercise 2: Binary, Rectangle, Fibonacci
             
           </span>
         </div>
@@ -782,13 +782,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#deadline" class="md-nav__link">
-    Deadline
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#prerequisite" class="md-nav__link">
     Prerequisite
   </a>
@@ -860,9 +853,7 @@
                   
                 
                 
-                <h1 id="assignment-2-collatz-triangle-prime-pattern">Assignment 2: Collatz, Triangle, Prime, Pattern</h1>
-<h3 id="deadline">Deadline</h3>
-<p>15 September 2020 (Tuesday), 23:59 pm.</p>
+                <h1 id="exercise-2-binary-rectangle-fibonacci">Exercise 2: Binary, Rectangle, Fibonacci</h1>
 <h3 id="prerequisite">Prerequisite</h3>
 <ul>
 <li>You are able to access the <a href="environments.html">CS1010 programming environment</a>.</li>
@@ -876,22 +867,21 @@
 <h3 id="learning-objectives">Learning Objectives</h3>
 <ul>
 <li>Be comfortable writing C programs that involve loops with while/for/do-  while statements.</li>
-<li>Be able to write C programs that are neat and readable, adhering to 
-  a common prescribed coding convention.</li>
+<li>Be able to write C programs that are neat and readable, adhering to a common prescribed coding convention.</li>
 </ul>
 <h3 id="setup">Setup</h3>
 <ul>
-<li>First, accept the assignment on GitHub.</li>
+<li>First, <a href="https://classroom.github.com/a/_iDb9np0">accept the assignment on GitHub</a></li>
 <li>Then, log in to one of the hosts of <a href="environments.html">CS1010 programming environment</a> and run</li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>~cs1010/get-as02
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>~cs1010/get-ex02
 </code></pre></div>
 </td></tr></table>
 
 <ul>
-<li>You should see the folder <code>as02-&lt;github username&gt;</code> in your home directory with the assignment skeleton inside.</li>
+<li>You should see the folder <code>ex02-&lt;github username&gt;</code> in your home directory with the assignment skeleton inside.</li>
 <li>Inside that directory, you should see the following files:<ul>
-<li><code>collatz.c</code>, <code>triangle.c</code>, <code>prime.c</code>, and <code>pattern.c</code> are the most important files.  They are the skeleton C code that you should edit to solve the assignment and the only files that you should change.</li>
+<li><code>binary.c</code>, <code>rectangle.c</code>, <code>fibonacci.c</code> are the most important files.  They are the skeleton C code that you should edit to solve the assignment and the only files that you should change.</li>
 <li><code>inputs</code> and <code>outputs</code> are subdirectories that contain test inputs and test outputs.  We use the same convention as Exercise 0 so you should already be familiar with them.</li>
 <li><code>Makefile</code>: This is the configuration for the tool <code>make</code> that we use to automate the compilation and testing of the programs.  </li>
 <li><code>test.sh</code>: This is a bash script for testing your code.</li>
@@ -902,7 +892,7 @@
 </ul>
 <h3 id="solving-the-assignments">Solving The Assignments</h3>
 <ul>
-<li>Edit the files <code>collatz.c</code>, <code>triangle.c</code>, <code>prime.c</code>, and <code>pattern.c</code> to solve the corresponding question as described below.</li>
+<li>Edit the files <code>binary.c</code>, <code>rectangle.c</code>, and <code>fibonacci.c</code> to solve the corresponding question as described below.</li>
 <li>
 <p>To compile and run tests with the sample inputs and outputs:
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>make
@@ -916,11 +906,11 @@ This command will compile all your C files with the appropriate settings and if 
 </ul>
 <h3 id="submission">Submission</h3>
 <p>When you are ready, run the following command to submit:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>~cs1010/submit-as02
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>~cs1010/submit-ex02
 </code></pre></div>
 </td></tr></table>
 
-<p>The four files <code>collatz.c</code>, <code>triangle.c</code>, <code>prime.c</code>, and <code>pattern.c</code> will be uploaded to GitHub.  You can submit multiple times, but only the last submission will be graded.</p>
+<p>The four files <code>binary.c</code>, <code>rectangle.c</code>, and <code>fibonacci.c</code> will be uploaded to GitHub.  You can submit multiple times, but only the last submission will be graded.</p>
 <div class="admonition warning">
 <p class="admonition-title">Manipulating Files on GitHub</p>
 <p>Do not manipulate (e.g., edit) the files on GitHub or close the pull requests on GitHub.  Doing so would interfere with the scripts and the grading/testing process of CS1010.</p>
@@ -932,23 +922,12 @@ This command will compile all your C files with the appropriate settings and if 
 </td></tr></table>
 
 <p>and change it to something like:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>@author Carol Danvers (Group G02)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>@author Jane Hopper (Group G05)
 </code></pre></div>
 </td></tr></table>
 
 <h3 id="grading">Grading</h3>
-<p>This assignment contributes towards 3% of your final grade.  The total marks for this assignment are 30 marks.  For Programming Assignment 2,</p>
-<ul>
-<li>
-<p>1 mark is allocated to style.  This is an almost free mark -- as long as the code is neat and readable, and adhere to CS1010 coding convention, you will get this 1 mark.  </p>
-</li>
-<li>
-<p>1 mark is allocated to efficiency for <code>prime</code> and <code>pattern</code>.  While we do not require adcanced fast algorithm to check for primarity, your code should not waste time by doing redundant work.  You can use the programs <code>~cs1010/prime</code> and <code>~cs1010/pattern</code> as a reference.  As a guideline, your code should run in the same order of magnitudes in terms of time, as these two reference programs.  In particular, <code>prime</code> should not take more than two minutes to pass all the provided test cases in <code>inputs</code>.</p>
-</li>
-<li>
-<p>The rest of the marks are allocated to correctness -- this includes the correctness of syntax, practices, approach, and logic, and whether you correctly follow our instructions.  Note that <em>even if your solution produces the correct output every time, it may not get full marks if the approach is wrong.</em></p>
-</li>
-</ul>
+<p>This is an ungraded exercise. </p>
 <h3 id="questions">Questions</h3>
 <p>To acclimatize you to the PE1 condition, the questions for this assignment is included in the skeleton instead, in a file named `questions.md"</p>
 <p>You should learn how to use <code>vim</code> to open both the <code>.c</code> file and the <code>questions.md</code> side-by-side (see <a href="https://nus-cs1010.github.io/2021-s1/vim.html#splitting-vims-viewport">https://nus-cs1010.github.io/2021-s1/vim.html#splitting-vims-viewport</a>)</p>
