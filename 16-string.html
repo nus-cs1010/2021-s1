@@ -9,7 +9,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
-        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/12-invariant.html">
+        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/16-string.html">
       
       
       <link rel="shortcut icon" href="assets/images/favicon.png">
@@ -17,7 +17,7 @@
     
     
       
-        <title>12. Loop Invariant - CS1010 Programming Methodology</title>
+        <title>16. String - CS1010 Programming Methodology</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#unit-12-reasoning-about-loops" class="md-skip">
+        <a href="#unit-16-strings" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              12. Loop Invariant
+              16. String
             
           </span>
         </div>
@@ -451,87 +451,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        12. Loop Invariant
-        <span class="md-nav__icon md-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
-        </span>
-      </label>
-    
-    <a href="12-invariant.html" title="12. Loop Invariant" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="12-invariant.html" title="12. Loop Invariant" class="md-nav__link">
       12. Loop Invariant
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#learning-objectives" class="md-nav__link">
-    Learning Objectives
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-assertions" class="md-nav__link">
-    Using Assertions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#loop-invariant" class="md-nav__link">
-    Loop Invariant
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#problem-set-12" class="md-nav__link">
-    Problem Set 12
-  </a>
-  
-    <nav class="md-nav" aria-label="Problem Set 12">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#problem-121" class="md-nav__link">
-    Problem 12.1
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -575,11 +499,115 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="16-string.html" title="16. String" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        16. String
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="16-string.html" title="16. String" class="md-nav__link md-nav__link--active">
       16. String
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    Learning Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#just-a-char-array" class="md-nav__link">
+    Just a char Array
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#special-characters" class="md-nav__link">
+    Special Characters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#string-literals" class="md-nav__link">
+    String Literals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#empty-string" class="md-nav__link">
+    Empty String
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-bugs" class="md-nav__link">
+    Common Bugs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cs1010-io-library" class="md-nav__link">
+    CS1010 I/O Library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-set-16" class="md-nav__link">
+    Problem Set 16
+  </a>
+  
+    <nav class="md-nav" aria-label="Problem Set 16">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-161" class="md-nav__link">
+    Problem 16.1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -939,30 +967,58 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-assertions" class="md-nav__link">
-    Using Assertions
+  <a href="#just-a-char-array" class="md-nav__link">
+    Just a char Array
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#loop-invariant" class="md-nav__link">
-    Loop Invariant
+  <a href="#special-characters" class="md-nav__link">
+    Special Characters
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#problem-set-12" class="md-nav__link">
-    Problem Set 12
+  <a href="#string-literals" class="md-nav__link">
+    String Literals
   </a>
   
-    <nav class="md-nav" aria-label="Problem Set 12">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#empty-string" class="md-nav__link">
+    Empty String
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-bugs" class="md-nav__link">
+    Common Bugs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cs1010-io-library" class="md-nav__link">
+    CS1010 I/O Library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-set-16" class="md-nav__link">
+    Problem Set 16
+  </a>
+  
+    <nav class="md-nav" aria-label="Problem Set 16">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#problem-121" class="md-nav__link">
-    Problem 12.1
+  <a href="#problem-161" class="md-nav__link">
+    Problem 16.1
   </a>
   
 </li>
@@ -988,193 +1044,89 @@
                   
                 
                 
-                <h1 id="unit-12-reasoning-about-loops">Unit 12: Reasoning About Loops</h1>
+                <h1 id="unit-16-strings">Unit 16: Strings</h1>
 <h2 id="learning-objectives">Learning Objectives</h2>
 <p>After this unit, students should:</p>
 <ul>
-<li>understand how assertions can be derived in a loop;</li>
-<li>understand how assertions can help us understand the behavior of a loop</li>
-<li>understand what is a loop invariant;</li>
-<li>be able to argue why a given loop invariant is true;</li>
-<li>be able to derive simple loop invariant of a given loop.</li>
+<li>understand that a string is an array of chars</li>
+<li>know that a string always ends with a <code>char</code> with value 0 (or <code>'\0'</code>)</li>
+<li>be aware of the different types of special chars</li>
+<li>understand what the empty string represents</li>
+<li>be able to use the CS1010 library functions to read strings and arrays of strings</li>
 </ul>
-<h2 id="using-assertions">Using Assertions</h2>
-<p>We have seen how we can use assertions to reason about the state of our program at different points of execution for conditional <code>if</code>-<code>else</code> statements.  We can apply the same techniques to loops.  Take the simple program below:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="nf">count</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kt">long</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="kt">long</span> <span class="n">x</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
-  <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// line A</span>
-    <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="c1">// line B</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// line C</span>
-      <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="c1">// line D</span>
-  <span class="k">return</span> <span class="n">y</span><span class="p">;</span>
-<span class="p">}</span>
+<h2 id="just-a-char-array">Just a <code>char</code> Array</h2>
+<p>We have seen strings as a sequence of characters stored in double-quotes, e.g., "hello!".  In C, a string is nothing more than just an array of <code>char</code> values (Recall from <a href="05-first-c.html#other-types-in-c">Unit 5</a> that <code>sizeof char</code> is 1).</p>
+<p>The only thing special about a string is that it <em>always</em> end with a <code>0</code> value (note: not character '0' which has a value of 48, but the value 0).  Since the character with value 0 is called the null character, written as <code>'\0'</code>, we refer that strings in C as null-terminated strings.</p>
+<p>In C, we distinguish between a string and a <code>char</code> by the quotes used.  String uses double quotes <code>"</code>, while a <code>char</code> uses a single quote <code>'</code>.  So we can do the following and they are equivalent:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">hello1</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="sc">&#39;h&#39;</span><span class="p">,</span> <span class="sc">&#39;e&#39;</span><span class="p">,</span> <span class="sc">&#39;l&#39;</span><span class="p">,</span> <span class="sc">&#39;l&#39;</span><span class="p">,</span> <span class="sc">&#39;o&#39;</span><span class="p">,</span> <span class="sc">&#39;!&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+<span class="kt">char</span> <span class="n">hello2</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;hello!&quot;</span><span class="p">;</span>
 </code></pre></div>
 </td></tr></table>
 
-<p>Before we continue, study this program and try to analyze what the function is counting and returning.</p>
-<p>To do this more systematically, we can use assertions.  Let's ask ourselves: what can be said about the variables <code>x</code> and <code>y</code> at Lines A, B, C?  Let start with <code>x</code> first.</p>
-<ul>
-<li>Line A is the first line after entering the loop, so we can reason that to enter the loop (the first time or subsequent times), <code>x &gt; 0</code>.</li>
-<li>We can also derive that, at Line A, <code>x &lt;= n</code>.  This is less obvious: since we initialize the <code>x</code> to <code>n</code>, and after Line A, we only decrease <code>x</code>, <code>x</code> can never be more than <code>n</code>.</li>
-<li>At Line B, we decrease <code>x</code> by 1, so now <code>x &gt;= 0 &amp;&amp; x &lt; n</code> must be true.</li>
-<li>At Line C, <code>x % 5 == 0</code> (i.e., x is multiple of 5) must <em>also</em> be true (since it is in the true block of the <code>if</code> block).</li>
-<li>At Line D, we already exit from the loop, and the only way to exit here is that <code>x &gt; 0</code> is false.  So we know that <code>x &lt;= 0</code>.</li>
-</ul>
-<p>Let's annotate the code with the assertions:
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="nf">count</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kt">long</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="kt">long</span> <span class="n">x</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
-  <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// { (x &gt; 0) &amp;&amp; (x &lt;= n) }</span>
-    <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="c1">// { (x &gt;= 0) &amp;&amp; (x &lt; n) }</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// { (x &gt;= 0) &amp;&amp; (x &lt; n) &amp;&amp; x is multiple of 5 }</span>
-      <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="c1">// { x &lt;= 0 }</span>
-  <span class="k">return</span> <span class="n">y</span><span class="p">;</span>
-<span class="p">}</span>
+<p>Of course, nobody initializes a string in the first way above.</p>
+<p>We can also skip the size of the array, as mentioned above, or, more commonly, use a <code>char *</code> type for a variable storing a constant string.
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">hello3</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;hello!&quot;</span><span class="p">;</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">hello4</span> <span class="o">=</span> <span class="s">&quot;hello!&quot;</span><span class="p">;</span>
 </code></pre></div>
 </td></tr></table></p>
-<p>What can be said about <code>y</code>?  It should be clear now that we increment <code>y</code> for every value between 0 and <code>n-1</code> (inclusive) that is a multiple of 5, based on the condition on Line C.  That is, it is counting the number of multiple of 5s between 0 and n-1.</p>
-<h2 id="loop-invariant">Loop Invariant</h2>
-<p>In the last unit, we say that there are five questions that we have to think about when designing loops.  The fifth question is: what is the <em>loop invariant</em>?  A loop invariant is an assertion that is true before the loop, after each iteration of the loop, and after the loop.  Thinking about the loop invariant is helpful to convince ourselves that a loop is correct, or to identify bugs in a loop.</p>
-<p>Let's see an example of a loop invariant.  Consider the example of calculating a factorial using a loop as before.  To make the invariant simpler, let's tweak the loop slightly and start looping from <code>i</code> equals 1 up to <code>n</code>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="nf">factorial</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="kt">long</span> <span class="n">product</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="c1">// Line A: before the loop</span>
-  <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// Line B: beginning of each iteration</span>
-    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="c1">// Line C</span>
-    <span class="n">product</span> <span class="o">*=</span> <span class="n">i</span><span class="p">;</span>
-    <span class="c1">// Line D: after each iteration</span>
-  <span class="p">}</span>
-  <span class="c1">// Line E: after the loop</span>
-  <span class="k">return</span> <span class="n">product</span><span class="p">;</span>
-<span class="p">}</span>
+<h2 id="special-characters">Special Characters</h2>
+<p>The null character is written as <code>'\0'</code>.  The use of the backslash <code>\</code> creates an escape sequence that can be used to denote characters that would otherwise not visible on the screen.  For instance, besides <code>'\0'</code>, we will likely encounter <code>'\n'</code> (the newline character) <code>'\t'</code> (the tab character) and <code>'\a'</code> (the beep character) regularly.  </p>
+<p>Furthermore, since we already use <code>\</code> to indicate the escape sequence, <code>'</code> to indicate a character, and <code>"</code> to indicate a string, to use these characters, we need to "escape" them -- we use <code>'\\'</code> for the backslash character, <code>'\''</code>, the single quote character, and the <code>'\"'</code> double-quote character.</p>
+<h2 id="string-literals">String Literals</h2>
+<p>A <em>string literal</em> refers to a string written between two <code>"</code> characters, such as <code>"Hello world!"</code>.  Such a string is still internally stored as an array of <code>char</code> values.  The location these arrays are stored depends on the platform, but usually, they are stored in a read-only region of the memory called the <code>text</code> region.  These strings are not meant to be modified.  Hence, trying something like this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="o">*</span><span class="n">str1</span> <span class="o">=</span> <span class="s">&quot;Hello!&quot;</span><span class="p">;</span>
+<span class="n">str1</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="p">;</span>
 </code></pre></div>
 </td></tr></table>
 
-<p>Line A is where we want to identify the assertion before the loop; Line D is where we want to identify the assertion after each iteration of the loop.  Line E is where we want to identify the assertion after the loop.  We added Lines B and C to help us reason about the assertions at Line D.</p>
-<p>For this function, the assertion at line A, D, and E are the same, they are all <code>{ product == i! }</code>!  Thus, we say that this loop has the invariant <code>{ product == i! }</code>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="nf">factorial</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="kt">long</span> <span class="n">product</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="c1">// A: { product == i! }</span>
-  <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// B: { product == i! }</span>
-    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="c1">// C: { product == (i-1)! }</span>
-    <span class="n">product</span> <span class="o">*=</span> <span class="n">i</span><span class="p">;</span>
-    <span class="c1">// D: { product == i! }</span>
-  <span class="p">}</span>
-  <span class="c1">// E: { product == i! }</span>
-  <span class="k">return</span> <span class="n">product</span><span class="p">;</span>
-<span class="p">}</span>
+<p>is not allowed and would crash your program.</p>
+<p>The following, however, is OK:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">str2</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;Hello!&quot;</span><span class="p">;</span>
+<span class="n">str2</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;.&#39;</span><span class="p">;</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>The difference between the two is that <code>str1</code> points to a read-only region in the memory, while <code>str2</code> contains a copy of the string on the stack.</p>
+<h2 id="empty-string">Empty String</h2>
+<p>We commonly use the empty string <code>""</code> to indicate a special condition or to initialize a string variable, where appropriate.  The empty string is nothing but an array where the 0-th element is '\0'.</p>
+<h2 id="common-bugs">Common Bugs</h2>
+<p>A very common bug for beginners to C programming is to forget about the terminiating <code>'\0'</code> char in a string.  For instance, suppose you want to copy one string to another:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="kt">char</span> <span class="n">src</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;hello!&quot;</span>
+    <span class="kt">char</span> <span class="n">dst</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dst</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">src</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
 
-<p>Let's see why the assertions labeled above hold.</p>
-<p>On Line A, the assertion is obvious.  Since <code>product</code> is 1, <code>i</code> is 1, and 1! is 1.  The assertion <code>{ product == i! }</code> holds.</p>
-<p>Let's look at Line B.  We need to argue that this assertion holds for every iteration.  This is a bit more tricky.  Let's first consider the first iteration and come back to the subsequent iterations later.  In the first iteration, the values of <code>product</code> and <code>i</code> do not change from Line A to Line B, so the assertion still holds.</p>
-<p>On Line 11, we increment <code>i</code>.  So, at Line C of the first iteration, we have <code>{ product == (i-1)! }</code>.</p>
-<p>On Line 13, we update <code>product</code> by multiplying it with <code>i</code>.  So, we have on Line D of the first iteration that <code>{ product == i! }</code> again.</p>
-<p>Now, let's look at the second iteration.  There is no change to the variables <code>product</code> and <code>i</code>, between Line D of the first iteration and Line B of the second iteration.  So the assertion <code>{ product == i! }</code> still holds.  From this point onwards, we can apply the same argument over and over again, and see that the assertions on Lines B, C, and D hold for every iteration!</p>
-<div class="admonition tips">
-<p class="admonition-title">Link to CS1231</p>
-<p>A more succinct and formal way to prove the above is to use a technique call <em>induction</em> taught in CS1231.  We will not require the use of induction in CS1010, however.</p>
-</div>
-<p>After we exit the loop, we can also assert that <code>i == n</code>, and so combining <code>product == i! &amp;&amp; i == n</code> we have <code>product == n!</code>, which is what we want.  The loop therefore correctly computes <code>n!</code>.</p>
-<h2 id="problem-set-12">Problem Set 12</h2>
-<h3 id="problem-121">Problem 12.1</h3>
-<p>(a) Consider the algorithm to find the maximum among a list of integers <span class="arithmatex">\(L\)</span> with at least one element (<span class="arithmatex">\(k &gt; 0\)</span>) below:</p>
-<p><img alt="max" src="figures/max-flowchart/max-flowchart.013.png" /></p>
-<p>The loop invariant for this loop must hold at the three points marked with the red dots: before the loop, after each iteration of the loop, and after the loop.</p>
-<p>State the loop invariant, explain why it holds at the three points above, and threfore argue that the loop above correctly finds the maximum among the elements of the list <span class="arithmatex">\(L\)</span>.  </p>
-<p>(b) Now, consider a slightly different algorithm to find the maximum among a list of integers <span class="arithmatex">\(L\)</span> with at least one element (<span class="arithmatex">\(k &gt; 0\)</span>) below:</p>
-<p><img alt="max" src="figures/max-flowchart/max-flowchart.014.png" /></p>
-<p>Explain why you cannot find a loop invariant similar to Part (a) above, and therefore show that the algorithm does not correctly find the maximum in certain cases.</p>
+<p>The string variable <code>dst</code> is not terminated and C would treat whatever follows the memory location
+as part of the string!</p>
+<p>The other common bug is to create an array that is too small for the string.  Suppose you use the function <code>strcpy</code> provided by C to copy the string instead.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="kt">char</span> <span class="n">src</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;hello!&quot;</span>
+    <span class="kt">char</span> <span class="n">dst</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+    <span class="n">strcpy</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">src</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+
+<p><code>strcpy</code> would properly copy the characters <code>'h'</code>, <code>'e'</code>,  .. <code>'!'</code>, AND the terminating <code>'\0'</code>.  That's a total of 7 characters.  The code, however, only allocated the space of 6 characters for <code>dst</code>.  So overflow occurs and your program might crash.</p>
+<p>So, remember to always account for the "invincible friend" at the end of every string, and leave a space for it.</p>
+<h2 id="cs1010-io-library">CS1010 I/O Library</h2>
+<p>The CS1010 I/O library provides two functions, one to read a word (separated by white-space characters) and the other to read a line (separated by a newline character).  They are <code>cs1010_read_word()</code> and <code>cs1010_read_line()</code> respectively.  We can also read multiple words and multiple lines with <code>cs1010_read_word_array()</code> and <code>cs1010_read_line_array()</code>.  The results are stored in an array of strings.</p>
+<h2 id="problem-set-16">Problem Set 16</h2>
+<h3 id="problem-161">Problem 16.1</h3>
+<p>Write the following functions (without calling the standard C functions declared in <code>&lt;string.h&gt;</code> such as <code>strlen</code>, <code>strcmp</code>, <code>strstr</code>):</p>
+<p>(a) <code>long string_length(char *str)</code> return the length (i.e., the number of characters) of the string <code>str</code>.</p>
+<p>(b) <code>bool string_equal(char *str1, char *str2)</code> return <code>true</code> if the two strings <code>str1</code> and <code>str2</code> contains exactly the same content, <code>false</code> otherwise.  (Note: <code>str1 == str2</code> does not compare if two strings have the same content. (Why?))</p>
+<p>(c) <code>char *string_in_string(char *needle, char *haystack)</code> returns a pointer to the first character of the first occurrence of <code>needle</code> in <code>haystack</code> if found.  If <code>needle</code> does not occur anywhere in <code>haystack</code>, return NULL.  If <code>needle</code> is an empty string, <code>haystack</code> is returned.</p>
                 
               
               
@@ -1193,7 +1145,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="11-loop.html" title="11. Loops" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="15-array.html" title="15. Array" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -1202,19 +1154,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                11. Loops
+                15. Array
               </div>
             </div>
           </a>
         
         
-          <a href="13-call-stack.html" title="13. Call Stack" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="ex00.html" title="0. Echo, Divide, Quadratic" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                13. Call Stack
+                0. Echo, Divide, Quadratic
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
