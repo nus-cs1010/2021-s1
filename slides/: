@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="stylesheets/cs1010.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/dark.css">
+<title>CS1010 AY20/21 S1 Lecture 6</title>
+<meta charset="utf-8">
+</head>
+<body>
+<textarea id="source">
+class: middle, center
+
+# Lecture 6
+
+### 14 September 2020
+
+Admin Matters<br>
+Unit 13: **Call Stack**<br>
+Unit 14: **Pointer**<br>
+Unit 15: **Array**<br>
+Unit 16: **String**<br>
+
+---
+class: middle
+
+### Assignment 2
+
+- Due tomorrow night (23:59)  (XX has completed)
+- Graded on correctness (including syntax, practices, approach, and logic), style, and efficiency.
+
+---
+class: middle
+
+### Reminders
+
+- Make sure that your submission compiles cleanly without errors or warnings.  (0 if cannot compile; -1 per warning)
+- Marks will be deducted if you do not demonstrate a full understanding of what we taught so far.
+
+---
+class: middle
+
+# Warning
+
+### Plagiarism will not be tolerated.   You may discuss how to solve the assignment, but make sure you code up the solution yourself.
+
+---
+
+### Upcoming releases:
+
+- Exercise 3 on Tuesday
+- Practical Exam I from 18/19 on Tuesday
+- Assignment 3 on Thursday
+    - Grading criteria: same as Assignment 2
+
+---
+class: middle
+
+### Reminders
+
+- **Catch-up II**: 19 September, 2020 (Saturday) 10am
+- **Midterm**: 28 September, 2020 (Monday)
+- **PE I**: 3 October 2020 (Saturday)
+
+---
+class: middle
+
+# Warning
+
+### Pay attention to exam regulations.  Disciplinary actions will be taken against violators.
+
+---
+class: middle
+
+### Tutorial/Lab 4
+
+- Problem Sets 12
+- Programming Exercises
+
+---
+class: middle,center
+
+# Call Stack
+
+---
+.cols[
+.fifty[
+.tiny[
+```C
+int main() 
+{ 
+  long x = 1; 
+  long y; 
+}
+```
+]
+]
+.fifty[
+
+]]
+
+---
+.cols[
+.fifty[
+.tiny[
+```C
+int main() 
+{ 
+  long x = 1; 
+  long y; 
+}
+```
+]
+]
+.fifty[
+.fit[![call-stack](figures/stack/stack.001.png)]
+]]
+
+---
+.cols[
+.fifty[
+.tiny[
+```C
+long add(long a, long b)
+{    
+	long sum;    
+	sum = a + b;    
+	return sum;  
+} 
+
+int main()
+{    
+	long x = 1;    
+	long y;    
+	y = add(x, 10);  
+}
+```
+]
+]
+.fifty[
+
+]]
+
+---
+.cols[
+.fifty[
+.tiny[
+```C
+long add(long a, long b)
+{    
+	long sum;    
+	sum = a + b;    
+	return sum;  
+} 
+
+int main()
+{    
+	long x = 1;    
+	long y;    
+	y = add(x, 10);  
+}
+```
+]
+]
+.fifty[
+.fit[![call-stack](figures/stack/stack.002.png)]
+]]
+
+---
+.cols[
+.fifty[
+.tiny[
+```C
+long add(long a, long b)
+{    
+	long sum;    
+	sum = a + b;    
+	return sum;  
+} 
+
+int main()
+{    
+	long x = 1;    
+	long y;    
+	y = add(x, 10);  
+}
+```
+]
+]
+.fifty[
+.fit[![call-stack](figures/stack/stack.004.png)]
+]]
+---
+.cols[
+.fifty[
+.tiny[
+```C
+long add(long a, long b)
+{    
+	long sum;    
+	sum = a + b;    
+	a = 42;
+	return sum;  
+} 
+
+int main()
+{    
+	long x = 1;    
+	long y;    
+	y = add(x, 10);  
+}
+```
+]
+]
+.fifty[
+.fit[![call-stack](figures/stack/stack.003.png)]
+]]
+
+---
+.cols[
+.fifty[
+.tiny[
+```C
+long add(long a, long b)
+{    
+	long sum;    
+	sum = a + b;    
+	a = 42;
+	return sum;  
+} 
+
+int main()
+{    
+	long x = 1;    
+	long y;    
+	y = add(x, 10);  
+}
+```
+]
+]
+.fifty[
+.fit[![call-stack](figures/stack/stack.004.png)]
+]]
+
+
+---
+.cols[
+.fifty[
+.tiny[
+```C
+long add(long a, long b)
+{    
+	long sum;    
+	sum = a + b;    
+	a = 42;
+	return sum;  
+} 
+
+int main()
+{    
+	long x = 1;    
+	long y;    
+	y = add(x, 10);  
+}
+```
+]
+]
+.fifty[
+.fit[![call-stack](figures/stack/stack.004.png)]
+]]
+
+---
+.cols[
+.fifty[
+.tiny[
+```C
+void add(long sum, long a, 
+         long b)
+{
+  sum = a + b;
+}
+
+int main()
+{
+  long x = 1;
+  long sum;
+  add(sum, x, 10);
+}
+```
+]
+]
+.fifty[
+
+]]
+
+
+---
+.cols[
+.fifty[
+.tiny[
+```C
+void add(long sum, long a, 
+         long b)
+{
+  sum = a + b;
+}
+
+int main()
+{
+  long x = 1;
+  long sum;
+  add(sum, x, 10);
+}
+```
+]
+]
+.fifty[
+.fit[![call-stack](figures/stack/stack.005.png)]
+]]
+
+---
+.cols[
+.fifty[
+.tiny[
+```C
+void add(long sum, long a, 
+         long b)
+{
+  sum = a + b;
+}
+
+int main()
+{
+  long x = 1;
+  long sum;
+  add(sum, x, 10);
+}
+```
+]
+]
+.fifty[
+.fit[![call-stack](figures/stack/stack.006.png)]
+]]
+
+
+---
+.cols[
+.fifty[
+.tiny[
+```C
+void add(long sum, long a, 
+         long b)
+{
+  sum = a + b;
+}
+
+int main()
+{
+  long x = 1;
+  long sum;
+  add(sum, x, 10);
+}
+```
+]
+]
+.fifty[
+.fit[![call-stack](figures/stack/stack.007.png)]
+]]
+
+---
+class: middle
+
+## "Address of" operator: `&`
+
+- Every variable is stored some location in the memory
+- `&x` gives us the address of the memory location where `x` is stored.
+
+---
+class: bottom
+
+.tiny[
+Version: 1.1
+
+Last Updated: Mon Sep  7 10:37:22 +08 2020
+]
+</textarea>
+
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+<script src="javascripts/counter.js">
+</script>
+<script>
+remark.macros.scale = function (percentage) {
+	var url = this;
+	return '<img src="' + url + '" style="width: ' + percentage + '" />';
+};
+// ![:scale 50%](image.jpg)
+
+var slideshow = remark.create({
+    navigation: {
+	    scroll: false
+	},
+	ratio: '16:9',
+	highlightStyle: 'monokai',
+    slideNumberFormat: 'AY2021 S1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%current%',
+});
+ // Setup MathJax
+  MathJax.Hub.Config({
+	  tex2jax: {
+		inlineMath: [['$', '$']],
+		// inlineMath: [['$', '$'], ['\\(', '\\)']],
+		displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		skipTags: ['script', 'noscript', 'style', 'pre']
+	  }
+  });
+
+  MathJax.Hub.Configured();
+</script>
+</body>
+</html>
