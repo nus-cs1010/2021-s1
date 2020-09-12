@@ -16,12 +16,13 @@ class: middle, center
 
 ### 14 September 2020
 
+.smaller[
 Admin Matters<br>
 Unit 13: **Call Stack**<br>
 Unit 14: **Pointer**<br>
 Unit 15: **Array**<br>
 Unit 16: **String**<br>
-
+]
 ---
 class: middle
 
@@ -59,7 +60,7 @@ class: middle
 
 ### Reminders
 
-- **Catch-up II**: 19 September, 2020 (Saturday) 10am
+- **Catch-up II**: 21 September, 2020 (Monday) 12noon
 - **Midterm**: 28 September, 2020 (Monday)
 - **PE I**: 3 October 2020 (Saturday)
 
@@ -75,7 +76,7 @@ class: middle
 
 ### Tutorial/Lab 4
 
-- Problem Sets 12
+- Problem Sets 12-13
 - Programming Exercises
 
 ---
@@ -371,7 +372,7 @@ int main()
 ---
 class: middle
 
-## "Address of" operator: `&`
+## "Address of" operator `&`
 
 - Every variable is stored some location in the memory
 - `&x` gives us the address of the memory location where `x` is stored
@@ -380,7 +381,7 @@ class: middle
 ---
 class: middle
 
-## "Pointer" operator: `*`
+## "Pointer" operator `*`
 
 - Suppose we have a memory address `a`. `a` has the type address of T.  
 - `*a` tells us the value of type T stored in address `a`.
@@ -423,23 +424,323 @@ int main() {
 ```
 ]
 
+---
+
+.cols[
+.fifty[
+.tiny[
+```C
+double *addr;
+*addr = 1.0; // danger!
+```
+]
+]
+.fifty[
+.fit[![call-stack](figures/stack/stack.009.png)]
+]]
 
 ---
-## Rules About Pointers
 
-- A pointer to some type T can only points to a variable of type T 
+.cols[
+.fifty[
+.tiny[
+```C
+double c;
+double *addr;
+addr = &c;
+*addr = 1.0;
+// same as c = 1.0;
+```
+]
+]
+.fifty[
+.fit[![call-stack](figures/stack/stack.010.png)]
+]]
 
-- We cannot change the address of a variable (but can change what a pointer is pointing to)
 
-- We can perform add and subtract on pointers 
+---
+class: middle
+A pointer to some type T can only points to a variable of type T 
+
+```C
+double pi = 3.1415926;
+long radius = 5;
+double *addr;
+addr = &pi ; // ok
+addr = &radius; // not ok
+```
+
+---
+class: middle
+
+We cannot change the address of a variable (but can change what a pointer is pointing to)
+
+```C
+long x = 1;
+long y = 2;
+&x = &y;
+```
+
+---
+class: middle
+
+We can perform add and subtract on pointers 
+
+```C
+long x;
+long *ptr;
+x = 1;
+ptr = &x;
+ptr += 1;
+```
+
+Note: The value of `ptr` increases by one "unit", not one byte.
+
+---
+class: middle, center
+
+# Array
+
+---
+class: middle, center
+
+Array is a _compound data type_ that stores multiple values of the same type
+
+---
+class: middle
+
+```C
+long marks[10];
+```
+
+`marks` is an array that stores 10 `long` values.
+
+---
+class: middle
+
+```C
+long marks[10]; // declare
+marks[4] = 100; // write
+```
+
+`marks[4]` refers to the 5th element in the array `marks`.
+
+---
+class: middle
+
+#### Passing in array as a parameter
+
+.tiny[
+```C
+// function declaration
+long max(long list[], long len) {  // empty []
+  :
+}
+  :
+long marks[10];
+// function invocation
+max(marks, 10);  // just the name of the array
+```
+]
+---
+class: middle
+
+#### Using array as a lookup table
+
+.tiny[
+```C
+// Exercise 1: Days
+long days(long month)
+{
+  long days_in_month[12] = {31, 28, 31, 30, 31, 30, 
+      31, 31, 30, 31, 30, 31};
+  long days_since = 0;
+  for (long i = 0; i < month - 1; i += 1) {
+    days_since += days_in_month[i];
+  }
+  return days_since;
+}
+```
+]
+
+---
+class: middle
+
+#### Using array as a list
+
+.tiny[
+```C
+long max(long list[], long length)
+{
+  long max_so_far = list[0];
+  for (long i = 1; i != length; i += 1) {
+    if (list[i] > max_so_far) {
+      max_so_far = list[i];
+    }
+  }
+  return max_so_far;
+}
+
+```
+]
+
+---
+
+An array is stored contiguously in memory.
+
+.fit[![array](figures/stack/stack.010.png)
+
+---
+
+### Array decay
+
+```
+long marks[10];
+```
+`marks` decays into `&marks[0]`
+
+---
+class:middle
+
+.tiny[
+```C
+long a[2] = {0, 1};
+long b[2] = {0, 1};
+
+if (a == b) {  // always false
+  :
+}
+
+b = a; // not possible
+```
+]
+---
+class: middle
+.tiny[
+```C
+long max(long list[], long len) {
+  // only pointer is passed in
+}
+  :
+long marks[10];
+max(marks, 10);  // passing in only the pointer
+```
+]
+
+---
+class: middle
+
+#### Common bug: Index out of bound
+.tiny[
+```C
+int main()
+{
+  long a[10];
+  for (long i = 0; i <= 10; i += 1) {
+    a[i] = 1;
+  }
+}
+
+```
+]
+
+---
+class: middle
+
+Lots more details about C arrays in the notes. Including:
+
+- array initialization
+- avoid using variable-length array
+- how to read arrays with CS1010 I/O library
+- determining the size of the array
+
+---
+class: middle,center
+
+# String
+
+---
+class: middle
+
+### String in C
+- Just an array of `char` values
+- Always terminated by a value 0 (aka null or `\0`)
+
+---
+class: middle
+
+### Special Characters
+
+- `\0`: null character
+- `\n`: new line
+- `\t`: tab
+
+e.g.,
+.tiny[
+```C
+cs1010_println_string("group\tname\nC03\tJohn\n");
+```		
+]
+
+---
+class: middle
+
+### String Literals
+
+- Unmodifiable string between two double-quotes.
+- Stored not on the stack but in a read-only region of memory.
+
+---
+class: middle
+
+```C
+char *str1 = "hello!"
+str1[0] = 'j';  // error
+```
+
+`str1` is a pointer on the stack, pointing to a read-only memory.
+
+---
+class: middle
+
+```C
+char str2[7] = "hello!"
+str2[0] = 'j';  // ok
+```
+
+`str2[7]` is an array and contains a copy of the string "hello" on the stack.
+
+---
+class: middle
+
+### Common Bug I
+
+```C
+char src[6] = "hello!"
+char dst[6];
+for (long i = 0; i < 6; i += 1) {
+   dst[i] = src[i];
+}
+```
+
+---
+class: middle
+
+### Common Bug II
+
+```C
+char src[6] = "hello!"
+char dst[6];
+strcpy(dst, src);  
+```
 
 ---
 class: bottom
 
 .tiny[
-Version: 1.1
+Version: 1.0
 
-Last Updated: Mon Sep  7 10:37:22 +08 2020
+Last Updated: Sat Sep 12 20:53:42 +08 2020
 ]
 </textarea>
 
