@@ -533,8 +533,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-deference-operator" class="md-nav__link">
-    The Deference Operator
+  <a href="#the-dereference-operator" class="md-nav__link">
+    The Dereference Operator
   </a>
   
 </li>
@@ -995,8 +995,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-deference-operator" class="md-nav__link">
-    The Deference Operator
+  <a href="#the-dereference-operator" class="md-nav__link">
+    The Dereference Operator
   </a>
   
 </li>
@@ -1140,7 +1140,7 @@
 </td></tr></table></p>
 <p>Your results will most likely be different since the OS allocates different regions of the memory to this program every time it is run.  </p>
 <p><img alt="pointers" src="figures/pointers/pointers.001.png" /></p>
-<h2 id="the-deference-operator">The Deference Operator</h2>
+<h2 id="the-dereference-operator">The Dereference Operator</h2>
 <p>The dereference operator is the reversed of address-of and is denoted by <code>*</code>.  I call it "location-of-address".  We use this operator in two places:</p>
 <ul>
 <li>to declare an "address" variable, and</li>
@@ -1273,7 +1273,7 @@ After the line <code>ptr += 1</code>, using normal arithmetic operation, we woul
 </code></pre></div>
 </td></tr></table>
 
-<p>This deference can go on since <code>ptrptr</code> is also a variable and has been allocated in some memory location on the stack.  We rarely need to dereference more than twice in practice, but if the situation arises, such multiple layers of dereferencing are possible.</p>
+<p>This dereference can go on since <code>ptrptr</code> is also a variable and has been allocated in some memory location on the stack.  We rarely need to dereference more than twice in practice, but if the situation arises, such multiple layers of dereferencing are possible.</p>
 <h2 id="the-null-pointer">The <code>NULL</code> Pointer</h2>
 <p><code>NULL</code> is a special value that is used to indicate that a pointer is pointing to nothing.  In C, <code>NULL</code> is actually 0 (i.e., pointing to memory location 0).</p>
 <p>We use <code>NULL</code> to indicate that the pointer is invalid, typically to mean that we have not initialized the pointer or to flag an error condition.</p>
