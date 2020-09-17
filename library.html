@@ -983,10 +983,16 @@ Returns NULL if there is an error.  If the returned value is non-NULL, the calle
 </li>
 </ul>
 <h2 id="reading-of-multiple-values">Reading of Multiple Values</h2>
+<div class="admonition tips">
+<p class="admonition-title">Update to API</p>
+<p>In September AY20/21, we updated the API to take in a <code>long</code> instead of an <code>int</code> 
+for <code>cs1010_read_*_array</code> functions, to be consistent with the rest of the CS1010
+materials.</p>
+</div>
 <p>The CS1010 library also supports reading of multiple values.  </p>
 <ul>
 <li>
-<p><code>long* cs1010_read_long_array(int k)</code><br>
+<p><code>long* cs1010_read_long_array(long k)</code><br>
 Returns <code>k</code> numbers of <code>long</code> values read from the standard input stored in an array.  An error message will be printed (to <code>stderr</code>) for each input that is not a valid <code>long</code> value -- in which case the value <code>LONG_MAX</code> will be populated in the corresponding array element.  Returns NULL if there is a memory allocation error.  If the returned value is non-NULL, the caller is responsible for freeing the memory allocated by calling <code>free</code>.
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1005,7 +1011,7 @@ Returns <code>k</code> numbers of <code>long</code> values read from the standar
 </td></tr></table></p>
 </li>
 <li>
-<p><code>double* cs1010_read_double_array(int k)</code><br>
+<p><code>double* cs1010_read_double_array(long k)</code><br>
 Returns <code>k</code> numbers of <code>double</code> values read from the standard input stored in an array.  An error message will be printed (to <code>stderr</code>) for each input that is not a valid <code>double</code> value -- in which case the value <code>DBL_MAX</code> will be populated in the corresponding array element.<br />
 Returns NULL if there is a memory allocation error.  If the returned value is non-NULL, the caller is responsible for freeing the memory allocated by calling <code>free</code>.
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1025,7 +1031,7 @@ Returns NULL if there is a memory allocation error.  If the returned value is no
 </td></tr></table></p>
 </li>
 <li>
-<p><code>char** cs1010_read_word_array(int k)</code><br>
+<p><code>char** cs1010_read_word_array(long k)</code><br>
 Returns <code>k</code> white-space-separated words read from the standard input stored in an array.  The notion of "word" is the same to <code>cs1010_read_word()</code>.<br />
 Returns NULL if there is a memory allocation error.  If the returned value is non-NULL, the caller is responsible for freeing the memory allocated for each word and for the whole array by calling <code>free</code>.
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -1051,7 +1057,7 @@ Returns NULL if there is a memory allocation error.  If the returned value is no
 </td></tr></table></p>
 </li>
 <li>
-<p><code>char** cs1010_read_line_array(int k)</code><br>
+<p><code>char** cs1010_read_line_array(long k)</code><br>
 Returns <code>k</code> new-line-separated words read from the standard input stored in an array.  The notion of line is the same to <code>cs1010_read_line()</code>.<br />
 Returns NULL if there is a memory allocation error.  If the returned value is non-NULL, the caller is responsible for freeing the memory allocated for each line and for the whole array by calling <code>free</code>.
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -1112,6 +1118,11 @@ Print a given string <code>str</code> to the standard output.  These functions a
 </td></tr></table></p>
 </li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Printing single character</p>
+<p>There is no <code>cs1010_print_char</code> method.  You can use <code>putchar</code> from the C standard library
+for this purpose.</p>
+</div>
 <h2 id="clearing-screen">Clearing screen</h2>
 <p>The CS1010 library provides a function to clear your screen. 
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="n">cs1010_clear_screen</span><span class="p">();</span>
