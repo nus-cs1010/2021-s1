@@ -1136,14 +1136,10 @@
 <li>be able to declare and allocate multi-dimensional arrays on the stack and the heap</li>
 <li>understand how we can pass a multi-dimensional array into a function</li>
 <li>understand the differences in C syntax, between an array of pointers and a pointer to an array.</li>
-<li>
-<p>be able to declare and allocate jagged arrays.</p>
-</li>
-<li>
-<p>be able to read and write code that involves using
-At the beginning of Unit 15, we say that an array can hold one or more values of some type <span class="arithmatex">\(T\)</span>.  <span class="arithmatex">\(T\)</span> can also be an array.  So, we can have an array of array of <code>long</code>, for instance.  </p>
-</li>
+<li>be able to declare and allocate jagged arrays.</li>
 </ul>
+<h2 id="fixed-length-2d-array">Fixed Length 2D Array</h2>
+<p>At the beginning of Unit 15, we say that an array can hold one or more values of some type <span class="arithmatex">\(T\)</span>.  <span class="arithmatex">\(T\)</span> can also be an array.  So, we can have an array of array of <code>long</code>, for instance.  </p>
 <p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>long matrix[10][20];
 </code></pre></div>
 </td></tr></table>
@@ -1151,7 +1147,6 @@ Here, we have an array of 10 elements, and each element is an array of 20 <code>
 <p>When we access the elements in the array, we can use the notation <code>matrix[i][j]</code> (which is actually <code>(matrix[i])[j]</code>).</p>
 <p>Such an array is called a two-dimensional array, or 2D array.  We can have a 3D array, 4D array, and so on.</p>
 <p>We have seen three types of arrays.  On the stack, we have a fixed-length array and variable-length array.  On the heap, we have dynamically allocated arrays.  A 2D array can mix different types of array.  Since we discourage the use of variable length array, we will focus on fixed-length arrays and dynamically allocated arrays only.</p>
-<h2 id="fixed-length-2d-array">Fixed Length 2D Array</h2>
 <p>The example <code>matrix</code> above is a fixed-length array.  In the memory, a continuous space of 200 <code>long</code> values have been allocated, and we can visualize this is having 10 rows of <code>long</code> array, each array contains 20 columns of <code>long</code> values.</p>
 <p>With array decay, when we use the first level index of the array, <code>matrix[i]</code>, this is equivalent to <code>&amp;matrix[i][0]</code> (the address of the first element in matrix[i]), and it has the type <code>long *</code>.  Thus, if we want to pass individulal row of a 2D array into a function, we have two options for parameters declaration:</p>
 <ul>
