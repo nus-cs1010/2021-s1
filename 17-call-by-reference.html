@@ -1144,13 +1144,15 @@
                 
                 <h1 id="unit-17-call-by-value-call-by-reference">Unit 17: Call by Value &amp; Call by Reference</h1>
 <h2 id="learning-objectives">Learning Objectives</h2>
-<p>After completing this unit, students should:
-- understand the differences between pure and impure functions, and understand the drawbacks of writing impure functions in terms of reasoning about the logic of code
-- understand the differences between call-by-value and call-by-reference
-- understand the mechanism we can perform call-by-reference in C using stack and pointers
-- know the situations where call-by-reference is useful
-- be able to read and write code that uses call-by-references
-- know how to write Doxygen documentation to document the parameters of a function.</p>
+<p>After completing this unit, students should:</p>
+<ul>
+<li>understand the differences between pure and impure functions, and understand the drawbacks of writing impure functions in terms of reasoning about the logic of code</li>
+<li>understand the differences between call-by-value and call-by-reference</li>
+<li>understand the mechanism we can perform call-by-reference in C using stack and pointers</li>
+<li>know the situations where call-by-reference is useful</li>
+<li>be able to read and write code that uses call-by-references</li>
+<li>know how to write Doxygen documentation to document the parameters of a function.</li>
+</ul>
 <h2 id="pure-functions">Pure Functions</h2>
 <p>So far, in CS1010, we have considered a very "clean" notion of functions -- each function is a black box, it takes in zero or more parameters, and it returns zero or one value.  We also said that within this black box, whatever happens inside the function stays inside, and the function has no effect on the variables outside.  Such "effect-free" programming leads to code that is easy to reason about and understandable.  For instance, suppose we have a code like this:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
