@@ -1190,10 +1190,10 @@ Here, we have an array of 10 elements, and each element is an array of 20 <code>
 </code></pre></div>
 </td></tr></table>
 
-<p>Here, <code>bucket</code> is a 1D array of 10 pointers to <code>long</code>.  So, we can easily pass <code>bucket</code> to a function just like any other 1D array:</p>
+<p>Here, <code>bucket</code> is a 1D array of 10 pointers to <code>double</code>.  So, we can easily pass <code>bucket</code> to a function just like any other 1D array:</p>
 <ul>
-<li><code>void baz(long num_of_rows, long num_of_cols, long **bucket)</code></li>
-<li><code>void baz(long num_of_rows, long num_of_cols, long *bucket[])</code></li>
+<li><code>void baz(long num_of_rows, long num_of_cols, double **bucket)</code></li>
+<li><code>void baz(long num_of_rows, long num_of_cols, double *bucket[])</code></li>
 </ul>
 <p>Access such individual elements in such type of array is no different from accessing a fixed-length 2D array: we use <code>bucket[i][j]</code>.</p>
 <p>Remember to free the allocated memory after we are done:</p>

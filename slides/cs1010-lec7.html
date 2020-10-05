@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="stylesheets/cs1010.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/dark.css">
+<title>CS1010 AY20/21 S1 Lecture 7</title>
+<meta charset="utf-8">
+</head>
+<body>
+<textarea id="source">
+class: middle, center
+
+# Lecture 7
+
+### 4 October 2020
+
+.smaller[
+Admin Matters<br>
+Unit 17: **Call by Reference**<br>
+Unit 18: **Heap**<br>
+Unit 19: **Multi-dimensional Arrays**<br>
+]
+---
+class: middle
+
+### Assignment 4
+
+- Due Thursday night (23:59)
+- Graded on correctness (including syntax, practices, approach, and logic), style, efficiency, and documentation.
+
+---
+class: middle
+
+# Warning
+
+### Plagiarism will not be tolerated.   You may discuss how to solve the assignment, but make sure you code up the solution yourself.
+
+### If you refer to other sources or someone helped you with the assignment, remember to credit them.
+
+### If any of the above is new to you, please read up about NUS and SoC policy on plagiarism.
+
+---
+class: middle
+
+### Upcoming releases:
+
+- Assignment 5 on Thursday
+    - Grading criteria: same as Assignment 4
+
+---
+class: middle
+
+### Tutorial/Lab 5
+
+- Problem Sets 16-19
+- Midterm Questions
+
+---
+class: middle
+
+### A Change on Mentality is Needed
+
+- Do what is right, not what is not penalized
+- Ask "is it better to do X or Y? why", not "will I be penalized if I do X?"
+
+---
+class: middle, center
+
+### PE1 results
+
+(based on sample test input/output only)
+
+---
+class: middle, center
+
+|problem|num of students who passed all test cases|
+|-------|--------------------------------------------|
+|error  | 208                                        |
+|twilight|230                                        |
+|reverse|130                                         |
+|factors|46                                          |
+|looknsay|23                                         |
+
+---
+class: middle,wide
+<table width=100% height=100%>
+	<tr valign="top">
+		<th style="border-right:solid 1px">
+		<h5 style="margin:0px";>
+			Problem Solving
+		</h5>
+	    </th>
+		<th style="border-right:solid 1px">
+		<h5 style="margin:0px";>
+			C Language & Syntax
+		</h5>
+	    </th>
+		<th style="border-right:solid 1px">
+		<h5 style="margin:0px";>
+			Behaviorial Model
+		</h5>
+	    </th>
+		<th>
+		<h5 style="margin:0px";>
+			Tools & Practices
+		</h5>
+	    </th>
+	</tr>
+	<tr valign="top">
+	<td style="border-right:solid 1px; border-bottom:none;">
+		<ul style="margin:1px;font-size:70%;">
+		<li>decomposition
+		<li>recursion
+		<li>flowchart
+		<li>conditionals
+		<li>assertions
+		<li>loops
+		<li>invariants
+		</ul>
+	</td>
+	<td style="border-right:solid 1px; border-bottom:none;">
+		<ul style="margin:1px;font-size:70%;">
+		<li>types 
+		<li>functions 
+		<li>arithmetic ops 
+		<li>if-else
+		<li>logical expressions
+		<li>loops
+		<li>arrays
+		<li>pointers
+		</ul>
+	</td>
+	<td style="border-right:solid 1px; border-bottom:none;">
+		<ul style="margin:1px;font-size:70%;">
+		<li>machine code
+		<li>data in memory
+		<li>types
+		<li>call stack
+		<li>memory addr
+		</ul>
+	</td>
+	<td style="border-bottom:none;">
+		<ul style="margin:1px;font-size:70%;">
+		<li>clang
+		<li>vim
+		<li>bash
+		<li>style
+		</ul>
+	</td>
+	</tr>
+</table>
+---
+class: middle,wide
+<table width=100% height=100%>
+	<tr valign="top">
+		<th style="border-right:solid 1px">
+		<h5 style="margin:0px";>
+			Problem Solving
+		</h5>
+	    </th>
+		<th style="border-right:solid 1px">
+		<h5 style="margin:0px";>
+			C Language & Syntax
+		</h5>
+	    </th>
+		<th style="border-right:solid 1px">
+		<h5 style="margin:0px";>
+			Behaviorial Model
+		</h5>
+	    </th>
+		<th>
+		<h5 style="margin:0px";>
+			Tools & Practices
+		</h5>
+	    </th>
+	</tr>
+	<tr valign="top">
+	<td style="border-right:solid 1px; border-bottom:none;">
+		<ul style="margin:1px;font-size:70%;">
+		<li>decomposition
+		<li>recursion
+		<li>flowchart
+		<li>conditionals
+		<li>assertions
+		<li>loops
+		<li>invariants
+		</ul>
+	</td>
+	<td style="border-right:solid 1px; border-bottom:none;">
+		<ul style="margin:1px;font-size:70%;">
+		<li>types 
+		<li>functions 
+		<li>arithmetic ops 
+		<li>if-else
+		<li>logical expressions
+		<li>loops
+		<li><font color="pink">arrays</font>
+		<li>pointers
+		<li><font color="pink">memory management</font>
+		</ul>
+	</td>
+	<td style="border-right:solid 1px; border-bottom:none;">
+		<ul style="margin:1px;font-size:70%;">
+		<li>machine code
+		<li>data in memory
+		<li>types
+		<li>call stack
+		<li>memory addr
+			<li><font color="pink">call by value/ref</font>
+			<li><font color="pink">heap</font>
+		</ul>
+	</td>
+	<td style="border-bottom:none;">
+		<ul style="margin:1px;font-size:70%;">
+		<li>clang
+		<li>vim
+		<li>bash
+		<li>style
+		<li><font color="pink">documentation</font>
+		</ul>
+	</td>
+	</tr>
+</table>
+---
+class: middle
+
+### Recap 
+
+```C
+long *ptr; // ptr is a pointer to long
+long x;    // x is a long variable
+ptr = &x;  // init ptr to address of x
+*ptr = 4;  // put 4 into address of x
+           // i.e., set x = 4
+```
+
+---
+class: middle
+
+### Recap 
+
+```C
+long a[10]; // an array of size 10
+a[9] = 1;   // init the 10th element
+long *b = a; // a decays into &a[0]
+```
+
+---
+class: middle
+
+### Recap 
+
+Becareful where you read from and write to.
+
+```C
+long a[4];
+a[4] = 10; // ⚠️
+```
+
+---
+class: middle
+
+### Tip 💡
+
+Use assertion to check for the correctness of your code.
+
+```C
+long a[4];
+ :
+ :
+ // { i >= 0 && i < 4 }
+a[i] = 10; 
+```
+---
+class: middle
+
+### Common Bad Behavior
+
+```C
+long a[10000];
+```
+
+My program crashed.  So I make my array bigger, and now it does not crash.
+
+---
+class: middle
+
+### Common Bad Behavior
+
+```C
+long a[10000];
+```
+
+If your code is buggy, there will be a big enough input that crashes your program.  Your code is still wrong.
+
+---
+class: middle
+
+### Tip
+
+Use assertion to check for the correctness of your code.
+
+```C
+long a[4];
+ :
+ :
+// { i >= 0 && i < 4 }
+a[i] = 10; 
+```
+
+---
+class: middle
+
+### Recap
+
+A function should be a black box.  Whatever happens in the function stay within the function.
+
+---
+class: middle
+
+```C
+long x = 1;
+foo();
+// { x == 1 }
+```
+
+---
+class: middle
+
+Ideally, a function is _pure_ and does not incur side effects.
+
+---
+class: middle
+
+.tiny[
+```C
+void set_to_0s(long len, long a[]) {
+  for (long i = 0; i < len; i += 1) {
+    a[i] = 0; 
+  }
+}
+```
+]
+---
+class: middle
+
+```C
+long a[10];
+a[0] = 1;
+foo(a);
+// { a[0] == 1 } <-- 🤨
+```
+
+---
+class:middle,center
+## Call by reference
+
+(live demo)
+
+---
+class:middle,center
+## Heap
+
+(live demo)
+---
+class:middle,center
+## Multi-dimensional Arrays
+
+---
+class: middle
+
+```C
+long matrix[10][20]; 
+// - array of 10 elements
+// - each element is an array 
+//   of 20 long elements
+```
+
+---
+class: middle
+
+```C
+long matrix[10][20];
+  :
+matrix[i][j] = 10;
+// matrix[i] is an array of 20 
+//    long elements
+// matrix[i][j] is the j+1-th 
+//    element of this array
+```
+
+---
+class: middle
+
+```C
+long matrix[10][20];
+```
+is an example of a fixed length 2D array.
+It is allocated in a continuous region of memory.
+
+---
+class: middle
+
+Suppose we have `long m[10][20]`
+
+.tiny[
+```C
+void qux(long r, long c, long (*m)[20]) { .. }
+```
+or
+```C
+void qux(long r, long c, long m[][20]) { .. }
+```
+]
+We can then call 
+
+.tiny[
+```C
+qux(10, 20, m);
+```
+]
+
+---
+class: middle
+
+.tiny[
+```C
+qux(10, 20, m);
+```
+]
+`m` decays to `&m[0]` -- the address of the first element in `m`, which is the address of an array of 20 `long` elements.  This is what the type `long (*m)[20]` is referring to.
+
+---
+class: middle
+
+### Don't confuse
+
+.tiny[
+```C
+long (*m)[20]; // pointer to an array of 20 longs
+long *(m[20]); // array of 20 long pointers
+```
+]
+
+---
+class: middle,center
+
+## Mixing fixed size arrays on stack with dynamic arrays on heap
+
+---
+class: middle
+
+.tiny[
+```C
+double *buckets[10];
+long num_of_cols = cs1010_read_long();
+for (long i = 0; i < 10; i += 1) {
+  buckets[i] = calloc(num_of_cols, sizeof(double));
+}
+```
+]
+The 2D array is no longer contiguous. we can still access the array with `bucket[i][j]`;
+
+---
+class: middle
+
+Since bucket is just a 1D array of `double *`:
+
+.tiny[
+```C
+void qux(long r, long c, double **bucket) { .. }
+```
+or
+```C
+void qux(long r, long c, double *bucket[]) { .. }
+```
+]
+
+(just like other 1D arrays)
+
+---
+class: middle
+
+Remember to clean up after use:
+
+.tiny[
+```C
+for (long i = 0; i < 10; i += 1) {
+  free(buckets[i]);
+}
+```
+]
+
+(just like other 1D arrays)
+
+---
+class: middle
+
+The first dimension can be dynamic too:
+.tiny[
+```C
+double **buckets;
+long num_of_rows = cs1010_read_long();
+long num_of_cols = cs1010_read_long();
+buckets = calloc(num_of_rows, sizeof(*double));
+for (long i = 0; i < 10; i += 1) {
+  buckets[i] = calloc(num_of_cols, sizeof(double));
+}
+```
+]
+
+---
+class: middle
+
+Remember to clean up after use:
+
+.tiny[
+```C
+for (long i = 0; i < num_of_rows; i += 1) {
+  free(buckets[i]);
+}
+free(buckets); // <-- do this last
+```
+]
+
+---
+class: middle
+
+Multi-dimensional arrays need not be "regular"-size.  It can be jagged.
+
+.tiny[
+```C
+double *half_square[10];
+for (long i = 0; i < 10; i += 1) {
+  half_square[i] = calloc(i+1, sizeof(double));
+}
+```
+]
+
+
+---
+class: bottom
+
+.tiny[
+Version: 1.0
+
+Last Updated: Sun Oct  4 16:34:30 +08 2020
+]
+</textarea>
+
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+<script src="javascripts/counter.js">
+</script>
+<script>
+remark.macros.scale = function (percentage) {
+	var url = this;
+	return '<img src="' + url + '" style="width: ' + percentage + '" />';
+};
+// ![:scale 50%](image.jpg)
+
+var slideshow = remark.create({
+    navigation: {
+	    scroll: false
+	},
+	ratio: '16:9',
+	highlightStyle: 'monokai',
+    slideNumberFormat: 'AY2021 S1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%current%',
+});
+ // Setup MathJax
+  MathJax.Hub.Config({
+	  tex2jax: {
+		inlineMath: [['$', '$']],
+		// inlineMath: [['$', '$'], ['\\(', '\\)']],
+		displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		skipTags: ['script', 'noscript', 'style', 'pre']
+	  }
+  });
+
+  MathJax.Hub.Configured();
+</script>
+</body>
+</html>
