@@ -1158,6 +1158,11 @@
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span><span class="p">));</span>
 </code></pre></div>
 </td></tr></table></p>
+<div class="admonition warning">
+<p class="admonition-title">Casting to size_t</p>
+<p>We need to cast <code>long</code> arguments into <code>malloc</code> and <code>calloc</code> as <code>size_t</code> 
+to suppress warnings from <code>clang</code>.</p>
+</div>
 <p>The CS1010 I/O library, internally, allocates memory on the heap so that we can read in words, lines, or arrays of arbitrary length.</p>
 <p>The following shows the example of how <code>cs1010_read_long_array</code> is implemented with <code>calloc</code>.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -1172,14 +1177,14 @@
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="o">*</span> <span class="nf">cs1010_read_long_array</span><span class="p">(</span><span class="kt">int</span> <span class="n">how_many</span><span class="p">)</span>
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="o">*</span> <span class="nf">cs1010_read_long_array</span><span class="p">(</span><span class="kt">long</span> <span class="n">how_many</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="kt">long</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">how_many</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span><span class="p">));</span>
+  <span class="kt">long</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">((</span><span class="kt">size_t</span><span class="p">)</span><span class="n">how_many</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span><span class="p">));</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">buffer</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">how_many</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">how_many</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">buffer</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cs1010_read_long</span><span class="p">();</span>
   <span class="p">}</span>
 
@@ -1188,6 +1193,11 @@
 </code></pre></div>
 </td></tr></table>
 
+<div class="admonition warning">
+<p class="admonition-title">Casting to size_t</p>
+<p>We need to cast <code>long</code> arguments into <code>malloc</code> and <code>calloc</code> as <code>size_t</code> 
+to suppress warnings from <code>clang</code>.</p>
+</div>
 <h2 id="memory-deallocation">Memory Deallocation</h2>
 <p>Even though the memory available on the heap is larger than the stack, it is not unlimited, and therefore we should still use the memory judiciously.   In particular, after we are done using the memory allocated to us, we should call the method <code>free</code>, passing in the pointer the memory region allocated, to have the memory region deallocated, returned to the OS to be reused by others.</p>
 <p>A common bug is for a programmer to access a memory that has been freed.  This would cause strange behaviors, possible crashes in random places since we will be accessing memory that is being used by others.  It is a good practice to set the pointer to NULL after <code>free</code>-ing the memory region so that we do not accidentally use it.</p>
@@ -1200,7 +1210,7 @@ buffer = NULL;
 <p>Another common bug is for programmers to request memory via <code>malloc</code> or related functions, but forgot to <code>free</code> it back to the OS.  As a result, as the program runs, it starts to hog the memory and the system will become slower and slower.   This bug is known as <em>memory leak</em>.  </p>
 <p>Another possible bug is for programmers to change the pointer to the region of memory allocated.  For instance,
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>long *buffer = calloc(how_many, sizeof(long));
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>long *buffer = calloc((size_t)how_many, sizeof(long));
 buffer = cs1010_read_long_array(how_many);
 </code></pre></div>
 </td></tr></table></p>

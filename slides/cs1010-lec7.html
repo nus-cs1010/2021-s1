@@ -33,13 +33,11 @@ class: middle
 ---
 class: middle
 
-# Warning
+### Warning
 
-### Plagiarism will not be tolerated.   You may discuss how to solve the assignment, but make sure you code up the solution yourself.
-
-### If you refer to other sources or someone helped you with the assignment, remember to credit them.
-
-### If any of the above is new to you, please read up about NUS and SoC policy on plagiarism.
+- Plagiarism will not be tolerated.   You may discuss how to solve the assignment, but make sure you code up the solution yourself.
+- If you refer to other sources or someone helped you with the assignment, remember to credit them.
+- If any of the above is new to you, please read up about NUS and SoC policy on plagiarism.
 
 ---
 class: middle
@@ -52,7 +50,7 @@ class: middle
 ---
 class: middle
 
-### Tutorial/Lab 5
+### Tutorial/Lab 6
 
 - Problem Sets 16-19
 - Midterm Questions
@@ -228,6 +226,7 @@ class: middle
 
 ### Recap 
 
+.tiny[
 ```C
 long *ptr; // ptr is a pointer to long
 long x;    // x is a long variable
@@ -235,6 +234,7 @@ ptr = &x;  // init ptr to address of x
 *ptr = 4;  // put 4 into address of x
            // i.e., set x = 4
 ```
+]
 
 ---
 class: middle
@@ -262,20 +262,6 @@ a[4] = 10; // ⚠️
 ---
 class: middle
 
-### Tip 💡
-
-Use assertion to check for the correctness of your code.
-
-```C
-long a[4];
- :
- :
- // { i >= 0 && i < 4 }
-a[i] = 10; 
-```
----
-class: middle
-
 ### Common Bad Behavior
 
 ```C
@@ -298,7 +284,7 @@ If your code is buggy, there will be a big enough input that crashes your progra
 ---
 class: middle
 
-### Tip
+### Tip 💡
 
 Use assertion to check for the correctness of your code.
 
@@ -306,7 +292,7 @@ Use assertion to check for the correctness of your code.
 long a[4];
  :
  :
-// { i >= 0 && i < 4 }
+ // { i >= 0 && i < 4 }
 a[i] = 10; 
 ```
 
@@ -323,6 +309,7 @@ class: middle
 ```C
 long x = 1;
 foo();
+bar(x);
 // { x == 1 }
 ```
 
@@ -363,7 +350,21 @@ class:middle,center
 class:middle,center
 ## Heap
 
-(live demo)
+---
+class:middle,center
+
+---
+class: middle
+
+```C
+long x = 1; // global
+// { x == 1 }
+
+  :				   
+foo();
+// { x == ? } 
+```
+
 ---
 class:middle,center
 ## Multi-dimensional Arrays
@@ -534,7 +535,7 @@ Multi-dimensional arrays need not be "regular"-size.  It can be jagged.
 ```C
 double *half_square[10];
 for (long i = 0; i < 10; i += 1) {
-  half_square[i] = calloc(i+1, sizeof(double));
+  half_square[i] = calloc(i + 1, sizeof(double));
 }
 ```
 ]
@@ -544,9 +545,9 @@ for (long i = 0; i < 10; i += 1) {
 class: bottom
 
 .tiny[
-Version: 1.0
+Version: 1.2
 
-Last Updated: Sun Oct  4 16:34:30 +08 2020
+Last Updated: Mon Oct  5 10:41:49 +08 2020
 ]
 </textarea>
 
