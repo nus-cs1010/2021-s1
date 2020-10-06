@@ -865,8 +865,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    Example
+  <a href="#example-1-cs1010-io-library" class="md-nav__link">
+    Example 1: CS1010 I/O Library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2-collatz" class="md-nav__link">
+    Example 2: Collatz
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-3-taxi" class="md-nav__link">
+    Example 3: Taxi
   </a>
   
 </li>
@@ -1104,8 +1118,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    Example
+  <a href="#example-1-cs1010-io-library" class="md-nav__link">
+    Example 1: CS1010 I/O Library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2-collatz" class="md-nav__link">
+    Example 2: Collatz
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-3-taxi" class="md-nav__link">
+    Example 3: Taxi
   </a>
   
 </li>
@@ -1181,8 +1209,7 @@
 <p><code>&lt;direction&gt;</code> indicates if you are passing data in or out of the function.  From Unit 1 to 16, we only pass data <em>into</em> the function.  For such parameters, we document it with <code>@param[in]</code>.  In Unit 17, we will learn about passing by reference.  If a parameter is passed by reference to be modified inside the function, we will document it as <code>@param[out]</code>.  For a parameter that is meant to serve both purposes (pass a value into the function, be modified, and passed the new modified value out), we use <code>@param[in,out]</code>.</p>
 <h3 id="return-describe-the-return-value-of-a-function"><code>@return</code>: Describe the return value of a function</h3>
 <p>The comments should be placed before a file, a function, or a variable that you want the comment to apply to.</p>
-<h2 id="example">Example</h2>
-<p>Here is an example:</p>
+<h2 id="example-1-cs1010-io-library">Example 1: CS1010 I/O Library</h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -1215,7 +1242,7 @@
 <span class="cm"> */</span>
 
 <span class="cm">/**</span>
-<span class="cm"> * Raed k white-space-separated words from the standard input in an array.</span>
+<span class="cm"> * Read k white-space-separated words from the standard input in an array.</span>
 <span class="cm"> * The notion of &quot;word&quot; is the same to cs1010_read_word().  The caller is</span>
 <span class="cm"> * responsible for freeing the memory allocated for the array by calling</span>
 <span class="cm"> * free().</span>
@@ -1227,6 +1254,79 @@
 <span class="kt">char</span><span class="o">**</span> <span class="nf">cs1010_read_word_array</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span>
 <span class="p">{</span>
    <span class="o">:</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<h2 id="example-2-collatz">Example 2: Collatz</h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Find the number between 1 and n with the maximum number of </span>
+<span class="cm"> * steps to reach 1, breaking ties by finding the larger among</span>
+<span class="cm"> * these numbers.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in,out] max_num_steps The maximum number ot steps</span>
+<span class="cm"> * @param[out] max_n The number with the maximum number of steps</span>
+<span class="cm"> *</span>
+<span class="cm"> * @pre max_num_steps &lt;= 0</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">solve</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">,</span> <span class="kt">long</span> <span class="o">*</span><span class="n">max_n</span><span class="p">,</span> <span class="kt">long</span> <span class="o">*</span><span class="n">max_num_steps</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">long</span> <span class="n">num_of_steps</span> <span class="o">=</span> <span class="n">count_num_of_steps</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">num_of_steps</span> <span class="o">&gt;=</span> <span class="o">*</span><span class="n">max_num_steps</span><span class="p">)</span> <span class="p">{</span>
+      <span class="o">*</span><span class="n">max_n</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+      <span class="o">*</span><span class="n">max_num_steps</span> <span class="o">=</span> <span class="n">num_of_steps</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Note: a better design of the function above is not to rely on the 
+caller to set <code>max_num_steps</code> to 0, but set it at the beginning of 
+the function ourselves.</p>
+<h2 id="example-3-taxi">Example 3: Taxi</h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Checks if a given day is a weekday or not.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param[in] day This indicates which day it is.  1 is Monday; </span>
+<span class="cm"> *                7 is Sunday.</span>
+<span class="cm"> * @return Returns true if day is a weekday, false otherwise.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @pre 1 &lt;= day &lt;= 7</span>
+<span class="cm"> */</span>
+<span class="kt">bool</span> <span class="nf">is_weekday</span><span class="p">(</span><span class="kt">long</span> <span class="n">day</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">day</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">day</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
