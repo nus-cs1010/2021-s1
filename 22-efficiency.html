@@ -1,0 +1,1724 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <link rel="canonical" href="https://nus-cs1010.github.io/2021-s1/22-efficiency.html">
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.3">
+    
+    
+      
+        <title>22. Efficiency - CS1010 Programming Methodology</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.947af8d5.min.css">
+      
+        <link rel="stylesheet" href="assets/stylesheets/palette.7f672a1f.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unit-22-efficiency" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://nus-cs1010.github.io/2021-s1" title="CS1010 Programming Methodology" class="md-header-nav__button md-logo" aria-label="CS1010 Programming Methodology">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            CS1010 Programming Methodology
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              22. Efficiency
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://nus-cs1010.github.io/2021-s1" title="CS1010 Programming Methodology" class="md-nav__button md-logo" aria-label="CS1010 Programming Methodology">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    CS1010 Programming Methodology
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="index.html" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="midterm.html" title="Midterm" class="md-nav__link">
+      Midterm
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="pe1.html" title="PE1" class="md-nav__link">
+      PE1
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      General
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="General" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        General
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="about.html" title="About CS1010" class="md-nav__link">
+      About CS1010
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="outcomes.html" title="Learning Outcomes" class="md-nav__link">
+      Learning Outcomes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="schedule.html" title="Schedule" class="md-nav__link">
+      Schedule
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="accounts.html" title="Accounts" class="md-nav__link">
+      Accounts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="policies.html" title="Policies" class="md-nav__link">
+      Policies
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Notes
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Notes" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Notes
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="01-program.html" title="1. What is a Program?" class="md-nav__link">
+      1. What is a Program?
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="02-algo.html" title="2. Computational Problem & Algorithms" class="md-nav__link">
+      2. Computational Problem & Algorithms
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="03-func.html" title="3. Functions" class="md-nav__link">
+      3. Functions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="04-type.html" title="4. Types" class="md-nav__link">
+      4. Types
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="05-first-c.html" title="5. First C Program" class="md-nav__link">
+      5. First C Program
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="06-cs1010-io.html" title="6. CS1010 I/O Library" class="md-nav__link">
+      6. CS1010 I/O Library
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="07-arithmetic-ops.html" title="7. Arithmetic Operations" class="md-nav__link">
+      7. Arithmetic Operations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="08-if-else.html" title="8. Conditionals" class="md-nav__link">
+      8. Conditionals
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="09-logical-exp.html" title="9. Logical Expressions" class="md-nav__link">
+      9. Logical Expressions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="10-assert.html" title="10. Assertion" class="md-nav__link">
+      10. Assertion
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="11-loop.html" title="11. Loops" class="md-nav__link">
+      11. Loops
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="12-invariant.html" title="12. Loop Invariant" class="md-nav__link">
+      12. Loop Invariant
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="13-call-stack.html" title="13. Call Stack" class="md-nav__link">
+      13. Call Stack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="14-pointers.html" title="14. Memory Addresses" class="md-nav__link">
+      14. Memory Addresses
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="15-array.html" title="15. Array" class="md-nav__link">
+      15. Array
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="16-string.html" title="16. String" class="md-nav__link">
+      16. String
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="17-call-by-reference.html" title="17. Call by Reference" class="md-nav__link">
+      17. Call by Reference
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="18-heap.html" title="18. Heap" class="md-nav__link">
+      18. Heap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="19-md-array.html" title="19. Multi-dimensional Arrays" class="md-nav__link">
+      19. Multi-dimensional Arrays
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="20-macro.html" title="20. C Preprocessing" class="md-nav__link">
+      20. C Preprocessing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="21-assert.html" title="21. The assert macro" class="md-nav__link">
+      21. The assert macro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        22. Efficiency
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="22-efficiency.html" title="22. Efficiency" class="md-nav__link md-nav__link--active">
+      22. Efficiency
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    Learning Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-redundant-work" class="md-nav__link">
+    No Redundant Work
+  </a>
+  
+    <nav class="md-nav" aria-label="No Redundant Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worst-case-performance" class="md-nav__link">
+    Worst Case Performance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-repetition" class="md-nav__link">
+    No Repetition
+  </a>
+  
+    <nav class="md-nav" aria-label="No Repetition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-fibonacci-numbers" class="md-nav__link">
+    Finding Fibonacci Numbers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#big-o-notation" class="md-nav__link">
+    Big-O Notation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-rate-of-growth" class="md-nav__link">
+    Comparing Rate of Growth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-time-or-time-complexity-of-an-algorithm" class="md-nav__link">
+    Running Time or Time Complexity of an Algorithm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-kendall" class="md-nav__link">
+    Example: Kendall
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-fibonacci" class="md-nav__link">
+    Example: Fibonacci
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-collatz" class="md-nav__link">
+    Example: Collatz
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#space-efficiency" class="md-nav__link">
+    Space Efficiency
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-set-22" class="md-nav__link">
+    Problem Set 22
+  </a>
+  
+    <nav class="md-nav" aria-label="Problem Set 22">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-221" class="md-nav__link">
+    Problem 22.1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-222" class="md-nav__link">
+    Problem 22.2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Exercises
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Exercises" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Exercises
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ex00.html" title="0. Echo, Divide, Quadratic" class="md-nav__link">
+      0. Echo, Divide, Quadratic
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ex01.html" title="1. GCD, Day, Leap" class="md-nav__link">
+      1. GCD, Day, Leap
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ex02.html" title="2. Binary, Rectangle, Fibonacci" class="md-nav__link">
+      2. Binary, Rectangle, Fibonacci
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ex03.html" title="3. Weekday, Circle, Histogram" class="md-nav__link">
+      3. Weekday, Circle, Histogram
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Assignments
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Assignments" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Assignments
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="assignment.html" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="as01.html" title="1. Box, Digits, Suffix, Taxi" class="md-nav__link">
+      1. Box, Digits, Suffix, Taxi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="as02.html" title="2. Collatz, Triangle, Prime, Pattern" class="md-nav__link">
+      2. Collatz, Triangle, Prime, Pattern
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="as03.html" title="3. ID, Kendall, Max, CountingSort" class="md-nav__link">
+      3. ID, Kendall, Max, CountingSort
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="as04.html" title="4. SelectionSort, Mastermind" class="md-nav__link">
+      4. SelectionSort, Mastermind
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="as05.html" title="5. Contact, Social, Life" class="md-nav__link">
+      5. Contact, Social, Life
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="readings.html" title="Readings" class="md-nav__link">
+      Readings
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="c-in-cs1010.html" title="C in CS1010" class="md-nav__link">
+      C in CS1010
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="library.html" title="CS1010 I/O Library" class="md-nav__link">
+      CS1010 I/O Library
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="style.html" title="C Style Convention" class="md-nav__link">
+      C Style Convention
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="documentation.html" title="C Documentation Guide" class="md-nav__link">
+      C Documentation Guide
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="messages.html" title="Compiler Messages" class="md-nav__link">
+      Compiler Messages
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+    
+    <label class="md-nav__link" for="nav-14">
+      Software/Tools
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Software/Tools" data-md-level="1">
+      <label class="md-nav__title" for="nav-14">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Software/Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="environments.html" title="Programming Environments" class="md-nav__link">
+      Programming Environments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="unix.html" title="UNIX" class="md-nav__link">
+      UNIX
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="clang.html" title="CLang" class="md-nav__link">
+      CLang
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="vim.html" title="Vim" class="md-nav__link">
+      Vim
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="tmate.html" title="TMate" class="md-nav__link">
+      TMate
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="zoom.html" title="Zoom" class="md-nav__link">
+      Zoom
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="archive.html" title="Older Announcements" class="md-nav__link">
+      Older Announcements
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="1819s1.html" title="18/19 Sem 1" class="md-nav__link">
+      18/19 Sem 1
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    Learning Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-redundant-work" class="md-nav__link">
+    No Redundant Work
+  </a>
+  
+    <nav class="md-nav" aria-label="No Redundant Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worst-case-performance" class="md-nav__link">
+    Worst Case Performance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-repetition" class="md-nav__link">
+    No Repetition
+  </a>
+  
+    <nav class="md-nav" aria-label="No Repetition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-fibonacci-numbers" class="md-nav__link">
+    Finding Fibonacci Numbers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#big-o-notation" class="md-nav__link">
+    Big-O Notation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-rate-of-growth" class="md-nav__link">
+    Comparing Rate of Growth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-time-or-time-complexity-of-an-algorithm" class="md-nav__link">
+    Running Time or Time Complexity of an Algorithm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-kendall" class="md-nav__link">
+    Example: Kendall
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-fibonacci" class="md-nav__link">
+    Example: Fibonacci
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-collatz" class="md-nav__link">
+    Example: Collatz
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#space-efficiency" class="md-nav__link">
+    Space Efficiency
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-set-22" class="md-nav__link">
+    Problem Set 22
+  </a>
+  
+    <nav class="md-nav" aria-label="Problem Set 22">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-221" class="md-nav__link">
+    Problem 22.1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-222" class="md-nav__link">
+    Problem 22.2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="unit-22-efficiency">Unit 22: Efficiency</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>After completing this unit, students should:</p>
+<ul>
+<li>be aware that efficiency translates to less (and hopefully minimal) computation and space being used by a program</li>
+<li>Understand that increasing efficiency typically requires that there are no redundancies and no repetition (i.e., not repeat work already done)</li>
+<li>understand that when analysing efficiency, we wish to bound the computation required and thus look at the worst-case scenario</li>
+<li>understand that Big-O bounds capture the highest order of growth for some algorithm/code</li>
+<li>be able to determine the Big-O bounds for most code used in CS1010</li>
+<li>be able to compare the efficiency between code using Big-O analysis</li>
+</ul>
+<h2 id="no-redundant-work">No Redundant Work</h2>
+<p>We have been asking you to write efficient code, but we have not been very formal about quantifying what is efficiency.  In this unit, we will recap the various good habits to write efficient code, and introduces the notion of <em>time complexity</em> of a code, using the Big-O notation.</p>
+<p>Writing efficient code basically means that we should not write code that runs unnecessarily.  Let's consider the following two versions of <code>is_prime</code> function.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">is_prime</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">bool</span> <span class="n">is_prime</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">is_prime</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">is_prime</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="nf">is_prime</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Both versions are correct -- they produces <code>true</code> when the input <code>n</code> is prime, and <code>false</code> otherwise.  But they take a vastly different amount of time to run.  On my machine, the slowest version of <code>is_prime</code> took ~100s, while the fast one runs ~3ms when invoked with <code>is_prime(10000000001)</code>.  The time taken is five orders of magnitude difference!</p>
+<p>The second version of <code>is_prime</code> is faster as it follows the following mantra:</p>
+<p><em>"No redundant work"</em></p>
+<p>We came across this when we discussed short-circuiting earlier -- we want to order our logical expression so that we don't do extra, unnecessary, work.</p>
+<p>Here, we improve the efficiency of <code>is_prime</code> by (i) returning <code>false</code> as soon as we found a "proof" that the input is not a prime, and (ii) not checking for divisor that is redundant.</p>
+<h3 id="worst-case-performance">Worst Case Performance</h3>
+<p>The two techniques we employed above behave slightly differently.  For (i), we <em>opportunistically</em> stop our computation once we know the answer when the input is not a prime.  However, in the <em>worst case</em>, when the input is a prime, we still have to check through all <span class="arithmatex">\(n-2\)</span> divisor, from 2 up to <span class="arithmatex">\(n-1\)</span>, before we can conclude that the input is a prime.  Thus, for (i), we make our program faster for certain inputs but in the worst case, we are not able to speed up the program.</p>
+<p>The second technique is more interesting and more fruitful.  With a little math, we can show that we only need to check for the divisor up to <span class="arithmatex">\(\sqrt{n}\)</span>.  Here, we are improving the <em>worst case</em> performance of <code>is_prime</code>, so whether the input is a prime or not, we always have a speed up.  </p>
+<p>How much is the speed up in the worst case?  In the input above, with the original slow code, in the worst case I need to check through ~10,000,000,001 divisors.  With the faster version, I only need to check ~<span class="arithmatex">\(\sqrt{10,000,000,001}\)</span> = ~10,000 divisors.  That's where the five orders of magnitude speed up comes from!</p>
+<h2 id="no-repetition">No Repetition</h2>
+<p>The second principle to improving the efficiency of the program is that <em>"No repetition"</em> -- we should not repeat work that has been done before.</p>
+<p>Let's look at the example from earlier this semester, where you are asked to compute the range of a list.  Recall that the range of a list is the absolute difference between the largest element and the smallest element.  We use this problem to motivate the use of function, where we denote <span class="arithmatex">\(range(L, k) = |max(L, k) - min(L, k)|\)</span>.  If we are to implement this solution in C, however, we would end up scanning through the list twice: first to find the max, then to find the min.  </p>
+<p>Problem 17.1 shows that we could easily just go through the list once, use call-by-reference to output both the max and the min if we are willing to forgo the notion of pure functions and function-as-a-black-box.  </p>
+<p>The performance improvement for not scanning through a list twice is modest at most.  Let's look at another example where, by not repeating ourselves, we can gain significant performance improvement.</p>
+<h3 id="finding-fibonacci-numbers">Finding Fibonacci Numbers</h3>
+<p>Recall from your Exercise 2, the Fibonacci sequence of numbers are numbers formed by adding the previous two numbers to form the next numbers. In other words, the <span class="arithmatex">\(i\)</span>-th Fibonacci number is computed as the sum of the previous two Fibonacci numbers, the <span class="arithmatex">\((i-2)\)</span>-th, and the <span class="arithmatex">\((i-1)\)</span>-th.</p>
+<p>Here is one way we can find the Fibonacci numbers with a loop:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">long</span> <span class="n">first</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">long</span> <span class="n">second</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">long</span> <span class="n">third</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">second</span><span class="p">;</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="n">third</span><span class="p">;</span>
+    <span class="n">third</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="n">second</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">third</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>To find the <span class="arithmatex">\(n\)</span>-th Fibonacci number, we take <span class="arithmatex">\(n\)</span> steps in a loop.</p>
+<p>Now, let's see the following elegant recursive solution:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>This solution is short and follows directly from the definition of Fibonacci numbers.  Running this, however, reveals something very disturbing.  Let's say we call <code>fib(n)</code>.  This invocation in turns calls <code>fib(n-1)</code> and <code>fib(n-2)</code>.  <code>fib(n-1)</code> then calls <code>fib(n-2)</code> and <code>fib(n-3)</code>.   So, <code>fib(n-2)</code> will be called twice -- so we are repeating ourselves, violating the no repetition principles.  In fact, we will invoke <code>fib()</code> a large number of times.  </p>
+<h2 id="big-o-notation">Big-O Notation</h2>
+<p>How do we characterize the number of times <code>fib()</code> is called?  To answer this, we will introduce to you the Big-O notation.</p>
+<p>The Big-O function is a mathematical function that computer scientists use to characterize the time and space efficiency of an algorithm.  In CS1010, we will not go into the formal definition of the notation, but will introduce Big-O using the intuition that it is the "rate of growth" of a function.</p>
+<div class="admonition tips">
+<p class="admonition-title">Formal definition</p>
+<p>For those mathematically inclined students who can't wait until CS2040C or CS3230 for
+a formal definition, here it is:</p>
+<p>Given two functions <span class="arithmatex">\(f\)</span> and <span class="arithmatex">\(g\)</span>, we say that <span class="arithmatex">\(f(x) = O(g(x))\)</span> if the exists
+a position real number <span class="arithmatex">\(c\)</span> and a real number <span class="arithmatex">\(x_0\)</span> such that</p>
+<div class="arithmatex">\[ |f(x)| \le cg(x), \,\,  \forall x \ge x_0\]</div>
+</div>
+<p>To motivate Big-O, let's consider how we can count the number of "steps" taken by an algorithm.  Let's consider this again:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">second</span><span class="p">;</span>
+    <span class="n">second</span> <span class="o">=</span> <span class="n">third</span><span class="p">;</span>
+    <span class="n">third</span> <span class="o">=</span> <span class="n">first</span> <span class="o">+</span> <span class="n">second</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>If we consider each of the fundamental operations: comparison, addition, and assignment, as a step, then we can see that, in each loop, there is one comparison (<code>i != n</code>), two additions (<code>i + 1</code>, <code>third = first + second</code>), four assignments.  So we have seven operations per loop, with a total of <span class="arithmatex">\(n-1\)</span> loops.  So we have <span class="arithmatex">\(7n - 7\)</span> operations.  In addition, we also need to count for the assignment <code>i = 2</code> and the additional comparison before we exit the loop (<code>i != n</code>).  So, in total, we have <span class="arithmatex">\(7n - 5\)</span> operations.</p>
+<p>As you can see, such detailed counting of the steps in tedious, and in fact, not very meaningful.  For instance, we did not account for reading values from the memory and writing of values into the memory, the performance of which becomes dependant on the architecture underneath.  </p>
+<p>To free us from such low-level accounting of the number of steps, let's focus on the big picture.  No matter how we count the number of steps, in the end, it is a linear function of <span class="arithmatex">\(n\)</span>.  In order words, the number of steps taken by the algorithm to compute Fibonacci in a loop grows linearly with <span class="arithmatex">\(n\)</span>.  Using the Big-O notation, we say that it takes <span class="arithmatex">\(O(n)\)</span> steps.</p>
+<p>Given a mathematical function with multiple terms, the Big-O of this function is obtained by dropping any multiplicative constants and all terms, except for the one with the <em>highest rate of growth</em>.  For instance, <span class="arithmatex">\(O(\frac{n^4}{10} + 10000n^2 - n) = O(n^4)\)</span>.</p>
+<p>Due to this focus on the term with highest rate of growth, and not bothering about other terms or multiplicative constants, it becomes very convenient for us to expression the time efficiency of an algorithm with <span class="arithmatex">\(O()\)</span> -- we no longer need to count the steps precisely but just focus on the number of times it takes to run the algorithm in terms of <span class="arithmatex">\(n\)</span>.  </p>
+<p>Take the example of <code>is_prime</code>.  The slow algorithm takes <span class="arithmatex">\(O(n)\)</span>, the fast algorithm takes <span class="arithmatex">\(O(\sqrt{n})\)</span>.  </p>
+<p>Take another example: to find the range of a list, both algorithms, regardless of whether we are taking two passes or one pass, take <span class="arithmatex">\(O(n)\)</span> time.</p>
+<h2 id="comparing-rate-of-growth">Comparing Rate of Growth</h2>
+<p>Given two functions <span class="arithmatex">\(f(n)\)</span> and <span class="arithmatex">\(g(n)\)</span>, how do we determine which one has a higher rate of growth?  We say that <span class="arithmatex">\(f(n)\)</span> grows faster than <span class="arithmatex">\(g(n)\)</span> if we can find a <span class="arithmatex">\(n_0\)</span>, such that <span class="arithmatex">\(f(n) &gt; cg(n)\)</span> for all <span class="arithmatex">\(n \ge n_0\)</span> and for some constant <span class="arithmatex">\(c\)</span>.  </p>
+<p>For instance, which one grows faster?  <span class="arithmatex">\(f(n) = n^n\)</span> or <span class="arithmatex">\(g(n) = 2^n\)</span>?  Pick <span class="arithmatex">\(n = 1\)</span>, we have <span class="arithmatex">\(f(1) &lt; g(1)\)</span><sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.  Pick <span class="arithmatex">\(n = 2\)</span>, we have <span class="arithmatex">\(f(2)\)</span> equals <span class="arithmatex">\(g(2)\)</span>.  Pick <span class="arithmatex">\(n = 3\)</span>, we have <span class="arithmatex">\(f(3) &gt; g(3)\)</span> now, and we can see that for any <span class="arithmatex">\(n &gt; 3\)</span>, <span class="arithmatex">\(n^n &gt; 2^n\)</span>, so we can conclude that <span class="arithmatex">\(f(n)\)</span> grows faster than <span class="arithmatex">\(g(n)\)</span>.</p>
+<h2 id="running-time-or-time-complexity-of-an-algorithm">Running Time or Time Complexity of an Algorithm</h2>
+<p>Using the big-O notation, we can quantify how many steps an algorithm takes to run.  This measurement is called the <em>running time</em> or the <em>time complexity</em> of the algorithm.  </p>
+<p>In CS1010, when we express the running time, we are interested in the worst case performance, or worst case running time.  Computer scientists also find measuring the average running time useful in certain scenarios.  You will learn about about analyzing the average running time in CS3230.</p>
+<p>There are a couple of things to note when expressing the running of an algorithm in big-O notation:</p>
+<ul>
+<li>We should express it in its simplest form -- without multiplicative constants, and dropping all lower terms.</li>
+<li>Since we are specifying the worst case performance, we are measuring an upper bound on the running time.  We should expression an upper bound that is as tight as possible.</li>
+</ul>
+<h2 id="example-kendall">Example: Kendall</h2>
+<p>Now, consider the algorithm to compute the Kendall-Tau distance.  The code is given below.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="nf">count_inversion</span><span class="p">(</span><span class="kt">long</span> <span class="n">i</span><span class="p">,</span> <span class="kt">long</span> <span class="n">n</span><span class="p">,</span> <span class="k">const</span> <span class="kt">long</span> <span class="n">rank</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+<span class="p">{</span>
+  <span class="kt">long</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">rank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">rank</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span>
+      <span class="n">count</span> <span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">double</span> <span class="nf">kendall_tau</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">,</span> <span class="k">const</span> <span class="kt">long</span> <span class="n">rank</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+<span class="p">{</span>
+  <span class="kt">long</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="n">count_inversion</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">rank</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">count</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>What is the running time of the function <code>kendall_tau</code>, expressed in Big-O notation in terms of <span class="arithmatex">\(n\)</span>, the length of the input array?</p>
+<p>To analyze the running time, we focus on the big picture, the part of the code that takes the most time, and we ignore all the other operations that take negligible time.  In the function <code>kendall_tau</code> above, Line 16 is repeated many times, so let's focus on that.  Looking at the looping conditions, we can conclude that Line 16 repeats <span class="arithmatex">\(O(n)\)</span> times.  </p>
+<p>It is tempting to conclude that <code>kentall_tau</code> takes <span class="arithmatex">\(O(n)\)</span> steps here, but it would be wrong.  </p>
+<p>Notice that Line 16 calls another function <code>count_inversion</code>.  What is the running time of <code>count_inversion</code>?  Inside <code>count_inversion</code>, there is another loop that repeats <span class="arithmatex">\(n - i\)</span> times.  Each time we call <code>count_inversion</code>, <code>i</code> increases, so the loop in <code>count_inversion</code> takes fewer steps each time the function is called.</p>
+<p>To calculate the total number of steps, we can compute the following sum
+<span class="arithmatex">\(sum_{i = 0}^{n} (n - i)\)</span>, which is just <span class="arithmatex">\(n + (n-1) + (n-2) + .. + 2 + 1\)</span>.
+This sum is the sum of an arithmetic series and equals to <span class="arithmatex">\(n(n+1)/2\)</span>.   Since we use the Big-O notation, we can focus on the term with the highest rate of growth, <span class="arithmatex">\(n^2\)</span>, and ignore everything else.  We have obtained the running time for <code>kentall_tau</code> function above as <span class="arithmatex">\(O(n^2)\)</span>.</p>
+<h2 id="example-fibonacci">Example: Fibonacci</h2>
+<p>Let's get back to the recursive Fibonacci number example.  What is the running time of <code>fib</code>?</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="nf">fib</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>Answering this question is trickier since this is a recursive function.  But, we can use the same "wishful thinking" approach we used when writing this code to analyze its running time.</p>
+<p>Let <span class="arithmatex">\(T(n)\)</span> is the running time of <code>fib(n)</code>.  Since <code>fib(n)</code> calls <code>fib(n-1)</code> and <code>fib(n-2)</code>,
+we can write <span class="arithmatex">\(T(n) = T(n-1) + T(n-2)\)</span>.  Just like the recursive function there is a base case: <span class="arithmatex">\(T(n) = O(1)\)</span> if <span class="arithmatex">\(n \le 2\)</span>.  </p>
+<p>Note that <span class="arithmatex">\(O(1)\)</span> is also known as constant running time<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p>The equation for <span class="arithmatex">\(T(n)\)</span> above is known as a <em>recurrence relation</em>.  There are standard techniques to solve it (search for Master Theorem on the web), but we won't go into them in CS1010.  We will solve it from the first principle, by expanding the equation and observing the
+pattern.</p>
+<p>We know that <span class="arithmatex">\(T(n-1) &gt; T(n-2)\)</span>.  So,</p>
+<div class="arithmatex">\[
+T(n-2) + T(n-2) &lt; T(n) &lt; T(n-1) + T(n-1),
+\]</div>
+<p>therefore,</p>
+<div class="arithmatex">\[
+2T(n-2) &lt; T(n) &lt; 2T(n-1).
+\]</div>
+<p>So</p>
+<div class="arithmatex">\[
+T(n) &lt; 2T(n-1) &lt; 4T(n-2) &lt; 8T(n-3) &lt; .. 2^{n-1}T(1) &lt; O(\frac{1}{2}2^n)
+\]</div>
+<p>and</p>
+<div class="arithmatex">\[
+T(n) &gt; 2T(n-2) &gt; 4T(n-3) &gt; 8T(n-4) &gt; .. 2^{n-2}T(1) &gt; O(\frac{1}{4}2^n)
+\]</div>
+<p>Since we can drop the multiplicative constant in Big-O notation, we have <span class="arithmatex">\(T(n) = O(2^n)\)</span>.</p>
+<p>This explains why the recursive solution to Fibonacci is so much slower than the iterative version, which is <span class="arithmatex">\(O(n)\)</span> -- one grows exponentially while the other linearly in terms of <span class="arithmatex">\(n\)</span>.</p>
+<h2 id="example-collatz">Example: Collatz</h2>
+<p>Not every program has a running time that is easy to analyze.  For instance, take <code>collatz</code>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="nf">count_num_of_steps</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">long</span> <span class="n">num_of_steps</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">collatz</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">num_of_steps</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">num_of_steps</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>Recall that this program is based on the Collatz conjecture, which has not been proven.  So we cannot say that the loop above will always terminate after a given number of steps.  The running time for the code above remains unknown.</p>
+<h2 id="space-efficiency">Space Efficiency</h2>
+<p>We have focused mostly on efficiency in terms of time in this unit.  Note that the notion of efficiency extends to space (memory usage) as well.  Big-O notation can be used to quantify how much space is used as well.  </p>
+<h2 id="problem-set-22">Problem Set 22</h2>
+<h3 id="problem-221">Problem 22.1</h3>
+<p>Order the following functions in the increasing order of rate of growth:</p>
+<ul>
+<li><span class="arithmatex">\(n!\)</span>,</li>
+<li><span class="arithmatex">\(2^n\)</span>,</li>
+<li><span class="arithmatex">\(\log_{10} n\)</span>,</li>
+<li><span class="arithmatex">\(\ln n\)</span>,</li>
+<li><span class="arithmatex">\(n^4\)</span>,</li>
+<li><span class="arithmatex">\(n\ln n\)</span>,</li>
+<li><span class="arithmatex">\(n\)</span>,</li>
+<li><span class="arithmatex">\(n^2\)</span>,</li>
+<li><span class="arithmatex">\(e^n\)</span>,</li>
+<li><span class="arithmatex">\(\sqrt{n}\)</span></li>
+</ul>
+<h3 id="problem-222">Problem 22.2</h3>
+<p>What is the Big-O running time of the following code, in terms of <span class="arithmatex">\(n\)</span>?</p>
+<p>a)</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cs1010_println_long</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+
+<p>b)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cs1010_println_long</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>c)
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">k</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cs1010_println_long</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>The <span class="arithmatex">\(1\)</span> in <span class="arithmatex">\(O(1)\)</span> has nothing to do with the function returning <code>1</code>.  But we write it this way because we can drop multiplicative constants in the big-O notation.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="21-assert.html" title="21. The assert macro" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                21. The assert macro
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="ex00.html" title="0. Echo, Divide, Quadratic" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                0. Echo, Divide, Quadratic
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright by Department of Computer Science, National University of Singapore 2020
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.c3dc8c49.min.js"></script>
+      <script src="assets/javascripts/bundle.f9edbbd5.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: [],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.8e2cddea.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+    
+  </body>
+</html>
