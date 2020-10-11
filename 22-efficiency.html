@@ -635,11 +635,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#no-repetition" class="md-nav__link">
-    No Repetition
+  <a href="#no-duplication" class="md-nav__link">
+    No Duplication
   </a>
   
-    <nav class="md-nav" aria-label="No Repetition">
+    <nav class="md-nav" aria-label="No Duplication">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1173,11 +1173,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#no-repetition" class="md-nav__link">
-    No Repetition
+  <a href="#no-duplication" class="md-nav__link">
+    No Duplication
   </a>
   
-    <nav class="md-nav" aria-label="No Repetition">
+    <nav class="md-nav" aria-label="No Duplication">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1289,7 +1289,7 @@
 <p>After completing this unit, students should:</p>
 <ul>
 <li>be aware that efficiency translates to less (and hopefully minimal) computation and space being used by a program</li>
-<li>Understand that increasing efficiency typically requires that there are no redundancies and no repetition (i.e., not repeat work already done)</li>
+<li>Understand that increasing efficiency typically requires that there are no redundancies and no duplication (i.e., not repeat work already done)</li>
 <li>understand that when analysing efficiency, we wish to bound the computation required and thus look at the worst-case scenario</li>
 <li>understand that Big-O bounds capture the highest order of growth for some algorithm/code</li>
 <li>be able to determine the Big-O bounds for most code used in CS1010</li>
@@ -1349,8 +1349,8 @@
 <p>The two techniques we employed above behave slightly differently.  For (i), we <em>opportunistically</em> stop our computation once we know the answer when the input is not a prime.  However, in the <em>worst case</em>, when the input is a prime, we still have to check through all <span class="arithmatex">\(n-2\)</span> divisor, from 2 up to <span class="arithmatex">\(n-1\)</span>, before we can conclude that the input is a prime.  Thus, for (i), we make our program faster for certain inputs but in the worst case, we are not able to speed up the program.</p>
 <p>The second technique is more interesting and more fruitful.  With a little math, we can show that we only need to check for the divisor up to <span class="arithmatex">\(\sqrt{n}\)</span>.  Here, we are improving the <em>worst case</em> performance of <code>is_prime</code>, so whether the input is a prime or not, we always have a speed up.  </p>
 <p>How much is the speed up in the worst case?  In the input above, with the original slow code, in the worst case I need to check through ~10,000,000,001 divisors.  With the faster version, I only need to check ~<span class="arithmatex">\(\sqrt{10,000,000,001}\)</span> = ~10,000 divisors.  That's where the five orders of magnitude speed up comes from!</p>
-<h2 id="no-repetition">No Repetition</h2>
-<p>The second principle to improving the efficiency of the program is that <em>"No repetition"</em> -- we should not repeat work that has been done before.</p>
+<h2 id="no-duplication">No Duplication</h2>
+<p>The second principle to improving the efficiency of the program is that <em>"No duplication"</em> -- we should not repeat work that has been done before.</p>
 <p>Let's look at the example from earlier this semester, where you are asked to compute the range of a list.  Recall that the range of a list is the absolute difference between the largest element and the smallest element.  We use this problem to motivate the use of function, where we denote <span class="arithmatex">\(range(L, k) = |max(L, k) - min(L, k)|\)</span>.  If we are to implement this solution in C, however, we would end up scanning through the list twice: first to find the max, then to find the min.  </p>
 <p>Problem 17.1 shows that we could easily just go through the list once, use call-by-reference to output both the max and the min if we are willing to forgo the notion of pure functions and function-as-a-black-box.  </p>
 <p>The performance improvement for not scanning through a list twice is modest at most.  Let's look at another example where, by not repeating ourselves, we can gain significant performance improvement.</p>
@@ -1406,7 +1406,7 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table></p>
-<p>This solution is short and follows directly from the definition of Fibonacci numbers.  Running this, however, reveals something very disturbing.  Let's say we call <code>fib(n)</code>.  This invocation in turns calls <code>fib(n-1)</code> and <code>fib(n-2)</code>.  <code>fib(n-1)</code> then calls <code>fib(n-2)</code> and <code>fib(n-3)</code>.   So, <code>fib(n-2)</code> will be called twice -- so we are repeating ourselves, violating the no repetition principles.  In fact, we will invoke <code>fib()</code> a large number of times.  </p>
+<p>This solution is short and follows directly from the definition of Fibonacci numbers.  Running this, however, reveals something very disturbing.  Let's say we call <code>fib(n)</code>.  This invocation in turns calls <code>fib(n-1)</code> and <code>fib(n-2)</code>.  <code>fib(n-1)</code> then calls <code>fib(n-2)</code> and <code>fib(n-3)</code>.   So, <code>fib(n-2)</code> will be called twice -- so we are repeating ourselves, violating the no duplication principles.  In fact, we will invoke <code>fib()</code> a large number of times.  </p>
 <h2 id="big-o-notation">Big-O Notation</h2>
 <p>How do we characterize the number of times <code>fib()</code> is called?  To answer this, we will introduce to you the Big-O notation.</p>
 <p>The Big-O function is a mathematical function that computer scientists use to characterize the time and space efficiency of an algorithm.  In CS1010, we will not go into the formal definition of the notation, but will introduce Big-O using the intuition that it is the "rate of growth" of a function.</p>
