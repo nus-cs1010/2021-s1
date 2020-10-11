@@ -1469,7 +1469,7 @@ a position real number <span class="arithmatex">\(c\)</span> and a real number <
 16
 17
 18
-19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="nf">count_inversion</span><span class="p">(</span><span class="kt">long</span> <span class="n">i</span><span class="p">,</span> <span class="kt">long</span> <span class="n">n</span><span class="p">,</span> <span class="k">const</span> <span class="kt">long</span> <span class="n">rank</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="nf">count_inversion</span><span class="p">(</span><span class="kt">long</span> <span class="n">i</span><span class="p">,</span> <span class="kt">long</span> <span class="n">n</span><span class="p">,</span> <span class="k">const</span> <span class="kt">long</span> <span class="n">rank</span><span class="p">[])</span>
 <span class="p">{</span>
   <span class="kt">long</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
@@ -1480,7 +1480,7 @@ a position real number <span class="arithmatex">\(c\)</span> and a real number <
   <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="kt">double</span> <span class="nf">kendall_tau</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">,</span> <span class="k">const</span> <span class="kt">long</span> <span class="n">rank</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+<span class="kt">double</span> <span class="nf">kendall_tau</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">,</span> <span class="k">const</span> <span class="kt">long</span> <span class="n">rank</span><span class="p">[])</span>
 <span class="p">{</span>
   <span class="kt">long</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
@@ -1496,7 +1496,7 @@ a position real number <span class="arithmatex">\(c\)</span> and a real number <
 <p>It is tempting to conclude that <code>kentall_tau</code> takes <span class="arithmatex">\(O(n)\)</span> steps here, but it would be wrong.  </p>
 <p>Notice that Line 16 calls another function <code>count_inversion</code>.  What is the running time of <code>count_inversion</code>?  Inside <code>count_inversion</code>, there is another loop that repeats <span class="arithmatex">\(n - i\)</span> times.  Each time we call <code>count_inversion</code>, <code>i</code> increases, so the loop in <code>count_inversion</code> takes fewer steps each time the function is called.</p>
 <p>To calculate the total number of steps, we can compute the following sum
-<span class="arithmatex">\(sum_{i = 0}^{n} (n - i)\)</span>, which is just <span class="arithmatex">\(n + (n-1) + (n-2) + .. + 2 + 1\)</span>.
+<span class="arithmatex">\(\sum_{i = 0}^{n} (n - i)\)</span>, which is just <span class="arithmatex">\(n + (n-1) + (n-2) + .. + 2 + 1\)</span>.
 This sum is the sum of an arithmetic series and equals to <span class="arithmatex">\(n(n+1)/2\)</span>.   Since we use the Big-O notation, we can focus on the term with the highest rate of growth, <span class="arithmatex">\(n^2\)</span>, and ignore everything else.  We have obtained the running time for <code>kentall_tau</code> function above as <span class="arithmatex">\(O(n^2)\)</span>.</p>
 <h2 id="example-fibonacci">Example: Fibonacci</h2>
 <p>Let's get back to the recursive Fibonacci number example.  What is the running time of <code>fib</code>?</p>

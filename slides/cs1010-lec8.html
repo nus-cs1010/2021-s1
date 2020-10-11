@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="stylesheets/cs1010.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/dark.css">
+<title>CS1010 AY20/21 S1 Lecture 7</title>
+<meta charset="utf-8">
+</head>
+<body>
+<textarea id="source">
+class: middle, center
+
+# Lecture 8
+
+### 11 October 2020
+
+.smaller[
+Admin Matters<br>
+Unit 17: **Call by Reference**<br>
+Unit 18: **Heap**<br>
+Unit 19: **Multi-dimensional Arrays**<br>
+]
+---
+class: middle
+
+### Assignment 5
+
+- Due Tuesday night (23:59)
+- Graded on correctness (including syntax, practices, approach, and logic), style, efficiency, and documentation.
+
+---
+class: middle
+
+### Tutorial/Lab 7
+
+- Problem Sets 20-22
+- Midterm Questions
+
+---
+class: middle,wide
+<table width=100% height=100%>
+	<tr valign="top">
+		<th style="border-right:solid 1px">
+		<h5 style="margin:0px";>
+			Problem Solving
+		</h5>
+	    </th>
+		<th style="border-right:solid 1px">
+		<h5 style="margin:0px";>
+			C Language & Syntax
+		</h5>
+	    </th>
+		<th style="border-right:solid 1px">
+		<h5 style="margin:0px";>
+			Behaviorial Model
+		</h5>
+	    </th>
+		<th>
+		<h5 style="margin:0px";>
+			Tools & Practices
+		</h5>
+	    </th>
+	</tr>
+	<tr valign="top">
+	<td style="border-right:solid 1px; border-bottom:none;">
+		<ul style="margin:1px;font-size:70%;">
+		<li>decomposition
+		<li>recursion
+		<li>flowchart
+		<li>conditionals
+		<li>assertions
+		<li>loops
+		<li>invariants
+		<li><font color="pink">efficiency</font>
+		</ul>
+	</td>
+	<td style="border-right:solid 1px; border-bottom:none;">
+		<ul style="margin:1px;font-size:70%;">
+		<li>types 
+		<li>functions 
+		<li>arithmetic ops 
+		<li>if-else
+		<li>logical expressions
+		<li>loops
+		<li>arrays
+		<li>pointers
+		<li>memory management
+		<li><font color="pink">preprocessor</font>
+		</ul>
+	</td>
+	<td style="border-right:solid 1px; border-bottom:none;">
+		<ul style="margin:1px;font-size:70%;">
+		<li>machine code
+		<li>data in memory
+		<li>types
+		<li>call stack
+		<li>memory addr
+		<li>call by value/ref
+		<li>heap
+		</ul>
+	</td>
+	<td style="border-bottom:none;">
+		<ul style="margin:1px;font-size:70%;">
+		<li>clang
+		<li>vim
+		<li>bash
+		<li>style
+		<li>documentation
+		</ul>
+	</td>
+	</tr>
+</table>
+---
+class: middle
+
+### Recap 
+
+![compilation](../figures/c-compile-run/c-compile-run.001.png)
+
+---
+class: middle
+
+### Preprocessor
+
+![compilation](../figures/c-compile-run/c-compile-run.002.png)
+
+---
+class: middle, center
+
+# Efficiency
+
+---
+class: middle, center
+
+## 1. No Redundant Work
+
+---
+class: middle
+
+.tiny[
+```C
+bool is_prime(long n)
+{
+  bool is_prime = true;
+  for (long i = 2; i <= n - 1; i += 1) {
+    if (n % i == 0) {
+      is_prime = false;
+    }
+  }
+  return is_prime;
+}
+```
+]
+
+---
+class: middle
+
+.tiny[
+```C
+bool is_prime(long n)
+{
+  for (long i = 2; i <= sqrt(n); i++) {
+    if (n % i == 0) {
+      return false;
+    }
+  }
+  return true;
+}
+```
+]
+---
+class: middle
+
+- Return `false` as soon as we know n is not a prime
+- Not checking for divisor that is redundant
+
+What if n is a prime?
+---
+class: middle
+
+## 2. No Duplication
+
+---
+class: middle
+
+$$range(L, k) = |max(L, k) - min(L, k)|$$
+
+We have to go through the list twice.
+
+---
+class: middle
+
+### Problem 17.1
+
+.tiny[
+```C
+void find_min_max(long len, long array[], 
+			      long *min, long *max)
+{
+  :
+}
+```
+]
+
+We can combine both loops into one.
+
+---
+class:middle
+### Finding Fibonacci Numbers
+
+.tiny[
+```C
+long fib(long n) {
+  if (n == 1 || n == 2) {
+    return 1;
+  }
+  long first = 1;
+  long second = 1;
+  for (long i = 2; i != n; i += 1) {
+    first = second;
+    second = first + second;
+  }
+  return second;
+}
+```
+]
+---
+class:middle
+### Finding Fibonacci Numbers
+
+.tiny[
+```C
+long fib(long n)
+{
+  if (n == 1 || n == 2) {
+    return 1;
+  }
+  return fib(n-1) + fib(n-2);
+}
+```
+]
+
+---
+class:top,center
+
+how many times is fib() called?
+
+---
+class: middle
+
+how many steps (in terms on n)?
+
+.tiny[
+```C
+long fib(long n)
+{
+  if (n == 1 || n == 2) {
+    return 1;
+  }
+  long first = 1;
+  long second = 1;
+  for (long i = 2; i != n; i += 1) {
+    first = second;
+    second = first + second;
+  }
+  return second;
+}
+```
+]
+
+---
+class:middle,center
+
+$$O\left(\frac{n^4}{10} + 10000n^2 - n\right) = O(n^4)$$
+
+We drop terms with lower rate of growth and multiplicative constant.
+
+---
+class: middle
+
+### Comparing Rate of Growth
+
+$f(n)$ grows faster than $g(n)$ if we can find constants $n_0$ and $c$ such that $f(n) > cg(n)$ for all $n \ge n_0$.
+
+---
+class: top, center
+
+$f(n) = n^n$ vs. $g(n) = 2^n$ 
+
+---
+class: middle
+
+### Running Time / Time Complexity
+
+- A notion of how efficient an algorithm is
+- In CS1010, we are interested in the _worst case_ running time
+- Should be expressed in simplest big-O notation with tighest bound
+
+---
+class: middle
+
+.tiny[
+```C
+double kendall_tau(long n, const long rank[])
+{
+  long count = 0;
+  for (long i = 0; i < n - 1; i += 1) {
+    count += count_inversion(i, n, rank);
+  }
+  return 2.0*count/(n*(n - 1));
+}
+```
+]
+---
+class: middle
+
+.tiny[
+```C
+long count_inversion(long i, long n, const long rank[])
+{
+  long count = 0;
+  for (long j = i + 1; j < n; j += 1) {
+    if (rank[i] > rank[j]) {
+      count ++;
+    }
+  }
+  return count;
+}
+
+```
+]
+---
+class:middle
+### Finding Fibonacci Numbers
+
+.tiny[
+```C
+long fib(long n)
+{
+  if (n == 1 || n == 2) {
+    return 1;
+  }
+  return fib(n-1) + fib(n-2);
+}
+```
+]
+---
+class:top
+
+- if $n > 2$, $T(n) = T(n-1) + T(n-2)$
+- otherwise, $T(n) = O(1)$
+
+---
+class:middle
+### Run-time analysis is not always trivial
+
+.tiny[
+```C
+long count_num_of_steps(long n)
+{
+  long num_of_steps = 0;
+  while (n != 1) {
+    n = collatz(n);
+    num_of_steps += 1;
+  }
+  return num_of_steps;
+}
+```
+]
+---
+class:middle
+### Time vs Space Complexity
+
+- We only focus on time efficient now
+- Space efficiency is equally important
+- Big O applies space complexity too.
+
+---
+class: bottom
+
+.tiny[
+Version: 1.0
+
+Last Updated: Sun Oct 11 16:06:56 +08 2020
+]
+</textarea>
+
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+<script src="javascripts/counter.js">
+</script>
+<script>
+remark.macros.scale = function (percentage) {
+	var url = this;
+	return '<img src="' + url + '" style="width: ' + percentage + '" />';
+};
+// ![:scale 50%](image.jpg)
+
+var slideshow = remark.create({
+    navigation: {
+	    scroll: false
+	},
+	ratio: '16:9',
+	highlightStyle: 'monokai',
+    slideNumberFormat: 'AY2021 S1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%current%',
+});
+ // Setup MathJax
+  MathJax.Hub.Config({
+	  tex2jax: {
+		inlineMath: [['$', '$']],
+		// inlineMath: [['$', '$'], ['\\(', '\\)']],
+		displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		skipTags: ['script', 'noscript', 'style', 'pre']
+	  }
+  });
+
+  MathJax.Hub.Configured();
+</script>
+</body>
+</html>
