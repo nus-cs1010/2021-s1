@@ -1096,7 +1096,8 @@
 <li>be aware of the situations where counting sort performs better than other sorting algorithms.</li>
 </ul>
 <h2 id="sorting">Sorting</h2>
-<p>Sorting is one of the most fundamental computational problems.  Given a list of items, we want to rearrange the items in some order.</p>
+<p>Sorting is one of the most fundamental computational problems.  Given a list of items, we want to rearrange the items in some order.  We have seen in the previous unit that searching in a sorted list gives us tremendous improvement in efficiency.</p>
+<p>In this unit, we assume that the items we wish to rearrange are integers, and we wish to rearrange them in increasing order.  We could, however, in practice, sort any type of items.</p>
 <p>We have seen two algorithms to sort in this module: counting sort and selection sort.  We are going to see two more today.</p>
 <h2 id="counting-sort">Counting Sort</h2>
 <p>Let's revisit counting sort.  We are given an array of numbers, guaranteed to fall between a given range, say 0 to <span class="arithmatex">\(MAX\)</span>.  We can scan through this input array and count how many times each number appears in the input.  We use another array of size <span class="arithmatex">\(MAX+1\)</span> (let's call this the frequency array) to keep track of the counts.  Once we are done, we loop through the frequency array and put the elements back into the output.</p>
@@ -1420,21 +1421,19 @@ In each loop, it finds the index of the maximum element among list[0] to list[le
 <h3 id="problem-241">Problem 24.1</h3>
 <p>In the implementation of bubble sort above, we always make <span class="arithmatex">\(n-1\)</span> passes through the array.  It is, however, possible to stop the whole sorting procedure, when a pass through the array does not lead to any swapping.  Modify the code above to achieve this optimization.</p>
 <h3 id="problem-242">Problem 24.2</h3>
-<p>a) Suppose the input list to insertion sort is already sorted.  What is the running time of insertion sort?
-b) Suppose the input list to insertion sort is inversely sorted.  What is the running time of insertion sort?</p>
+<p>(a) Suppose the input list to insertion sort is already sorted.  What is the running time of insertion sort?</p>
+<p>(b) Suppose the input list to insertion sort is inversely sorted.  What is the running time of insertion sort?</p>
 <h3 id="problem-243">Problem 24.3</h3>
 <p>What is the loop invariant for the loop in the function <code>insert</code>?</p>
 <h3 id="problem-244">Problem 24.4</h3>
 <p>In certain scenarios, comparison is more expensive than assignment.  For instance, comparing two strings is more expensive than assigning a string to a variable.  In this case, we can reduce the number of comparisons during insertion sort by doing the following:</p>
+<p>repeat</p>
 <ul>
-<li>repeat<ul>
 <li>take the first element X from unsorted partition</li>
 <li>use binary search to find the correct position to insert X</li>
 <li>insert X into the right place</li>
 </ul>
-</li>
-<li>until the unsorted partition is empty</li>
-</ul>
+<p>until the unsorted partition is empty.</p>
 <p>Implement the variation to insertion sort above.  You may use your solution from Problem 23.1.</p>
 <div class="footnote">
 <hr />
