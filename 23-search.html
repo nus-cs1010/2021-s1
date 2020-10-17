@@ -1011,9 +1011,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#appendix-complete-code" class="md-nav__link">
-    Appendix: Complete Code
+  <a href="#problem-set-23" class="md-nav__link">
+    Problem Set 23
   </a>
+  
+    <nav class="md-nav" aria-label="Problem Set 23">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-231" class="md-nav__link">
+    Problem 23.1
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1057,6 +1070,7 @@
 <h2 id="binary-search">Binary Search</h2>
 <p>But, do we always have to check every element in the list?  It turns out that, like many real-life situations, <em>if the input list is sorted</em>, we do not have to scan through every element.  We can eliminate a huge chunk of the elements based on whether a chosen element is bigger or smaller than <span class="arithmatex">\(q\)</span>.</p>
 <p>Suppose that the input list is sorted in increasing order.  Pick a random element <span class="arithmatex">\(x\)</span> from the list.  Any element to the left of <span class="arithmatex">\(x\)</span> must be less than or equal to <span class="arithmatex">\(x\)</span>, and any element to the right of <span class="arithmatex">\(x\)</span> must be greater or equal to <span class="arithmatex">\(x\)</span>. </p>
+<p><img alt="property" src="figures/search-and-sort/search-and-sort.001.png{: style=&quot;width:300px&quot;}" /></p>
 <p>Suppose that <span class="arithmatex">\(q &gt; x\)</span>, then we know that <span class="arithmatex">\(q\)</span> must be to the right of <span class="arithmatex">\(x\)</span>, there is no need to search to the left of <span class="arithmatex">\(x\)</span>.  Otherwise, <span class="arithmatex">\(q &lt; x\)</span>, and <span class="arithmatex">\(q\)</span> must be to the left of <span class="arithmatex">\(x\)</span>, and there is no need to search to the right of <span class="arithmatex">\(x\)</span>.</p>
 <p>We can code this out using a recursive function below:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -1076,7 +1090,8 @@
 15
 16
 17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm"> * Look for q in list[i]..list[j].</span>
 <span class="cm"> *</span>
 <span class="cm"> * @pre list is sorted</span>
@@ -1089,7 +1104,8 @@
   <span class="kt">long</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span> 
+  <span class="k">if</span> <span class="p">(</span><span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">mid</span><span class="mi">-1</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
   <span class="p">}</span> 
   <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
@@ -1108,6 +1124,7 @@
 </code></pre></div>
 </td></tr></table>
 <p>at the beginning of the function.  In other words, this is a precondition for the function.</p>
+<p><img alt="property" src="figures/search-and-sort/search-and-sort.002.png" style="width:400px" /></p>
 <p>Let's see if this precondition is true at the beginning.  Since <span class="arithmatex">\(i\)</span> is <span class="arithmatex">\(0\)</span> and <span class="arithmatex">\(j\)</span> is <span class="arithmatex">\(n-1\)</span>, the ranges <code>list[0]..list[i-1]</code> and <code>list[j+1]..list[n-1]</code> are empty, so the assertion is true.</p>
 <p>What happen if <span class="arithmatex">\(i &gt; j\)</span>?  This implies that <span class="arithmatex">\(i - 1 &gt; j - 1\)</span>, so the range <code>list[0]</code>..<code>list[i-1]</code> and the range <code>list[j+1]</code>..<code>list[n-1]</code> overlap.  We can be sure that <span class="arithmatex">\(q\)</span> is not anywhere in <code>list</code>. </p>
 <p>Let's see how we ensure this assertion is true in the recursive call.</p>
@@ -1116,7 +1133,7 @@
 3
 4
 5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>       <span class="o">:</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nf">search</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">mid</span><span class="mi">-1</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
   <span class="p">}</span> 
        <span class="o">:</span>
@@ -1152,7 +1169,8 @@
 19
 20
 21
-22</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/**</span>
 <span class="cm"> * Look for q in list[i]..list[j].</span>
 <span class="cm"> *</span>
 <span class="cm"> * @pre list is sorted</span>
@@ -1167,7 +1185,8 @@
   <span class="kt">long</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span> 
+  <span class="k">if</span> <span class="p">(</span><span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// { q is not in list[0]..list[i-1] and list[mid]..list[n-1] }</span>
     <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">mid</span><span class="mi">-1</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
   <span class="p">}</span> 
@@ -1178,67 +1197,17 @@
 </td></tr></table></p>
 <h2 id="how-efficient-is-binary-search">How Efficient is Binary Search</h2>
 <p>We have seen that if the input list is not sorted, then we minimally have to check every element in the list, leading to an <span class="arithmatex">\(O(n)\)</span> algorithm.</p>
-<p>With a sorted input and using binary search, however, we can do a better.  Let's consider the worst case, where <span class="arithmatex">\(q\)</span> is not in the list.  Note that every comparison we make, we reduce the range of elements to search by half, until we reach one element.  We start with <span class="arithmatex">\(n\)</span> elements that could possibly contain <span class="arithmatex">\(q\)</span>.  After one comparison, we are left with <span class="arithmatex">\(n/2\)</span>.  After another comparison, we are left with <span class="arithmatex">\(n/4\)</span>, etc.  It takes only <span class="arithmatex">\(O(\log_2 n)\)</span> steps until we reach one element in the list.  This is a big improvement over <span class="arithmatex">\(O(n)\)</span> time!</p>
-<h2 id="appendix-complete-code">Appendix: Complete Code</h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;cs1010.h&quot;</span><span class="cp"></span>
-
-<span class="cm">/* Look for q in list[i]..list[j].</span>
-<span class="cm"> *</span>
-<span class="cm"> * @pre list is sorted in increasing order</span>
-<span class="cm"> * @pre q is not in list[0]..list[i-1], list[j+1]..list[n-1]</span>
-<span class="cm"> * @return -1 if not found, the position of q in list otherwise.</span>
-<span class="cm"> */</span>
-<span class="kt">long</span> <span class="nf">search</span><span class="p">(</span><span class="k">const</span> <span class="kt">long</span> <span class="n">list</span><span class="p">[],</span> <span class="kt">long</span> <span class="n">i</span><span class="p">,</span> <span class="kt">long</span> <span class="n">j</span><span class="p">,</span> <span class="kt">long</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="kt">long</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">mid</span><span class="mi">-1</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
-  <span class="p">}</span> 
-  <span class="c1">// { list[mid] &lt; q }</span>
-  <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="kt">long</span> <span class="n">a</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">19</span><span class="p">};</span>
-  <span class="kt">long</span> <span class="n">q</span> <span class="o">=</span> <span class="n">cs1010_read_long</span><span class="p">();</span>
-  <span class="n">cs1010_println_long</span><span class="p">(</span><span class="n">search</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">q</span><span class="p">));</span> 
-<span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
+<p>With a sorted input and using binary search, however, we can do a better.  Let's consider the worst case, where <span class="arithmatex">\(q\)</span> is not in the list.  Note that every comparison we make, we reduce the range of elements to search by half, until we reach one element.  We start with <span class="arithmatex">\(n\)</span> elements that could possibly contain <span class="arithmatex">\(q\)</span>.  After one comparison, we are left with <span class="arithmatex">\(n/2\)</span>.  After another comparison, we are left with <span class="arithmatex">\(n/4\)</span>, etc.  It takes only <span class="arithmatex">\(O(\log_2 n)\)</span> steps until we reach one element in the list.  This is a big improvement over <span class="arithmatex">\(O(n)\)</span> time: Suppose n is 1,000,000,000,000,000.  Instead of scanning through and comparing one quadrillion elements, we only need to compare 50 of them!</p>
+<h2 id="problem-set-23">Problem Set 23</h2>
+<h3 id="problem-231">Problem 23.1</h3>
+<p>(a) 
+Rewrite the code for binary search above using a loop instead of recursion.</p>
+<p>(b) 
+Instead of returning the position of the query <code>q</code>, modify the binary search algorithm in (a) such that it returns either:</p>
+<ul>
+<li>a position <code>k</code>, such as <code>a[k] &lt;= q &lt;= a[k+1]</code>. </li>
+<li>-1 if <code>q &lt; a[0]</code> or <code>q &gt; a[n-1]</code></li>
+</ul>
                 
               
               

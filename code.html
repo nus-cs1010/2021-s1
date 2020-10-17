@@ -966,8 +966,28 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-complete-code" class="md-nav__link">
+    Appendix: Complete Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-complete-code_1" class="md-nav__link">
+    Appendix: Complete Code
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -979,6 +999,8 @@
             <article class="md-content__inner md-typeset">
               
                 
+                
+                  <h1>Code</h1>
                 
                 <h2 id="appendix-complete-code">Appendix: Complete Code</h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -1171,35 +1193,286 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-<p>```C</p>
-<h1 id="include-cs1010h">include "cs1010.h"</h1>
-<p>void print_row(long ncols, long row[]) {
-  for (long j = 0; j &lt; ncols; j += 1) {
-    cs1010_print_long(row[j]);
-    cs1010_print_string(" ");
-  }
-  cs1010_println_string("");
-}</p>
-<p>void print(long nrows, long ncols, long *matrix[10]) {
-  for (long i = 0; i &lt; nrows; i += 1) {
-    print_row(ncols, matrix[i]);
-  }
-}</p>
-<p>int main()
-{
-  long **canvas;
-  long num_of_rows = cs1010_read_long();
-  long num_of_cols = cs1010_read_long();
-  canvas = calloc(num_of_rows, sizeof(long *));
-  for (long i = 0; i &lt; num_of_rows; i += 1) {
-      canvas[i] = calloc(i + 1, sizeof(long));
-  }</p>
-<p>// print(num_of_rows, num_of_cols, canvas);</p>
-<p>for (long i = 0; i &lt; num_of_rows; i += 1) {
-      free(canvas[i]);
-  }
-  free(canvas);
-}</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;cs1010.h&quot;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">print_row</span><span class="p">(</span><span class="kt">long</span> <span class="n">ncols</span><span class="p">,</span> <span class="kt">long</span> <span class="n">row</span><span class="p">[])</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">ncols</span><span class="p">;</span> <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cs1010_print_long</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+    <span class="n">cs1010_print_string</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">cs1010_println_string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="kt">long</span> <span class="n">nrows</span><span class="p">,</span> <span class="kt">long</span> <span class="n">ncols</span><span class="p">,</span> <span class="kt">long</span> <span class="o">*</span><span class="n">matrix</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nrows</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">print_row</span><span class="p">(</span><span class="n">ncols</span><span class="p">,</span> <span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">long</span> <span class="o">**</span><span class="n">canvas</span><span class="p">;</span>
+  <span class="kt">long</span> <span class="n">num_of_rows</span> <span class="o">=</span> <span class="n">cs1010_read_long</span><span class="p">();</span>
+  <span class="kt">long</span> <span class="n">num_of_cols</span> <span class="o">=</span> <span class="n">cs1010_read_long</span><span class="p">();</span>
+  <span class="n">canvas</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">num_of_rows</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span> <span class="o">*</span><span class="p">));</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_of_rows</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">canvas</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span><span class="p">));</span>
+  <span class="p">}</span>
+
+  <span class="c1">// print(num_of_rows, num_of_cols, canvas);</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_of_rows</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">free</span><span class="p">(</span><span class="n">canvas</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+  <span class="p">}</span>
+  <span class="n">free</span><span class="p">(</span><span class="n">canvas</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">## Appendix: Complete Code From Lecture</span>
+
+<span class="err">```</span><span class="n">C</span>
+<span class="cp">#include</span> <span class="cpf">&lt;assert.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;cs1010.h&quot;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="n">swap</span><span class="p">(</span><span class="kt">long</span> <span class="n">a</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">long</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+  <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">print</span><span class="p">(</span><span class="kt">long</span> <span class="n">len</span><span class="p">,</span> <span class="kt">long</span> <span class="n">a</span><span class="p">[])</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cs1010_print_long</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="n">cs1010_print_string</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">cs1010_println_string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">bubble_pass</span><span class="p">(</span><span class="kt">long</span> <span class="n">last</span><span class="p">,</span> <span class="kt">long</span> <span class="n">a</span><span class="p">[])</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">last</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+      <span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">print</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">bubble_sort</span><span class="p">(</span><span class="kt">long</span> <span class="n">len</span><span class="p">,</span> <span class="kt">long</span> <span class="n">a</span><span class="p">[])</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">last</span> <span class="o">=</span> <span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">last</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">last</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">bubble_pass</span><span class="p">(</span><span class="n">last</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">long</span> <span class="n">a</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">44</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">15</span><span class="p">};</span>
+  <span class="n">bubble_sort</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+  <span class="n">print</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;cs1010.h&quot;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="kt">long</span> <span class="n">len</span><span class="p">,</span> <span class="kt">long</span> <span class="n">a</span><span class="p">[])</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cs1010_print_long</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="n">cs1010_print_string</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">cs1010_println_string</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="kt">long</span> <span class="n">a</span><span class="p">[],</span> <span class="kt">long</span> <span class="n">curr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// insert a[curr] into a[0]..a[curr-1] in the right position</span>
+  <span class="kt">long</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">curr</span><span class="p">];</span>
+  <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="n">curr</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">temp</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">i</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="c1">// { temp &gt;= a[i] || i &lt; 0 }</span>
+  <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">insertion_sort</span><span class="p">(</span><span class="kt">long</span> <span class="n">n</span><span class="p">,</span> <span class="kt">long</span> <span class="n">a</span><span class="p">[])</span> <span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="n">curr</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">curr</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">curr</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">insert</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">curr</span><span class="p">);</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">long</span> <span class="n">a</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">44</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">15</span><span class="p">};</span>
+  <span class="n">insertion_sort</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="appendix-complete-code_1">Appendix: Complete Code</h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&quot;cs1010.h&quot;</span><span class="cp"></span>
+
+<span class="cm">/* Look for q in list[i]..list[j].</span>
+<span class="cm"> *</span>
+<span class="cm"> * @pre list is sorted in increasing order</span>
+<span class="cm"> * @pre q is not in list[0]..list[i-1], list[j+1]..list[n-1]</span>
+<span class="cm"> * @return -1 if not found, the position of q in list otherwise.</span>
+<span class="cm"> */</span>
+<span class="kt">long</span> <span class="nf">search</span><span class="p">(</span><span class="k">const</span> <span class="kt">long</span> <span class="n">list</span><span class="p">[],</span> <span class="kt">long</span> <span class="n">i</span><span class="p">,</span> <span class="kt">long</span> <span class="n">j</span><span class="p">,</span> <span class="kt">long</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">long</span> <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">list</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">mid</span><span class="mi">-1</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
+  <span class="p">}</span> 
+  <span class="c1">// { list[mid] &lt; q }</span>
+  <span class="k">return</span> <span class="n">search</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kt">long</span> <span class="n">a</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">19</span><span class="p">};</span>
+  <span class="kt">long</span> <span class="n">q</span> <span class="o">=</span> <span class="n">cs1010_read_long</span><span class="p">();</span>
+  <span class="n">cs1010_println_long</span><span class="p">(</span><span class="n">search</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">q</span><span class="p">));</span> 
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
                 
               
               

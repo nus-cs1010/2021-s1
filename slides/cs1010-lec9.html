@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="stylesheets/cs1010.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/dark.css">
+<title>CS1010 AY20/21 S1 Lecture 8</title>
+<meta charset="utf-8">
+</head>
+<body>
+<textarea id="source">
+class: middle, center
+
+# Lecture 9
+
+### 19 October 2020
+
+.smaller[
+Admin Matters<br>
+Unit 23: Searching<br>
+Unit 24: Sorting<br>
+]
+---
+class: middle
+
+### Assignment 6
+
+- Due Tuesday night (23:59)
+- Graded on correctness (including syntax, practices, approach, and logic), style, efficiency, and documentation.
+
+---
+class: middle
+
+### Tutorial/Lab 8
+
+- Problem Sets 23-24
+- Assignment 6
+
+---
+class: middle
+
+### Catch-Up Session III
+
+- Saturday, 24 October, 10 am - 12 pm
+- Meant to review concepts that you are still unclear 
+- Please post questions on Piazza Live Q&A and vote for which 
+  questions you want us to answer
+- NOT a "help me debug" session (we have office hours for that)
+
+---
+class: middle
+
+- Attendence to office hours and past catch-up sessions have been
+  significantly lower compared to previous batches
+- Yet, more students seem to be struggling
+- This is Week 9 out of your 4-year programme.  It is not too late
+  to ask for help.
+
+---
+class: middle,center,wide
+
+background-image: url(figures/midterm-distribution.png)
+
+---
+class: middle, center
+
+# Searching
+
+---
+class: middle
+
+.tiny[
+```C
+long search(long n, const long list[n], long q) {
+  for (long i = 0; i < n; i += 1) {
+    if (list[i] == q) {
+      return i;
+  }
+  return -1;
+}
+```
+]
+
+---
+class: middle
+
+- Must we scan through every element?  
+- What if the input is sorted?
+
+---
+class: middle,center
+
+![property](figures/search-and-sort-dark/search-and-sort-dark.001.png)
+
+---
+class: middle,wide
+
+.tiny[
+```C
+long search(const long list[], long i, long j, long q) {
+  if (i > j) {
+    return -1;
+  }
+  long mid = (i+j)/2;
+  if (list[mid] == q) {
+    return mid;
+  } 
+  if (list[mid] > q) {
+    return search(list, i, mid-1, q);
+  } 
+  return search(list, mid+1, j, q);
+}
+```
+]
+
+---
+class: middle,center
+
+![property](figures/search-and-sort-dark/search-and-sort-dark.002.png)
+
+---
+class: middle
+
+.moretiny[
+```C
+long search(const long list[], long i, long j, long q) {
+  // q not in list[0..i-1, j+1..n-1]
+  if (i > j) {
+	// q not in ..
+    return -1;
+  }
+  long mid = (i+j)/2;
+  if (list[mid] == q) {
+    return mid;
+  } 
+  if (list[mid] > q) {
+	// q not in ..
+    return search(list, i, mid-1, q);
+  } 
+  // q not in ..
+  return search(list, mid+1, j, q);
+}
+```
+]
+
+---
+class: top
+
+### Running Time for Binary Search
+
+---
+class: middle
+
+### Counting Sort: O(?)
+.moretiny[
+```C
+void counting_sort(const long in[], long out[], long len)
+{
+  long freq[MAX + 1] = { 0 };
+  for (long i = 0; i < len; i += 1) {
+    freq[in[i]] += 1;
+  }
+  long outpos = 0;
+  for (long i = 0; i <= MAX; i += 1) {
+    for (long j = outpos; j < outpos + freq[i]; j += 1) {
+      out[j] = i;
+    }
+    outpos += freq[i];
+  }
+}
+```
+]
+
+---
+class: middle
+
+### Selection Sort: O(?)
+.moretiny[
+```C
+long max(long last, const long list[])
+{
+  long max_so_far = list[0];
+  long max_index = 0;
+  for (long i = 1; i <= last; i += 1) {
+    if (list[i] > max_so_far) {
+      max_so_far = list[i];
+      max_index = i;
+    }
+  }
+  return max_index;
+}
+```
+]
+
+---
+class: middle
+
+### Selection Sort: O(?)
+.moretiny[
+```C
+void selection_sort(long length, long list[])
+{
+  for (long i = 1; i < length; i += 1) {
+    long max_pos = max(length - i, list);
+    if (max_pos != length - i) {
+      swap(&list[max_pos], &list[length - i]);
+    }
+  }
+}
+```
+]
+---
+class: middle
+
+### Counting Sort vs. Selection Sort
+
+- Counting sort is fast because the range of the inputs is limited
+- Selection sort is slower and is more general
+
+---
+class: middle
+
+### Bubble Sort
+
+- repeatedly compare two adjacent elements and swap if needed
+
+---
+class: bottom
+
+.tiny[
+Version: 1.2
+
+Last Updated: Mon Oct 12 10:38:26 +08 2020
+]
+</textarea>
+
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+<script src="javascripts/counter.js">
+</script>
+<script>
+remark.macros.scale = function (percentage) {
+	var url = this;
+	return '<img src="' + url + '" style="width: ' + percentage + '" />';
+};
+// ![:scale 50%](image.jpg)
+
+var slideshow = remark.create({
+    navigation: {
+	    scroll: false
+	},
+	ratio: '16:9',
+	highlightStyle: 'monokai',
+    slideNumberFormat: 'AY2021 S1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%current%',
+});
+ // Setup MathJax
+  MathJax.Hub.Config({
+	  tex2jax: {
+		inlineMath: [['$', '$']],
+		// inlineMath: [['$', '$'], ['\\(', '\\)']],
+		displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		skipTags: ['script', 'noscript', 'style', 'pre']
+	  }
+  });
+
+  MathJax.Hub.Configured();
+</script>
+</body>
+</html>
