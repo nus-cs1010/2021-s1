@@ -1312,10 +1312,10 @@
 <p>With a sorted input and using binary search, however, we can do a better.  Let's consider the worst case, where <span class="arithmatex">\(q\)</span> is not in the list.  Note that every comparison we make, we reduce the range of elements to search by half, until we reach one element.  We start with <span class="arithmatex">\(n\)</span> elements that could possibly contain <span class="arithmatex">\(q\)</span>.  After one comparison, we are left with <span class="arithmatex">\(n/2\)</span>.  After another comparison, we are left with <span class="arithmatex">\(n/4\)</span>, etc.  It takes only <span class="arithmatex">\(O(\log_2 n)\)</span> steps until we reach one element in the list.  This is a big improvement over <span class="arithmatex">\(O(n)\)</span> time: Suppose n is 1,000,000,000,000,000.  Instead of scanning through and comparing one quadrillion elements, we only need to compare 50 of them!</p>
 <h2 id="problem-set-23">Problem Set 23</h2>
 <h3 id="problem-231">Problem 23.1</h3>
-<p>(a) 
-Rewrite the code for binary search above using a loop instead of recursion.</p>
+<p><del class="critic"> (a) 
+{Rewrite the code for binary search above using a loop instead of recursion.</del></p>
 <p>(b) 
-Instead of returning the position of the query <code>q</code>, modify the binary search algorithm in (a) such that it returns either:</p>
+Instead of returning the position of the query <code>q</code>, modify <del class="critic">the binary search algorithm in (a)</del> an iterative version of the binary search such that it returns either:</p>
 <ul>
 <li>a position <code>k</code>, such as <code>a[k] &lt;= q &lt;= a[k+1]</code>. </li>
 <li>-1 if <code>q &lt; a[0]</code> or <code>q &gt; a[n-1]</code></li>
