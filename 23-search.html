@@ -1182,7 +1182,7 @@
 <h2 id="binary-search">Binary Search</h2>
 <p>But, do we always have to check every element in the list?  It turns out that, like many real-life situations, <em>if the input list is sorted</em>, we do not have to scan through every element.  We can eliminate a huge chunk of the elements based on whether a chosen element is bigger or smaller than <span class="arithmatex">\(q\)</span>.</p>
 <p>Suppose that the input list is sorted in increasing order.  Pick a random element <span class="arithmatex">\(x\)</span> from the list.  Any element to the left of <span class="arithmatex">\(x\)</span> must be less than or equal to <span class="arithmatex">\(x\)</span>, and any element to the right of <span class="arithmatex">\(x\)</span> must be greater or equal to <span class="arithmatex">\(x\)</span>. </p>
-<p><img alt="property" src="figures/search-and-sort/search-and-sort.001.png{: style=&quot;width:300px&quot;}" /></p>
+<p><img alt="property" src="figures/search-and-sort/search-and-sort.001.png" style="width:300px" /></p>
 <p>Suppose that <span class="arithmatex">\(q &gt; x\)</span>, then we know that <span class="arithmatex">\(q\)</span> must be to the right of <span class="arithmatex">\(x\)</span>, there is no need to search to the left of <span class="arithmatex">\(x\)</span>.  Otherwise, <span class="arithmatex">\(q &lt; x\)</span>, and <span class="arithmatex">\(q\)</span> must be to the left of <span class="arithmatex">\(x\)</span>, and there is no need to search to the right of <span class="arithmatex">\(x\)</span>.</p>
 <p>We can code this out using a recursive function below:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
