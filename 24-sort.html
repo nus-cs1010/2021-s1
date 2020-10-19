@@ -1555,7 +1555,7 @@ In each loop, it finds the index of the maximum element among list[0] to list[le
 <span class="p">{</span>
   <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="n">curr</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
   <span class="kt">long</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">curr</span><span class="p">];</span>
-  <span class="k">while</span> <span class="p">(</span><span class="n">temp</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
     <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
     <span class="n">i</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
   <span class="p">}</span>
@@ -1569,6 +1569,11 @@ In each loop, it finds the index of the maximum element among list[0] to list[le
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+<p><ins class="critic">Fix</ins> The original code uses the following as loop condition
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  while (temp &lt; a[i] &amp;&amp; i &gt;= 0) { .. }
+</code></pre></div>
+</td></tr></table>
+which causes an access to <code>a[-1]</code>.  Even though this value is eventually discarded, to be polite we should not access memory locations where we have no permission to.</p>
 <h2 id="animation">Animation</h2>
 <p>Animations for various sorting algorithms, including some which you will learn in CS2040C, are available online on <a href="https://visualgo.net/bn/sorting">VisuAlgo</a></p>
 <h2 id="problem-set-24">Problem Set 24</h2>

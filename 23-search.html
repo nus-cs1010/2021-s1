@@ -1251,11 +1251,11 @@
        <span class="o">:</span>
 </code></pre></div>
 </td></tr></table>
-<p>Line 3 of the snippet above is invoked only if <code>list[mid] &gt; q</code>.  Since the array <code>list</code> is sorted, we know for sure that any element in <code>list[mid+1]</code>..<code>list[j]</code> is larger than <span class="arithmatex">\(q\)</span>.  So, <span class="arithmatex">\(q\)</span> cannot be anywhere in that range.  We can assert, between Line 3 and Line 4 above:</p>
+<p>Line 3 of the snippet above is invoked only if <code>list[mid] &gt; q</code>.  Since the array <code>list</code> is sorted, we know for sure that any element in <code>list[mid+1]</code>..<code>list[j]</code> is larger than <span class="arithmatex">\(q\)</span>.  So, <span class="arithmatex">\(q\)</span> cannot be anywhere in that range.  We can assert, between <del class="critic">Line 3 and Line 4</del> Lines 2 and 3 above:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// { q is not in list[0]..list[i-1] and list[mid]..list[n-1] }</span>
 </code></pre></div>
 </td></tr></table>
-<p>Thus, when Line 4 is invoked, the same assertion holds true.  You can apply the same argument to the call:</p>
+<p>Thus, when <del class="critic">Line 4</del> Line 3 is invoked, the same assertion holds true.  You can apply the same argument to the call:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>  <span class="k">return</span> <span class="nf">search</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">q</span><span class="p">);</span>
 </code></pre></div>
 </td></tr></table>
