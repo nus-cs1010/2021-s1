@@ -1429,8 +1429,9 @@ takes <span class="arithmatex">\(O(f_i)\)</span> time, where <span class="arithm
 In each loop, it finds the index of the maximum element among list[0] to list[length - i], and then perform a swap to put the maximum element into the rightful position.  Finding the index of the maximum element takes more time than swapping, so let's focus on that (since for Big-O notation we are only concern with the higher-order terms).</p>
 <p>The <code>max</code> function has another for loop in it.  And it loops through the list <span class="arithmatex">\(O(n - i)\)</span> times.  The running time is thus:</p>
 <div class="arithmatex">\[
-\sum_{i=0}^{n} (n - i) = n^2 - \frac{n(n+1)}{2} = \frac{n^2 - n}{2} = O(n^2)
+\sum_{i=0}^{n} (n - i) = (n+1)^2 - \frac{n(n+1)}{2} = \frac{n^2 + n}{2} = O(n^2)
 \]</div>
+<p><ins class="critic">An earlier version of the note incorrectly express $\sum_{i=0}^n{n} as <span class="arithmatex">\(n^2\)</span>.</ins></p>
 <p>So selection sort takes O(n^2) time.</p>
 <h2 id="selection-vs-counting-sort">Selection vs Counting Sort</h2>
 <p>Comparing the running of counting sort <span class="arithmatex">\(O(n + MAX)\)</span> vs selection sort <span class="arithmatex">\(O(n^2)\)</span>, it is clear that counting sort is more efficient -- we say that counting sort is a <em>linear time</em> algorithm and selection sort is a <em>quadratic time</em> algorithm.</p>
