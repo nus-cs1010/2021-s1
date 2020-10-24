@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="stylesheets/cs1010.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/dark.css">
+<title>CS1010 AY20/21 S1 Lecture 10</title>
+<meta charset="utf-8">
+</head>
+<body>
+<textarea id="source">
+class: middle, center
+
+# Lecture 10
+
+### 25 October 2020
+
+.smaller[
+Unit 25: Tower of Hanoi<br>
+Unit 26: Permutation<br>
+Unit 27: N Queens<br>
+]
+---
+class: middle
+
+- Assignment 7 Due Tuesday
+- Assignment 8, Exercise 5, Past Year PE2 
+  to be released this week
+
+---
+class: middle
+
+### Tutorial/Lab 9
+
+- Problem Sets 25-27
+- Assignment 7
+
+---
+class: middle
+
+### Recursion
+
+- Mostly linear recursion so far
+- Can be easily written as loops
+- What else can recursion do?
+
+---
+class: middle
+
+### Tower of Hanoi
+
+- Three pegs
+- $k$ discs
+- Move one disc at a time
+- Bigger disc cannot go on smaller disc
+
+---
+class: middle,wide
+
+![start](figures/recursion/recursion.001.png)
+
+---
+class: middle,wide
+
+![start](figures/recursion/recursion.002.png)
+
+---
+class: middle
+
+[Let's play](https://www.mathplayground.com/logic_tower_of_hanoi.html)
+
+---
+class: middle
+
+## Recursion
+
+- Find a solution for trivial input (one disc)
+- Assume we know how to move $k-1$ discs to another peg
+- Solve the problem with $k$ discs
+
+---
+class: middle
+
+Start with this:
+
+![start](figures/recursion/recursion.001.png)
+
+---
+class: middle
+
+Move $k-1$ disc from A to B (wishful thinking)
+
+![start](figures/recursion/recursion.003.png)
+
+---
+class: middle
+
+Move one disc from A to C
+
+![start](figures/recursion/recursion.004.png)
+
+---
+class: middle
+
+Move $k-1$ discs from B to C (wishful thinking)
+
+![start](figures/recursion/recursion.005.png)
+
+---
+class: middle
+
+Representating the problem:
+- discs as integers 1 to $k$
+- pegs as integers 1, 2, 3
+
+---
+class: middle
+
+.tiny[
+```C
+/**
+ * Print the steps to move k discs from src to
+ * dest, using temp as intermediary peg.
+ */
+void solve(long k, long src, long dest, long temp) {
+}
+```
+]
+---
+class: middle
+
+.tiny[
+```C
+void solve(long k, long src, long dest, long temp) {
+  if (k == 1) {
+    move(1, src, dest);
+	return;
+  }
+    :
+}
+```
+]
+
+---
+class: middle
+
+.tiny[
+```C
+void solve(long k, long src, long dest, long temp) {
+  // base case
+  if (k == 1) {
+    move(1, src, dest);
+	return;
+  }
+  solve(k - 1, src, temp, dest);
+  move(k, src, dest);
+  solve(k - 1, temp, dest, src);
+}
+```
+]
+
+---
+class: top
+
+### Running Time
+
+$$T(1) = 1$$
+$$T(k) = 2T(k-1) + 1$$
+
+---
+class: middle,center
+
+Iterative solution?
+
+---
+class: middle
+
+### Generating Permutations
+
+Given a string with no repetition, say `abc`, generate all permutations of 
+the chars in the string:
+
+```
+abc cba acb cab bac bca
+```
+
+---
+class: middle
+
+### Recursion
+
+- Generate a permutation for trivial input (one-char string)
+- Assume we know how to generate permutation for string of length $k-1$
+- Generate permutation for string of length $k$
+
+---
+class: middle
+
+To permutate `abc`:
+
+- starts with `a`, permutate `bc`: `abc acb`
+- starts with `b`, permutate `ac`: `bac bca`
+- starts with `c`, permutate `ab`: `cab cba`
+
+---
+class: middle
+
+Example:
+
+To permutate `abcd`:
+
+.tiny[
+- starts with `a`, permutate `bcd`: `abcd abdc acbd ..`
+- starts with `b`, permutate `acd`: `bacd bacd bcad ..`
+- starts with `c`, permutate `abd`: `cabd cadb cbad ..`
+- starts with `d`, permutate `abc`: `dabc dacb cbac ..`
+]
+
+---
+class: middle
+
+To permutate `abc` when we starts with `d`:
+
+- starts with `da`, permutate `bc`: `dabc dacb`
+- starts with `db`, permutate `ac`: `dbac dbca`
+- starts with `dc`, permutate `ab`: `dcab dcba `
+
+---
+class: middle
+
+At any step, we have a fixed prefix, and permutate
+the suffix (recursively)
+
+---
+class: middle
+
+.tiny[
+```C
+/**
+ * Fix a[0]..a[curr - 1] but permute a[curr]..a[len - 1]
+ * Print out each permutation.
+ */
+void permute(char a[], long len, long curr) {
+}
+```
+]
+
+---
+class: middle
+
+.tiny[
+```C
+void permute(char a[], long len, long curr) {
+  if (curr == len - 1) {
+    cs1010_println_string(a);
+	return;
+  }
+    :
+}
+```
+]
+
+---
+class: middle
+
+.tiny[
+```C
+void permute(char a[], long len, long curr) {
+  if (curr == len - 1) {
+    cs1010_println_string(a);
+	return;
+  }
+    
+  permute(a, len, curr + 1);
+   :
+}
+```
+]
+
+---
+class: middle
+
+.tiny[
+```C
+void permute(char a[], long len, long curr) {
+  if (curr == len - 1) {
+    cs1010_println_string(a);
+	return;
+  }
+    
+  permute(a, len, curr + 1);
+  for (long i = curr + 1; i < len; i += 1) {
+    swap(a, curr, i);
+    permute(a, len, curr + 1);
+    swap(a, i, curr);
+  }
+}
+```
+]
+
+---
+class: top
+
+### Running Time
+
+$$T(1) = 1$$
+$$T(k) = kT(k-1)$$
+
+---
+class: middle
+
+What if the string has repetition? (Problem 26.1)
+
+---
+class: middle,center
+
+## N Queens
+
+---
+class: middle,center
+
+![queens](figures/recursion/recursion.006.png)
+
+---
+class: middle,center
+
+![queens](figures/recursion/recursion.007.png)
+
+---
+class: middle,center
+
+Given $n \times n$ chess board, place $n$ queens so that they do not threaten each other.
+
+---
+class: middle
+
+### Recursion
+
+- Find the solution for trivial input ($1 \times 1$ chessboard)
+- Assume we know how to find a solution for a smaller chessboard ($n-1 \times n-1$)
+- Find the solution for a $n \times n$ chessboard
+
+---
+class: middle
+
+### We need the right representation of the problem
+
+- There is one queen per row, one queen per column
+- So the positions of the queens can be represented with the column ids
+
+---
+class: middle
+
+### How to solve
+
+- Generate all possible placement of $n$ queens
+- Return the first one that is valid
+
+---
+class: middle
+
+.tiny[
+```C
+void queens(char q[], long len, long curr) {
+  if (curr == len - 1) {
+    if (is_valid(q)) {
+      cs1010_println_string(q);
+	}
+  }
+  queens(q, len, curr + 1));
+  for (long i = curr + 1; i < len; i += 1) {
+    swap(q, curr, i);
+	queens(q, len, curr + 1);
+    swap(q, i, curr);
+  }
+}
+```
+]
+
+---
+class: bottom
+
+.tiny[
+Version: 1.0
+
+Last Updated: Sat Oct 24 17:26:37 +08 2020
+]
+</textarea>
+
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+<script src="javascripts/counter.js">
+</script>
+<script>
+remark.macros.scale = function (percentage) {
+	var url = this;
+	return '<img src="' + url + '" style="width: ' + percentage + '" />';
+};
+// ![:scale 50%](image.jpg)
+
+var slideshow = remark.create({
+    navigation: {
+	    scroll: false
+	},
+	ratio: '16:9',
+	highlightStyle: 'monokai',
+    slideNumberFormat: 'AY2021 S1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%current%',
+});
+ // Setup MathJax
+  MathJax.Hub.Config({
+	  tex2jax: {
+		inlineMath: [['$', '$']],
+		// inlineMath: [['$', '$'], ['\\(', '\\)']],
+		displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		skipTags: ['script', 'noscript', 'style', 'pre']
+	  }
+  });
+
+  MathJax.Hub.Configured();
+</script>
+</body>
+</html>
