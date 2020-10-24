@@ -15,7 +15,7 @@
     
     
       
-        <title>Unit 29: Standard I/O Functions - CS1010 Programming Methodology</title>
+        <title>29. Standard I/O - CS1010 Programming Methodology</title>
       
     
     
@@ -96,7 +96,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Unit 29: Standard I/O Functions
+              29. Standard I/O
             
           </span>
         </div>
@@ -288,10 +288,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
     
     <label class="md-nav__link" for="nav-5">
       Notes
@@ -590,6 +592,199 @@
     <a href="24-sort.html" class="md-nav__link">
       24. Sorting
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="25-tower.html" class="md-nav__link">
+      25. Tower of Hanoi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="26-permutation.html" class="md-nav__link">
+      26. Permutation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="27-queens.html" class="md-nav__link">
+      27. N Queens
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="28-struct.html" class="md-nav__link">
+      28. Struct
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        29. Standard I/O
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="29-stdio.html" class="md-nav__link md-nav__link--active">
+      29. Standard I/O
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#printf" class="md-nav__link">
+    printf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pitfalls-when-using-printf" class="md-nav__link">
+    Pitfalls when using printf
+  </a>
+  
+    <nav class="md-nav" aria-label="Pitfalls when using printf">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mismatch-types" class="md-nav__link">
+    Mismatch Types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mismatch-number-of-arguments" class="md-nav__link">
+    Mismatch Number of Arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-user-input" class="md-nav__link">
+    Printing User Input
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scanf" class="md-nav__link">
+    scanf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pitfalls-when-using-scanf" class="md-nav__link">
+    Pitfalls When Using scanf
+  </a>
+  
+    <nav class="md-nav" aria-label="Pitfalls When Using scanf">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-for-error" class="md-nav__link">
+    Checking for Error
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalid-pointers" class="md-nav__link">
+    Invalid Pointers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffer-overflow" class="md-nav__link">
+    Buffer Overflow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fgets" class="md-nav__link">
+    fgets
+  </a>
+  
+    <nav class="md-nav" aria-label="fgets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avoid-atol-or-atof" class="md-nav__link">
+    Avoid atol or atof
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1161,7 +1356,7 @@
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %s %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 </code></pre></div>
 </td></tr></table>
-<p>It would cause <code>printf</code> to access the memory content of the stack as strings. </p>
+<p>It would cause <code>printf</code> to access the memory content of the stack as strings.</p>
 <h3 id="printing-user-input">Printing User Input</h3>
 <p>We should also never do this:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -1179,19 +1374,19 @@
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>%[*][field_width][length_modifier]specifier
 </code></pre></div>
 </td></tr></table>
-<p>For instance, to read an integer, a floating-point number, and a string of at most 10 characters, </p>
+<p>For instance, to read an integer, a floating-point number, and a string of at most 10 characters,</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">l</span><span class="p">;</span>
 <span class="kt">double</span> <span class="n">d</span><span class="p">;</span>
-<span class="kt">char</span> <span class="n">s</span><span class="p">[</span><span class="mi">11</span><span class="p">];</span> 
+<span class="kt">char</span> <span class="n">s</span><span class="p">[</span><span class="mi">11</span><span class="p">];</span>
 <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%ld %lf %10s&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">l</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
 </code></pre></div>
 </td></tr></table>
 <p><code>scanf</code> scans the standard input, try to match it to the format specified.
 The space in between the format specifier matches zero or more white spaces (space, tab, newline).  Scanning stops when an input character does not match such a format character or when an input conversion fails.</p>
-<p>Adding a <code>*</code> to the format modifier means that scanf should consume the inputs but not store it in any variables.  This, combined with <code>%[``]</code> is useful to clear any remaining data from the standard input.</p>
+<p>Adding a <code>*</code> to the format modifier means that <code>scanf</code> should consume the inputs but not store it in any variables.  This, combined with <code>%[``]</code> is useful to clear any remaining data from the standard input.</p>
 <h2 id="pitfalls-when-using-scanf">Pitfalls When Using <code>scanf</code></h2>
 <h3 id="checking-for-error">Checking for Error</h3>
 <p>The function <code>scanf</code> fails silently when the input character does not match a format or when the input conversion fails.  It might return an unexpected input.  We should always check the return value of <code>scanf</code> to make sure that it is reading properly.</p>
@@ -1202,7 +1397,7 @@ The space in between the format specifier matches zero or more white spaces (spa
 <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%ld&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
 </code></pre></div>
 </td></tr></table>
-<p>The code above might print uninitialized value if the input is not an integer.</p>
+<p>The code above might print an uninitialized value if the input is not an integer.</p>
 <p>We should check</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1242,7 +1437,7 @@ The space in between the format specifier matches zero or more white spaces (spa
 </td></tr></table>
 <p>The compiler would not warn us since the type matches perfectly.  The program may crash since the pointer is not pointing to a valid memory location accessible by the program.</p>
 <h3 id="buffer-overflow">Buffer Overflow</h3>
-<p>When we use <code>scanf</code> to read a string, it keeps reading until it reaches a space, and stores everything that it reads into an array.  The problem here is that we do not know when it will stop reading, and therefore how big is the array that we need to allocate for the input!</p>
+<p>When we use <code>scanf</code> to read a string, it keeps reading until it reaches space, and stores everything that it reads into an array.  The problem here is that we do not know when it will stop reading, and therefore how big is the array that we need to allocate for the input!</p>
 <p>Let's say we do:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1275,6 +1470,41 @@ The space in between the format specifier matches zero or more white spaces (spa
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="28-struct.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                28. Struct
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="ex00.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                0. Echo, Divide, Quadratic
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
