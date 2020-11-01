@@ -1360,7 +1360,7 @@
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>%[flags][field_width][.precision][length_modifier]specifier
 </code></pre></div>
 </td></tr></table>
-<p>The letter after <code>%</code> controls the interpretation of the argument.  <code>s</code> for string, <code>c</code> for character, <code>d</code> for integer (base 10), <code>f</code> for floating-point number, <code>p</code> for pointer (base 16).  We can additionally prepend this with <em>length modifier</em>.  <code>ld</code> for <code>long</code> integer, <code>lld</code> for <code>long long</code>, and <code>lf</code> for <code>double</code>.</p>
+<p>The <del class="critic">letter after <code>%</code></del> <ins class="critic">specifier</ins>  controls the interpretation of the argument.  <code>s</code> for string, <code>c</code> for character, <code>d</code> for integer (base 10), <code>f</code> for floating-point number, <code>p</code> for pointer (base 16).  We can additionally prepend this with <em>length modifier</em>.  <code>ld</code> for <code>long</code> integer, <code>lld</code> for <code>long long</code>, and <code>lf</code> for <code>double</code>.</p>
 <p>To format the output, we can prepend it with a number to indicate its <em>field width</em>, or minimum space used when printing.  E.g., <code>%3d</code> will pad the number printed with space if the number printed is less than 3 digits.  Adding a <em>flag</em> 0 in front, <code>%03d</code>, will pad the number with 0s if the number printed is less than 3 digits.  Other flags include <code>+</code>, which tells <code>printf</code> to print a sign (<code>+</code> or <code>-</code>) for the number.  For floating-point numbers, we can additionally control the <em>precision</em>, or the number of digits printed after the decimal point.  <code>%3.4lf</code> will print a double to four decimal points.</p>
 <p>Note: <code>cs1010_println_double</code> uses <code>%.4lf</code> as the format modifier.</p>
 <h2 id="pitfalls-when-using-printf">Pitfalls when using <code>printf</code></h2>
@@ -1410,7 +1410,7 @@
 </td></tr></table>
 <p><code>scanf</code> scans the standard input, try to match it to the format specified.
 The space in between the format specifier matches zero or more white spaces (space, tab, newline).  Scanning stops when an input character does not match such a format character or when an input conversion fails.</p>
-<p>Adding a <code>*</code> to the format modifier means that <code>scanf</code> should consume the inputs but not store it in any variables.  This, combined with <code>%[``]</code> is useful to clear any remaining data from the standard input.</p>
+<p>Adding a <code>*</code> to the format modifier means that <code>scanf</code> should consume the inputs but not store it in any variables.  This, combined with <code>%[</code> <code>]</code> is useful to clear any remaining data from the standard input.</p>
 <h2 id="pitfalls-when-using-scanf">Pitfalls When Using <code>scanf</code></h2>
 <h3 id="checking-for-error">Checking for Error</h3>
 <p>The function <code>scanf</code> fails silently when the input character does not match a format or when the input conversion fails.  It might return an unexpected input.  We should always check the return value of <code>scanf</code> to make sure that it is reading properly.</p>

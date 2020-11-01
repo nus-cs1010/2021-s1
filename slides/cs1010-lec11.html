@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="stylesheets/cs1010.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/dark.css">
+<title>CS1010 AY20/21 S1 Lecture 11</title>
+<meta charset="utf-8">
+</head>
+<body>
+<textarea id="source">
+class: middle, center
+
+# Lecture 11
+
+### 2 November 2020
+
+.smaller[
+Admin Matters<br>
+Unit 28: struct<br>
+Unit 29: stdio<br>
+]
+---
+class: middle
+
+- PE2 this Saturday
+- Arrangement for final
+
+---
+class: middle
+
+### Tutorial/Lab 10
+
+- Assignment 8
+- PE2 from 18/19
+
+---
+class: middle
+
+### Compound Data Type
+
+- Array: multiple values of the same data type
+- Structure: multiple values of different data type
+
+---
+class: middle
+
+### Some things belong together
+
+- 1D array and its length
+- 2D array, its width, and its height
+- x and y position in a maze
+
+---
+class: middle,center
+
+## Defining a `struct`
+
+---
+class: middle
+
+```C
+struct matrix {
+  double** array;
+  long num_of_rows;
+  long num_of_columns;
+};
+```
+
+
+---
+class: middle
+
+
+```C
+struct list {
+  char *array;
+  long length;
+};
+```
+
+---
+class: middle
+
+```C
+struct module {
+  char *code;
+  char *title;
+  long mc;
+};
+```
+---
+class: middle
+
+### Declaring a struct variable
+
+```C
+struct module cs1010;
+```
+
+---
+class: middle
+
+### Initializing a struct variable
+
+.tiny[
+```C
+struct module cs1010;
+cs1010.code = "CS1010";
+cs1010.title = "Programming Methodology";
+cs1010.mc = 4;
+```
+]
+
+---
+class: middle
+
+### Declaring AND Initializing a struct variable
+
+.tiny[
+```C
+struct module cs1010 = {
+  .code = "CS1010",
+  .title = "Programming Methodology",
+  .mc = 4
+};
+```
+]
+---
+class: middle
+
+### Reading and writing members of a `struct`
+
+.tiny[
+```C
+cs1010.mc = hours_spent_per_week/2.5;
+cs1010_println_long(cs1010.mc);
+```
+]
+
+---
+class: middle,wide
+
+### `struct` as pass-by-value parameters to a function
+
+.tiny[
+```C
+void update_mc(struct module cs1010, long weekly_hours_spent) {
+  cs1010.mc = weekly_hours_spent/2.5;
+}
+```
+]
+
+---
+class: middle,wide
+
+### `struct` as pass-by-reference parameters to a function
+
+.tiny[
+```C
+void update_mc(struct module *cs1010, long weekly_hours_spent) {
+  (*cs1010).mc = weekly_hours_spent/2.5;
+}
+```
+]
+
+---
+class: middle,wide
+
+### `struct` as pass-by-reference parameters to a function
+
+.tiny[
+```C
+void update_mc(struct module *cs1010, long weekly_hours_spent) {
+  cs1010->mc = weekly_hours_spent/2.5;
+}
+```
+]
+
+---
+class: middle,wide
+
+### How to pass multiple values back to caller (Method 1)
+
+.tiny[
+```C
+void find_max_steps(long n, long *max_n, long *max_num_steps) {
+  *max_num_steps = 0;
+  *max_n = 1;
+  for (long i = 1; i <= n; i += 1) {
+    long num_of_steps = count_num_of_steps(i);
+    if (num_of_steps >= *max_num_steps) {
+      *max_n = i;
+      *max_num_steps = num_of_steps;
+    }
+  }
+}
+```
+]
+
+---
+class: middle
+
+### How to pass multiple values back to caller (Method 2)
+
+```C
+struct answer {
+  long max_n;
+  long max_num_steps;
+};
+```
+
+---
+class: middle
+
+.tiny[
+```C
+struct answer find_max_steps(long n) {
+  struct answer ans = {
+    .max_n = 1,
+    .max_num_steps = 0
+  };
+  for (long i = 1; i <= n; i += 1) {
+    long num_of_steps = count_num_of_steps(i);
+    if (num_of_steps >= ans.max_num_steps) {
+      ans.max_n = i;
+      ans.max_num_steps = num_of_steps;
+    }
+  }
+  return ans;
+}
+```
+]
+
+---
+class: middle,center
+
+## Defining Your Own Type
+
+---
+class: middle
+
+.tiny[
+```C
+typedef unsigned char color_t;
+  :
+void paint(color_t r, color_t g, color_t b) { 
+  :
+}
+```
+]
+
+---
+class: middle
+
+```C
+typedef struct module {
+  char *code;
+  char *title;
+  long mc;
+} module;
+```
+
+---
+class: middle
+
+```C
+typedef struct {
+  char *code;
+  char *title;
+  long mc;
+} module;
+```
+
+---
+class: middle,wide
+
+.tiny[
+```C
+void update_mc(module cs1010, long weekly_hours_spent) {
+  cs1010.mc = weekly_hours_spent/2.5;
+}
+```
+]
+
+---
+class: middle,center
+
+# Reading and Printing without `libcs1010`
+
+---
+class: middle,center
+
+### `printf` and `scanf`
+
+---
+class: middle
+
+```C
+printf("%s is a %ld-MC module\n",
+   module.code, module.mc);
+```
+
+---
+class: middle
+
+.tiny[
+```
+%[flags][field_width][.precision][length_modifier]specifier
+```
+]
+
+---
+class: middle
+
+- `printf` behaves differently from functions that you have been writing.
+
+- It takes in different number of arguments of different type.
+
+---
+class: middle
+
+```C
+long width;
+long height;
+scanf("%ld %ld", &width, &height);
+```
+
+---
+class: middle
+
+.tiny[
+```
+%[*][field_width][length_modifier]specifier
+```
+]
+
+---
+class: middle
+
+- space in between the format specifier matches zero or more white spaces (space, tab, newline)
+
+- Scanning stops when an input character does not match such a format character or when an input conversion fails
+
+---
+class: bottom
+
+.tiny[
+Version: 1.0
+
+Last Updated: Sun Nov  1 11:59:04 +08 2020
+]
+</textarea>
+
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+<script src="javascripts/counter.js">
+</script>
+<script>
+remark.macros.scale = function (percentage) {
+	var url = this;
+	return '<img src="' + url + '" style="width: ' + percentage + '" />';
+};
+// ![:scale 50%](image.jpg)
+
+var slideshow = remark.create({
+    navigation: {
+	    scroll: false
+	},
+	ratio: '16:9',
+	highlightStyle: 'monokai',
+    slideNumberFormat: 'AY2021 S1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%current%',
+});
+ // Setup MathJax
+  MathJax.Hub.Config({
+	  tex2jax: {
+		inlineMath: [['$', '$']],
+		// inlineMath: [['$', '$'], ['\\(', '\\)']],
+		displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		skipTags: ['script', 'noscript', 'style', 'pre']
+	  }
+  });
+
+  MathJax.Hub.Configured();
+</script>
+</body>
+</html>

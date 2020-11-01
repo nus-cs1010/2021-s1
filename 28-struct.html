@@ -1401,7 +1401,7 @@ cs1010_println_long(cs1010.mc);
 </td></tr></table>
 <p>When a function returns a <code>struct</code>, the structure gets <em>copied</em> back to the caller.</p>
 <h3 id="defining-a-structure-as-a-type">Defining a Structure as a Type</h3>
-<p>To avoid writing the keyword 'struct<code>every time we declare a variable or parameter, let's introduce another keyword in C:</code>typedef`.  </p>
+<p>To avoid writing the keyword <code>struct</code> every time we declare a variable or parameter, let's introduce another keyword in C: <code>typedef</code>.  </p>
 <p>C allows programmers to define their type based on the existing types.  Suppose that I want a type that represents a color component (red, green, or blue) of a pixel.  Each pixel can have a value between 0 to 255.  So we can represent it with an <code>unsigned char</code>.  I can define:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">color_t</span><span class="p">;</span>
 </code></pre></div>
