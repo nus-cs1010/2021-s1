@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="stylesheets/cs1010.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/dark.css">
+<title>CS1010 AY20/21 S1 Lecture 11</title>
+<meta charset="utf-8">
+</head>
+<body>
+<textarea id="source">
+class: middle, center
+
+# Lecture 12
+
+### 9 November 2020
+
+.smaller[
+Admin Matters<br>
+Teaser to CS2040C: A Better List<br>
+Recap of CS1010<br>
+]
+---
+class: middle
+
+### Catch-up Session
+
+- Saturday 14 Nov is Deepavali
+- Move to Monday 16 Nov, 10am - 12noon
+
+---
+class: middle
+
+### Tutorial/Lab 11
+
+- PE2 Review
+- Final Questions from 18/19
+
+---
+class: middle
+
+### Final Exam
+
+- Tuesday, 24 Nov, 2020 (5pm - 7pm)
+- Unit 1 to 29
+- Open Book
+
+---
+class: middle,center
+
+### Teaser to CS2040C: Data Structures and Algorithms
+
+---
+class: middle
+
+### Data Structures
+
+- A collection of data values and the operations that can be applied
+- How to organise and manage data for efficient access and modification?
+
+---
+class: middle
+
+### An ordered list of numbers
+
+- create a list
+- append to the list
+- remove a number from the list
+- find the position of a number
+- destroy a list
+- print a list
+
+---
+class: middle
+
+### A Better List 
+
+- We have been implementing list using array
+- Search: $O(n)$
+- Insert/delete at the back?
+- Insert/delete elsewhere?
+
+---
+class: top
+
+### Linked List
+
+
+---
+class: middle,center
+
+## Recap of CS1010
+
+---
+class: middle,center
+
+## What Have You Learned?
+
+---
+class: middle
+
+### 1. How to write C 
+
+- types, functions, arithmetic ops, if-else, logical expressions, loops, arrays, pointers, memory management, preprocessor, struct, I/O
+
+- Others we skipped: break/continue, switch, common C libraries API, bit operations, union, enum, argc/argv, separate compilation etc. 
+
+---
+class: middle
+
+### 2. How a C program behaves
+
+- machine code, data in memory, types, call stack, memory addr, 
+call by value/ref, heap
+
+---
+class: middle
+
+### 3. Tools and Practices
+
+- `clang`, `vim`, `bash`, style, assertion, documentation, (some) testing, (some) secure programming
+
+- Others we skipped: debugger, valgrind, git, make
+
+---
+class: middle
+
+### 4. Problem Solving
+
+- decomposition, recursion, flowchart, conditionals, assertions, loops, invariants, running time analysis, sorting, searching, efficiency
+
+---
+class: middle,center
+
+### Computational Thinking
+
+The mental process associated with computational problem solving
+
+---
+class: middle
+
+## Four Pillars of Computational Thinking
+
+- Decomposition
+- Pattern Recognition
+- Abstract
+- Algorithms
+
+(We have been teaching these without being explicit about it)
+
+---
+class: middle,center
+
+## Decomposition
+
+---
+class:middle
+
+## Find the Std Dev (Lecture 2)
+
+- Give an algorithm to find the standard deviation of a list $L$ of $k$ integers.
+
+$$\sqrt{\frac{\sum\_{i=0}^{k-1}(l\_i - \mu)^2}{k}}$$
+
+---
+class:middle,center
+
+### Decomposition makes a problem easier to solve
+
+---
+class:middle,wide
+
+### Taxi (Assignment 2)
+
+.tiny[
+```C
+double surcharge(long day, long hour, long minute) {
+	if (is_weekday(day) && is_morning_peak(hour, minute)) {
+		return MORNING_SURCHARGE;  
+	}
+	if (is_evening_peak(hour)) {
+		return EVENING_SURCHARGE;  
+	}
+	if (is_midnight_peak(hour)) {
+		return MIDNIGHT_SURCHARGE;  
+	}
+	return 1.0; 
+}
+```
+]
+
+---
+class:middle,wide
+
+.tiny[
+```C
+bool is_weekday(long day) { 
+  return (day >= 1 && day <= 5);
+}
+bool is_morning_peak(long hour, long minute) {
+  return (hour >= 6 && hour < 9) || 
+		 (hour == 9 && minute <= 29);
+}
+bool is_evening_peak(long hour) { 
+  return (hour >= 18 && hour <= 23); 
+} 
+bool is_midnight_peak(long hour) { 
+  return (hour >= 0 && hour < 6);
+}
+```
+]
+
+---
+class: middle,wide
+
+### Social (Assignment 5)
+
+.tiny[
+```C
+// is i and j connected through some m at h+1 hops?
+char is_connected(long n, char **degree_1, 
+		          char **degree_h, long i, long j) {
+	for (long m = 0; m < n; m += 1) { 
+		if (is_friend(degree_1, i, m) && 
+		    is_friend(degree_h, m, j)) {
+			return FRIEND;    
+		}  
+	} 
+	return STRANGER;
+}
+```
+]
+
+---
+class: middle,wide
+
+### Social (Assignment 5)
+
+.tiny[
+```C
+bool is_friend(char **network, int i, int j) {
+   if (i >= j) {
+      return network[i][j] == FRIEND;  
+   } 
+   return network[j][i] == FRIEND;
+}
+```
+]
+
+---
+class: middle,center
+
+### Decomposition
+
+Break complex problems down into "bite-size" sub-problems that you can solve
+
+---
+class: middle,center
+
+### Decomposition
+
+George Polya said: "If you can't solve a problem, there is an easier problem that you can solve: find it"
+
+---
+class: middle
+
+### Decomposition
+
+- Solve the easier problem first, then generalized.
+- E.g., `social`: find two-hops friends, then generalized to k hops
+- E.g., `pattern`: draw the left most cell, then generalized
+
+---
+class: middle
+
+### Recursion
+
+- Assume the easier problem is solved, then generalized.
+- E.g., `reverse`: assume we can reverse the rest of the numbers, then reverse the number
+- E.g., `tower of hanoi`: assume we know how to move k-1 discs, then solve for k disc.
+
+---
+class: middle
+
+### Four Pillars of Computational Thinking
+
+- Decomposition
+- Pattern Recognition
+- Abstract
+- Algorithms
+
+---
+class: middle,center
+
+## Pattern Recognition
+
+---
+class: middle,center
+
+### Pattern Recognition
+
+Observe trends and patterns, then generalized
+
+---
+class: middle
+
+### Box (Assignment 1)
+
+.tiny[
+```C
+long area_of_rectangle1(long width, long height) {
+  return width \* height;
+}
+long area_of_rectangle2(long width, long length) {
+  return width \* length;
+}
+long area_of_rectangle3(long height, long length) {
+  return height * length;
+}
+```
+]
+(see the pattern?)
+
+---
+class: middle
+
+### Taxi (Assignment 1)
+
+- The first 1 km or less (Flag Down) 	$3.20
+- Every 400 m thereafter or less, up to 10 km 	$0.22
+- Every 350 m thereafter or less, after 10 km 	$0.22
+
+(See the pattern?)
+
+---
+class: middle
+
+### Taxi (Assignment 1)
+
+| unit dist | max dist  | fare |
+|-----------|-----------|------|
+| Every 1000 m | next 1 km | $3.20 |
+| Every 400 m  | next 9 km | $0.22 |
+| Every 350 m  | next $\infty$ km | $0.22 |
+
+
+---
+class: middle, wide
+
+.tiny[
+```C
+double fare = 0;
+for (int i = 0; i < NUM_TIERS; i += 1) {
+    if (distance < 0) {
+		  return fare;
+    }
+	long min_dist = min(distance, tiers[i].max_distance);
+	double units = ceil(min_dist*1.0/ tiers[i].unit_distance);
+	fare += tiers[i].fare * units;
+	distance -= tiers[i].max_distance;   
+}
+```
+]
+
+---
+class: middle,center)
+
+### Inversion (Assignment 7)
+
+![inversion](../figures/scripts/scripts.002.png)
+
+---
+class: middle,center
+
+### Identifying loop invariants is partly about pattern recognition!
+
+---
+class: middle
+
+### Abstraction
+
+- Identifying and abstracting relevant information
+- Hide details
+- Adapt to change
+- Generalize to other domain
+
+---
+class: middle,center
+
+### Data Abstraction
+
+Model the problem with only the necessary information
+
+---
+class: middle,center
+
+.fit[
+![queens](figures/recursion/recursion.007.png)
+]
+---
+class: middle
+
+### Peak (Assignment 7)
+
+- Only an array of numbers is required to model the problem.
+
+---
+class: middle,center
+
+### Functional Abstraction
+
+Hide details and focus on higher-level logic
+
+---
+class:middle,wide
+
+What if the peak hours are extended?  surchange increases?  
+
+.tiny[
+```C
+double surcharge(long day, long hour, long minute) {
+	if (is_weekday(day) && is_morning_peak(hour, minute)) {
+		return MORNING_SURCHARGE;  
+	}
+	if (is_evening_peak(hour)) {
+		return EVENING_SURCHARGE;  
+	}
+	if (is_midnight_peak(hour)) {
+		return MIDNIGHT_SURCHARGE;  
+	}
+	return 1.0; 
+}
+```
+]
+
+---
+class:middle,wide
+
+Does it matter (to this code) if jagged or rectangular array is used?
+
+.tiny[
+```C
+// is i and j connected through some m at h+1 hops?
+char is_connected(long n, char **degree_1, 
+		          char **degree_h, long i, long j) {
+	for (long m = 0; m < n; m += 1) { 
+		if (is_friend(degree_1, i, m) && 
+		    is_friend(degree_h, m, j)) {
+			return FRIEND;    
+		}  
+	} 
+	return STRANGER;
+}
+```
+]
+
+---
+class: middle
+
+from Lecture 1..
+
+### Work hard
+### Work very very hard
+
+---
+class: center,middle
+
+## What doesn't kill you only makes you stronger
+
+---
+class: center,middle
+
+![meme](figures/meme/goodbye-cs1010.jpg)
+
+
+---
+class: bottom
+
+.tiny[
+Version: 1.0
+
+Last Updated: Sun Nov  8 13:14:53 +08 2020
+]
+</textarea>
+
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+<script src="javascripts/counter.js">
+</script>
+<script>
+remark.macros.scale = function (percentage) {
+	var url = this;
+	return '<img src="' + url + '" style="width: ' + percentage + '" />';
+};
+// ![:scale 50%](image.jpg)
+
+var slideshow = remark.create({
+    navigation: {
+	    scroll: false
+	},
+	ratio: '16:9',
+	highlightStyle: 'monokai',
+    slideNumberFormat: 'AY2021 S1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%current%',
+});
+ // Setup MathJax
+  MathJax.Hub.Config({
+	  tex2jax: {
+		inlineMath: [['$', '$']],
+		// inlineMath: [['$', '$'], ['\\(', '\\)']],
+		displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+		skipTags: ['script', 'noscript', 'style', 'pre']
+	  }
+  });
+
+  MathJax.Hub.Configured();
+</script>
+</body>
+</html>
